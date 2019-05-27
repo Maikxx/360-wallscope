@@ -13,6 +13,21 @@
     "name": "Maikel van Veen",
     "url": "https://github.com/Maikxx"
   },
+  "contributors": [
+    {
+      "name": "Maikel Sleebos",
+      "url": "https://github.com/Senpaizuri"
+    },
+    {
+      "name": "Jesper Ingels",
+      "url": "https://github.com/JesperIngels"
+    },
+    {
+      "name": "Chelsea Doeleman",
+      "email": "chelsea.doeleman@gmail.com",
+      "url": "https://github.com/ChelseaDoeleman"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Maikxx/360-wallscope/issues"
