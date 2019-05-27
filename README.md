@@ -1,7 +1,13 @@
 # Wallscope
+
 **In this project we created a demo Visualisation of the Wallscope Dynamic Data Discovery Platform between AUOAS and Wallscope. Where two minors (UX and Web Development) come toghether to create a better User Experience.**
 
 **This Demo is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).**
+
+## Table of contents
+
+* [Installation](#Installation)
+* [License](#License)
 
 ## Installation
 
