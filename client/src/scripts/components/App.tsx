@@ -1,6 +1,10 @@
 import React from 'react'
 
-export class App extends React.Component<{}, {}> {
+interface Props {}
+
+interface State {}
+
+export class App extends React.Component<Props, State> {
     public render() {
         return (
             <React.Fragment>
