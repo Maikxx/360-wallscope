@@ -1,0 +1,21 @@
+{
+  "name": "wallscope",
+  "version": "1.0.0",
+  "description": "Wallscope project",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maikxx/360-wallscope.git"
+  },
+  "keywords": [],
+  "author": {
+    "email": "Maikeloo10@hotmail.com",
+    "name": "Maikel van Veen",
+    "url": "https://github.com/Maikxx"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maikxx/360-wallscope/issues"
+  },
+  "homepage": "https://github.com/Maikxx/360-wallscope#readme"
+}
