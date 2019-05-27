@@ -5,7 +5,10 @@
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "preserve",
-        "lib": ["esnext", "dom"],
+        "lib": [
+            "esnext",
+            "dom"
+        ],
         "module": "esnext",
         "noImplicitAny": true,
         "noImplicitReturns": true,
@@ -21,7 +24,7 @@
     },
     "include": [
         "**/*.ts",
-        "**/*.tsx", "src/scripts/utils/converters.ts"
+        "**/*.tsx",
     ],
     "exclude": [
         "./node_modules",

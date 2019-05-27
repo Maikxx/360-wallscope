@@ -1,3 +1,55 @@
+# TypeScript Design Guide
+
+## Configuration
+
+The following snippet is the absolute base for compiling TypeScript to JavaScript. There are a lot of additional options, which I may or may not add for clarity once I understand them all enough.
+
+<details>
+<summary>Configuration file</summary>
+
+```json
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "preserve",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "module": "esnext",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "./dist",
+        "rootDir": "src",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "esnext"
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+    ],
+    "exclude": [
+        "./node_modules",
+        "./dist"
+    ]
+}
+```
+</details>
+
+## Linting
+
+<details>
+<summary>Linting file</summary>
+
+```json
 {
     "extends": [
         "tslint-eslint-rules"
@@ -235,3 +287,5 @@
         ]
     }
 }
+```
+</details>
