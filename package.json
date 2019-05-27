@@ -17,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/Maikxx/360-wallscope/issues"
   },
-  "homepage": "https://github.com/Maikxx/360-wallscope#readme"
+  "homepage": "https://github.com/Maikxx/360-wallscope#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "tslint": "^5.16.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }
