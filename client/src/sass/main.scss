@@ -1,0 +1,16 @@
+@import './reset.scss';
+
+body {
+    display: flex;
+    line-height: 1;
+    background-color: #ffffff;
+    color: #000000;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body main {
+    width: 100%;
+}
+
+// Import other SCSS files here, for example: @import './components/nameOfComponent.scss';
