@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { routes } from '../routes'
 
 interface Props {}
 
@@ -9,7 +11,7 @@ export class App extends React.Component<Props, State> {
         return (
             <React.Fragment>
                 <div>This is where all the React goes from now.</div>
-                <a href='/'>OKAY</a>
+                <Link to={routes.App.index}>OKAY</Link>
             </React.Fragment>
         )
     }
