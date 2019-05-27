@@ -7,6 +7,7 @@
 ## Table of contents
 
 * [Installation](#Installation)
+* [Briefings](#Briefings)
 * [License](#License)
 
 ## Installation
@@ -26,6 +27,10 @@ You may have perform the following steps if you get errors running the commands 
 * `npm install parcel-bundler -g`
 
 The port that now opens is `localhost:9000`.
+
+## Briefings
+
+* [Briefing 1](./docs/BRIEFING_1.md)
 
 ## License
 
