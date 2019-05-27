@@ -30,7 +30,7 @@ The port that now opens is `localhost:9000`.
 
 ## Briefings
 
-* [Briefing 1](./docs/BRIEFING_1.md)
+1. [Briefing 1](./docs/BRIEFING_1.md)
 
 ## License
 
