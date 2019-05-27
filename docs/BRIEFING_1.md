@@ -1,4 +1,4 @@
-# BRIEFING I 
+# BRIEFING I
 
 **All data is accessible through one point.**
 
@@ -14,7 +14,6 @@
 * SPARQL
     * query access along multiple databases
 * Natural language processing
-
 
 ## Triple - DBpedia
 * Subject - actor
@@ -39,8 +38,6 @@ Endpoints
 
 **! FRIDAY**
 Small presentation - show some ideas, concepts, etc.
-
-
 
 * The Curious
     * The average customer when they’re looking for something.
