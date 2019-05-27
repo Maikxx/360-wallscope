@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "lib": ["esnext", "dom"],
+        "rootDir": "src",
+        "target": "esnext",
+        "module": "esnext",
+        "outDir": "./dist",
+        "jsx": "preserve",
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "downlevelIteration": true
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx", "src/scripts/utils/converters.ts"
+    ],
+    "exclude": [
+        "./node_modules",
+        "./dist"
+    ]
+}
