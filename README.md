@@ -11,7 +11,7 @@
 * Clone the repository: `git clone git@github.com:Maikxx/360-wallscope.git`
 * Navigate into the directory: `cd 360-wallscope`
 * Install dependencies: `yarn` or `npm install`
-* Start the client with: `yarn start-client` or `npm run start-client`
+* Start the client with: `yarn start` or `npm run start`
 
 You may have perform the following steps if you get errors running the commands above:
 

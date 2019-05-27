@@ -2,7 +2,10 @@
   "name": "wallscope",
   "version": "1.0.0",
   "description": "Wallscope project",
-  "scripts": {},
+  "scripts": {
+    "build": "npm install && parcel build client/src/index.html --no-source-maps --out-dir client/dist",
+    "start": "npm install && parcel watch client/src/index.html --no-source-maps --out-dir client/dist"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maikxx/360-wallscope.git"
@@ -36,12 +39,18 @@
   "devDependencies": {
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.20.1",
     "tslint": "^5.16.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "yarn": "^1.16.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
   }
 }
