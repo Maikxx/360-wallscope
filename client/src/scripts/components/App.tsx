@@ -3,7 +3,10 @@ import React from 'react'
 export class App extends React.Component<{}, {}> {
     public render() {
         return (
-            <div>This is where all the React goes from now.</div>
+            <React.Fragment>
+                <div>This is where all the React goes from now.</div>
+                <a href='/'>OKAY</a>
+            </React.Fragment>
         )
     }
 }
