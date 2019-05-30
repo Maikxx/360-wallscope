@@ -1,6 +1,6 @@
 # Briefing 2 - Wallscope
 
-Concepts generated during the first concepting sprint:
+## Concepts
 
 * ~~Create a chatbot for users to talk to in order for the system to know what the user wants to know from the system.~~
 * Create a search field that that also accepts search queries in the form of SparQL. This could also result in textual articles being generated from the results, as well as a generated datavisualization.
@@ -10,7 +10,7 @@ Concepts generated during the first concepting sprint:
 * Add the ability to embed a generated graph on other sites, as well as enable sharing.
 * Add autocompletion in the search field.
 
-Brainstorming:
+## Brainstorming
 
 * How can we avoid presenting "invalid data" to end users. (Use of different data sources). -> ?
 * Do we have multiple data sources? -> Yes
