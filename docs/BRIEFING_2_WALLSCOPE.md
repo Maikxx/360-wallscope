@@ -16,12 +16,12 @@
 * Do we have multiple data sources? -> Yes
 * Is there already some form of 'storytelling' in the current application? -> No
 
-![Meeting 2 image 1](./docs/assets/meeting_2_wallscope_1.jpg)
+![Meeting 2 image 1](./assets/meeting_2_wallscope_1.jpg)
 
-![Meeting 2 image 2](./docs/assets/meeting_2_wallscope_2.jpg)
+![Meeting 2 image 2](./assets/meeting_2_wallscope_2.jpg)
 
-![Meeting 2 image 3](./docs/assets/meeting_2_wallscope_3.jpg)
+![Meeting 2 image 3](./assets/meeting_2_wallscope_3.jpg)
 
-![Meeting 2 image 4](./docs/assets/meeting_2_wallscope_4.jpg)
+![Meeting 2 image 4](./assets/meeting_2_wallscope_4.jpg)
 
-![Meeting 2 image 5](./docs/assets/meeting_2_wallscope_5.jpg)
+![Meeting 2 image 5](./assets/meeting_2_wallscope_5.jpg)
