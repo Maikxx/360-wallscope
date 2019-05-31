@@ -28,7 +28,7 @@
 ## Graph
 Links also have a type data describes itself (child properties)
 
-![Graph](./assets/triple.JPG)
+![Graph](./assets/meeting_1-triple-graph.JPG)
 
 ## HiCCUP - Interface to query linked data
 
