@@ -16,6 +16,10 @@
 * Do we have multiple data sources? -> Yes
 * Is there already some form of 'storytelling' in the current application? -> No
 
+<details>
+
+<summary>Sketches</summary>
+
 ![Meeting 2 image 1](./assets/meeting_2_wallscope_1.jpg)
 
 ![Meeting 2 image 2](./assets/meeting_2_wallscope_2.jpg)
@@ -39,3 +43,11 @@
 ![Meeting 2 image 11](./assets/meeting_2_wallscope-questions-1.jpg)
 
 ![Meeting 2 image 12](./assets/meeting_2_wallscope-questions-2.jpg)
+
+</details>
+
+## Presentation
+
+We did a small presentation to wrap up our concepting work in Edinburgh.
+
+[Link to presentation 🖼](https://docs.google.com/presentation/d/1QIAm0S2yiCwETq_rx97Ikq_wKEJbwzQ5DR_QXj7usbk/edit?usp=sharing)
