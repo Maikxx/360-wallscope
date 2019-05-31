@@ -25,3 +25,13 @@
 ![Meeting 2 image 4](./assets/meeting_2_wallscope_4.jpg)
 
 ![Meeting 2 image 5](./assets/meeting_2_wallscope_5.jpg)
+
+![Meeting 2 image 6](./assets/meeting_2_wallscope_6.jpg)
+
+![Meeting 2 image 7](./assets/meeting_2_wallscope_7.jpg)
+
+![Meeting 2 image 8](./assets/meeting_2_wallscope_8.jpg)
+
+![Meeting 2 image 9](./assets/meeting_2_wallscope_9.jpg)
+
+![Meeting 2 image 10](./assets/meeting_2_wallscope_10.jpg)
