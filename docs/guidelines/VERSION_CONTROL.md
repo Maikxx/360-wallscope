@@ -111,10 +111,20 @@ I for one did not until a few months ago.
 Version control tools such as the ones mentioned above provide a folder like structure when using these kinds of branches, which is nice.
 
 Semantic branch names:
-* `feature/` - Branch for specific features. Avoid hitting files outside of the scope of this branch. Example: `feature/client-app-view-integration`. (Branched from `develop`)
-* `refactor/` - Branch for specific refactors (rewrites of code). Avoid hitting files outside of the scope of this branch. Example: `refactor/client-app-view-integration`. (Branched from `develop`)
-* `fix/` - Branch for specific fixes. Avoid hitting files outside of the scope of this branch. Example: `fix/client-app-view-integration`. These type of branches will be less common, since it is also allowed to perform fixes on `develop`. (Branched from `develop`)
-* `hotfix/` - Branch for **high prio fixes**, that are already on the `master` branch. These type of branches should really never occur, since all code and designs going to `master` should already be tested. Hotfix branches generally have different names from normal branches, I have not thought out this far yet. If it occurs that you need it and you read this, ask me again what naming conventions these should follow. Everything is allowed in this branch, as long as it aims to fix **high prio bugs** on `master` (Branched from `master`)
+* `feature/` - Branch for specific features.
+    Avoid hitting files outside of the scope of this branch.
+    Example: `feature/client-app-view-integration`. (Branched from `develop`)
+* `refactor/` - Branch for specific refactors (rewrites of code).
+    Avoid hitting files outside of the scope of this branch.
+    Example: `refactor/client-app-view-integration`. (Branched from `develop`)
+* `fix/` - Branch for specific fixes. Avoid hitting files outside of the scope of this branch.
+    Example: `fix/client-app-view-integration`.
+    These type of branches will be less common, since it is also allowed to perform fixes on `develop`. (Branched from `develop`)
+* `hotfix/` - Branch for **high prio fixes**, that are already on the `master` branch.
+    These type of branches should really never occur, since all code and designs going to `master` should already be tested.
+    Hotfix branches generally have different names from normal branches, I have not thought out this far yet.
+    If it occurs that you need it and you read this, ask me again what naming conventions these should follow.
+    Everything is allowed in this branch, as long as it aims to fix **high prio bugs** on `master`. (Branched from `master`)
 
 ### Pull requests
 
