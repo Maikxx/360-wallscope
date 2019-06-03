@@ -12,9 +12,8 @@
 
 ## Installation
 
-* Make sure to install [yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com).
-* Make sure the **port** specified in the [package.json](package.json) is available (defaults to 9000).
-
+* Make sure to install [yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com)
+* Make sure the **port** specified in the [package.json](package.json) is available (defaults to 9000)
 * Clone the repository: `git clone git@github.com:Maikxx/360-wallscope.git`
 * Navigate into the directory: `cd 360-wallscope`
 * Install dependencies: `yarn` or `npm install`
