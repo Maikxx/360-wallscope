@@ -8,22 +8,39 @@ We decided to each concept some screens in Adobe XD to see how our thoughts vary
 <details>
     <summary>Version 2 @Maikel Sleebos</summary>
 
-![Links](../docs/design/v2_sleebos/links.png)
-![Topic](../docs/design/v2_sleebos/topic.png)
+![Links](./design/v2_sleebos/links.png)
+![Topic](./design/v2_sleebos/topic.png)
 
 </details>
 
 <details>
     <summary>Version 2 @Chelsea Doeleman</summary>
 
-![Home](../docs/design/v2_chelsea/home.png)
-![Home light](../docs/design/v2_chelsea/home-light.png)
-![Login](../docs/design/v2_chelsea/login.png)
-![Start](../docs/design/v2_chelsea/start.png)
-![Results](../docs/design/v2_chelsea/results.png)
-![Add](../docs/design/v2_chelsea/add.png)
-![Topics](../docs/design/v2_chelsea/topics.png)
-![Topics light](../docs/design/v2_chelsea/topics-light.png)
-![Links](../docs/design/v2_chelsea/links.png)
+![Home](./design/v2_chelsea/home.png)
+![Home light](./design/v2_chelsea/home-light.png)
+![Login](./design/v2_chelsea/login.png)
+![Start](./design/v2_chelsea/start.png)
+![Results](./design/v2_chelsea/results.png)
+![Add](./design/v2_chelsea/add.png)
+![Topics](./design/v2_chelsea/topics.png)
+![Topics light](./design/v2_chelsea/topics-light.png)
+![Links](./design/v2_chelsea/links.png)
+
+</details>
+
+<details>
+    <summary>Version 2 @Maikel van Veen</summary>
+
+![login](./design/v2_vanveen/login.png)
+![signup](./design/v2_vanveen/signup.png)
+![landing](./design/v2_vanveen/landing.png)
+![boards](./design/v2_vanveen/boards.png)
+![results](./design/v2_vanveen/results.png)
+![detail](./design/v2_vanveen/detail.png)
+![detail-add-to-board](./design/v2_vanveen/detail-add-to-board.png)
+![boards-new-board](./design/v2_vanveen/boards-new-board.png)
+![boards-detail](./design/v2_vanveen/boards-detail.png)
+![boards-detail-article](./design/v2_vanveen/boards-detail-article.png)
+![boards-detail-article-edit](./design/v2_vanveen/boards-detail-article-edit.png)
 
 </details>
