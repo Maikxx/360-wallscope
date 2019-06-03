@@ -7,6 +7,7 @@
 ## Table of contents
 
 * [Installation](#Installation)
+* [Guidelines](#Guidelines)
 * [Briefings](#Briefings)
 * [License](#License)
 
@@ -26,6 +27,10 @@ You may have perform the following steps if you get errors running the commands 
 * `npm install parcel-bundler -g`
 
 The port that now opens is `localhost:9000`.
+
+## Guidelines
+
+* [Version control](./docs/guidelines/VERSION_CONTROL.md)
 
 ## Briefings
 
