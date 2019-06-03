@@ -44,13 +44,13 @@ This can be either one of the following:
 
 * `docs` - If you change something to the global documentation, including `BRIEFING.md` files.
 * `deps` - For the case where dependencies change. Used in combination with chore.
-* `client > *` - For cases where you change something in the client folder. The asterisks (_*_) stands for the part of the application that you changed. For example: `feature(client > home): add homepage`.
-* `server > *` - For cases where you change something in the server folder. The asterisks (_*_) stands for the part of the application that you changed. For example: `feature(server > api): integrate api`.
+* `client > *` - For cases where you change something in the client folder. The asterisks stands for the part of the application that you changed. For example: `feature(client > home): add homepage`.
+* `server > *` - For cases where you change something in the server folder. The asterisks stands for the part of the application that you changed. For example: `feature(server > api): integrate api`.
 * `*` - For cases where you just don't give a shit, mostly used when you have tried to fix something multiple times, when it clearly did not work.
 
 ### Description
 
-This is the easiest of the three pieces, here you just type the message, starting with a _lowercase_, ending without a dot (_._).
+This is the easiest of the three pieces, here you just type the message, starting with a _lowercase_, ending without a dot.
 
 Please be descriptive, so: `feature(client > home): add homepage to views folder`, not `feature(client > home): 💩`.
 
