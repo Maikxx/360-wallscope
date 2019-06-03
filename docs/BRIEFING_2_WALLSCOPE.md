@@ -51,3 +51,15 @@
 We did a small presentation to wrap up our concepting work in Edinburgh.
 
 [Link to presentation 🖼](https://docs.google.com/presentation/d/1QIAm0S2yiCwETq_rx97Ikq_wKEJbwzQ5DR_QXj7usbk/edit?usp=sharing)
+
+## Concepting designs
+
+![v1-article](./design/v1_chelsea/article.png)
+
+![v1-home-light](./design/v1_chelsea/home-light.png)
+
+![v1-home](./design/v1_chelsea/home.png)
+
+![v1-results](./design/v1_chelsea/results.png)
+
+![v1-results2](./design/v1_chelsea/results2.png)
