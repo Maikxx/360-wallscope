@@ -31,6 +31,7 @@ The port that now opens is `localhost:9000`.
 
 1. [Briefing 1](./docs/BRIEFING_1.md)
 2. [Briefing 2](./docs/BRIEFING_2_WALLSCOPE.md)
+3. [Briefing 3](./docs/BRIEFING_3.md)
 
 ## License
 
