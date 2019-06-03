@@ -40,9 +40,9 @@
 
 ![Meeting 2 image 10](./assets/meeting_2_wallscope_10.jpg)
 
-![Meeting 2 image 11](./assets/meeting_2_wallscope-questions-1.jpg)
+![Meeting 2 image 11](./assets/meeting_2_wallscope-questions-1.jpeg)
 
-![Meeting 2 image 12](./assets/meeting_2_wallscope-questions-2.jpg)
+![Meeting 2 image 12](./assets/meeting_2_wallscope-questions-2.jpeg)
 
 </details>
 
