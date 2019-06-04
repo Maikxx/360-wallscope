@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/Maikxx/360-wallscope",
   "devDependencies": {
+    "@types/classnames": "^2.2.8",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
@@ -50,6 +51,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0"
