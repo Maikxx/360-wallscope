@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Wallscope project",
   "scripts": {
-    "build": "yarn && parcel build client/src/index.html --no-source-maps --out-dir client/dist",
-    "start": "yarn && parcel client/src/index.html -p 9000 --out-dir client/dist"
+    "build-client": "cd ./client && yarn && yarn build",
+    "build-server": "tsc && yarn prebuild-client && yarn copy-static-assets",
+    "heroku-postbuild": "yarn build-server && yarn build-client",
+    "start": "node server/dist/index.js",
+    "start-server": "concurrently \"yarn watch-client\" \"yarn watch-server\" --raw",
+    "watch-client": "cd ./client && yarn start-client",
+    "watch-server": "ts-node-dev --respawn --transpileOnly ./server/src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -46,7 +51,7 @@
     "sass": "^1.20.1",
     "tslint": "^5.16.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.4.5",
+    "typescript": "^3.5.1",
     "yarn": "^1.16.0"
   },
   "dependencies": {
