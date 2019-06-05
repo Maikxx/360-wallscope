@@ -59,5 +59,4 @@ We decided to each concept some screens in Adobe XD to see how our thoughts vary
 ![Topics light](./design/v3_chelsea/topics-light.png)
 ![Links](./design/v3_chelsea/links.png)
 
-[Wallscope XD file](./assets/wallscope.xd)
 </details>
