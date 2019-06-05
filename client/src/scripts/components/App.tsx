@@ -12,6 +12,7 @@ export class App extends React.Component<Props, State> {
             <React.Fragment>
                 <div>This is where all the React goes from now.</div>
                 <Link to={routes.App.index}>OKAY</Link>
+                <Link to={routes.Login.index}>Login</Link>
             </React.Fragment>
         )
     }
