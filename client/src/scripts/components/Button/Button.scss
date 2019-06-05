@@ -1,0 +1,168 @@
+
+.Button {
+    @import '../../../sass/colors.scss';
+    
+    &--red {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        position: relative;
+        display: block;
+        background-color: $color-red-1;
+        padding: .75em 3em;
+        color: $color-white;
+        border-radius: .5em;
+        border: none;
+        transition: all .2s ease-in-out;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            height: 25px;
+            width: 50px;
+            background: darken($color-red-1, 5%);
+            border-radius: .5em;
+            transition: all .2s ease-in-out;
+        }
+
+        &:hover{
+            background-color: darken($color-red-1, 8%)
+        }
+
+        &:hover::after {
+            content: '';
+            height: 100%;
+            width: 100%;
+            background: darken($color-red-1, 8%);
+            opacity: .2;
+        }
+    }
+
+    &--blue {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        position: relative;
+        display: block;
+        background-color: $color-blue-1;
+        padding: .75em 3em;
+        color: $color-white;
+        border-radius: .5em;
+        border: none;
+        transition: all .2s ease-in-out;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            height: 25px;
+            width: 50px;
+            background: darken($color-blue-1, 5%);
+            border-radius: .5em;
+            transition: all .2s ease-in-out;
+        }
+
+        &:hover{
+            background-color: darken($color-blue-1, 15%)
+        }
+        
+        &:hover::after {
+            content: '';
+            height: 100%;
+            width: 100%;
+            background: darken($color-blue-1, 20%);
+            opacity: .2;
+        }
+    }
+
+    &--round {
+        font-family: 'Lato', sans-serif;
+        font-size: 2em;
+        display: block;
+        background-color: $color-blue-1;
+        padding: .5em .7em;
+        color: $color-purple-5;
+        border-radius: 50%;
+        border: none;
+        transition: all .2s ease-in-out;
+
+        &:hover, &:active, &:focus{
+            background-color: $color-purple-2;
+        }
+    }
+
+    &--search {
+        display: block;
+        padding: .75em;
+        border: none;
+        border-radius: 50%;
+        transition: all .2s ease-in-out;
+
+        #search {
+            display: inline-block;
+            fill: $color-white;
+        }
+
+        &:hover, &:active, &:focus {
+            background-color:  $color-purple-4;
+            outline: 0;
+
+            #search {
+                fill: $color-purple-1;
+            }
+        }
+    }
+
+    &--tag-red {
+        display: block;
+        background-color: $color-red-1;
+        border: none; 
+        padding: .75em;
+        border-radius: .5em;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background-color: lighten($color-red-1, 10%);   
+        }
+    }
+
+    &--tag-blue {
+        display: block;
+        background-color: $color-blue-1;
+        border: none; 
+        padding: .75em;
+        border-radius: .5em;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background-color: lighten($color-blue-1, 10%);   
+        }
+    }
+
+    &--big {
+        display: block;
+        background-color: $color-purple-3;
+        padding: 2em;
+        position: relative;
+        color: $color-purple-5;
+        border-radius: 50%;
+        border: none;
+        transition: all .2s ease-in-out;
+
+        &:hover, &:active, &:focus{
+            background-color: $color-purple-2;
+            outline: 0;
+        }
+
+        #search {
+            display: inline-block;
+            fill: $color-purple-5;
+        }
+    }
+
+    
+
+}
