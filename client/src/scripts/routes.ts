@@ -4,4 +4,7 @@ export const routes = {
         login: '/login',
         sign_up: '/sign-up',
     },
+    Login: {
+        index: '/login',
+    },
 }
