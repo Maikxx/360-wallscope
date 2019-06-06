@@ -2,11 +2,11 @@ import React from 'react'
 import './Form.scss'
 
 interface FormAction {
-    action: string,
+    action: string
 }
 
 interface Props {
-    formAction: FormAction,
+    formAction: FormAction
 }
 
 export class Form extends React.Component<Props> {

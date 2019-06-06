@@ -39,9 +39,11 @@ export class Login extends React.Component<Props> {
                 classname: 'Fieldset__submit input--login',
             },
         }
+
         const formAction = {
             action: '/',
         }
+
         return (
             <div className='Login'>
                 <Form formAction={formAction}>
