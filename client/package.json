@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "yarn clear-dist && parcel build ./src/index.html --no-source-maps -d ../server/public/build --public-url '/build'",
+    "build": "yarn && yarn clear-dist && parcel build ./src/index.html --no-source-maps -d ../server/public/build --public-url '/build'",
     "start-client": "parcel watch ./src/index.html --no-source-maps -d ../server/public/build --public-url '/build'",
     "clear-dist": "rm -rf ../server/public/build"
   },
