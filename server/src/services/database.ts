@@ -36,8 +36,6 @@ export async function setupDatabase() {
             );
 
             ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name TEXT;
-
-            ${alterOwnerIfNotProduction('users')}
             `
         )
     } catch (error) {
@@ -45,12 +43,4 @@ export async function setupDatabase() {
         console.error(error.message)
         throw new Error(error.message)
     }
-}
-
-function alterOwnerIfNotProduction(table: string) {
-    const environmentIsProduction = process.env.NODE_ENV === 'production'
-
-    return environmentIsProduction
-        ? ''
-        : `ALTER TABLE ${table} OWNER TO admin;`
 }
