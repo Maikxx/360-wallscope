@@ -7,9 +7,9 @@ export const routeRequest = (request: express.Request, response: express.Respons
     const { url } = request
 
     if (routes.includes(url.trim())) {
-        response.sendFile(path.join(__dirname, '/../public/build/index.html'))
+        response.sendFile(path.join(__dirname, '/../../public/build/index.html'))
     } else if (url.includes('/build')) {
-        response.sendFile(path.join(__dirname, '/../public', url))
+        response.sendFile(path.join(__dirname, '/../../public', url))
     } else {
         response.status(404).redirect('/')
     }
