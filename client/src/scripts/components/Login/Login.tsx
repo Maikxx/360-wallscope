@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form } from '../Form/Form'
 import { Input } from '../Form/Input/Input'
+import { Fieldset } from '../Form/Fieldset/Fieldset'
+import { Legend } from '../Form/Legend/Legend'
 import './Login.scss'
 
 interface Props {}
@@ -43,13 +45,13 @@ export class Login extends React.Component<Props, State> {
         }
         return (
             <div className='Login'>
-                <h1 className='Login__header'>Login</h1>
                 <Form formAction={formAction}>
-                    <fieldset className='Fieldset'>
+                    <Fieldset classname='Fieldset'>
+                        <Legend classname='Login__header' text='Login' />
                         <Input input={inputs.email} />
                         <Input input={inputs.password} />
                         <Input input={inputs.submit} />
-                    </fieldset>
+                    </Fieldset>
                 </Form>
             </div>
         )
