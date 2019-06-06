@@ -44,3 +44,19 @@ We decided to each concept some screens in Adobe XD to see how our thoughts vary
 ![boards-detail-article-edit](./design/v2_vanveen/boards-detail-article-edit.png)
 
 </details>
+
+<details>
+    <summary>Version 3 @Chelsea Doeleman and Adobe XD file</summary>
+
+![Home](./design/v3_chelsea/home.png)
+![Home light](./design/v3_chelsea/home-light.png)
+![Login](./design/v3_chelsea/login.png)
+![Start](./design/v3_chelsea/start.png)
+![Menu](./design/v3_chelsea/menu.png)
+![Results](./design/v3_chelsea/results.png)
+![Add](./design/v3_chelsea/add.png)
+![Topics](./design/v3_chelsea/topics.png)
+![Topics light](./design/v3_chelsea/topics-light.png)
+![Links](./design/v3_chelsea/links.png)
+
+</details>

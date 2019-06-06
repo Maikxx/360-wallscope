@@ -64,6 +64,7 @@ typings/
 .cache/
 client/dist/
 yarn.lock
+server/public/build
 
 # Webstorm project
 .idea/

@@ -1,12 +1,13 @@
 @import './reset.scss';
+@import './colors.scss';
 
 body {
     display: flex;
     line-height: 1;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: $color-purple-5;
+    color: $color-white;
     overflow-x: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body main {
