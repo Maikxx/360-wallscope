@@ -10,7 +10,7 @@ export class App extends React.Component<Props, State> {
     public render() {
         return (
             <React.Fragment>
-                <Link route={routes.Login.index}>Login</Link>
+                <Link route={routes.Login.index} iconName='user'>Login</Link>
             </React.Fragment>
         )
     }
