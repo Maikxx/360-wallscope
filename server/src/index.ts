@@ -6,7 +6,6 @@ import path from 'path'
 import helmet from 'helmet'
 import compression from 'compression'
 import bodyParser from 'body-parser'
-// import expressJWT from 'express-jwt'
 import { onLogin } from './routes/login'
 import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
@@ -17,10 +16,6 @@ import { onSignup } from './routes/signup'
     const server = new http.Server(app)
 
     await setupDatabase()
-
-    // const jwt = expressJWT({
-    //     secret: process.env.JWT_SECRET as string,
-    // })
 
     app.use((request, response, next) => {
         response.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization')
