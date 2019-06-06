@@ -8,7 +8,7 @@ interface Props {
 
 export class Header extends React.Component<Props> {
     public render () {
-        const { children, className } = this.props
+        const { children } = this.props
         return (
             <header className={this.getClassName()}>
                 {children}
