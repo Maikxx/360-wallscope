@@ -1,8 +1,12 @@
 import React from 'react'
 import './Form.scss'
 
-interface Props {
+interface FormAction {
     action: string,
+}
+
+interface Props {
+    formAction: FormAction,
 }
 
 interface State {}

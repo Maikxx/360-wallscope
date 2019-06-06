@@ -45,7 +45,7 @@ export class Login extends React.Component<Props, State> {
         return (
             <div className='Login'>
                 <h1 className='Login__header'>Login</h1>
-                <Form action={formAction.action}>
+                <Form formAction={formAction}>
                     <fieldset className='Fieldset'>
                         <Input input={inputs.email} view={inputs.view}/>
                         <Input input={inputs.password} view={inputs.view}/>
