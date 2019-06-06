@@ -4,6 +4,8 @@
 
 **This Demo is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).**
 
+[🚀 Live demo 🚀](https://wallscope.herokuapp.com/)
+
 ## Table of contents
 
 * [Installation](#Installation)
