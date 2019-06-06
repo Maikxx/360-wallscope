@@ -9,9 +9,9 @@ export class Legend extends React.Component<Props> {
     public render() {
         const { text, classname } = this.props
         return (
-            <fieldset className={classname}>
+            <legend className={classname}>
                 {text}
-            </fieldset>
+            </legend>
         )
     }
 }
