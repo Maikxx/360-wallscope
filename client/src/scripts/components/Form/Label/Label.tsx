@@ -2,23 +2,24 @@ import React from 'react'
 import classnames from 'classnames'
 
 interface Props {
+    htmlFor?: string
     className?: string
 }
 
-export class Legend extends React.Component<Props> {
+export class Label extends React.Component<Props> {
     public render() {
-        const { children } = this.props
+        const { htmlFor, children } = this.props
 
         return (
-            <legend className={this.getClassName()}>
+            <label className={this.getClassName()} htmlFor={htmlFor}>
                 {children}
-            </legend>
+            </label>
         )
     }
 
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Legend', {}, className)
+        return classnames('Label', {}, className)
     }
 }
