@@ -1,10 +1,11 @@
-.Login{
+.Login {
     box-shadow: 0 0 20px 0 rgba(0,0,0,.10);
     max-width: 25rem;
     margin: auto;
     padding: 2rem;
     border-radius: 5px;
-    .Login__header{
+
+    &__header{
         text-align: center;
     }
 }

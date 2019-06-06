@@ -10,8 +10,7 @@ export class App extends React.Component<Props, State> {
     public render() {
         return (
             <React.Fragment>
-                <div>This is where all the React goes from now.</div>
-                <Link route={routes.App.index}>OKAY</Link>
+                <Link route={routes.Login.index}>Login</Link>
             </React.Fragment>
         )
     }
