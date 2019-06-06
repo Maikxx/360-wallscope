@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Wallscope project",
   "scripts": {
-    "build-client": "cd ./client && yarn && yarn build",
+    "build-client": "cd ./client && npm install && npm run build",
     "build-server": "tsc && yarn build-client",
     "heroku-postbuild": "yarn build-server",
     "start": "node server/dist/index.js",
