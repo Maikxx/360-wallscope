@@ -1,12 +1,12 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { Link as RouterLink } from 'react-router-dom'
-import { Icon } from '../Icon/Icon'
+import { Icon, IconNames } from '../Icon/Icon'
 import './Link.scss'
 
 interface Props {
     className?: string
-    iconName?: string
+    iconName?: IconNames
     route: string
 }
 
@@ -16,7 +16,7 @@ export class Link extends React.Component<Props> {
 
         return (
             <RouterLink className={this.getClassName()} {...restProps} to={route}>
-                { iconName &&
+                {iconName &&
                     <Icon iconName={iconName} className={`Link__icon`}/>
                 }
                 {children}
@@ -27,6 +27,6 @@ export class Link extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Button', { }, className)
+        return classnames('Link', { }, className)
     }
 }
