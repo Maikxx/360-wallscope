@@ -1,3 +1,4 @@
+import './CoverView.scss'
 import React from 'react'
 import classnames from 'classnames'
 
@@ -5,20 +6,20 @@ interface Props {
     className?: string
 }
 
-export class Legend extends React.Component<Props> {
+export class CoverView extends React.Component<Props> {
     public render() {
         const { children } = this.props
 
         return (
-            <legend className={this.getClassName()}>
+            <div className={this.getClassName()}>
                 {children}
-            </legend>
+            </div>
         )
     }
 
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Legend', {}, className)
+        return classnames('CoverView', {}, className)
     }
 }

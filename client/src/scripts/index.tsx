@@ -1,17 +1,17 @@
 import 'babel-polyfill'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { App } from './components/App'
-import { LoginView } from './views/LoginView/LoginView'
+import { LoginView } from './views/Cover/LoginView'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { routes } from './routes'
-import { SignUp } from './components/SignUp/SignUp'
+import { SignUpView } from './views/Cover/SignupView'
+import { AppView } from './views/App/AppView'
 
 ReactDOM.render(
     <BrowserRouter>
-        <Route path={routes.App.index} component={App}/>
+        <Route path={routes.App.index} component={AppView}/>
         <Route path={routes.Login.index} component={LoginView}/>
-        <Route path={routes.Signup.index} component={SignUp}/>
+        <Route path={routes.Signup.index} component={SignUpView}/>
     </BrowserRouter>,
     document.getElementById('react-root')
 )
