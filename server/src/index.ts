@@ -6,13 +6,15 @@ import helmet from 'helmet'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 // import expressJWT from 'express-jwt'
+import { onLogin } from './routes/login'
 import { routeRequest } from './services/router'
-import { connectToMongo } from './services/database'
+import { setupDatabase } from './services/database'
 
 ; (async () => {
     const app = express()
     const server = new http.Server(app)
-    await connectToMongo()
+
+    await setupDatabase()
 
     // const jwt = expressJWT({
     //     secret: process.env.JWT_SECRET as string,
@@ -30,6 +32,8 @@ import { connectToMongo } from './services/database'
     app.use(compression())
 
     app.get('*', routeRequest)
+
+    app.post('/login', onLogin)
 
     server.listen(({ port: process.env.PORT || 9000 }), () => {
         console.info(`App is now open for action on port ${process.env.PORT || 9000}.`)
