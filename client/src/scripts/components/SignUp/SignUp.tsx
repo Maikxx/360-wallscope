@@ -4,59 +4,28 @@ import { Input } from '../Form/Input/Input'
 import { Fieldset } from '../Form/Fieldset/Fieldset'
 import { Legend } from '../Form/Legend/Legend'
 import { Button } from '../Button/Button'
+import { Label } from '../Form/Label/Label'
 
 interface Props {}
 
 export class SignUp extends React.Component<Props> {
 
     public render() {
-        const formAction = {
-            action: '/',
-        }
-        const inputs = {
-            email: {
-                type: 'email',
-                id: 'email-signup',
-                required: true,
-                placeholder: 'Email',
-                classname: 'Fieldset__input',
-                label: {
-                    text: 'Email',
-                    classname: 'Fieldset__label',
-                },
-            },
-            password: {
-                type: 'password',
-                id: 'password-signup',
-                required: true,
-                placeholder: 'Password',
-                classname: 'Fieldset__input',
-                label: {
-                    text: 'Password',
-                    classname: 'Fieldset__label',
-                },
-            },
-            password_repeat: {
-                type: 'password',
-                id: 'password-repeat-signup',
-                required: true,
-                placeholder: 'Repeat Password',
-                classname: 'Fieldset__input',
-                label: {
-                    text: 'Repeat Password',
-                    classname: 'Fieldset__label',
-                },
-            },
-        }
+        const formAction = '/'
         return(
         <Form formAction={formAction}>
-            <Fieldset classname='Fieldset'>
-                <Legend classname='Login__header' text='Login' />
-                <Input input={inputs.email} />
-                <Input input={inputs.password} />
-                <Input input={inputs.password_repeat} />
-                <Button styleOverride='red-button' type='submit'>Login</Button>
+            <Fieldset className='Fieldset'>
+            <Legend className={'Login__header'} text={'Login'} />
+                <Label htmlFor={'fullname'} className={'Fieldset__label'} >Fullname</Label>
+                <Input type={'text'} name={'fullname'} required={true} placeholder={'Jhon Doe'} className={'Fieldset__input'} />
+                <Label htmlFor={'email'} className={'Fieldset__label'} >Email</Label>
+                <Input type={'email'} name={'email'} required={true} placeholder={'Email'} className={'Fieldset__input'} />
+                <Label htmlFor={'password'} className={'Fieldset__label'} >Password</Label>
+                <Input type={'password'} name={'password'} required={true} className={'Fieldset__input'} placeholder={'password'}/>
+                <Label htmlFor={'password-repeat'} className={'Fieldset__label'} >Password</Label>
+                <Input type={'password'} name={'password-repeat'} required={true} className={'Fieldset__input'} placeholder={'repeat password'}/>
             </Fieldset>
+            <Button styleOverride='red-button' type='submit'>Login</Button>
         </Form>
         )
     }

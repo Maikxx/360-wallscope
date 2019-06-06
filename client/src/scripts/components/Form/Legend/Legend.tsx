@@ -1,15 +1,15 @@
 import React from 'react'
 
 interface Props {
-    classname: string,
+    className: string,
     text: string,
 }
 
 export class Legend extends React.Component<Props> {
     public render() {
-        const { text, classname } = this.props
+        const { text, className } = this.props
         return (
-            <legend className={classname}>
+            <legend className={className}>
                 {text}
             </legend>
         )
