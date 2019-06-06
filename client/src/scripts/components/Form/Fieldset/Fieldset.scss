@@ -1,0 +1,14 @@
+.Fieldset {
+    @import '../../../../sass/colors.scss';
+
+    position: relative;
+    padding-bottom: 4rem;
+
+    > * {
+        margin-bottom: .5rem;
+    }
+
+    .Label {
+        padding: .5rem .5rem .5rem 0rem;
+    }
+}

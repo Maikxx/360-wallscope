@@ -7,4 +7,7 @@ export const routes = {
     Login: {
         index: '/login',
     },
+    Signup: {
+        index: '/signup',
+    },
 }

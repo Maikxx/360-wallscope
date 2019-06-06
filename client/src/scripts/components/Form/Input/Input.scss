@@ -1,42 +1,8 @@
-@import '../../../../sass/colors.scss';
-.Fieldset{
-    position: relative;
-    padding: 2rem;
-    padding-bottom: 4rem;  
-    > * {
-        margin-bottom: .5rem;
-    }
-    .Fieldset__label{
-        padding: .5rem .5rem .5rem 0rem;
-    }
-    .Fieldset__input{
-        width: 100%;
-        padding: .25rem;
-        padding-bottom: .5rem;
-        border:none;
-        border-bottom: 1px solid #424242;
-    }
-    .Fieldset__submit{
-        font-size: 1rem;
-        padding: .5rem 1.75rem;
-        border: none;
-        border-radius: 5px;
-        position: absolute;
-        bottom: 0;
-        right: 2rem;
-        transition: .3s ease all;
-        color:white;
-        &.input--login{
-            background: $color-blue-3;
-            &:hover{
-                background: $color-blue-2;
-            }
-        }
-        &.input--signup{
-            background: $color-red-3;
-            &:hover{
-                background: $color-red-2;
-            }
-        }
-    }
+.Input {
+    background-color: transparent;
+    width: 100%;
+    padding: .25rem;
+    padding-bottom: .5rem;
+    border: none;
+    border-bottom: 1px solid #424242;
 }
