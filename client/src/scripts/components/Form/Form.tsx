@@ -9,9 +9,7 @@ interface Props {
     formAction: FormAction,
 }
 
-interface State {}
-
-export class Form extends React.Component<Props, State> {
+export class Form extends React.Component<Props> {
     public render() {
         const { children, formAction } = this.props
         return (

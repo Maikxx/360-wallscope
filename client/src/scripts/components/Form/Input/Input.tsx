@@ -20,9 +20,7 @@ interface Props {
     input: Inputprops,
 }
 
-interface State {}
-
-export class Input extends React.Component<Props, State> {
+export class Input extends React.Component<Props> {
     public render() {
         const { type, id, required, placeholder, classname, value, label } = this.props.input
         return (

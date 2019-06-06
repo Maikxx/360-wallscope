@@ -4,9 +4,7 @@ interface Props {
     classname: string,
 }
 
-interface State {}
-
-export class Fieldset extends React.Component<Props, State> {
+export class Fieldset extends React.Component<Props> {
     public render() {
         const { children, classname } = this.props
         return (

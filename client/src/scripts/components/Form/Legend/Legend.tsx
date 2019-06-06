@@ -5,9 +5,7 @@ interface Props {
     text: string,
 }
 
-interface State {}
-
-export class Legend extends React.Component<Props, State> {
+export class Legend extends React.Component<Props> {
     public render() {
         const { text, classname } = this.props
         return (

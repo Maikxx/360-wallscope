@@ -3,13 +3,12 @@ import { Form } from '../Form/Form'
 import { Input } from '../Form/Input/Input'
 import { Fieldset } from '../Form/Fieldset/Fieldset'
 import { Legend } from '../Form/Legend/Legend'
+import { Button } from '../Button/Button'
 import './Login.scss'
 
 interface Props {}
 
-interface State {}
-
-export class Login extends React.Component<Props, State> {
+export class Login extends React.Component<Props> {
     public render() {
         const inputs = {
             email: {
@@ -50,7 +49,7 @@ export class Login extends React.Component<Props, State> {
                         <Legend classname='Login__header' text='Login' />
                         <Input input={inputs.email} />
                         <Input input={inputs.password} />
-                        <Input input={inputs.submit} />
+                        <Button styleOverride='red-button' type='submit'>Login</Button>
                     </Fieldset>
                 </Form>
             </div>
