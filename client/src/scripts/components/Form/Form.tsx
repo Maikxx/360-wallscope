@@ -13,9 +13,9 @@ interface State {}
 
 export class Form extends React.Component<Props, State> {
     public render() {
-        const { children, action } = this.props
+        const { children, formAction } = this.props
         return (
-            <form id='Form' action={action}>
+            <form id='Form' action={formAction.action}>
                 { children }
             </form>
         )

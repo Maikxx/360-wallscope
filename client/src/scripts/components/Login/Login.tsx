@@ -35,9 +35,8 @@ export class Login extends React.Component<Props, State> {
             submit: {
                 type: 'submit',
                 value: 'Login',
-                classname: 'Fieldset__button',
+                classname: 'Fieldset__submit input--login',
             },
-            view: 'login',
         }
         const formAction = {
             action: '/',
@@ -47,9 +46,9 @@ export class Login extends React.Component<Props, State> {
                 <h1 className='Login__header'>Login</h1>
                 <Form formAction={formAction}>
                     <fieldset className='Fieldset'>
-                        <Input input={inputs.email} view={inputs.view}/>
-                        <Input input={inputs.password} view={inputs.view}/>
-                        <Input input={inputs.submit} view={inputs.view}/>
+                        <Input input={inputs.email} />
+                        <Input input={inputs.password} />
+                        <Input input={inputs.submit} />
                     </fieldset>
                 </Form>
             </div>

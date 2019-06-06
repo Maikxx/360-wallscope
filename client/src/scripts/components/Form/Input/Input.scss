@@ -16,7 +16,7 @@
         border:none;
         border-bottom: 1px solid #424242;
     }
-    .Fieldset__button{
+    .Fieldset__submit{
         font-size: 1rem;
         padding: .5rem 1.75rem;
         border: none;
@@ -26,13 +26,13 @@
         right: 2rem;
         transition: .3s ease all;
         color:white;
-        &.button--login{
+        &.input--login{
             background: $color-blue-3;
             &:hover{
                 background: $color-blue-2;
             }
         }
-        &.button--signup{
+        &.input--signup{
             background: $color-red-3;
             &:hover{
                 background: $color-red-2;
