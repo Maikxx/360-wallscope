@@ -1,15 +1,16 @@
 import React from 'react'
-import './Form.scss'
 
 interface Props {
-    formAction: string,
+    id?: React.HTMLAttributes<HTMLFormElement>['id']
+    action?: React.FormHTMLAttributes<HTMLFormElement>['action']
 }
 
 export class Form extends React.Component<Props> {
     public render() {
-        const { children, formAction } = this.props
+        const { children, ...restProps } = this.props
+
         return (
-            <form id='Form' action={formAction}>
+            <form {...restProps}>
                 { children }
             </form>
         )
