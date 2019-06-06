@@ -4,8 +4,8 @@
   "description": "Wallscope project",
   "scripts": {
     "build-client": "cd ./client && yarn && yarn build",
-    "build-server": "tsc && yarn prebuild-client && yarn copy-static-assets",
-    "heroku-postbuild": "yarn build-server && yarn build-client",
+    "build-server": "tsc && yarn build-client",
+    "heroku-postbuild": "yarn build-server",
     "start": "node server/dist/index.js",
     "start-server": "concurrently \"yarn watch-client\" \"yarn watch-server\" --raw",
     "watch-client": "cd ./client && yarn start-client",
