@@ -1,5 +1,5 @@
 export interface DatabaseUser {
-    id: number
+    _id: number
     email: string | null
     password: string | null
     full_name: string | null

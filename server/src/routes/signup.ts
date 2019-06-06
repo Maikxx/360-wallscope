@@ -40,7 +40,7 @@ export async function onSignup(request: express.Request, response: express.Respo
 
             if (user) {
                 const expiresInADay = 24 * 60 * 60
-                const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
+                const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET as string, {
                     expiresIn: expiresInADay,
                 })
 

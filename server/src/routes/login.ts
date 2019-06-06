@@ -36,7 +36,7 @@ export async function onLogin(request: express.Request, response: express.Respon
             }
 
             const expiresInADay = 24 * 60 * 60
-            const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
+            const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET as string, {
                 expiresIn: expiresInADay,
             })
 
