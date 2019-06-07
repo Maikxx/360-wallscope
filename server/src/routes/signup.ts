@@ -12,7 +12,6 @@ interface SignUpRequestBody {
 }
 
 export async function onSignup(request: express.Request, response: express.Response) {
-    console.log(request.body)
     const { email, password, repeatPassword, fullName } = request.body as SignUpRequestBody
 
     if (
