@@ -1,0 +1,9 @@
+.Navigation {
+
+    .Navigation__ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

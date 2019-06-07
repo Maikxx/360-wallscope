@@ -9,7 +9,7 @@
     "heroku-postbuild": "yarn build-server",
     "start": "node server/dist/index.js",
     "start-client": "parcel watch ./client/src/index.html --no-source-maps -d ./server/public/build --public-url '/build'",
-    "start-server": "concurrently \"yarn watch-client\" \"yarn watch-server\" --raw",
+    "start-server": "yarn watch-server",
     "watch-client": "cd ./client && yarn start-client",
     "watch-server": "ts-node-dev --respawn --transpileOnly ./server/src/index.ts"
   },
