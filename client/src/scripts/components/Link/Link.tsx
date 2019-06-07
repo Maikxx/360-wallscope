@@ -8,16 +8,17 @@ interface Props {
     className?: string
     iconName?: IconNames
     route: string
+    color?: string
 }
 
 export class Link extends React.Component<Props> {
     public render() {
-        const { children, className, route, iconName, ...restProps } = this.props
+        const { children, className, route, color, iconName, ...restProps } = this.props
 
         return (
             <RouterLink className={this.getClassName()} {...restProps} to={route}>
                 {iconName &&
-                    <Icon iconName={iconName} className={`Link__icon`}/>
+                    <Icon iconName={iconName} color={color} className={`Link__icon`}/>
                 }
                 {children}
             </RouterLink>

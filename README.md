@@ -23,7 +23,8 @@
 * Install Postgres: `brew install postgresql`
 * Create the database: `createdb wallscope`
 * Copy the environment variables: `cp ./.env.example .env`.
-* Start the development server with: `yarn start-server` or `npm run start-server`
+* Start the backend development server with: `yarn start-server` or `npm run start-server`
+* Start the clients development server with: `yarn start-client` or `npm run start-client` in another terminal window.
 
 You may have perform the following steps if you get errors running the commands above:
 

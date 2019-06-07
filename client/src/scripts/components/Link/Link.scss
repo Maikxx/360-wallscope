@@ -1,5 +1,13 @@
 .Link {
+    @import '../../../sass/colors.scss';
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    color: $color-purple-1;
+
+    .Link__icon {
+        margin: .5em;
+    }
 }
