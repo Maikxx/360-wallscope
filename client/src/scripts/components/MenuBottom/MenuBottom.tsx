@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { Navigation } from '../Navigation/Navigation'
 import { routes } from '../../routes'
-import { NavLink } from '../Navlink/NavLink'
+import { NavLink } from '../NavLink/NavLink'
 import { Button } from '../Button/Button'
 import './MenuBottom.scss'
 
