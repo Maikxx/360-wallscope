@@ -1,7 +1,7 @@
 import { User } from '../types/User'
 import jwt from 'jsonwebtoken'
 
-interface UserSignUpResponse {
+interface UserAuthorizationResponse {
     error?: string
     user?: User
     accessToken?: string
@@ -23,11 +23,41 @@ export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         }})
-        const { error, user, accessToken }: UserSignUpResponse = await data.json()
+        const { error, user, accessToken }: UserAuthorizationResponse = await data.json()
 
         if (!error && accessToken && user) {
             setAuthorizationToken(accessToken)
             console.info('Successfully created a new user!')
+            return user
+        } else {
+            // TODO: Error handling
+            console.error(error)
+            return null
+        }
+    } catch (error) {
+        // TODO: Error handling
+        console.error(error.message)
+        return null
+    }
+}
+
+interface UserSignInBody {
+    email: string
+    password: string
+}
+
+export async function onUserSignIn(userSignInBody: UserSignInBody) {
+    const url = `${window.location.origin}/signup`
+
+    try {
+        const data = await fetch(url, { method: 'POST', body: JSON.stringify(userSignInBody), headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }})
+        const { error, user, accessToken }: UserAuthorizationResponse = await data.json()
+
+        if (!error && accessToken && user) {
+            setAuthorizationToken(accessToken)
             return user
         } else {
             // TODO: Error handling
@@ -59,6 +89,7 @@ export function getAuthorizationToken() {
             return null
         }
     } else {
+        // TODO: Error handling
         console.error('Something went wrong while getting the user token!')
         return null
     }
