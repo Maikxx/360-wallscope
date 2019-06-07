@@ -8,18 +8,9 @@ interface State {}
 
 export class Home extends React.Component<Props, State> {
     public render() {
-        const inputs = {
-            search: {
-                type: 'text',
-                classname: 'input--search',
-            },
-        }
-        const formAction = {
-            action: '/',
-        }
         return(
-            <Form formAction={formAction}>
-                <Input input={inputs.search}></Input>
+            <Form action={'/'}>
+                <Input type={'text'} name={'search'} />
             </Form>
         )
     }
