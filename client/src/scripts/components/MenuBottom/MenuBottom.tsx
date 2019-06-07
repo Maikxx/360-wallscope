@@ -8,9 +8,6 @@ import './MenuBottom.scss'
 
 interface Props {
     className?: string
-    // iconName?: string
-    // color?: string
-    // route?: string
     fullName?: string
 }
 
