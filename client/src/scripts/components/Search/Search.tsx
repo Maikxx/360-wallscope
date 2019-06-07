@@ -15,7 +15,7 @@ export class Search extends React.Component<Props, State> {
         const { placeholder } = this.props
         return(
             <Form action={'/'} className={'Form--search'}>
-                <Input type={'text'} name={'search'} placeholder={placeholder} className={'input--search'} />
+                <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />
                 <Button styleOverride={'red-button'}>Start Searching</Button>
             </Form>
         )

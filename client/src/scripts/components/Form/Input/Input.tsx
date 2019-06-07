@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import './Input.scss'
 
-type InputTypes = 'input-search' | 'input-text'
+type StyleType = 'input-search' | 'input-text'
 
 interface Props {
     type: string
@@ -11,12 +11,12 @@ interface Props {
     placeholder?: React.HTMLAttributes<HTMLInputElement>['placeholder']
     className?: string
     defaultValue?: React.HTMLAttributes<HTMLInputElement>['defaultValue']
-    styleOverride ?: InputTypes
+    styleOverride ?: StyleType
 }
 
 export class Input extends React.Component<Props> {
     public render() {
-        const { type, name, required, placeholder, defaultValue, styleOverride } = this.props
+        const { type, name, required, placeholder, defaultValue, styleOverride, ...restProps } = this.props
 
         return (
             <input
@@ -27,6 +27,7 @@ export class Input extends React.Component<Props> {
                 className={this.getClassName()}
                 placeholder={placeholder}
                 required={required}
+                {...restProps}
             />
         )
     }
