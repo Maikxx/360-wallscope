@@ -2,6 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import './Input.scss'
 
+type InputTypes = 'input-search' | 'input-text'
+
 interface Props {
     type: string
     name: string
@@ -9,11 +11,12 @@ interface Props {
     placeholder?: React.HTMLAttributes<HTMLInputElement>['placeholder']
     className?: string
     defaultValue?: React.HTMLAttributes<HTMLInputElement>['defaultValue']
+    styleOverride ?: InputTypes
 }
 
 export class Input extends React.Component<Props> {
     public render() {
-        const { type, name, required, placeholder, defaultValue } = this.props
+        const { type, name, required, placeholder, defaultValue, styleOverride } = this.props
 
         return (
             <input
@@ -29,8 +32,11 @@ export class Input extends React.Component<Props> {
     }
 
     private getClassName() {
-        const { className } = this.props
+        const { className, styleOverride } = this.props
 
-        return classnames('Input', {}, className)
+        return classnames('Input', {
+            'Input--search': styleOverride === 'input-search',
+            'Input--text': styleOverride === 'input-text',
+        }, className)
     }
 }

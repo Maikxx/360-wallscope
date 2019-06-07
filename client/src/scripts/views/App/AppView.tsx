@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Search } from '../../components/Search/Search'
 import { routes } from '../../routes'
+import { Home } from '../Home/Home'
 
 interface Props {}
 
@@ -15,7 +15,8 @@ export class AppView extends React.Component<Props> {
                 <Link to={routes.Login.index}>Login</Link>
                 <Link to={routes.Signup.index}>Signup</Link>
 
-                <Search />
+                <Home />
+
             </React.Fragment>
         )
     }

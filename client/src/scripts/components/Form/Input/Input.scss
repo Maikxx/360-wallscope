@@ -1,8 +1,15 @@
-.Input {
+.Input{
+    @import '../../../../sass/colors.scss';
     background-color: transparent;
     width: 100%;
+    max-width: 20rem;
     padding: .25rem;
     padding-bottom: .5rem;
     border: none;
-    border-bottom: 1px solid #424242;
+    border-bottom: 1px solid $color-white;
+    &--search::after{
+        content: "🔍";
+        position: relative;
+        display: block;
+    }
 }
