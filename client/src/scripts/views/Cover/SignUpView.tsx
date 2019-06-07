@@ -28,7 +28,7 @@ export class SignUpView extends React.Component<Props, State> {
                             type={'text'}
                             name={'fullName'}
                             required={true}
-                            placeholder={'Jhon Doe'}
+                            placeholder={'John Doe'}
                         />
 
                         <Label htmlFor={'email'}>
@@ -61,7 +61,7 @@ export class SignUpView extends React.Component<Props, State> {
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='red-button' type='submit'>
+                    <Button styleOverride='red-button' type='submit' full={true}>
                         Login
                     </Button>
                 </Form>
