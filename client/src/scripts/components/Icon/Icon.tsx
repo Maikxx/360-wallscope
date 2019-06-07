@@ -58,7 +58,7 @@ export class Icon extends React.Component<Props> {
                     </g>
                 </svg>`,
             boards:
-                `<svg className='Icon__pen' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512" >
+                `<svg className='Icon__boards' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512" >
                     <defs>
                       <style>
                         .cls-1{fill:#cec7ec}
@@ -70,6 +70,10 @@ export class Icon extends React.Component<Props> {
                         <path fill=${color ? color : '#fff'} class="cls-1" d="M197 171H37a37 37 0 0 1-37-38V37A37 37 0 0 1 37 0h160a37 37 0 0 1 38 37v96a37 37 0 0 1-38 38zM37 32a5 5 0 0 0-5 5v96a5 5 0 0 0 5 6h160a5 5 0 0 0 6-6V37a5 5 0 0 0-6-5zM197 512H37a37 37 0 0 1-37-37V251a37 37 0 0 1 37-38h160a37 37 0 0 1 38 38v224a37 37 0 0 1-38 37zM37 245a5 5 0 0 0-5 6v224a5 5 0 0 0 5 5h160a5 5 0 0 0 6-5V251a5 5 0 0 0-6-6zM475 512H315a37 37 0 0 1-38-37v-96a37 37 0 0 1 38-38h160a37 37 0 0 1 37 38v96a37 37 0 0 1-37 37zM315 373a5 5 0 0 0-6 6v96a5 5 0 0 0 6 5h160a5 5 0 0 0 5-5v-96a5 5 0 0 0-5-6zM475 299H315a37 37 0 0 1-38-38V37a37 37 0 0 1 38-37h160a37 37 0 0 1 37 37v224a37 37 0 0 1-37 38zM315 32a5 5 0 0 0-6 5v224a5 5 0 0 0 6 6h160a5 5 0 0 0 5-6V37a5 5 0 0 0-5-5z"/>
                       </g>
                     </g>
+                </svg>`,
+            back:
+                `<svg className='Icon__back' xmlns="http://www.w3.org/2000/svg" width:"32" height:"32" viewBox="0 0 31.494 31.494">
+                    <path fill=${color ? color : '#fff'} d="M10.273 5.009c.444-.444 1.143-.444 1.587 0 .429.429.429 1.143 0 1.571l-8.047 8.047h26.554c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H3.813l8.047 8.032c.429.444.429 1.159 0 1.587-.444.444-1.143.444-1.587 0L.321 16.532c-.429-.429-.429-1.143 0-1.571l9.952-9.952z" fill="#1e201d"/>
                 </svg>`,
         }
 
