@@ -2,6 +2,7 @@ import React from 'react'
 import { Search } from '../../components/Search/Search'
 import { routes } from '../../routes'
 import { Link } from '../../components/Link/Link'
+import { MenuBottom } from '../../components/MenuBottom/MenuBottom'
 
 interface Props {}
 
@@ -16,6 +17,8 @@ export class AppView extends React.Component<Props> {
                 <Link route={routes.Signup.index}>Signup</Link>
 
                 <Search />
+
+                <MenuBottom fullName='Chelsea' />
             </React.Fragment>
         )
     }
