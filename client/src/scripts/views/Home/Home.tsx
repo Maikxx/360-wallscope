@@ -1,7 +1,7 @@
 import React from 'react'
-import { Form } from '../../components/Form/Form'
-import { Input } from '../../components/Form/Input/Input'
-
+import { Search } from '../../components/Search/Search'
+import { CoverView } from '../../components/CoverView/CoverView'
+import './Home.scss'
 interface Props {}
 
 interface State {}
@@ -9,9 +9,15 @@ interface State {}
 export class Home extends React.Component<Props, State> {
     public render() {
         return(
-            <Form action={'/'}>
-                <Input type={'text'} name={'search'} />
-            </Form>
+            <CoverView className={'Home'}>
+                {/* insert header */}
+                <div className={'Home__container'}>
+                    <h1 className={'Home__header'}>Hi there,</h1>
+                    <h2 className={'Home__subheader'}>What are you looking for?</h2>
+                </div>
+                <Search />
+                {/* insert bottom menu */}
+            </CoverView>
         )
     }
 }
