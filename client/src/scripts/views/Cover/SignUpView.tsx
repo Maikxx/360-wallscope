@@ -7,8 +7,9 @@ import { Input } from '../../components/Form/Input/Input'
 import { Button } from '../../components/Button/Button'
 import React from 'react'
 import { onUserSignUp } from '../../services/UserService'
+import { RouteComponentProps } from 'react-router'
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
 interface State {
     fullName: string
@@ -68,7 +69,7 @@ export class SignUpView extends React.Component<Props, State> {
                         />
 
                         <Label htmlFor={'repeatPassword'}>
-                            Password
+                            Repeat password
                         </Label>
                         <Input
                             type={'password'}
@@ -97,8 +98,13 @@ export class SignUpView extends React.Component<Props, State> {
     private onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
+        const { history } = this.props
         const { ...signUpData } = this.state
 
-        await onUserSignUp({ ...signUpData })
+        const data = await onUserSignUp({ ...signUpData })
+
+        if (data) {
+            history.push('/dashboard')
+        }
     }
 }
