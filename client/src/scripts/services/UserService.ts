@@ -47,7 +47,7 @@ interface UserSignInBody {
 }
 
 export async function onUserSignIn(userSignInBody: UserSignInBody) {
-    const url = `${window.location.origin}/signup`
+    const url = `${window.location.origin}/login`
 
     try {
         const data = await fetch(url, { method: 'POST', body: JSON.stringify(userSignInBody), headers: {
