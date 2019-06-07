@@ -1,26 +1,23 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { Link as RouterLink } from 'react-router-dom'
-import { Icon } from '../Icon/Icon'
+import { Icon, IconNames } from '../Icon/Icon'
 import './Link.scss'
-
-type StyleType = 'horizontal-link' | 'vertical-link'
 
 interface Props {
     className?: string
-    styleOverride?: StyleType
-    iconName?: string
+    iconName?: IconNames
     route: string
 }
 
 export class Link extends React.Component<Props> {
     public render() {
-        const { children, className, route, styleOverride, iconName, ...restProps } = this.props
+        const { children, className, route, iconName, ...restProps } = this.props
 
         return (
             <RouterLink className={this.getClassName()} {...restProps} to={route}>
-                { iconName &&
-                    <Icon name={iconName} className={`Link__icon`}/>
+                {iconName &&
+                    <Icon iconName={iconName} className={`Link__icon`}/>
                 }
                 {children}
             </RouterLink>
@@ -28,11 +25,8 @@ export class Link extends React.Component<Props> {
     }
 
     private getClassName() {
-        const { className, styleOverride } = this.props
+        const { className } = this.props
 
-        return classnames('Button', {
-            'Button--vertical': styleOverride === 'vertical-link',
-            'Button--hoirzontal': styleOverride === 'horizontal-link',
-        }, className)
+        return classnames('Link', { }, className)
     }
 }
