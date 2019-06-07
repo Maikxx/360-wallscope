@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '../Link/Link'
 import { IconNames } from '../Icon/Icon'
 import classnames from 'classnames'
+import './NavLink.scss'
 
 interface Props {
     className?: string
