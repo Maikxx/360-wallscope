@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom'
 import { LoginView } from './views/Cover/LoginView'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { routes } from './routes'
-import { SignUpView } from './views/Cover/SignupView'
+import { SignUpView } from './views/Cover/SignUpView'
 import { AppView } from './views/App/AppView'
 
 ReactDOM.render(
