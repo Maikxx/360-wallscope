@@ -53,7 +53,7 @@ export class LoginView extends React.Component<Props, State> {
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='red-button' type='submit'>
+                    <Button styleOverride='red-button' full={true} type='submit'>
                         Login
                     </Button>
                 </Form>

@@ -1,6 +1,11 @@
 
 .Button {
     @import '../../../sass/colors.scss';
+    border: none;   
+
+    &--full{
+        width: 100%;
+    }
 
     &--red {
         font-family: 'Lato', sans-serif;
@@ -146,7 +151,10 @@
         display: block;
         background-color: $color-purple-3;
         padding: 2em;
-        position: relative;
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
         color: $color-purple-5;
         border-radius: 50%;
         border: none;
