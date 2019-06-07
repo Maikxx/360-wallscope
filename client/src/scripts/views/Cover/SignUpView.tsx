@@ -6,16 +6,29 @@ import { Label } from '../../components/Form/Label/Label'
 import { Input } from '../../components/Form/Input/Input'
 import { Button } from '../../components/Button/Button'
 import React from 'react'
+import { onUserSignUp } from '../../services/UserService'
 
 interface Props {}
 
-interface State {}
+interface State {
+    fullName: string
+    email: string
+    password: string
+    repeatPassword: string
+}
 
 export class SignUpView extends React.Component<Props, State> {
+    public state: State = {
+        fullName: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
+    }
+
     public render() {
         return (
             <CoverView>
-                <Form>
+                <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>
                             Sign up
@@ -26,6 +39,7 @@ export class SignUpView extends React.Component<Props, State> {
                         </Label>
                         <Input
                             type={'text'}
+                            onChange={this.onChangeInputValue}
                             name={'fullName'}
                             required={true}
                             placeholder={'Jhon Doe'}
@@ -37,6 +51,7 @@ export class SignUpView extends React.Component<Props, State> {
                         <Input
                             type={'email'}
                             name={'email'}
+                            onChange={this.onChangeInputValue}
                             required={true}
                             placeholder={'example@gmail.com'}
                         />
@@ -47,6 +62,7 @@ export class SignUpView extends React.Component<Props, State> {
                         <Input
                             type={'password'}
                             name={'password'}
+                            onChange={this.onChangeInputValue}
                             required={true}
                             placeholder={'Strongpassword1!'}
                         />
@@ -57,15 +73,32 @@ export class SignUpView extends React.Component<Props, State> {
                         <Input
                             type={'password'}
                             name={'repeatPassword'}
+                            onChange={this.onChangeInputValue}
                             required={true}
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
                     <Button styleOverride='red-button' type='submit'>
-                        Login
+                        Sign up
                     </Button>
                 </Form>
             </CoverView>
         )
+    }
+
+    private onChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { target } = event
+
+        if (target && target.name) {
+            this.setState({ [target.name]: target.value || '' } as any)
+        }
+    }
+
+    private onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const { ...signUpData } = this.state
+
+        await onUserSignUp({ ...signUpData })
     }
 }
