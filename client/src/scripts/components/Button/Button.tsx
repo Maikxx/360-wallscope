@@ -13,11 +13,12 @@ interface Props {
     styleOverride?: StyleType
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     color?: string
+    full?: boolean
 }
 
 export class Button extends React.Component<Props> {
     public render() {
-        const { children, className, iconName, styleOverride, color, ...restProps } = this.props
+        const { children, className, iconName, styleOverride, color, full, ...restProps } = this.props
 
         return (
             <button className={this.getClassName()} {...restProps}>
@@ -30,9 +31,10 @@ export class Button extends React.Component<Props> {
     }
 
     private getClassName() {
-        const { className, styleOverride } = this.props
+        const { className, styleOverride, full } = this.props
 
         return classnames('Button', {
+            'Button--full': full === true,
             'Button--red': styleOverride === 'red-button',
             'Button--blue': styleOverride === 'blue-button',
             'Button--round': styleOverride === 'round-button',
