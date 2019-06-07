@@ -2,7 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import './Icon.scss'
 
-export type IconNames = 'user' | 'search_big' | 'search_small' | 'pen' | 'settings' | 'light_dark' | 'boards'
+export type IconNames = 'user' | 'search_big' | 'search_small' | 'pen' | 'settings' | 'light_dark' | 'boards' | 'back'
 
 interface Props {
     className?: string
