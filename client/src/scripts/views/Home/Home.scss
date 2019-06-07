@@ -1,0 +1,13 @@
+.Home{
+    &__container{
+        margin: 2rem auto;
+    }
+    &__header{
+        margin-bottom: 2rem;
+    }
+    &__header,
+    &__subheader{
+        font-size: 2rem;
+        font-weight: 300;
+    }
+}

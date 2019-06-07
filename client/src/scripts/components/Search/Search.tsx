@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from '../Form/Form'
 import { Button } from '../Button/Button'
 import { Input } from '../Form/Input/Input'
+import { Icon } from '../Icon/Icon'
 import './Search.scss'
 
 interface Props {
@@ -15,7 +16,10 @@ export class Search extends React.Component<Props, State> {
         const { placeholder } = this.props
         return(
             <Form action={'/'} className={'Form--search'}>
-                <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />
+                <div>
+                    <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />
+                    <Icon className={'Icon--search'} iconName={'search_small'} />
+                </div>
                 <Button styleOverride={'red-button'}>Start Searching</Button>
             </Form>
         )

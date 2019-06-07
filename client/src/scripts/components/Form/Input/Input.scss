@@ -7,9 +7,4 @@
     padding-bottom: .5rem;
     border: none;
     border-bottom: 1px solid $color-white;
-    &--search::after{
-        content: "🔍";
-        position: relative;
-        display: block;
-    }
 }
