@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Search } from '../../components/Search/Search'
 import { routes } from '../../routes'
+import { Link } from '../../components/Link/Link'
 
 interface Props {}
 
@@ -11,9 +11,9 @@ export class AppView extends React.Component<Props> {
             <React.Fragment>
                 Redirect by authentication from here!
 
-                <Link to={routes.App.index}>App</Link>
-                <Link to={routes.Login.index}>Login</Link>
-                <Link to={routes.Signup.index}>Signup</Link>
+                <Link route={routes.App.index}>App</Link>
+                <Link route={routes.Login.index} iconName='user'>Login</Link>
+                <Link route={routes.Signup.index}>Signup</Link>
 
                 <Search />
             </React.Fragment>
