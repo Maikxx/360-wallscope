@@ -1,5 +1,6 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import { Icon, IconNames } from '../Icon/Icon'
 import './Button.scss'
 
 type ButtonType = 'button' | 'submit'
@@ -8,16 +9,20 @@ type StyleType = 'red-button' | 'blue-button' | 'round-button' | 'big-button' | 
 interface Props {
     className?: string
     type?: ButtonType
+    iconName?: IconNames
     styleOverride?: StyleType
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export class Button extends React.Component<Props> {
     public render() {
-        const { children, className, styleOverride, ...restProps } = this.props
+        const { children, className, iconName, styleOverride, ...restProps } = this.props
 
         return (
             <button className={this.getClassName()} {...restProps}>
+                {iconName &&
+                    <Icon iconName={iconName} className={`Link__icon`} />
+                }
                 {children}
             </button>
         )

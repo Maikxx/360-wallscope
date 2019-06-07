@@ -1,7 +1,7 @@
 
 .Button {
     @import '../../../sass/colors.scss';
-    
+
     &--red {
         font-family: 'Lato', sans-serif;
         font-weight: bold;
@@ -68,7 +68,7 @@
         &:hover{
             background-color: darken($color-blue-1, 15%)
         }
-        
+
         &:hover::after {
             content: '';
             height: 100%;
@@ -119,26 +119,26 @@
     &--tag-red {
         display: block;
         background-color: $color-red-1;
-        border: none; 
+        border: none;
         padding: .75em;
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
         &:hover {
-            background-color: lighten($color-red-1, 10%);   
+            background-color: lighten($color-red-1, 10%);
         }
     }
 
     &--tag-blue {
         display: block;
         background-color: $color-blue-1;
-        border: none; 
+        border: none;
         padding: .75em;
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
         &:hover {
-            background-color: lighten($color-blue-1, 10%);   
+            background-color: lighten($color-blue-1, 10%);
         }
     }
 
@@ -162,7 +162,4 @@
             fill: $color-purple-5;
         }
     }
-
-    
-
 }

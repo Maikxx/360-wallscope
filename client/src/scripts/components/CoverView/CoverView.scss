@@ -1,10 +1,12 @@
-.Login{
-    box-shadow: 0 0 20px 0 rgba(0,0,0,.10);
+.CoverView {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
     max-width: 25rem;
+    min-height: 100vh;
     margin: auto;
     padding: 2rem;
     border-radius: 5px;
-    .Login__header{
+
+    .Legend {
         text-align: center;
     }
 }
