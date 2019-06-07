@@ -4,6 +4,7 @@ interface Props {
     id?: React.HTMLAttributes<HTMLFormElement>['id']
     action?: React.FormHTMLAttributes<HTMLFormElement>['action']
     className?: React.HTMLAttributes<HTMLFormElement>['className']
+    onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
 export class Form extends React.Component<Props> {
