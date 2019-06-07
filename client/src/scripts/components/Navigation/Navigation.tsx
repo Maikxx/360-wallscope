@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import './Navigation.scss'
 
 interface Props {
     className?: string
@@ -11,7 +12,7 @@ export class Navigation extends React.Component<Props> {
 
         return (
             <nav className={this.getClassName()}>
-                <ul>
+                <ul className={'Navigation__ul'}>
                     {children}
                 </ul>
             </nav>
