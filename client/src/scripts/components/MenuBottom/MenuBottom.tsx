@@ -4,6 +4,7 @@ import { Navigation } from '../Navigation/Navigation'
 import { routes } from '../../routes'
 import { NavLink } from '../Navlink/NavLink'
 import { Button } from '../Button/Button'
+import './MenuBottom.scss'
 
 interface Props {
     className?: string
@@ -20,7 +21,7 @@ export class MenuBottom extends React.Component<Props> {
             <Navigation className={this.getClassName()}>
                 <NavLink route={routes.App.index} iconName='boards' color='#CEC7EC'>Boards</NavLink>
                 <li>
-                    <Button type='button' iconName='search_big' color='#181631'/>
+                    <Button className='Button_big' styleOverride='big-button' type='button' iconName='search_big' color='#181631'/>
                 </li>
                 <NavLink route={routes.App.index} iconName='user' color='#CEC7EC'>{fullName}</NavLink>
             </Navigation>
@@ -30,7 +31,7 @@ export class MenuBottom extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('NavLink', { }, className)
+        return classnames('MenuBottom', { }, className)
     }
 
 }
