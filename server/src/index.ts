@@ -10,6 +10,7 @@ import { onLogin } from './routes/login'
 import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
 import { onSignup } from './routes/signup'
+import { onGetUserById } from './routes/user'
 
 ; (async () => {
     const app = express()
@@ -17,7 +18,7 @@ import { onSignup } from './routes/signup'
 
     await setupDatabase()
 
-    app.use((request, response, next) => {
+    app.use((request: express.Request, response: express.Response, next: express.NextFunction) => {
         response.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization')
         next()
     })
@@ -29,6 +30,7 @@ import { onSignup } from './routes/signup'
     app.use(cors())
     app.use(compression())
 
+    app.get('/user/:id', onGetUserById)
     app.get('*', routeRequest)
 
     app.post('/login', onLogin)
