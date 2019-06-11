@@ -6,16 +6,26 @@ import { Label } from '../../components/Form/Label/Label'
 import { Input } from '../../components/Form/Input/Input'
 import { Button } from '../../components/Button/Button'
 import React from 'react'
+import { RouteComponentProps } from 'react-router'
+import { onUserSignIn } from '../../services/UserService'
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-interface State {}
+interface State {
+    email: string
+    password: string
+}
 
 export class LoginView extends React.Component<Props, State> {
+    public state: State = {
+        email: '',
+        password: '',
+    }
+
     public render() {
         return (
             <CoverView>
-                <Form>
+                <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>
                             Login
@@ -27,6 +37,7 @@ export class LoginView extends React.Component<Props, State> {
                         <Input
                             type={'email'}
                             name={'email'}
+                            onChange={this.onChangeInputValue}
                             required={true}
                             placeholder={'example@gmail.com'}
                         />
@@ -37,15 +48,40 @@ export class LoginView extends React.Component<Props, State> {
                         <Input
                             type={'password'}
                             name={'password'}
+                            onChange={this.onChangeInputValue}
                             required={true}
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='red-button' type='submit'>
+                    <Button styleOverride='red-button' full={true} type='submit'>
                         Login
+                    </Button>
+                    <Button styleOverride='blue-button' full={true} type='button'>
+                        Create a new account
                     </Button>
                 </Form>
             </CoverView>
         )
+    }
+
+    private onChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { target } = event
+
+        if (target && target.name) {
+            this.setState({ [target.name]: target.value || '' } as any)
+        }
+    }
+
+    private onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const { history } = this.props
+        const { ...signInData } = this.state
+
+        const user = await onUserSignIn({ ...signInData })
+
+        if (user) {
+            history.push(`/dashboard`)
+        }
     }
 }

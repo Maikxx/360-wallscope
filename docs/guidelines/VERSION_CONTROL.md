@@ -69,7 +69,7 @@ Simply follow the installation steps and open the project inside one of these pr
 Creating new branches is fairly simple (Most of these commands can also be done with the tools provided above):
 
 1. You change to the branch where you want to branch off from. `git checkout <branchName>`.
-2. Create a new branch from your current branch. `git branch -b <newBranchName>`.
+2. Create a new branch from your current branch. `git checkout -b <newBranchName>`.
 3. Switch to that new branch. `git checkout <newBranchName>`.
 
 For more information on git itself checkout the [documentation](https://www.git-scm.com/).

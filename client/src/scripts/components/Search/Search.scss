@@ -1,0 +1,34 @@
+.Form--search {
+    margin: auto;
+    // max-width: 75%;
+
+    div {
+        position: relative;
+        > * {
+            margin: 1rem auto;
+        }
+        .Input {
+            font-size: 1.25rem;
+            padding-right: 2rem;
+            &:focus + .Icon {
+                bottom: 1rem;
+                transform: scale(1.5);
+            }
+        }
+        .Icon--search {
+            position: absolute;
+            right: .5rem;
+            bottom: .75rem;
+            fill: #fff;
+            display: block;
+            transition: .3s ease all;
+            svg {
+                height: 1rem;
+                width: 1rem;
+            }
+        }
+    }
+    .Button {
+        margin: 1.5rem auto;
+    }
+}

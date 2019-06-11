@@ -1,8 +1,11 @@
-.Input {
+.Input{
+    @import '../../../../sass/colors.scss';
+    
     background-color: transparent;
     width: 100%;
-    padding: .25rem;
+    padding: .5rem;
+    font-size: .75rem;
     padding-bottom: .5rem;
     border: none;
-    border-bottom: 1px solid #424242;
+    border-bottom: 2px solid $color-white;
 }

@@ -1,6 +1,12 @@
 
 .Button {
     @import '../../../sass/colors.scss';
+    border: none; 
+    font-size: 1.3rem;  
+
+    &--full{
+        width: 100%;
+    }
 
     &--red {
         font-family: 'Lato', sans-serif;
@@ -8,11 +14,12 @@
         position: relative;
         display: block;
         background-color: $color-red-1;
-        padding: .75em 3em;
+        padding: 1em 3em;
         color: $color-white;
         border-radius: .5em;
         border: none;
         transition: all .2s ease-in-out;
+        margin-bottom: 1.5rem;
 
         &::after {
             content: '';
@@ -20,8 +27,8 @@
             top: 0;
             right: 0;
             display: block;
-            height: 25px;
-            width: 50px;
+            height: 30px;
+            width: 65px;
             background: darken($color-red-1, 5%);
             border-radius: .5em;
             transition: all .2s ease-in-out;
@@ -46,20 +53,21 @@
         position: relative;
         display: block;
         background-color: $color-blue-1;
-        padding: .75em 3em;
+        padding: 1em 3em;
         color: $color-white;
         border-radius: .5em;
         border: none;
         transition: all .2s ease-in-out;
+        margin-bottom: 1.5rem;
 
         &::after {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             display: block;
-            height: 25px;
-            width: 50px;
+            height: 30px;
+            width: 65px;
             background: darken($color-blue-1, 5%);
             border-radius: .5em;
             transition: all .2s ease-in-out;
@@ -143,10 +151,14 @@
     }
 
     &--big {
+        box-shadow: -3px 2px 14px -3px rgba(0,0,0,0.65);
         display: block;
         background-color: $color-purple-3;
-        padding: 2em;
-        position: relative;
+        padding: 1.5rem;
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
         color: $color-purple-5;
         border-radius: 50%;
         border: none;
