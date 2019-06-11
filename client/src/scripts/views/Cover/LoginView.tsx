@@ -8,6 +8,7 @@ import { Button } from '../../components/Button/Button'
 import React from 'react'
 import { RouteComponentProps } from 'react-router'
 import { onUserSignIn } from '../../services/UserService'
+import { routes } from '../../routes'
 
 interface Props extends RouteComponentProps {}
 
@@ -56,7 +57,7 @@ export class LoginView extends React.Component<Props, State> {
                     <Button styleOverride='red-button' full={true} type='submit'>
                         Login
                     </Button>
-                    <Button styleOverride='blue-button' full={true} type='button'>
+                    <Button styleOverride='blue-button' full={true} type='button' onClick={() => this.props.history.push(routes.Signup.index)}>
                         Create a new account
                     </Button>
                 </Form>
@@ -81,7 +82,7 @@ export class LoginView extends React.Component<Props, State> {
         const user = await onUserSignIn({ ...signInData })
 
         if (user) {
-            history.push(`/dashboard`)
+            history.push(routes.App.index)
         }
     }
 }
