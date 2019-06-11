@@ -35,6 +35,38 @@ export async function setupDatabase() {
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
 
+            CREATE TABLE IF NOT EXISTS boards
+            (
+                _id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                collaborators INTEGER[],
+                owner INTEGER REFERENCES users (_id),
+                results INTEGER[],
+                created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS results
+            (
+                _id SERIAL PRIMARY KEY
+            );
+
+            CREATE TYPE IF NOT EXISTS link_type AS ENUM ('no_link', 'definate', 'possible');
+
+            CREATE TABLE IF NOT EXISTS links
+            (
+                _id SERIAL PRIMARY KEY,
+                type link_type NOT NULL,
+                destination_board_result_id INTEGER REFERENCES board_results (_id) NOT NULL,
+                origin_board_result_id INTEGER REFERENCES board_results (_id) NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS board_results
+            (
+                _id SERIAL PRIMARY KEY,
+                result_id INTEGER REFERENCES results (_id),
+                links INTEGER[]
+            );
+
             ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name TEXT;
             `
         )
