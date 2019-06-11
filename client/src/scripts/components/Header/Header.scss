@@ -1,5 +1,12 @@
 .Header {
-    display:flex;
+    display: flex;
     justify-content: center;
     min-height: 40px;
+    align-items: center;
+}
+
+.Icon {
+    position: absolute;
+    left: 0;
+    margin-left: 25px;
 }
