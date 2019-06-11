@@ -8,7 +8,7 @@ import './MenuBottom.scss'
 
 interface Props {
     className?: string
-    fullName?: string
+    fullName?: string | null
 }
 
 export class MenuBottom extends React.Component<Props> {
