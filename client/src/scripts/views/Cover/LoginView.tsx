@@ -85,7 +85,11 @@ export class LoginView extends React.Component<Props, State> {
         const user = await onUserSignIn({ ...signInData })
 
         if (user) {
-            onChangeUser(user)
+            onChangeUser({
+                _id: user._id,
+                fullName: user.full_name,
+                email: user.email,
+            })
             history.push(routes.App.index)
         }
     }

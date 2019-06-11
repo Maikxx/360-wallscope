@@ -83,10 +83,10 @@ export class SignUpView extends React.Component<Props, State> {
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='red-button' type='submit'>
+                    <Button styleOverride='red-button' type='submit' full={true}>
                         Sign up
                     </Button>
-                    <Button styleOverride='blue-button' type='button' onClick={() => this.props.history.push(routes.Login.index)}>
+                    <Button styleOverride='blue-button' full={true} type='button' onClick={() => this.props.history.push(routes.Login.index)}>
                         Alternatively, log in
                     </Button>
                 </Form>
@@ -96,7 +96,6 @@ export class SignUpView extends React.Component<Props, State> {
 
     private onChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { target } = event
-        console.log(event)
 
         if (target && target.name) {
             this.setState({ [target.name]: target.value || '' } as any)
@@ -112,7 +111,11 @@ export class SignUpView extends React.Component<Props, State> {
         const user = await onUserSignUp({ ...signUpData })
 
         if (user) {
-            onChangeUser(user)
+            onChangeUser({
+                _id: user._id,
+                fullName: user.full_name,
+                email: user.email,
+            })
             history.push(routes.App.index)
         }
     }

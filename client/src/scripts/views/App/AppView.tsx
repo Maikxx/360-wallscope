@@ -20,6 +20,7 @@ export class AppView extends React.Component<Props, State> {
 
     public render() {
         const { user } = this.state
+
         const ExtendedHomeView = (props: RouteComponentProps) => <HomeView user={user} {...props}/>
         const ExtendedLogInView = (props: RouteComponentProps) => <LoginView onChangeUser={this.onChangeUser} {...props}/>
         const ExtendedSignUpView = (props: RouteComponentProps) => <SignUpView onChangeUser={this.onChangeUser} {...props}/>

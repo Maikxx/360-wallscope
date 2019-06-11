@@ -45,7 +45,11 @@ export async function onSignup(request: express.Request, response: express.Respo
                 })
 
                 response.status(200).json({
-                    user,
+                    user: {
+                        _id: user._id,
+                        fullName: user.full_name,
+                        email: user.email,
+                    },
                     accessToken,
                     expiresIn: expiresInADay,
                 })

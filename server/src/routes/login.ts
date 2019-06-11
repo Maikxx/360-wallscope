@@ -40,7 +40,11 @@ export async function onLogin(request: express.Request, response: express.Respon
                 expiresIn: expiresInADay,
             })
 
-            response.status(200).send({ user, accessToken, expiresIn: expiresInADay })
+            response.status(200).send({ user: {
+                _id: user._id,
+                fullName: user.full_name,
+                email: user.email,
+            }, accessToken, expiresIn: expiresInADay })
         } catch (error) {
             return response.status(500).json({
                 error: 'Internal server error! Oops...',
