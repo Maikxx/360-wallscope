@@ -50,21 +50,21 @@ export async function setupDatabase() {
                 _id SERIAL PRIMARY KEY
             );
 
-            CREATE TYPE IF NOT EXISTS link_type AS ENUM ('no_link', 'definate', 'possible');
-
-            CREATE TABLE IF NOT EXISTS links
-            (
-                _id SERIAL PRIMARY KEY,
-                type link_type NOT NULL,
-                destination_board_result_id INTEGER REFERENCES board_results (_id) NOT NULL,
-                origin_board_result_id INTEGER REFERENCES board_results (_id) NOT NULL
-            );
+            CREATE TYPE link_type AS ENUM ('no_link', 'definate', 'possible');
 
             CREATE TABLE IF NOT EXISTS board_results
             (
                 _id SERIAL PRIMARY KEY,
                 result_id INTEGER REFERENCES results (_id),
                 links INTEGER[]
+            );
+
+            CREATE TABLE IF NOT EXISTS links
+            (
+                _id SERIAL PRIMARY KEY,
+                type link_type NOT NULL,
+                destination_board_result_id INTEGER REFERENCES board_results (_id),
+                origin_board_result_id INTEGER REFERENCES board_results (_id)
             );
 
             ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name TEXT;
