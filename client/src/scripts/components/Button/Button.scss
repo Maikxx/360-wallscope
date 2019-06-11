@@ -10,15 +10,16 @@
 
     &--red {
         font-family: 'Lato', sans-serif;
+        font-size: 1rem;  
         font-weight: bold;
         position: relative;
         display: block;
         background-color: $color-red-1;
-        padding: 1em 3em;
+        padding: .75em 3em;
         color: $color-white;
         border-radius: .5em;
         border: none;
-        transition: all .2s ease-in-out;
+        transition: all .5s ease-in-out;
         margin-bottom: 1.5rem;
 
         &::after {
@@ -27,11 +28,11 @@
             top: 0;
             right: 0;
             display: block;
-            height: 30px;
-            width: 65px;
+            height: 20px;
+            width: 55px;
             background: darken($color-red-1, 5%);
-            border-radius: .5em;
-            transition: all .2s ease-in-out;
+            border-radius: 0 .5em 0 .5em;
+            transition: all .5s ease-in-out;    
         }
 
         &:hover{
@@ -49,15 +50,16 @@
 
     &--blue {
         font-family: 'Lato', sans-serif;
+        font-size: 1rem; 
         font-weight: bold;
         position: relative;
         display: block;
         background-color: $color-blue-1;
-        padding: 1em 3em;
+        padding: .75em 3em;
         color: $color-white;
         border-radius: .5em;
         border: none;
-        transition: all .2s ease-in-out;
+        transition: all .5s ease-in-out;
         margin-bottom: 1.5rem;
 
         &::after {
@@ -66,11 +68,11 @@
             top: 0;
             left: 0;
             display: block;
-            height: 30px;
-            width: 65px;
+            height: 20px;
+            width: 55px;
             background: darken($color-blue-1, 5%);
-            border-radius: .5em;
-            transition: all .2s ease-in-out;
+            border-radius: .5em 0 .5em 0;
+            transition: all .5s ease-in-out;
         }
 
         &:hover{
