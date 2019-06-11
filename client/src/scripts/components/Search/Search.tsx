@@ -20,7 +20,7 @@ export class Search extends React.Component<Props, State> {
                     <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />
                     <Icon className={'Icon--search'} iconName={'search_small'} />
                 </div>
-                <Button styleOverride={'red-button'}>Start Searching</Button>
+                <Button styleOverride={'red-button'} type='button' full>Start Searching</Button>
             </Form>
         )
     }

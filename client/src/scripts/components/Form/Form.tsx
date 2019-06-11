@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 
 interface Props {
     id?: React.HTMLAttributes<HTMLFormElement>['id']
@@ -12,9 +13,15 @@ export class Form extends React.Component<Props> {
         const { children, ...restProps } = this.props
 
         return (
-            <form {...restProps}>
+            <form className={this.getClassName()} {...restProps}>
                 { children }
             </form>
         )
+    }
+
+    private getClassName() {
+        const { className } = this.props
+
+        return classnames('Form', {}, className)
     }
 }

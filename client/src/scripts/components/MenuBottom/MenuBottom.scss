@@ -3,10 +3,20 @@
     @import '../../../sass/colors.scss';
 
     background-color: $color-purple-4;
-    padding: 1em;
+    padding: .25rem;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     margin-top: 15%;
+
+    .Link .Link__icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .Button .Link__icon svg {
+        width: 32px;
+        height: 32px;
+    }
 }

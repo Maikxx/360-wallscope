@@ -56,6 +56,9 @@ export class LoginView extends React.Component<Props, State> {
                     <Button styleOverride='red-button' full={true} type='submit'>
                         Login
                     </Button>
+                    <Button styleOverride='blue-button' full={true} type='button'>
+                        Create a new account
+                    </Button>
                 </Form>
             </CoverView>
         )
