@@ -8,6 +8,54 @@ interface GetBoardByIdRequestParams {
     id: number
 }
 
+export async function onGetBoards(request: express.Request, response: express.Response) {
+    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+
+    if (token) {
+        let decodedToken
+
+        try {
+            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
+        } catch (error) {
+            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
+
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        if (!decodedToken) {
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        try {
+            const boards = await findBoards((decodedToken as Token)._id)
+
+            if (boards && Array.isArray(boards) && boards.length > 0) {
+                return response.status(200).json({
+                    boards,
+                })
+            } else {
+                return response.status(404).json({
+                    error: 'This user probably has got no boards attached to him or her.',
+                })
+            }
+        } catch (error) {
+            console.error(error.message)
+
+            return response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        return response.status(409).json({
+            error: 'Make sure to pass an Authorization header to access this request.',
+        })
+    }
+}
+
 export async function onGetBoardById(request: express.Request, response: express.Response) {
     const { id } = request.params as GetBoardByIdRequestParams
     const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')

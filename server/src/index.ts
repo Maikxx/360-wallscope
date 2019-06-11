@@ -11,7 +11,7 @@ import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
 import { onSignup } from './routes/signup'
 import { onGetUserById } from './routes/user'
-import { onGetBoardById } from './routes/board'
+import { onGetBoardById, onGetBoards } from './routes/board'
 
 (async () => {
     const app = express()
@@ -32,7 +32,8 @@ import { onGetBoardById } from './routes/board'
     app.use(compression())
 
     app.get('/user/:id', onGetUserById)
-    app.get('/board/:id', onGetBoardById)
+    app.get('/board/:id', onGetBoardById) // Authorization Protected
+    app.get('/boards', onGetBoards) // Authorization Protected
     app.get('*', routeRequest)
 
     app.post('/login', onLogin)
