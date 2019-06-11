@@ -14,13 +14,32 @@ interface Props {
 export class MenuBottom extends React.Component<Props> {
     public render() {
         const { fullName } = this.props
+
         return (
             <Navigation className={this.getClassName()}>
-                <NavLink route={routes.App.index} iconName='boards' color='#CEC7EC'>Boards</NavLink>
+                <NavLink
+                    route={routes.App.index}
+                    iconName='boards'
+                    color='#CEC7EC'
+                >
+                    Boards
+                </NavLink>
                 <li>
-                    <Button className='Button_big' styleOverride='big-button' type='button' iconName='search_big' color='#181631'/>
+                    <Button
+                        className='Button_big'
+                        styleOverride='big-button'
+                        type='button'
+                        iconName='search_big'
+                        color='#181631'
+                    />
                 </li>
-                <NavLink route={routes.App.index} iconName='user' color='#CEC7EC'>{fullName}</NavLink>
+                <NavLink
+                    route={fullName ? routes.App.index : routes.Login.index}
+                    iconName='user'
+                    color='#CEC7EC'
+                >
+                    {fullName || 'Login'}
+                </NavLink>
             </Navigation>
         )
     }
@@ -30,5 +49,4 @@ export class MenuBottom extends React.Component<Props> {
 
         return classnames('MenuBottom', { }, className)
     }
-
 }

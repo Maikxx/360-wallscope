@@ -8,6 +8,7 @@ import { Button } from '../../components/Button/Button'
 import React from 'react'
 import { onUserSignUp } from '../../services/UserService'
 import { RouteComponentProps } from 'react-router'
+import { routes } from '../../routes'
 
 interface Props extends RouteComponentProps {}
 
@@ -82,6 +83,9 @@ export class SignUpView extends React.Component<Props, State> {
                     <Button styleOverride='red-button' type='submit' full={true}>
                         Sign up
                     </Button>
+                    <Button styleOverride='blue-button' full={true} type='button' onClick={() => this.props.history.push(routes.Login.index)}>
+                        Alternatively, log in
+                    </Button>
                 </Form>
             </CoverView>
         )
@@ -104,7 +108,7 @@ export class SignUpView extends React.Component<Props, State> {
         const data = await onUserSignUp({ ...signUpData })
 
         if (data) {
-            history.push('/dashboard')
+            history.push(routes.App.index)
         }
     }
 }
