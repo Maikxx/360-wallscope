@@ -14,7 +14,7 @@ export class HomeView extends React.Component<Props, State> {
                 {/* insert header */}
                 <HomeIntroduction />
                 <Search />
-                <MenuBottom fullName='Maikel' />
+                <MenuBottom />
             </View>
         )
     }
