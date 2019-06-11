@@ -1,5 +1,7 @@
 import { User } from '../types/User'
 import jwt from 'jsonwebtoken'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface UserAuthorizationResponse {
     error?: string
@@ -27,16 +29,20 @@ export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
 
         if (!error && accessToken && user) {
             setAuthorizationToken(accessToken)
-            console.info('Successfully created a new user!')
+            toast.success('Successfully created a new user!', {
+                position: toast.POSITION.TOP_CENTER,
+            })
             return user
         } else {
             // TODO: Error handling
-            console.error(error)
+            toast.error(error, {
+                position: toast.POSITION.TOP_CENTER,
+            })
             return null
         }
     } catch (error) {
         // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -61,12 +67,16 @@ export async function onUserSignIn(userSignInBody: UserSignInBody) {
             return user
         } else {
             // TODO: Error handling
-            console.error(error)
+            toast.error(error, {
+                position: toast.POSITION.TOP_CENTER,
+            })
             return null
         }
     } catch (error) {
         // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message, {
+            position: toast.POSITION.TOP_CENTER,
+        })
         return null
     }
 }
@@ -75,6 +85,9 @@ export function setAuthorizationToken(token: string) {
     if (window.localStorage) {
         window.localStorage.setItem('authToken', token)
     } else {
+        toast.error('You are using a crappy browser, go away!', {
+            position: toast.POSITION.TOP_CENTER,
+        })
         throw new Error('You are using a crappy browser, go away!')
     }
 }
@@ -90,7 +103,9 @@ export function getAuthorizationToken() {
         }
     } else {
         // TODO: Error handling
-        console.error('Something went wrong while getting the user token!')
+        toast.error('Something went wrong while getting the user token!', {
+            position: toast.POSITION.TOP_CENTER,
+        })
         return null
     }
 }
@@ -113,7 +128,9 @@ export function checkTokenValidity() {
         }
     } else {
         // TODO: Error handling
-        console.error('No token could be found!')
+        toast.error('No token could be found!', {
+            position: toast.POSITION.TOP_CENTER,
+        })
         return false
     }
 }

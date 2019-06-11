@@ -60,6 +60,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router": "^5.0.1",
     "@types/react-router-dom": "^4.3.3",
+    "@types/react-toastify": "^4.0.2",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "concurrently": "^4.1.0",
