@@ -108,7 +108,7 @@ export class SignUpView extends React.Component<Props, State> {
         const data = await onUserSignUp({ ...signUpData })
 
         if (data) {
-            history.push('/dashboard')
+            history.push(routes.App.index)
         }
     }
 }

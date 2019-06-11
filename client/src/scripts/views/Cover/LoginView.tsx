@@ -82,7 +82,7 @@ export class LoginView extends React.Component<Props, State> {
         const user = await onUserSignIn({ ...signInData })
 
         if (user) {
-            history.push(`/dashboard`)
+            history.push(routes.App.index)
         }
     }
 }
