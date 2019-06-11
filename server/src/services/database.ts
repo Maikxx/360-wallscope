@@ -50,7 +50,11 @@ export async function setupDatabase() {
                 _id SERIAL PRIMARY KEY
             );
 
-            CREATE TYPE link_type AS ENUM ('no_link', 'definate', 'possible');
+            DO $$ BEGIN
+                CREATE TYPE link_type AS ENUM ('no_link', 'definate', 'possible');
+            EXCEPTION
+                WHEN duplicate_object THEN null;
+            END $$;
 
             CREATE TABLE IF NOT EXISTS board_results
             (
