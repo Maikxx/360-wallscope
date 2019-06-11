@@ -72,7 +72,7 @@ export class Icon extends React.Component<Props> {
                     </g>
                 </svg>`,
             back:
-                `<svg className='Icon__back' xmlns="http://www.w3.org/2000/svg" width:"32" height:"32" viewBox="0 0 31.494 31.494">
+                `<svg className='Icon__back' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 31.494 31.494">
                     <path fill=${color ? color : '#fff'} d="M10.273 5.009c.444-.444 1.143-.444 1.587 0 .429.429.429 1.143 0 1.571l-8.047 8.047h26.554c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H3.813l8.047 8.032c.429.444.429 1.159 0 1.587-.444.444-1.143.444-1.587 0L.321 16.532c-.429-.429-.429-1.143 0-1.571l9.952-9.952z" fill="#1e201d"/>
                 </svg>`,
         }
