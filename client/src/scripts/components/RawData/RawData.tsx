@@ -35,4 +35,3 @@ export class RawData extends React.Component<Props> {
         return classnames('RawData', {}, className)
     }
 }
-        
