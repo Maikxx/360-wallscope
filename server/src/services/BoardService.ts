@@ -92,9 +92,10 @@ interface CreateBoardOptions {
     name: string
     collaborators?: number[]
     result?: number
+    iconName?: string
 }
 
-export async function createBoard({ createdByUserId, name, result, collaborators }: CreateBoardOptions) {
+export async function createBoard({ createdByUserId, name, result, collaborators, iconName }: CreateBoardOptions) {
     let boardResultQueryData
 
     try {
@@ -111,8 +112,8 @@ export async function createBoard({ createdByUserId, name, result, collaborators
 
     try {
         const { rows: [board] } = await database.query(
-            `INSERT INTO boards (name, owner, results, collaborators) VALUES ($1, $2, $3, $4) RETURNING _id;`,
-            [ name, createdByUserId, (boardResultQueryData && boardResultQueryData.rows && boardResultQueryData.rows[0]) || null, (collaborators && `{${collaborators.join(', ')}}`) || null ]
+            `INSERT INTO boards (name, owner, results, collaborators, icon_name) VALUES ($1, $2, $3, $4, $5) RETURNING _id;`,
+            [ name, createdByUserId, (boardResultQueryData && boardResultQueryData.rows && boardResultQueryData.rows[0]) || null, (collaborators && `{${collaborators.join(', ')}}`) || null, iconName || null ]
         )
 
         if (board) {

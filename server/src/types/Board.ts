@@ -3,6 +3,7 @@ export interface DatabaseBoard {
     name: string
     collaborators: number[] | null
     owner: number | null
+    icon_name: string | null
     results: number[] | null
     created_at: Date
 }
