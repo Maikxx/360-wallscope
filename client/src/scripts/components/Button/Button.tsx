@@ -4,7 +4,7 @@ import { Icon, IconNames } from '../Icon/Icon'
 import './Button.scss'
 
 type ButtonType = 'button' | 'submit'
-type StyleType = 'red-button' | 'blue-button' | 'round-button' | 'big-button' | 'search-button' | 'tag-red-button' | 'tag-blue-button'
+export type StyleType = 'red-button' | 'blue-button' | 'round-button' | 'big-button' | 'search-button' | 'tag-red-button' | 'tag-blue-button' | 'tag-border-button'
 
 interface Props {
     className?: string
@@ -42,6 +42,7 @@ export class Button extends React.Component<Props> {
             'Button--search': styleOverride === 'search-button',
             'Button--tag-red': styleOverride === 'tag-red-button',
             'Button--tag-blue': styleOverride === 'tag-blue-button',
+            'Button--tag-border': styleOverride === 'tag-border-button',
         }, className)
     }
 }
