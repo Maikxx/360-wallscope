@@ -127,3 +127,53 @@ export async function createBoard({ createdByUserId, name, result, collaborators
         throw new Error('Inserting a new board into the boards table failed.')
     }
 }
+
+export interface EditBoardOptions {
+    id: number
+    name?: string
+    iconName?: string
+}
+
+interface EditBoardQueryResponse {
+    rows: {
+        _id: number
+    }[]
+}
+
+export async function editBoard({ id, name, iconName }: EditBoardOptions) {
+    if (isNaN(id) || (!iconName && !name)) {
+        throw new Error('Make sure to pass all the required parameters to the editBoard function.')
+    }
+
+    const boardsQuerySets: string[] = []
+    const boardsQueryData: any[] = [id]
+
+    if (iconName) {
+        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 2}`)
+        boardsQueryData.push(iconName)
+    }
+
+    if (name) {
+        boardsQuerySets.push(`name = $${boardsQuerySets.length + 2}`)
+        boardsQueryData.push(name)
+    }
+
+    try {
+        const { rows: [board] }: EditBoardQueryResponse = await database.query(
+            `UPDATE boards
+                SET ${boardsQuerySets.join(', ')}
+            WHERE _id = $1
+            RETURNING _id;`,
+            boardsQueryData
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error(`We could not find the board that you updated for some reason.`)
+        }
+    } catch (error) {
+        console.error('Updating a boards table failed.')
+        throw new Error('Updating a boards table failed.')
+    }
+}
