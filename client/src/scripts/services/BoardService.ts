@@ -87,13 +87,61 @@ export async function getBoardsForCurrentUser() {
     }
 }
 
-export interface CreateBoardParams {
+interface EditBoardParams {
+    id: number
+    name?: string
+    iconName?: string
+}
+
+interface EditBoardResponse {
+    board?: {
+        _id: number
+    }
+    error?: string
+}
+
+export async function editBoard({ name, iconName, id }: EditBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/edit-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ name, id, iconName }),
+                }
+            )
+
+            const { board, error }: EditBoardResponse = await data.json()
+
+            if (!error && board) {
+                return board
+            } else {
+                console.error(error)
+                return null
+            }
+        } else {
+            // TODO: Error handling
+            console.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        // TODO: Error handling
+        console.error(error.message)
+        return null
+    }
+}
+
+interface CreateBoardParams {
     name: string
     collaborators?: number[]
     result?: number
 }
 
-export interface CreateBoardResponse {
+interface CreateBoardResponse {
     board?: {
         _id: number
     }
