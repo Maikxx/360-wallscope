@@ -8,7 +8,7 @@ interface GetUserByIdRequestParamss {
 export async function onGetUserById(request: express.Request, response: express.Response) {
     const { id } = request.params as GetUserByIdRequestParamss
 
-    if (id && !isNaN(Number(id))) {
+    if (!isNaN(Number(id))) {
         try {
             const { rows: [user] } = await database.query(`SELECT * FROM users WHERE _id = $1;`, [id])
 
