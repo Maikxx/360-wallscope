@@ -2,7 +2,9 @@ import * as React from 'react'
 import classnames from 'classnames'
 import './Icon.scss'
 
-export type IconNames = 'user' | 'search_big' | 'search_small' | 'pen' | 'settings' | 'light_dark' | 'boards' | 'back'
+export type IconNames =
+    'user' | 'search_big' | 'search_small' | 'pen' | 'settings'|
+    'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv'
 
 interface Props {
     className?: string
@@ -74,6 +76,54 @@ export class Icon extends React.Component<Props> {
             back:
                 `<svg className='Icon__back' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 31.494 31.494">
                     <path fill=${color ? color : '#fff'} d="M10.273 5.009c.444-.444 1.143-.444 1.587 0 .429.429.429 1.143 0 1.571l-8.047 8.047h26.554c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H3.813l8.047 8.032c.429.444.429 1.159 0 1.587-.444.444-1.143.444-1.587 0L.321 16.532c-.429-.429-.429-1.143 0-1.571l9.952-9.952z" fill="#1e201d"/>
+                </svg>`,
+            pdf:
+                `<svg className='Icon__pdf' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 270.6 309.3">
+                    <g data-name="Laag 2">
+                        <g data-name="Layer 1">
+                            <path d="M19.3 0h164.3l87 86.7V290a19.3 19.3 0 0 1-19.3 19.4h-232A19.3 19.3 0 0 1 0 289.9V19.3A19.3 19.3 0 0 1 19.3 0z" fill="#e5565b"/>
+                            <path d="M270.3 87H203a19.3 19.3 0 0 1-19.3-19.3V.2z" fill="#c23641"/>
+                            <text transform="translate(56.5 242)" font-size="72" fill="#fff" font-family="Montserrat-Bold,Montserrat" font-weight="700">
+                                <tspan letter-spacing="0em">P</tspan><tspan x="52" y="0">DF</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </svg>`,
+            xml:
+                `<svg className='Icon__xml' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 270.6 309.3">
+                    <g data-name="Laag 2">
+                        <g data-name="Layer 1">
+                            <path d="M19.3 0h164.3l87 86.7V290a19.3 19.3 0 0 1-19.3 19.4h-232A19.3 19.3 0 0 1 0 289.9V19.3A19.3 19.3 0 0 1 19.3 0z" fill="#c23641"/>
+                            <path d="M270.3 87H203a19.3 19.3 0 0 1-19.3-19.3V.2z" fill="#a00c28"/>
+                            <text transform="translate(54.2 242)" font-size="72" fill="#fff" font-family="Montserrat-Bold,Montserrat" font-weight="700">
+                                <tspan letter-spacing="0em">X</tspan><tspan x="49.8" y="0">ML</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </svg>`,
+            tsv:
+                `<svg className='Icon__tsv' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 270.6 309.3">
+                    <g data-name="Laag 2">
+                        <g data-name="Layer 1">
+                            <path d="M19.3 0h164.3l87 86.7V290a19.3 19.3 0 0 1-19.3 19.4h-232A19.3 19.3 0 0 1 0 289.9V19.3A19.3 19.3 0 0 1 19.3 0z" fill="#1294b2"/>
+                            <path d="M270.3 87H203a19.3 19.3 0 0 1-19.3-19.3V.2z" fill="#00708c"/>
+                            <text transform="translate(63.3 242)" font-size="72" fill="#fff" font-family="Montserrat-Bold,Montserrat" font-weight="700">
+                                <tspan letter-spacing="0">T</tspan><tspan x="44.1" y="0">SV</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </svg>`,
+            csv:
+                `<svg className='Icon__csv' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 270.6 309.3">
+                    <g data-name="Laag 2">
+                        <g data-name="Layer 1">
+                            <path d="M19.3 0h164.3l87 86.7V290a19.3 19.3 0 0 1-19.3 19.4h-232A19.3 19.3 0 0 1 0 289.9V19.3A19.3 19.3 0 0 1 19.3 0z" fill="#4fbad9"/>
+                            <path d="M270.3 87H203a19.3 19.3 0 0 1-19.3-19.3V.2z" fill="#1294b2"/>
+                            <text transform="translate(59.2 242)" font-size="72" fill="#fff" font-family="Montserrat-Bold,Montserrat" font-weight="700">
+                                <tspan letter-spacing="0em">C</tspan><tspan x="52.3" y="0">SV</tspan>
+                            </text>
+                        </g>
+                    </g>
                 </svg>`,
         }
 
