@@ -29,15 +29,11 @@ export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
 
         if (!error && accessToken && user) {
             setAuthorizationToken(accessToken)
-            toast.success('Successfully created a new user!', {
-                position: toast.POSITION.TOP_CENTER,
-            })
+            toast.success('Successfully created a new user!')
             return user
         } else {
             // TODO: Error handling
-            toast.error(error, {
-                position: toast.POSITION.TOP_CENTER,
-            })
+            toast.error(error)
             return null
         }
     } catch (error) {
@@ -67,16 +63,12 @@ export async function onUserSignIn(userSignInBody: UserSignInBody) {
             return user
         } else {
             // TODO: Error handling
-            toast.error(error, {
-                position: toast.POSITION.TOP_CENTER,
-            })
+            toast.error(error)
             return null
         }
     } catch (error) {
         // TODO: Error handling
-        toast.error(error.message, {
-            position: toast.POSITION.TOP_CENTER,
-        })
+        toast.error(error.message)
         return null
     }
 }
@@ -85,9 +77,7 @@ export function setAuthorizationToken(token: string) {
     if (window.localStorage) {
         window.localStorage.setItem('authToken', token)
     } else {
-        toast.error('You are using a crappy browser, go away!', {
-            position: toast.POSITION.TOP_CENTER,
-        })
+        toast.error('You are using a crappy browser, go away!')
         throw new Error('You are using a crappy browser, go away!')
     }
 }
@@ -103,9 +93,7 @@ export function getAuthorizationToken() {
         }
     } else {
         // TODO: Error handling
-        toast.error('Something went wrong while getting the user token!', {
-            position: toast.POSITION.TOP_CENTER,
-        })
+        toast.error('Something went wrong while getting the user token!')
         return null
     }
 }
@@ -128,9 +116,7 @@ export function checkTokenValidity() {
         }
     } else {
         // TODO: Error handling
-        toast.error('No token could be found!', {
-            position: toast.POSITION.TOP_CENTER,
-        })
+        toast.error('No token could be found!')
         return false
     }
 }
