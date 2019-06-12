@@ -1,6 +1,6 @@
 import { database } from './database'
 import { QueryResult } from 'pg'
-import { DatabaseBoard, CreatedDatabaseBoard } from '../types/Board'
+import { DatabaseBoard, CreatedDatabaseBoard, DatabaseBoardResult } from '../types/Board'
 import { DatabaseUser } from '../types/User'
 
 interface BoardQueryResult extends QueryResult {
@@ -8,10 +8,6 @@ interface BoardQueryResult extends QueryResult {
 }
 
 interface OwnerUserQueryResult extends QueryResult {
-    rows: DatabaseUser[]
-}
-
-interface CollaboratorUsersQueryResult extends QueryResult {
     rows: DatabaseUser[]
 }
 
@@ -39,22 +35,54 @@ export async function findBoards(userId: number, byId?: number) {
 
 export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
     const { rows: [ownerUser] }: OwnerUserQueryResult = await database.query(
-        `SELECT _id, full_name, email FROM users WHERE _id = $1`,
+        `SELECT _id, full_name, email FROM users WHERE _id = $1;`,
         [board.owner]
     )
 
-    const { rows: collaboratorUsers }: CollaboratorUsersQueryResult = await database.query(
-        `SELECT _id, full_name, email FROM users WHERE _id = ANY($1)`,
-        [board.collaborators]
-    )
+    let collaboratorUsers: DatabaseUser[] = []
+    if (board.collaborators && board.collaborators.length > 0) {
+        const { rows } = await database.query(
+            `SELECT _id, full_name, email FROM users WHERE _id = ANY($1);`,
+            [`{${board.collaborators.join(', ')}`]
+        )
 
-    // TODO: Add results query
+        collaboratorUsers = rows
+    }
+
+    let boardResults: DatabaseBoardResult[] = []
+    if (board.results && board.results.length > 0) {
+        const { rows } = await database.query(
+            `SELECT _id, result_id, links FROM board_results WHERE _id = ANY($1);`,
+            [`{${board.results.join(', ')}`]
+        )
+
+        boardResults = rows
+    }
+
+    if (boardResults && boardResults.length > 0) {
+        boardResults = await Promise.all(boardResults.map(async boardResult => {
+            if (boardResult.links && boardResult.links.length > 0) {
+                const { rows: boardResultLinks } = await database.query(
+                    `SELECT * FROM links WHERE _id = ANY($1);`,
+                    [`{${boardResult.links.join(', ')}}`]
+                )
+
+                return {
+                    ...boardResult,
+                    links: boardResultLinks || [],
+                }
+            } else {
+                return boardResult
+            }
+        }))
+    }
 
     return {
         board: {
             ...board,
-            ...(ownerUser && ({ _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name })),
-            ...(collaboratorUsers && collaboratorUsers.length > 0 && (collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })))),
+            ...(ownerUser ? ({ owner: { _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name } }) : {}),
+            ...((collaboratorUsers && collaboratorUsers.length > 0) ? ({ collaborators: collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })) }) : {}),
+            ...((boardResults && boardResults.length > 0) ? ({ results: boardResults }) : {}),
         },
     }
 }
