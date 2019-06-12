@@ -31,7 +31,7 @@ import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard } from './route
     app.use(cors())
     app.use(compression())
 
-    app.get('/user/:id', onGetUserById)
+    app.get('/user/:id', onGetUserById) // Authorization Protected
     app.get('/board/:id', onGetBoardById) // Authorization Protected
     app.get('/boards', onGetBoards) // Authorization Protected
     app.get('*', routeRequest)
