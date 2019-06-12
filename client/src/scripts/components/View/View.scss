@@ -1,4 +1,4 @@
-.View {
+.View:not(.AppView) {
     max-width: 90%;
     min-width: 75%;
     padding: 2rem;

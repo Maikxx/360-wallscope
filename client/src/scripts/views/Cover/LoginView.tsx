@@ -9,8 +9,11 @@ import React from 'react'
 import { RouteComponentProps } from 'react-router'
 import { onUserSignIn } from '../../services/UserService'
 import { routes } from '../../routes'
+import { User } from '../../types/User'
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps {
+    onChangeUser: (user: User) => void
+}
 
 interface State {
     email: string
@@ -76,12 +79,17 @@ export class LoginView extends React.Component<Props, State> {
     private onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        const { history } = this.props
+        const { history, onChangeUser } = this.props
         const { ...signInData } = this.state
 
         const user = await onUserSignIn({ ...signInData })
 
         if (user) {
+            onChangeUser({
+                _id: user._id,
+                fullName: user.full_name,
+                email: user.email,
+            })
             history.push(routes.App.index)
         }
     }
