@@ -35,6 +35,8 @@ export async function setupDatabase() {
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
 
+            ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name TEXT;
+
             CREATE TABLE IF NOT EXISTS boards
             (
                 _id SERIAL PRIMARY KEY,
@@ -50,6 +52,8 @@ export async function setupDatabase() {
                 _id SERIAL PRIMARY KEY
             );
 
+            ALTER TABLE results ADD COLUMN IF NOT EXISTS created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
             DO $$ BEGIN
                 CREATE TYPE link_type AS ENUM ('no_link', 'definate', 'possible');
             EXCEPTION
@@ -63,6 +67,8 @@ export async function setupDatabase() {
                 links INTEGER[]
             );
 
+            ALTER TABLE board_results ADD COLUMN IF NOT EXISTS created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
             CREATE TABLE IF NOT EXISTS links
             (
                 _id SERIAL PRIMARY KEY,
@@ -71,7 +77,7 @@ export async function setupDatabase() {
                 origin_board_result_id INTEGER REFERENCES board_results (_id)
             );
 
-            ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name TEXT;
+            ALTER TABLE links ADD COLUMN IF NOT EXISTS created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
             `
         )
     } catch (error) {

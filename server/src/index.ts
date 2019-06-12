@@ -11,7 +11,7 @@ import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
 import { onSignup } from './routes/signup'
 import { onGetUserById } from './routes/user'
-import { onGetBoardById, onGetBoards } from './routes/board'
+import { onGetBoardById, onGetBoards, onCreateBoard } from './routes/board'
 
 (async () => {
     const app = express()
@@ -36,6 +36,7 @@ import { onGetBoardById, onGetBoards } from './routes/board'
     app.get('/boards', onGetBoards) // Authorization Protected
     app.get('*', routeRequest)
 
+    app.post('/create-board', onCreateBoard) // Authorization Protected
     app.post('/login', onLogin)
     app.post('/signup', onSignup)
 

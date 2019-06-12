@@ -6,3 +6,7 @@ export interface DatabaseBoard {
     results: number[] | null
     created_at: Date
 }
+
+export interface CreatedDatabaseBoard {
+    _id: number
+}

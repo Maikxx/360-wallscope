@@ -1,6 +1,6 @@
 import { database } from './database'
 import { QueryResult } from 'pg'
-import { DatabaseBoard } from '../types/Board'
+import { DatabaseBoard, CreatedDatabaseBoard } from '../types/Board'
 import { DatabaseUser } from '../types/User'
 
 interface BoardQueryResult extends QueryResult {
@@ -42,10 +42,13 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
         `SELECT _id, full_name, email FROM users WHERE _id = $1`,
         [board.owner]
     )
+
     const { rows: collaboratorUsers }: CollaboratorUsersQueryResult = await database.query(
         `SELECT _id, full_name, email FROM users WHERE _id = ANY($1)`,
-        [[board.collaborators]]
+        [board.collaborators]
     )
+
+    // TODO: Add results query
 
     return {
         board: {
@@ -53,5 +56,45 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
             ...(ownerUser && ({ _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name })),
             ...(collaboratorUsers && collaboratorUsers.length > 0 && (collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })))),
         },
+    }
+}
+
+interface CreateBoardOptions {
+    createdByUserId: number
+    name: string
+    collaborators?: number[]
+    result?: number
+}
+
+export async function createBoard({ createdByUserId, name, result, collaborators }: CreateBoardOptions) {
+    let boardResultQueryData
+
+    try {
+        if (result) {
+            boardResultQueryData = await database.query(
+                `INSERT INTO board_results (result_id) VALUES ($1) RETURNING _id;`,
+                [result]
+            )
+        }
+    } catch (error) {
+        console.error('Inserting a new result into the board_results table failed.')
+        throw new Error('Inserting a new result into the board_results table failed.')
+    }
+
+    try {
+        const { rows: [board] } = await database.query(
+            `INSERT INTO boards (name, owner, results, collaborators) VALUES ($1, $2, $3, $4) RETURNING _id;`,
+            [ name, createdByUserId, (boardResultQueryData && boardResultQueryData.rows && boardResultQueryData.rows[0]) || null, (collaborators && `{${collaborators.join(', ')}}`) || null ]
+        )
+
+        if (board) {
+            return board as CreatedDatabaseBoard
+        } else {
+            console.error('Something went wrong creating a new board.')
+            throw new Error('Something went wrong creating a new board.')
+        }
+    } catch (error) {
+        console.error('Inserting a new board into the boards table failed.')
+        throw new Error('Inserting a new board into the boards table failed.')
     }
 }
