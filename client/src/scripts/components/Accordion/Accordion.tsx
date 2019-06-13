@@ -1,14 +1,14 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import { Article } from '../Article/Article'
-import './ArticleAccordion.scss'
+import './Accordion.scss'
 
 interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
+    title: string
 }
 
-export class ArticleAccordion extends React.Component<Props> {
+export class Accordion extends React.Component<Props> {
     public render() {
         return (
             <ul className={this.getClassName()}
@@ -21,9 +21,9 @@ export class ArticleAccordion extends React.Component<Props> {
                     arrow.classList.toggle('up')
                 }
             }}
-            > {this.props.children}
+            > {this.props.title}
                 <li className='accordion-item'>
-                    <Article></Article>
+                    {this.props.children}
                 </li>
                 <div className='arrow'></div>
             </ul>
