@@ -7,7 +7,6 @@ import { LoginView } from '../Cover/LoginView'
 import { SignUpView } from '../Cover/SignUpView'
 import { User } from '../../types/User'
 import { ToastContainer } from 'react-toastify'
-import './ToastContainer.scss'
 
 interface Props extends RouteComponentProps {}
 
