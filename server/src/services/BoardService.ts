@@ -206,7 +206,7 @@ export async function removeBoard({ id, userId }: RemoveBoardOptions) {
         if (board) {
             if (board.results && board.results.length > 0) {
                 const { rows: boardResults }: RemoveBoardBoardResultsQueryResponse = await database.query(
-                    `SELECT _id, links from board_results WHERE _id = ANY($1::INT[]);`,
+                    `SELECT _id, links from board_results WHERE _id = ANY($1::INTEGER[]);`,
                     [`{${board.results.join(', ')}}`]
                 )
 
@@ -214,7 +214,7 @@ export async function removeBoard({ id, userId }: RemoveBoardOptions) {
                     await Promise.all(boardResults.map(async boardResult => {
                         if (boardResult.links && boardResult.links.length > 0) {
                             await database.query(
-                                `DELETE FROM links WHERE _id = ANY($1::INT[]);`,
+                                `DELETE FROM links WHERE _id = ANY($1::INTEGER[]);`,
                                 [`{${boardResult.links.join(', ')}}`]
                             )
                         }
@@ -224,7 +224,7 @@ export async function removeBoard({ id, userId }: RemoveBoardOptions) {
                 }
 
                 await database.query(
-                    `DELETE FROM board_results WHERE _id = ANY($1::INT[]);`,
+                    `DELETE FROM board_results WHERE _id = ANY($1::INTEGER[]);`,
                     [`{${board.results.join(', ')}}`]
                 )
             }
@@ -242,5 +242,43 @@ export async function removeBoard({ id, userId }: RemoveBoardOptions) {
         console.log(error.message)
         console.error('Deleting a boards table failed.')
         throw new Error('Deleting a boards table failed.')
+    }
+}
+
+interface AddCollaboratorToBoardOptions {
+    id: number
+    ownerUserId: number
+    userId: number
+}
+
+interface AddCollaboratorToBoardOptionsQueryResponse {
+    rows: {
+        _id: number
+    }[]
+}
+
+export async function addCollaboratorToBoard({ id, userId, ownerUserId }: AddCollaboratorToBoardOptions) {
+    if (isNaN(id) || isNaN(userId) || isNaN(ownerUserId)) {
+        throw new Error('Make sure to pass all the required parameters to the addCollaboratorToBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: AddCollaboratorToBoardOptionsQueryResponse = await database.query(
+            `UPDATE boards
+                SET collaborators = array_append(collaborators, $3)
+            WHERE _id = $1 AND owner = $2 AND $3 != ALL(collaborators::INTEGER[])
+            RETURNING _id;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error('We had some trouble updating the board you selected!')
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Adding a collaborator to boards table failed.')
+        throw new Error('Adding a collaborator to boards table failed.')
     }
 }
