@@ -178,3 +178,69 @@ export async function editBoard({ id, name, iconName, userId }: EditBoardOptions
         throw new Error('Updating a boards table failed.')
     }
 }
+
+interface RemoveBoardOptions {
+    id: number
+    userId: number
+}
+
+interface RemoveBoardQueryResponse {
+    rows: DatabaseBoard[]
+}
+
+interface RemoveBoardBoardResultsQueryResponse {
+    rows: DatabaseBoardResult[]
+}
+
+export async function removeBoard({ id, userId }: RemoveBoardOptions) {
+    if (isNaN(id) || isNaN(userId)) {
+        throw new Error('Make sure to pass all the required parameters to the removeBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: RemoveBoardQueryResponse = await database.query(
+            `SELECT * FROM boards WHERE _id = $1 AND owner = $2;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            if (board.results && board.results.length > 0) {
+                const { rows: boardResults }: RemoveBoardBoardResultsQueryResponse = await database.query(
+                    `SELECT _id, links from board_results WHERE _id = ANY($1::INT[]);`,
+                    [`{${board.results.join(', ')}}`]
+                )
+
+                if (boardResults && boardResults.length > 0) {
+                    await Promise.all(boardResults.map(async boardResult => {
+                        if (boardResult.links && boardResult.links.length > 0) {
+                            await database.query(
+                                `DELETE FROM links WHERE _id = ANY($1::INT[]);`,
+                                [`{${boardResult.links.join(', ')}}`]
+                            )
+                        }
+
+                        return boardResult
+                    }))
+                }
+
+                await database.query(
+                    `DELETE FROM board_results WHERE _id = ANY($1::INT[]);`,
+                    [`{${board.results.join(', ')}}`]
+                )
+            }
+
+            await database.query(
+                `DELETE FROM boards WHERE _id = $1 AND owner = $2;`,
+                [ id, userId ]
+            )
+
+            return true
+        } else {
+            throw new Error(`We could not find the board that you tried to remove or you are not the owner of this board.`)
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Deleting a boards table failed.')
+        throw new Error('Deleting a boards table failed.')
+    }
+}

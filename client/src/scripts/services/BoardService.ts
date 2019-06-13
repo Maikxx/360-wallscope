@@ -182,3 +182,47 @@ export async function createBoard({ name, collaborators, result }: CreateBoardPa
         return null
     }
 }
+
+interface RemoveBoardParams {
+    id: number
+}
+
+interface RemoveBoardResponse {
+    success?: boolean
+    error?: string
+}
+
+export async function removeBoard({ id }: RemoveBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/remove-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ id }),
+                }
+            )
+
+            const { success, error }: RemoveBoardResponse = await data.json()
+
+            if (!error && success) {
+                return success
+            } else {
+                console.error(error)
+                return null
+            }
+        } else {
+            // TODO: Error handling
+            console.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        // TODO: Error handling
+        console.error(error.message)
+        return null
+    }
+}
