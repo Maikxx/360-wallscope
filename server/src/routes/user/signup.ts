@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { DatabaseUser } from '../../types/User'
 import { createUser } from '../../orm/users/createUser'
+import { convertDatabaseUserToClientUser } from '../../utils/converters'
 
 interface SignUpRequestBody {
     email?: string
@@ -42,12 +43,8 @@ export async function onSignup(request: express.Request, response: express.Respo
                     expiresIn: expiresInADay,
                 })
 
-                return response.status(200).json({
-                    user: {
-                        _id: user._id,
-                        fullName: user.full_name,
-                        email: user.email,
-                    },
+                response.status(200).json({
+                    user: convertDatabaseUserToClientUser(user),
                     accessToken,
                     expiresIn: expiresInADay,
                 })
@@ -55,12 +52,12 @@ export async function onSignup(request: express.Request, response: express.Respo
                 throw new Error('User could not be retreived from the database.')
             }
         } catch (error) {
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
+        response.status(409).json({
             error: 'Failed signing you up. Please make sure to provide an email, password and a full name. Also make sure the passwords submitted match.',
         })
     }

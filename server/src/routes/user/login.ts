@@ -2,6 +2,7 @@ import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { getUserByEmail } from '../../orm/users/getUserByEmail'
+import { convertDatabaseUserToClientUser } from '../../utils/converters'
 
 interface LoginRequestBody {
     email?: string
@@ -36,22 +37,18 @@ export async function onLogin(request: express.Request, response: express.Respon
             })
 
             response.status(200).send({
-                user: {
-                    _id: user._id,
-                    fullName: user.full_name,
-                    email: user.email,
-                },
+                user: convertDatabaseUserToClientUser(user),
                 accessToken,
                 expiresIn: expiresInADay,
             })
         } catch (error) {
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
+    } else {
+        response.status(421).json({
+            error: 'Please make sure to provide both an email and a password!',
+        })
     }
-
-    return response.status(421).json({
-        error: 'Please make sure to provide both an email and a password!',
-    })
 }
