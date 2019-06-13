@@ -1,7 +1,7 @@
 import { DatabaseUser, ClientUser } from '../types/User'
 
 export function convertToPostgreSQLArray(array: any[]): string {
-    return `{${array.join(', ')}`
+    return `{${array.join(', ')}}`
 }
 
 export function convertDatabaseUserToClientUser({ _id, full_name, email }: DatabaseUser): ClientUser {
