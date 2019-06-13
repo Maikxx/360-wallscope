@@ -40,10 +40,10 @@ export class AppView extends React.Component<Props, State> {
         return (
             <View className={`AppView`}>
                 <ToastContainer
-                position='bottom-right'
-                className='toast-container'
-                autoClose={5000}
-                hideProgressBar={true}
+                    position='bottom-right'
+                    className='toast-container'
+                    autoClose={5000}
+                    hideProgressBar={true}
                 />
                 <Switch>
                     <Route path={routes.App.index} exact={true} component={ExtendedHomeView}/>
