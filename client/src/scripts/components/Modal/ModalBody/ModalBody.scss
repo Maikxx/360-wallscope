@@ -1,0 +1,15 @@
+.ModalBody {
+    @import '../../../../sass/colors.scss';
+    
+    margin: 0 auto;
+    width: 40%; 
+    text-align: center;
+
+    h2 {
+        color: #E88626;
+    }
+
+    p {
+        line-height: 1.5em; 
+    }
+}
