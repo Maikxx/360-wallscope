@@ -2,7 +2,12 @@ require('dotenv').config()
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import { Token } from '../types/Token'
-import { findBoards, createBoard, editBoard, removeBoard, addCollaboratorToBoard } from '../services/BoardService'
+import { getBoards } from '../orm/boards/findBoards'
+import { createBoard } from '../orm/boards/createBoard'
+import { editBoard } from '../orm/boards/editBoard'
+import { removeBoard } from '../orm/boards/removeBoard'
+import { removeCollaboratorFromBoard } from '../orm/boards/removeCollaboratorFromBoard'
+import { addCollaboratorToBoard } from '../orm/boards/addCollaboratorToBoard'
 
 interface GetBoardByIdRequestParams {
     id: number
@@ -37,7 +42,7 @@ export async function onGetBoards(request: express.Request, response: express.Re
         }
 
         try {
-            const boards = await findBoards((decodedToken as Token)._id)
+            const boards = await getBoards((decodedToken as Token)._id)
 
             if (boards && Array.isArray(boards) && boards.length > 0) {
                 return response.status(200).json({
@@ -86,7 +91,7 @@ export async function onGetBoardById(request: express.Request, response: express
         }
 
         try {
-            const board = await findBoards((decodedToken as Token)._id, id)
+            const board = await getBoards((decodedToken as Token)._id, id)
 
             if (board) {
                 return response.status(200).json({
@@ -351,7 +356,7 @@ export async function onRemoveCollaboratorFromBoard(request: express.Request, re
         }
 
         try {
-            const board = await addCollaboratorToBoard({ id, userId, ownerUserId: (decodedToken as Token)._id })
+            const board = await removeCollaboratorFromBoard({ id, userId, ownerUserId: (decodedToken as Token)._id })
 
             if (board) {
                 return response.status(200).json({
