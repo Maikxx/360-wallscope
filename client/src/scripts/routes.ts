@@ -1,8 +1,9 @@
 export const routes = {
     App: {
         index: '/',
-        login: '/login',
-        sign_up: '/sign-up',
+        CurrentUser: {
+            index: '/current_user',
+        },
     },
     Login: {
         index: '/login',

@@ -17,6 +17,12 @@ interface UserSignUpBody {
     repeatPassword: string
 }
 
+interface UserAuthorizationToken {
+    _id: number
+    iat: number
+    exp: number
+}
+
 export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
     const url = `${window.location.origin}/signup`
 
@@ -32,12 +38,10 @@ export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
             toast.success('Successfully created a new user!')
             return user
         } else {
-            // TODO: Error handling
             toast.error(error)
             return null
         }
     } catch (error) {
-        // TODO: Error handling
         toast.error(error.message)
         return null
     }
@@ -62,12 +66,10 @@ export async function onUserSignIn(userSignInBody: UserSignInBody) {
             setAuthorizationToken(accessToken)
             return user
         } else {
-            // TODO: Error handling
             toast.error(error)
             return null
         }
     } catch (error) {
-        // TODO: Error handling
         toast.error(error.message)
         return null
     }
@@ -92,7 +94,6 @@ export function getAuthorizationToken() {
             return null
         }
     } else {
-        // TODO: Error handling
         toast.error('Something went wrong while getting the user token!')
         return null
     }
@@ -115,7 +116,6 @@ export function checkTokenValidity() {
             return false
         }
     } else {
-        // TODO: Error handling
         toast.error('No token could be found!')
         return false
     }
@@ -130,7 +130,10 @@ export async function getUserById(id: number) {
     const url = `${window.location.origin}/user/${id}`
 
     try {
+        const token = getAuthorizationToken()
+
         const data = await fetch(url, { method: 'GET', headers: {
+            Authorization: `Token ${token}`,
             Accept: 'application/json',
             'Content-Type': 'application/json',
         }})
@@ -139,14 +142,76 @@ export async function getUserById(id: number) {
 
         if (!error && user) {
             return user
+        } else if (error) {
+            toast.error(error)
+        }
+
+        return null
+    } catch (error) {
+        toast.error(error.message)
+        return null
+    }
+}
+
+export async function getCurrentUser() {
+    try {
+        const token = checkTokenValidity() as UserAuthorizationToken | boolean
+
+        if (token) {
+            const user = await getUserById((token as UserAuthorizationToken)._id)
+
+            return user
         } else {
-            // TODO: Error handling
-            console.error(error)
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        return null
+    }
+}
+
+export async function logout() {
+    try {
+        window.localStorage.removeItem('authToken')
+    } catch (error) {
+        toast.error('Failed to log you out...')
+    }
+}
+
+interface EditUserParams {
+    id: number
+    fullName: string
+    email: string
+}
+
+interface EditUserResponse {
+    user?: User
+    error?: string
+}
+
+export async function onEditUser(params: EditUserParams) {
+    const { id } = params
+    const url = `${window.location.origin}/user/${id}`
+
+    try {
+        const token = getAuthorizationToken()
+
+        const data = await fetch(url, { body: JSON.stringify(params), method: 'POST', headers: {
+            Authorization: `Token ${token}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }})
+
+        const { error, user }: EditUserResponse = await data.json()
+
+        if (!error && user) {
+            return user
+        } else if (error) {
+            toast.error(error)
+        }
+
+        return null
+    } catch (error) {
+        toast.error(error.message)
         return null
     }
 }

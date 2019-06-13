@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 
-export const routes = [ '/', '/login', '/signup', '/dashboard' ]
+export const routes = [ '/', '/login', '/signup', '/dashboard', '/current_user' ]
 
 export const routeRequest = (request: express.Request, response: express.Response) => {
     const { url } = request

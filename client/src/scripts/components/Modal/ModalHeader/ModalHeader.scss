@@ -1,0 +1,31 @@
+.ModalHeader {
+    @import '../../../../sass/colors.scss';
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:$color-purple-2;
+    padding: 1em 2em;
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    color: $color-purple-5;
+
+    button {
+        color: $color-white;
+        background-color: transparent;
+        font-weight: bold;
+        border: none;
+        font-size: 2em;
+        transition: all .2s ease;
+    }
+
+    button:hover {
+        color: $color-red-1;
+    }
+}
+
+// body.light {
+//     .ModalHeader{
+//         color: #e2ecf6;
+//     }
+// }

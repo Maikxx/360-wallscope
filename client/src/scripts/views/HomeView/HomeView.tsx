@@ -18,7 +18,6 @@ export class HomeView extends React.Component<Props, State> {
         return (
             <View>
                 <Header back={false}></Header>
-                {/* insert header */}
                 <HomeIntroduction />
                 <Search />
                 <MenuBottom fullName={user && user.fullName}/>

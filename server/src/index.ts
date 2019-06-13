@@ -10,7 +10,7 @@ import { onLogin } from './routes/login'
 import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
 import { onSignup } from './routes/signup'
-import { onGetUserById } from './routes/user'
+import { onGetUserById, onEditUser } from './routes/user'
 import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard, onAddCollaboratorToBoard, onRemoveCollaboratorFromBoard } from './routes/board'
 
 (async () => {
@@ -38,6 +38,7 @@ import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard,
 
     app.post('/edit-board', onEditBoard) // Authorization Protected
     app.post('/create-board', onCreateBoard) // Authorization Protected
+    app.post('/user/:id', onEditUser) // Authorization Protected
     app.post('/remove-board', onRemoveBoard) // Authorization Protected
     app.post('/add-collaborator-to-board', onAddCollaboratorToBoard) // Authorization Protected
     app.post('/remove-collaborator-from-board', onRemoveCollaboratorFromBoard) // Authorization Protected
