@@ -7,20 +7,20 @@ import { Link } from 'react-router-dom'
 interface Props {
     className?: string,
     back: boolean,
-    route: string
+    route?: string
 }
 
 export class Header extends React.Component<Props> {
     public render () {
-        const { children, back, route } = this.props
+        const { back, route } = this.props
         return (
             <header className={this.getClassName()}>
-                <Link
-                to={route}
-                >
-                   {back && <Icon iconName='back' color='#FFFFFF' ></Icon>}
-                </Link>
-                {children}
+                {(back && route) && (
+                    <Link to={route}>
+                        <Icon className='back-button' iconName='back' color='#FFFFFF' ></Icon>
+                    </Link>
+                )}
+                <Icon className='header-logo' iconName='header_logo'></Icon>
             </header>
         )
     }

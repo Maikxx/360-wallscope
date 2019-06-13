@@ -1,5 +1,7 @@
 import { User } from '../types/User'
 import jwt from 'jsonwebtoken'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface UserAuthorizationResponse {
     error?: string
@@ -27,16 +29,16 @@ export async function onUserSignUp(userSignUpBody: UserSignUpBody) {
 
         if (!error && accessToken && user) {
             setAuthorizationToken(accessToken)
-            console.info('Successfully created a new user!')
+            toast.success('Successfully created a new user!')
             return user
         } else {
             // TODO: Error handling
-            console.error(error)
+            toast.error(error)
             return null
         }
     } catch (error) {
         // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -61,12 +63,12 @@ export async function onUserSignIn(userSignInBody: UserSignInBody) {
             return user
         } else {
             // TODO: Error handling
-            console.error(error)
+            toast.error(error)
             return null
         }
     } catch (error) {
         // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -75,6 +77,7 @@ export function setAuthorizationToken(token: string) {
     if (window.localStorage) {
         window.localStorage.setItem('authToken', token)
     } else {
+        toast.error('You are using a crappy browser, go away!')
         throw new Error('You are using a crappy browser, go away!')
     }
 }
@@ -90,7 +93,7 @@ export function getAuthorizationToken() {
         }
     } else {
         // TODO: Error handling
-        console.error('Something went wrong while getting the user token!')
+        toast.error('Something went wrong while getting the user token!')
         return null
     }
 }
@@ -113,7 +116,37 @@ export function checkTokenValidity() {
         }
     } else {
         // TODO: Error handling
-        console.error('No token could be found!')
+        toast.error('No token could be found!')
         return false
+    }
+}
+
+interface GetUserByIdResponse {
+    user?: User
+    error?: string
+}
+
+export async function getUserById(id: number) {
+    const url = `${window.location.origin}/user/${id}`
+
+    try {
+        const data = await fetch(url, { method: 'GET', headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }})
+
+        const { error, user }: GetUserByIdResponse = await data.json()
+
+        if (!error && user) {
+            return user
+        } else {
+            // TODO: Error handling
+            console.error(error)
+            return null
+        }
+    } catch (error) {
+        // TODO: Error handling
+        console.error(error.message)
+        return null
     }
 }

@@ -13,7 +13,7 @@ interface OwnerUserQueryResult extends QueryResult {
 
 export async function findBoards(userId: number, byId?: number) {
     try {
-        const POSTGRES_QUERY = `SELECT * FROM boards WHERE collaborators @> ARRAY[$1]::INTEGER[] ${byId ? 'AND _id = $2' : ''};`
+        const POSTGRES_QUERY = `SELECT * FROM boards WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`
         const POSTGRES_QUERY_PARAMS = byId ? [ userId, byId ] : [userId]
         const { rows: boards }: BoardQueryResult = await database.query(POSTGRES_QUERY, POSTGRES_QUERY_PARAMS)
 
@@ -132,6 +132,7 @@ export interface EditBoardOptions {
     id: number
     name?: string
     iconName?: string
+    userId: number
 }
 
 interface EditBoardQueryResponse {
@@ -140,21 +141,21 @@ interface EditBoardQueryResponse {
     }[]
 }
 
-export async function editBoard({ id, name, iconName }: EditBoardOptions) {
-    if (isNaN(id) || (!iconName && !name)) {
+export async function editBoard({ id, name, iconName, userId }: EditBoardOptions) {
+    if (isNaN(id) || (!iconName && !name) || isNaN(userId)) {
         throw new Error('Make sure to pass all the required parameters to the editBoard function.')
     }
 
     const boardsQuerySets: string[] = []
-    const boardsQueryData: any[] = [id]
+    const boardsQueryData: any[] = [ id, userId ]
 
     if (iconName) {
-        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 2}`)
+        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 3}`)
         boardsQueryData.push(iconName)
     }
 
     if (name) {
-        boardsQuerySets.push(`name = $${boardsQuerySets.length + 2}`)
+        boardsQuerySets.push(`name = $${boardsQuerySets.length + 3}`)
         boardsQueryData.push(name)
     }
 
@@ -162,7 +163,7 @@ export async function editBoard({ id, name, iconName }: EditBoardOptions) {
         const { rows: [board] }: EditBoardQueryResponse = await database.query(
             `UPDATE boards
                 SET ${boardsQuerySets.join(', ')}
-            WHERE _id = $1
+            WHERE _id = $1 AND (collaborators @> ARRAY[$2]::INTEGER[] OR owner = $2)
             RETURNING _id;`,
             boardsQueryData
         )
@@ -175,5 +176,141 @@ export async function editBoard({ id, name, iconName }: EditBoardOptions) {
     } catch (error) {
         console.error('Updating a boards table failed.')
         throw new Error('Updating a boards table failed.')
+    }
+}
+
+interface RemoveBoardOptions {
+    id: number
+    userId: number
+}
+
+interface RemoveBoardQueryResponse {
+    rows: DatabaseBoard[]
+}
+
+interface RemoveBoardBoardResultsQueryResponse {
+    rows: DatabaseBoardResult[]
+}
+
+export async function removeBoard({ id, userId }: RemoveBoardOptions) {
+    if (isNaN(id) || isNaN(userId)) {
+        throw new Error('Make sure to pass all the required parameters to the removeBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: RemoveBoardQueryResponse = await database.query(
+            `SELECT * FROM boards WHERE _id = $1 AND owner = $2;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            if (board.results && board.results.length > 0) {
+                const { rows: boardResults }: RemoveBoardBoardResultsQueryResponse = await database.query(
+                    `SELECT _id, links from board_results WHERE _id = ANY($1::INTEGER[]);`,
+                    [`{${board.results.join(', ')}}`]
+                )
+
+                if (boardResults && boardResults.length > 0) {
+                    await Promise.all(boardResults.map(async boardResult => {
+                        if (boardResult.links && boardResult.links.length > 0) {
+                            await database.query(
+                                `DELETE FROM links WHERE _id = ANY($1::INTEGER[]);`,
+                                [`{${boardResult.links.join(', ')}}`]
+                            )
+                        }
+
+                        return boardResult
+                    }))
+                }
+
+                await database.query(
+                    `DELETE FROM board_results WHERE _id = ANY($1::INTEGER[]);`,
+                    [`{${board.results.join(', ')}}`]
+                )
+            }
+
+            await database.query(
+                `DELETE FROM boards WHERE _id = $1 AND owner = $2;`,
+                [ id, userId ]
+            )
+
+            return true
+        } else {
+            throw new Error(`We could not find the board that you tried to remove or you are not the owner of this board.`)
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Deleting a boards table failed.')
+        throw new Error('Deleting a boards table failed.')
+    }
+}
+
+interface AddCollaboratorToBoardOptions {
+    id: number
+    ownerUserId: number
+    userId: number
+}
+
+interface AddCollaboratorToBoardOptionsQueryResponse {
+    rows: {
+        _id: number
+    }[]
+}
+
+export async function addCollaboratorToBoard({ id, userId, ownerUserId }: AddCollaboratorToBoardOptions) {
+    if (isNaN(id) || isNaN(userId) || isNaN(ownerUserId)) {
+        throw new Error('Make sure to pass all the required parameters to the addCollaboratorToBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: AddCollaboratorToBoardOptionsQueryResponse = await database.query(
+            `UPDATE boards
+                SET collaborators = array_append(collaborators, $3)
+            WHERE _id = $1 AND owner = $2 AND $3 != ALL(collaborators::INTEGER[])
+            RETURNING _id;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error('We had some trouble updating the board you selected!')
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Adding a collaborator to boards table failed.')
+        throw new Error('Adding a collaborator to boards table failed.')
+    }
+}
+
+interface RemoveCollaboratorFromBoardOptions {
+    id: number
+    ownerUserId: number
+    userId: number
+}
+
+export async function removeCollaboratorFromBoard({ id, userId, ownerUserId }: RemoveCollaboratorFromBoardOptions) {
+    if (isNaN(id) || isNaN(userId) || isNaN(ownerUserId)) {
+        throw new Error('Make sure to pass all the required parameters to the removeCollaboratorFromBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: AddCollaboratorToBoardOptionsQueryResponse = await database.query(
+            `UPDATE boards
+                SET collaborators = array_remove(collaborators, $3)
+            WHERE _id = $1 AND owner = $2 AND $3 = ANY(collaborators::INTEGER[])
+            RETURNING _id;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error('We had some trouble updating the board you selected!')
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Removing a collaborator from boards table failed.')
+        throw new Error('Removing a collaborator from boards table failed.')
     }
 }

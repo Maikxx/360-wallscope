@@ -6,6 +6,7 @@ import { HomeView } from '../HomeView/HomeView'
 import { LoginView } from '../Cover/LoginView'
 import { SignUpView } from '../Cover/SignUpView'
 import { User } from '../../types/User'
+import { ToastContainer } from 'react-toastify'
 
 interface Props extends RouteComponentProps {}
 
@@ -27,6 +28,12 @@ export class AppView extends React.Component<Props, State> {
 
         return (
             <View className={`AppView`}>
+                <ToastContainer
+                position='bottom-right'
+                className='toast-container'
+                autoClose={5000}
+                hideProgressBar={true}
+                />
                 <Switch>
                     <Route path={routes.App.index} exact={true} component={ExtendedHomeView}/>
                     <Route path={routes.Login.index} component={ExtendedLogInView}/>
