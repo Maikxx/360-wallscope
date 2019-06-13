@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+div{
+    width: 60rem;
+    margin: auto;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+svg{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+li{
+    height: 10rem;
+    width: 15rem;
+    margin: 1rem;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
+    background: #f1f1f1;
+}
