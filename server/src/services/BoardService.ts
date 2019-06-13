@@ -13,7 +13,7 @@ interface OwnerUserQueryResult extends QueryResult {
 
 export async function findBoards(userId: number, byId?: number) {
     try {
-        const POSTGRES_QUERY = `SELECT * FROM boards WHERE collaborators @> ARRAY[$1]::INTEGER[] ${byId ? 'AND _id = $2' : ''};`
+        const POSTGRES_QUERY = `SELECT * FROM boards WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`
         const POSTGRES_QUERY_PARAMS = byId ? [ userId, byId ] : [userId]
         const { rows: boards }: BoardQueryResult = await database.query(POSTGRES_QUERY, POSTGRES_QUERY_PARAMS)
 
@@ -132,6 +132,7 @@ export interface EditBoardOptions {
     id: number
     name?: string
     iconName?: string
+    userId: number
 }
 
 interface EditBoardQueryResponse {
@@ -140,21 +141,21 @@ interface EditBoardQueryResponse {
     }[]
 }
 
-export async function editBoard({ id, name, iconName }: EditBoardOptions) {
-    if (isNaN(id) || (!iconName && !name)) {
+export async function editBoard({ id, name, iconName, userId }: EditBoardOptions) {
+    if (isNaN(id) || (!iconName && !name) || isNaN(userId)) {
         throw new Error('Make sure to pass all the required parameters to the editBoard function.')
     }
 
     const boardsQuerySets: string[] = []
-    const boardsQueryData: any[] = [id]
+    const boardsQueryData: any[] = [ id, userId ]
 
     if (iconName) {
-        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 2}`)
+        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 3}`)
         boardsQueryData.push(iconName)
     }
 
     if (name) {
-        boardsQuerySets.push(`name = $${boardsQuerySets.length + 2}`)
+        boardsQuerySets.push(`name = $${boardsQuerySets.length + 3}`)
         boardsQueryData.push(name)
     }
 
@@ -162,7 +163,7 @@ export async function editBoard({ id, name, iconName }: EditBoardOptions) {
         const { rows: [board] }: EditBoardQueryResponse = await database.query(
             `UPDATE boards
                 SET ${boardsQuerySets.join(', ')}
-            WHERE _id = $1
+            WHERE _id = $1 AND (collaborators @> ARRAY[$2]::INTEGER[] OR owner = $2)
             RETURNING _id;`,
             boardsQueryData
         )
