@@ -34,7 +34,7 @@ export class MenuBottom extends React.Component<Props> {
                     />
                 </li>
                 <NavLink
-                    route={fullName ? routes.App.index : routes.Login.index}
+                    route={fullName ? routes.App.CurrentUser.index : routes.Login.index}
                     iconName='user'
                     color='#CEC7EC'
                 >
