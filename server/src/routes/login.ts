@@ -1,8 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { findUserByEmail } from '../services/UserService'
-import { DatabaseUser } from '../types/User'
+import { getUserByEmail } from '../orm/users/getUserByEmail'
 
 interface LoginRequestBody {
     email?: string
@@ -19,7 +18,7 @@ export async function onLogin(request: express.Request, response: express.Respon
         && typeof password === 'string'
     ) {
         try {
-            const user: DatabaseUser = await findUserByEmail(email)
+            const user = await getUserByEmail(email)
 
             if (!user || !user.password) {
                 return response.status(404).json({

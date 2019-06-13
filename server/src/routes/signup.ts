@@ -1,8 +1,8 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { createUser } from '../services/UserService'
 import { DatabaseUser } from '../types/User'
+import { createUser } from '../orm/users/createUser'
 
 interface SignUpRequestBody {
     email?: string
