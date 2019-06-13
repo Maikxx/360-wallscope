@@ -1,15 +1,28 @@
 .ModalBody {
     @import '../../../../sass/colors.scss';
-    
-    margin: 0 auto;
-    width: 40%; 
-    text-align: center;
 
-    h2 {
-        color: #E88626;
+    // margin: 0 auto;
+    // width: 40%; 
+    // text-align: center;
+    overflow-y: auto;
+
+    .Form--search {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    p {
-        line-height: 1.5em; 
+    .Fieldset {
+        margin: 0 2em;
+        padding-bottom:0
+    }
+
+    .Tags li:last-child .Button {
+        margin-right: 0;
+    }
+
+    .Tags li .Button {
+        margin-bottom: .25rem;
     }
 }
