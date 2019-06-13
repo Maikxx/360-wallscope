@@ -1,0 +1,32 @@
+.accordion {
+position: relative;
+border-bottom: 1px solid;
+padding-bottom: 15px;
+}
+
+.accordion li {
+    transition: height 0.5s ease-out;
+    overflow: hidden;
+}
+
+.collapsed li {
+    height: 0;
+}
+
+.arrow {
+    box-sizing: border-box;
+    height: 18px;
+    width: 18px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 1px 1px 0px;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &.up {
+        transform: rotate(225deg);
+        top: 10px;
+    }
+}
