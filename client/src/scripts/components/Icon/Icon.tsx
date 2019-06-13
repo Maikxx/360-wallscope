@@ -4,7 +4,7 @@ import './Icon.scss'
 
 export type IconNames =
     'user' | 'search_big' | 'search_small' | 'pen' | 'settings'|
-    'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv'
+    'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv' | 'header_logo'
 
 interface Props {
     className?: string
@@ -19,6 +19,17 @@ export class Icon extends React.Component<Props> {
         let icon
 
         const IconType = {
+            header_logo:
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.44 41.32" width="90" height="50">
+                <defs>
+                    <style>.cls-1{fill:#fff;}.cls-2{fill:#4fbad9;}</style>
+                </defs>
+                <title>logo-w-blue</title>
+                <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
+                <path class="cls-1" d="M26.89,41.32H22.57L12.93,20.66l.88-.43c.08,0,.46-.23,1.13-.55s1.06-.52,1.3-.67.67-.4,1.25-.78a4.85,4.85,0,0,0,1.11-.91c.29-.35.61-.76,1-1.24a4.06,4.06,0,0,0,.64-1.34A6.33,6.33,0,0,0,20.42,13a5.31,5.31,0,0,0-3.29-5.06A20.24,20.24,0,0,0,8,6.12H3.92v35.2H0V2.2H8c5.22,0,9.25.94,12,2.8a9.21,9.21,0,0,1,4.31,8,8.71,8.71,0,0,1-2.23,5.87,14.46,14.46,0,0,1-4.17,3.3Z"/>
+                <polygon class="cls-2" points="42.82 37.4 63.17 37.4 51.56 10.05 38.27 41.32 34.05 41.32 51.56 0 69.07 41.32 42.82 41.32 42.82 37.4"/>
+                <rect class="cls-1" x="80.26" y="2.2" width="3.92" height="39.12"/><polygon class="cls-1" points="127.44 2.2 127.44 41.32 123.96 41.32 104.66 10.17 104.66 41.32 100.74 41.32 100.74 2.2 104.22 2.2 123.52 33.29 123.52 2.2 127.44 2.2"/>
+                <rect class="cls-1" x="133.96" y="37.84" width="3.48" height="3.48"/></g></g></svg>`,
             search_big:
                 `<svg className='Icon__search_big' xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 57 57">
                     <path fill=${color ? color : '#fff'} d="M55.1 51.9L41.6 37.8A23 23 0 0 0 24 0a23 23 0 1 0 13.2 41.8L50.8 56a3 3 0 0 0 4.3.1 3 3 0 0 0 0-4.2zM24 6a17 17 0 1 1 0 34 17 17 0 0 1 0-34z"/>
