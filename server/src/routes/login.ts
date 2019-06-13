@@ -39,11 +39,15 @@ export async function onLogin(request: express.Request, response: express.Respon
                 expiresIn: expiresInADay,
             })
 
-            response.status(200).send({ user: {
-                _id: user._id,
-                fullName: user.full_name,
-                email: user.email,
-            }, accessToken, expiresIn: expiresInADay })
+            response.status(200).send({
+                user: {
+                    _id: user._id,
+                    fullName: user.full_name,
+                    email: user.email,
+                },
+                accessToken,
+                expiresIn: expiresInADay,
+            })
         } catch (error) {
             return response.status(500).json({
                 error: 'Internal server error! Oops...',
@@ -51,5 +55,7 @@ export async function onLogin(request: express.Request, response: express.Respon
         }
     }
 
-    return
+    return response.status(421).json({
+        error: 'Please make sure to provide both an email and a password!',
+    })
 }
