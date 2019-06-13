@@ -71,3 +71,34 @@ export class ModalBase extends React.Component<Props, State> {
         this.setState({ modalIsOpen: false })
     }
 }
+
+// const boardNames = new Array('Antibiotics', 'Schoolpaper', 'Hospitals', 'Antibiotics', 'Schoolpaper', 'Hospitals')
+
+{/* <ModalBase
+    title={'Add to a board'}
+    firstButton={'Cancel'}
+    secondButton={'Done'}
+    renderButton={openModal => (
+        < Button
+            onClick = { openModal }
+            className='Button-red'
+            styleOverride='red-button'
+            type='button'
+            iconName='search_big'
+            color='#181631'
+        />
+    )}
+>
+    <Form action={'/'} className={'Form--search'}>
+        <Fieldset>
+            <Label>Create a new board
+                <Input type={'text'} name={'search'} styleOverride={'input-search'} />
+            </Label>
+            <Button styleOverride={'red-button'} type='button' full>Add</Button>
+        </Fieldset>
+        <Fieldset>
+            <Label>Add to an existing board</Label>
+                <Tags tags={boardNames} styleOverride={'tag-red-button'}/>
+        </Fieldset>
+    </Form>
+</ModalBase> */}
