@@ -14,7 +14,7 @@ interface State {}
 export class Search extends React.Component<Props, State> {
     public render() {
         const { placeholder } = this.props
-        return(
+        return (
             <Form action={'/'} className={'Form--search'}>
                 <div>
                     <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />

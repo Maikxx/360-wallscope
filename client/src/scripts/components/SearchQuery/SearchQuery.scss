@@ -1,0 +1,47 @@
+.SearchQuery {
+    @import '../../../sass/colors.scss';
+
+    .Form--search {
+        position: relative;
+        > * {
+            margin: 1rem auto;
+        }
+        .TextArea {
+            font-size: 1.25rem;
+            padding-right: 2rem;
+            border-bottom: 2px solid transparent;
+            transition: .3s ease border;
+
+            &:focus {
+                border-bottom: 2px solid $color-white;
+                outline: transparent;
+            }
+
+            &:focus + .Button_search .Link__icon .Icon__search_small {
+                bottom: 1.5rem;
+                transform: scale(1.5);
+            }
+
+            &::placeholder {
+                max-width: 95%;
+                display: flex;
+                flex-wrap: wrap;
+                color: $color-white;
+            }
+        }
+        .Button_search {
+            position: absolute;
+            right: .5rem;
+            bottom: .5rem;
+            fill: $color-white;
+            display: block;
+            transition: .3s ease all;
+
+            .Link__icon .Icon__search_small {
+                height: 1rem;
+                width: 1rem;
+            }
+        }
+    }
+
+}

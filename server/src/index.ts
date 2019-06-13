@@ -11,8 +11,9 @@ import { routeRequest } from './services/router'
 import { setupDatabase } from './services/database'
 import { onSignup } from './routes/signup'
 import { onGetUserById } from './routes/user'
+import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard, onAddCollaboratorToBoard, onRemoveCollaboratorFromBoard } from './routes/board'
 
-; (async () => {
+(async () => {
     const app = express()
     const server = new http.Server(app)
 
@@ -30,9 +31,16 @@ import { onGetUserById } from './routes/user'
     app.use(cors())
     app.use(compression())
 
-    app.get('/user/:id', onGetUserById)
+    app.get('/user/:id', onGetUserById) // Authorization Protected
+    app.get('/board/:id', onGetBoardById) // Authorization Protected
+    app.get('/boards', onGetBoards) // Authorization Protected
     app.get('*', routeRequest)
 
+    app.post('/edit-board', onEditBoard) // Authorization Protected
+    app.post('/create-board', onCreateBoard) // Authorization Protected
+    app.post('/remove-board', onRemoveBoard) // Authorization Protected
+    app.post('/add-collaborator-to-board', onAddCollaboratorToBoard) // Authorization Protected
+    app.post('/remove-collaborator-from-board', onRemoveCollaboratorFromBoard) // Authorization Protected
     app.post('/login', onLogin)
     app.post('/signup', onSignup)
 

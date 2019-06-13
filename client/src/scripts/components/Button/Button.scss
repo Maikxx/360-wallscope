@@ -127,6 +127,9 @@
     }
 
     &--tag-red {
+        font-family: 'Lato', sans-serif;
+        font-size: 1rem;  
+        font-weight: bold;
         display: block;
         background-color: $color-red-1;
         border: none;
@@ -140,6 +143,9 @@
     }
 
     &--tag-blue {
+        font-family: 'Lato', sans-serif;
+        font-size: 1rem;  
+        font-weight: bold;
         display: block;
         background-color: $color-blue-1;
         border: none;
@@ -175,5 +181,19 @@
             display: inline-block;
             fill: $color-purple-5;
         }
+    }
+
+    &--tag-border {
+        font-family: 'Lato', sans-serif;
+        font-size: 1rem;  
+        font-weight: bold;
+        display: block;
+        background-color: transparent;
+        padding: .75em;
+        color: $color-red-1;
+        border-radius: .5em;
+        border: 1px solid $color-red-1;
+        transition: all .5s ease-in-out;
+        margin-bottom: 1.5rem;
     }
 }
