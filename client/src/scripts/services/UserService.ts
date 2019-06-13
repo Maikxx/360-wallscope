@@ -117,3 +117,33 @@ export function checkTokenValidity() {
         return false
     }
 }
+
+interface GetUserByIdResponse {
+    user?: User
+    error?: string
+}
+
+export async function getUserById(id: number) {
+    const url = `${window.location.origin}/user/${id}`
+
+    try {
+        const data = await fetch(url, { method: 'GET', headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }})
+
+        const { error, user }: GetUserByIdResponse = await data.json()
+
+        if (!error && user) {
+            return user
+        } else {
+            // TODO: Error handling
+            console.error(error)
+            return null
+        }
+    } catch (error) {
+        // TODO: Error handling
+        console.error(error.message)
+        return null
+    }
+}

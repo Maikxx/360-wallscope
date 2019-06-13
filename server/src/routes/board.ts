@@ -2,7 +2,7 @@ require('dotenv').config()
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import { Token } from '../types/Token'
-import { findBoards, createBoard } from '../services/BoardService'
+import { findBoards, createBoard, editBoard } from '../services/BoardService'
 
 interface GetBoardByIdRequestParams {
     id: number
@@ -136,6 +136,61 @@ export async function onCreateBoard(request: express.Request, response: express.
 
         try {
             const board = await createBoard({ result, collaborators, name, createdByUserId: (decodedToken as Token)._id })
+
+            if (board) {
+                return response.status(200).json({
+                    board,
+                })
+            } else {
+                return response.status(500).json({
+                    error: 'Something went wrong creating your new board.',
+                })
+            }
+        } catch (error) {
+            console.error(error.message)
+
+            return response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        return response.status(409).json({
+            error: 'Make sure to pass an Authorization header and body: {name} to access this request.',
+        })
+    }
+}
+
+interface EditBoardRequestBody {
+    id: number
+    name?: string
+    iconName?: string
+}
+
+export async function onEditBoard(request: express.Request, response: express.Response) {
+    const { name, id, iconName } = request.body as EditBoardRequestBody
+    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+
+    if (token && name) {
+        let decodedToken
+
+        try {
+            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
+        } catch (error) {
+            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
+
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        if (!decodedToken) {
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        try {
+            const board = await editBoard({ name, iconName, id })
 
             if (board) {
                 return response.status(200).json({

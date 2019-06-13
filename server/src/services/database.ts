@@ -47,6 +47,8 @@ export async function setupDatabase() {
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
 
+            ALTER TABLE boards ADD COLUMN IF NOT EXISTS icon_name TEXT;
+
             CREATE TABLE IF NOT EXISTS results
             (
                 _id SERIAL PRIMARY KEY

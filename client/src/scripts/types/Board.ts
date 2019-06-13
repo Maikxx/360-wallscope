@@ -6,6 +6,7 @@ export interface Board {
     collaborators: User[] | null
     owner: User | null
     results: BoardResult[] | null
+    icon_name: string | null
     created_at: Date
 }
 

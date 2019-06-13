@@ -1,6 +1,6 @@
 import { database } from './database'
 import { QueryResult } from 'pg'
-import { DatabaseBoard, CreatedDatabaseBoard } from '../types/Board'
+import { DatabaseBoard, CreatedDatabaseBoard, DatabaseBoardResult } from '../types/Board'
 import { DatabaseUser } from '../types/User'
 
 interface BoardQueryResult extends QueryResult {
@@ -11,13 +11,9 @@ interface OwnerUserQueryResult extends QueryResult {
     rows: DatabaseUser[]
 }
 
-interface CollaboratorUsersQueryResult extends QueryResult {
-    rows: DatabaseUser[]
-}
-
 export async function findBoards(userId: number, byId?: number) {
     try {
-        const POSTGRES_QUERY = `SELECT * FROM boards WHERE collaborators @> ARRAY[$1]::INTEGER[] ${byId ? 'AND _id = $2' : ''};`
+        const POSTGRES_QUERY = `SELECT * FROM boards WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`
         const POSTGRES_QUERY_PARAMS = byId ? [ userId, byId ] : [userId]
         const { rows: boards }: BoardQueryResult = await database.query(POSTGRES_QUERY, POSTGRES_QUERY_PARAMS)
 
@@ -39,22 +35,54 @@ export async function findBoards(userId: number, byId?: number) {
 
 export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
     const { rows: [ownerUser] }: OwnerUserQueryResult = await database.query(
-        `SELECT _id, full_name, email FROM users WHERE _id = $1`,
+        `SELECT _id, full_name, email FROM users WHERE _id = $1;`,
         [board.owner]
     )
 
-    const { rows: collaboratorUsers }: CollaboratorUsersQueryResult = await database.query(
-        `SELECT _id, full_name, email FROM users WHERE _id = ANY($1)`,
-        [board.collaborators]
-    )
+    let collaboratorUsers: DatabaseUser[] = []
+    if (board.collaborators && board.collaborators.length > 0) {
+        const { rows } = await database.query(
+            `SELECT _id, full_name, email FROM users WHERE _id = ANY($1);`,
+            [`{${board.collaborators.join(', ')}`]
+        )
 
-    // TODO: Add results query
+        collaboratorUsers = rows
+    }
+
+    let boardResults: DatabaseBoardResult[] = []
+    if (board.results && board.results.length > 0) {
+        const { rows } = await database.query(
+            `SELECT _id, result_id, links FROM board_results WHERE _id = ANY($1);`,
+            [`{${board.results.join(', ')}`]
+        )
+
+        boardResults = rows
+    }
+
+    if (boardResults && boardResults.length > 0) {
+        boardResults = await Promise.all(boardResults.map(async boardResult => {
+            if (boardResult.links && boardResult.links.length > 0) {
+                const { rows: boardResultLinks } = await database.query(
+                    `SELECT * FROM links WHERE _id = ANY($1);`,
+                    [`{${boardResult.links.join(', ')}}`]
+                )
+
+                return {
+                    ...boardResult,
+                    links: boardResultLinks || [],
+                }
+            } else {
+                return boardResult
+            }
+        }))
+    }
 
     return {
         board: {
             ...board,
-            ...(ownerUser && ({ _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name })),
-            ...(collaboratorUsers && collaboratorUsers.length > 0 && (collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })))),
+            ...(ownerUser ? ({ owner: { _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name } }) : {}),
+            ...((collaboratorUsers && collaboratorUsers.length > 0) ? ({ collaborators: collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })) }) : {}),
+            ...((boardResults && boardResults.length > 0) ? ({ results: boardResults }) : {}),
         },
     }
 }
@@ -64,9 +92,10 @@ interface CreateBoardOptions {
     name: string
     collaborators?: number[]
     result?: number
+    iconName?: string
 }
 
-export async function createBoard({ createdByUserId, name, result, collaborators }: CreateBoardOptions) {
+export async function createBoard({ createdByUserId, name, result, collaborators, iconName }: CreateBoardOptions) {
     let boardResultQueryData
 
     try {
@@ -83,8 +112,8 @@ export async function createBoard({ createdByUserId, name, result, collaborators
 
     try {
         const { rows: [board] } = await database.query(
-            `INSERT INTO boards (name, owner, results, collaborators) VALUES ($1, $2, $3, $4) RETURNING _id;`,
-            [ name, createdByUserId, (boardResultQueryData && boardResultQueryData.rows && boardResultQueryData.rows[0]) || null, (collaborators && `{${collaborators.join(', ')}}`) || null ]
+            `INSERT INTO boards (name, owner, results, collaborators, icon_name) VALUES ($1, $2, $3, $4, $5) RETURNING _id;`,
+            [ name, createdByUserId, (boardResultQueryData && boardResultQueryData.rows && boardResultQueryData.rows[0]) || null, (collaborators && `{${collaborators.join(', ')}}`) || null, iconName || null ]
         )
 
         if (board) {
@@ -96,5 +125,56 @@ export async function createBoard({ createdByUserId, name, result, collaborators
     } catch (error) {
         console.error('Inserting a new board into the boards table failed.')
         throw new Error('Inserting a new board into the boards table failed.')
+    }
+}
+
+export interface EditBoardOptions {
+    id: number
+    name?: string
+    iconName?: string
+    userId: number
+}
+
+interface EditBoardQueryResponse {
+    rows: {
+        _id: number
+    }[]
+}
+
+export async function editBoard({ id, name, iconName, userId }: EditBoardOptions) {
+    if (isNaN(id) || (!iconName && !name) || isNaN(userId)) {
+        throw new Error('Make sure to pass all the required parameters to the editBoard function.')
+    }
+
+    const boardsQuerySets: string[] = []
+    const boardsQueryData: any[] = [ id, userId ]
+
+    if (iconName) {
+        boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 3}`)
+        boardsQueryData.push(iconName)
+    }
+
+    if (name) {
+        boardsQuerySets.push(`name = $${boardsQuerySets.length + 3}`)
+        boardsQueryData.push(name)
+    }
+
+    try {
+        const { rows: [board] }: EditBoardQueryResponse = await database.query(
+            `UPDATE boards
+                SET ${boardsQuerySets.join(', ')}
+            WHERE _id = $1 AND (collaborators @> ARRAY[$2]::INTEGER[] OR owner = $2)
+            RETURNING _id;`,
+            boardsQueryData
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error(`We could not find the board that you updated for some reason.`)
+        }
+    } catch (error) {
+        console.error('Updating a boards table failed.')
+        throw new Error('Updating a boards table failed.')
     }
 }

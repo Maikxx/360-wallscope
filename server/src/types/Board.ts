@@ -3,7 +3,24 @@ export interface DatabaseBoard {
     name: string
     collaborators: number[] | null
     owner: number | null
+    icon_name: string | null
     results: number[] | null
+    created_at: Date
+}
+
+export type BoardResultLinkType = 'no-link' | 'definate' | 'possible'
+
+export interface BoardResultLink {
+    _id: number
+    type: BoardResultLinkType
+    destination_board_result_id: number
+    origin_board_result_id: number
+}
+
+export interface DatabaseBoardResult {
+    _id: number
+    result_id: number
+    links: BoardResultLink[] | null
     created_at: Date
 }
 
