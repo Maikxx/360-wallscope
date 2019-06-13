@@ -1,8 +1,8 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { DatabaseUser } from '../types/User'
-import { createUser } from '../orm/users/createUser'
+import { DatabaseUser } from '../../types/User'
+import { createUser } from '../../orm/users/createUser'
 
 interface SignUpRequestBody {
     email?: string
@@ -31,9 +31,7 @@ export async function onSignup(request: express.Request, response: express.Respo
             const hashedPassword = await bcrypt.hash(password, saltRounds)
 
             if (!hashedPassword) {
-                return response.status(500).json({
-                    error: 'Something went wrong, please try again',
-                })
+                throw new Error('A wild error occurred while creating your account!')
             }
 
             const user: DatabaseUser = await createUser({ email, password: hashedPassword, fullName })
@@ -44,7 +42,7 @@ export async function onSignup(request: express.Request, response: express.Respo
                     expiresIn: expiresInADay,
                 })
 
-                response.status(200).json({
+                return response.status(200).json({
                     user: {
                         _id: user._id,
                         fullName: user.full_name,
@@ -53,17 +51,17 @@ export async function onSignup(request: express.Request, response: express.Respo
                     accessToken,
                     expiresIn: expiresInADay,
                 })
+            } else {
+                throw new Error('User could not be retreived from the database.')
             }
         } catch (error) {
-            response.status(500).json({
-                error: 'Something went wrong, please try again',
+            return response.status(500).json({
+                error: error.message,
             })
         }
     } else {
-        response.status(409).json({
+        return response.status(409).json({
             error: 'Failed signing you up. Please make sure to provide an email, password and a full name. Also make sure the passwords submitted match.',
         })
     }
-
-    return
 }

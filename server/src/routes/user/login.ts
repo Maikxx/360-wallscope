@@ -1,7 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { getUserByEmail } from '../orm/users/getUserByEmail'
+import { getUserByEmail } from '../../orm/users/getUserByEmail'
 
 interface LoginRequestBody {
     email?: string
@@ -21,17 +21,13 @@ export async function onLogin(request: express.Request, response: express.Respon
             const user = await getUserByEmail(email)
 
             if (!user || !user.password) {
-                return response.status(404).json({
-                    error: 'User not found. Failed to log you in!',
-                })
+                throw new Error('User not found. Failed to log you in!')
             }
 
             const result = await bcrypt.compare(password, user.password)
 
             if (!result) {
-                return response.status(401).json({
-                    error: 'Email and password do not match!',
-                })
+                throw new Error('Email and password do not match!')
             }
 
             const expiresInADay = 24 * 60 * 60
@@ -50,7 +46,7 @@ export async function onLogin(request: express.Request, response: express.Respon
             })
         } catch (error) {
             return response.status(500).json({
-                error: 'Internal server error! Oops...',
+                error: error.message,
             })
         }
     }
