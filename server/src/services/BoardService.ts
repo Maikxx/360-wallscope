@@ -282,3 +282,35 @@ export async function addCollaboratorToBoard({ id, userId, ownerUserId }: AddCol
         throw new Error('Adding a collaborator to boards table failed.')
     }
 }
+
+interface RemoveCollaboratorFromBoardOptions {
+    id: number
+    ownerUserId: number
+    userId: number
+}
+
+export async function removeCollaboratorFromBoard({ id, userId, ownerUserId }: RemoveCollaboratorFromBoardOptions) {
+    if (isNaN(id) || isNaN(userId) || isNaN(ownerUserId)) {
+        throw new Error('Make sure to pass all the required parameters to the removeCollaboratorFromBoard function.')
+    }
+
+    try {
+        const { rows: [board] }: AddCollaboratorToBoardOptionsQueryResponse = await database.query(
+            `UPDATE boards
+                SET collaborators = array_remove(collaborators, $3)
+            WHERE _id = $1 AND owner = $2 AND $3 = ANY(collaborators::INTEGER[])
+            RETURNING _id;`,
+            [ id, userId ]
+        )
+
+        if (board) {
+            return board
+        } else {
+            throw new Error('We had some trouble updating the board you selected!')
+        }
+    } catch (error) {
+        console.log(error.message)
+        console.error('Removing a collaborator from boards table failed.')
+        throw new Error('Removing a collaborator from boards table failed.')
+    }
+}

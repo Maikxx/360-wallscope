@@ -321,3 +321,57 @@ export async function onAddCollaboratorToBoard(request: express.Request, respons
         })
     }
 }
+
+interface RemoveCollaboratorFromBoardRequestBody {
+    id: number
+    userId: number
+}
+
+export async function onRemoveCollaboratorFromBoard(request: express.Request, response: express.Response) {
+    const { id, userId } = request.body as RemoveCollaboratorFromBoardRequestBody
+    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+
+    if (token && !isNaN(id) && !isNaN(userId)) {
+        let decodedToken
+
+        try {
+            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
+        } catch (error) {
+            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
+
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        if (!decodedToken) {
+            return response.status(409).json({
+                error: `You don't seem to be logged in, send a valid token to access this request!`,
+            })
+        }
+
+        try {
+            const board = await addCollaboratorToBoard({ id, userId, ownerUserId: (decodedToken as Token)._id })
+
+            if (board) {
+                return response.status(200).json({
+                    board,
+                })
+            } else {
+                return response.status(500).json({
+                    error: 'Something went wrong updating your board, while removing a collaborator.',
+                })
+            }
+        } catch (error) {
+            console.error(error.message)
+
+            return response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        return response.status(409).json({
+            error: 'Make sure to pass an Authorization header and body: {id, userId} to access this request.',
+        })
+    }
+}
