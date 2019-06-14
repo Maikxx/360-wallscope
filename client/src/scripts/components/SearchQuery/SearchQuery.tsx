@@ -12,6 +12,7 @@ interface Props {
     title?: string
     tags: string[]
     searchWords?: string
+    onChangeSearch: (searchQuestion: string) => void
 }
 
 export class SearchQuery extends React.Component<Props> {
@@ -22,7 +23,7 @@ export class SearchQuery extends React.Component<Props> {
             <div className={this.getClassName()} {...restProps}>
                 <Tags styleOverride={'tag-border-button'} tags={tags}/>
                 <Form action={'/'} className={'Form--search'}>
-                    <TextArea name='search' placeholder={searchWords} />
+                    <TextArea name='search' placeholder={searchWords} onChange={this.onChangeSearch} />
                     <Button
                         className='Button_search'
                         styleOverride='search-button'
@@ -39,5 +40,11 @@ export class SearchQuery extends React.Component<Props> {
         const { className } = this.props
 
         return classnames('SearchQuery', {}, className)
+    }
+
+    private onChangeSearch = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { onChangeSearch } = this.props
+
+        onChangeSearch(event.target.value)
     }
 }

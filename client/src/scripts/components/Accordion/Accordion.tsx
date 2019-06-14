@@ -8,35 +8,52 @@ interface Props {
     title: string
 }
 
-export class Accordion extends React.Component<Props> {
+interface State {
+    isOpen: boolean
+}
+
+export class Accordion extends React.Component<Props, State> {
+    public state: State = {
+        isOpen: false,
+    }
+
+    private accordionItem = React.createRef <HTMLLIElement>()
+
     public render() {
+        const { children, title } = this.props
+
         return (
             <ul className={this.getClassName()}
-            onClick={() => {
-                this.animateCollapse()
-                const list = document.querySelector('.accordion')
-                const arrow = document.querySelector('.arrow')
-                if (list && arrow) {
-                    list.classList.toggle('collapsed')
-                    arrow.classList.toggle('up')
-                }
-            }}
-            > {this.props.title}
-                <li className='accordion-item'>
-                    {this.props.children}
+                onClick={() => {
+                    this.animateCollapse()
+                    this.toggleAccordion()
+                    // const list = document.querySelector('.accordion')
+                    // const arrow = document.querySelector('.arrow')
+                    // if (list && arrow) {
+                    //     list.classList.toggle('collapsed')
+                    //     arrow.classList.toggle('up')
+                    // }
+                }}
+            > {title}
+
+                <li className='AccordionItem' ref={this.accordionItem}>
+                    {children}
                 </li>
-                <div className='arrow'></div>
+                <div className='Arrow'></div>
             </ul>
         )
     }
 
     private getClassName() {
         const { className } = this.props
-        return classnames('collapsed accordion', {}, className)
+        return classnames('Accordion', {
+            'Accordion--colapsed': !this.state.isOpen,
+            'Accordion--up': this.state.isOpen,
+        }, className)
     }
 
     private animateCollapse() {
-        const listItem = document.querySelector('.accordion-item')
+        const listItem = this.accordionItem.current
         if (listItem) {
             if (listItem.clientHeight) {
                 (listItem as HTMLElement).style.height = '0'
@@ -45,6 +62,10 @@ export class Accordion extends React.Component<Props> {
                 (listItem as HTMLElement).style.height = `${listItem.scrollHeight}px`
             }
         }
+    }
+
+    private toggleAccordion = () => {
+        this.setState({ isOpen: !this.state.isOpen })
     }
 
 }

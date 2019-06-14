@@ -7,10 +7,10 @@ type StyleType = 'textarea-search' | 'textarea-text'
 interface Props {
     name: string
     required?: boolean
-    placeholder?: React.HTMLAttributes<HTMLInputElement>['placeholder']
+    placeholder?: React.HTMLAttributes<HTMLTextAreaElement>['placeholder']
     className?: string
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
-    defaultValue?: React.HTMLAttributes<HTMLInputElement>['defaultValue']
+    defaultValue?: React.HTMLAttributes<HTMLTextAreaElement>['defaultValue']
     styleOverride ?: StyleType
     wrap?: string
 }

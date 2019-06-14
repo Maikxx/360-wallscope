@@ -12,7 +12,7 @@ interface Props {
     className?: string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     defaultValue?: React.HTMLAttributes<HTMLInputElement>['defaultValue'] | null
-    styleOverride ?: StyleType
+    styleOverride?: StyleType
 }
 
 export class Input extends React.Component<Props> {

@@ -14,11 +14,13 @@ interface Props extends RouteComponentProps {}
 
 interface State {
     user?: User
+    searchQuestion?: string
 }
 
 export class AppView extends React.Component<Props, State> {
     public state: State = {
         user: undefined,
+        searchQuestion: undefined,
     }
 
     public async componentDidMount() {
@@ -32,7 +34,7 @@ export class AppView extends React.Component<Props, State> {
     public render() {
         const { user } = this.state
 
-        const ExtendedHomeView = (props: RouteComponentProps) => <HomeView user={user} {...props}/>
+        const ExtendedHomeView = (props: RouteComponentProps) => <HomeView onChangeSearch={this.onChangeSearch} user={user} {...props}/>
         const ExtendedCurrentUserView = (props: RouteComponentProps) => <CurrentUserView onChangeUser={this.onChangeUser} {...props}/>
         const ExtendedLogInView = (props: RouteComponentProps) => <LoginView onChangeUser={this.onChangeUser} {...props}/>
         const ExtendedSignUpView = (props: RouteComponentProps) => <SignUpView onChangeUser={this.onChangeUser} {...props}/>
@@ -57,5 +59,9 @@ export class AppView extends React.Component<Props, State> {
 
     private onChangeUser = (user: User) => {
         this.setState({ user })
+    }
+
+    private onChangeSearch = (searchQuestion: string) => {
+        this.setState({ searchQuestion })
     }
 }

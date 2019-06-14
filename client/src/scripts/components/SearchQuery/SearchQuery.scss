@@ -1,5 +1,6 @@
 .SearchQuery {
     @import '../../../sass/colors.scss';
+    margin-bottom: 1rem;
 
     .Form--search {
         position: relative;
@@ -11,6 +12,7 @@
             padding-right: 2rem;
             border-bottom: 2px solid transparent;
             transition: .3s ease border;
+            margin: 0;
 
             &:focus {
                 border-bottom: 2px solid $color-white;
@@ -29,6 +31,7 @@
                 color: $color-white;
             }
         }
+
         .Button_search {
             position: absolute;
             right: .5rem;

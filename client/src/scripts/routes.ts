@@ -4,6 +4,9 @@ export const routes = {
         CurrentUser: {
             index: '/current_user',
         },
+        Results: {
+            index: '/results',
+        },
     },
     Login: {
         index: '/login',
