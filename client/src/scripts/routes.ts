@@ -6,6 +6,7 @@ export const routes = {
         },
         Boards: {
             index: '/boards',
+            detail: '/boards/:id',
         },
         Results: {
             index: '/results',
