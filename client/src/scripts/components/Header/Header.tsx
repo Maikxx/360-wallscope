@@ -5,28 +5,34 @@ import { Icon } from '../Icon/Icon'
 import { Link } from 'react-router-dom'
 
 interface Props {
-    className?: string,
-    back: boolean,
+    className?: string
+    back: boolean
     route?: string
 }
 
 export class Header extends React.Component<Props> {
     public render () {
         const { back, route } = this.props
+
         return (
             <header className={this.getClassName()}>
                 {(back && route) && (
                     <Link to={route}>
-                        <Icon className='back-button' iconName='back' color='#FFFFFF' ></Icon>
+                        <Icon
+                            className={`Header__back-button`}
+                            iconName='back'
+                            color='#FFFFFF'
+                        />
                     </Link>
                 )}
-                <Icon className='header-logo' iconName='header_logo'></Icon>
+                <Icon iconName='header_logo'/>
             </header>
         )
     }
 
     private getClassName() {
         const { className } = this.props
+
         return classnames('Header', {}, className)
     }
 }

@@ -34,7 +34,7 @@ export class Article extends React.Component<Props> {
                     firstButton={'Cancel'}
                     secondButton={'Done'}
                     renderButton={openModal => (
-                        < Button
+                        <Button
                             onClick = { openModal }
                             type='button'
                             styleOverride='round-button'
@@ -43,16 +43,21 @@ export class Article extends React.Component<Props> {
                         />
                     )}
                 >
-                    <Form action={'/'} className={'Form--search'}>
+                    <Form>
                         <Fieldset>
-                            <Label>Create a new board
+                            <Label>
+                                Create a new board
                                 <Input type={'text'} name={'search'} styleOverride={'input-search'} />
                             </Label>
-                            <Button styleOverride={'red-button'} type='button' full>Add</Button>
+                            <Button styleOverride={'red-button'} type='button' full={true}>
+                                Add
+                            </Button>
                         </Fieldset>
                         <Fieldset>
-                            <Label>Add to an existing board</Label>
-                                <Tags tags={boardNames} styleOverride={'tag-red-button'}/>
+                            <Label>
+                                Add to an existing board
+                            </Label>
+                            <Tags tags={boardNames} styleOverride={'tag-red-button'}/>
                         </Fieldset>
                     </Form>
                 </ModalBase>

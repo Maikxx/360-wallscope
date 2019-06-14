@@ -9,9 +9,8 @@ interface Props {
     full?: boolean
     title?: string
     summary?: string
-    boardNames?: string[] | undefined
+    boardNames?: string[]
     identifiers?: any[]
-
 }
 
 export class Articles extends React.Component<Props> {
@@ -20,17 +19,15 @@ export class Articles extends React.Component<Props> {
 
         return (
             <ul className={this.getClassName()}>
-                {identifiers && identifiers.map(id => {
-                    return (
-                        <li key={id}>
-                            <Article
-                                title={title}
-                                summary={summary}
-                                boardNames={boardNames}
-                            />
-                        </li>
-                    )
-                })}
+                {identifiers && identifiers.map(id => (
+                    <li key={id}>
+                        <Article
+                            title={title}
+                            summary={summary}
+                            boardNames={boardNames}
+                        />
+                    </li>
+                ))}
             </ul>
         )
     }

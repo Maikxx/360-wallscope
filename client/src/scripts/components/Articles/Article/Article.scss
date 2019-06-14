@@ -3,8 +3,6 @@
     position: relative;
     border-radius: .5em;
     width: 90%;
-    // min-width: 325px;
-    // max-width: 325px;
     min-height: 150px;
     max-height: 150px;
 
@@ -14,8 +12,6 @@
         padding: 1rem;
         border-radius: .5em;
         width: 100%;
-        // min-width: 325px;
-        // max-width: 325px;
         min-height: 150px;
         max-height: 150px;
         overflow-y: auto;
@@ -33,8 +29,5 @@
         position: absolute;
         top: -10%;
         right:-10%;
-        // top: 0;
-        // right: 0;
     }
-
 }
