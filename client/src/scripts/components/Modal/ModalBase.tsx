@@ -81,10 +81,9 @@ export class ModalBase extends React.Component<Props, State> {
     renderButton={openModal => (
         < Button
             onClick = { openModal }
-            className='Button-red'
-            styleOverride='red-button'
             type='button'
-            iconName='search_big'
+            styleOverride='round-button'
+            iconName='add'
             color='#181631'
         />
     )}

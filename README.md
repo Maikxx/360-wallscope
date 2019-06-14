@@ -11,6 +11,7 @@
 * [Installation](#Installation)
 * [Guidelines](#Guidelines)
 * [Briefings](#Briefings)
+* [Progress](#Progress)
 * [License](#License)
 
 ## Installation
@@ -25,6 +26,7 @@
 * Copy the environment variables: `cp ./.env.example .env`.
 * Start the backend development server with: `yarn start-server` or `npm run start-server`
 * Start the clients development server with: `yarn start-client` or `npm run start-client` in another terminal window.
+* Run tests with `yarn test` or `npm run test`.
 
 You may have perform the following steps if you get errors running the commands above:
 
@@ -43,6 +45,10 @@ The port that now opens is `localhost:9000`.
 1. [Briefing 1](./docs/BRIEFING_1.md)
 2. [Briefing 2](./docs/BRIEFING_2_WALLSCOPE.md)
 3. [Briefing 3](./docs/BRIEFING_3.md)
+
+## Progress
+
+To view our progress, please visit our [GitHub project page](https://github.com/Maikxx/360-wallscope/projects/1).
 
 ## License
 

@@ -4,7 +4,8 @@ import './Icon.scss'
 
 export type IconNames =
     'user' | 'search_big' | 'search_small' | 'pen' | 'settings'|
-    'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv' | 'header_logo'
+    'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv' |
+    'header_logo' | 'close' | 'add'
 
 interface Props {
     className?: string
@@ -135,6 +136,14 @@ export class Icon extends React.Component<Props> {
                             </text>
                         </g>
                     </g>
+                </svg>`,
+            close:
+                `<svg class="Icon__close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 47.971 47.971">
+                    <path fill=${color ? color : '#fff'} d="M28.228 23.986L47.092 5.122c1.172-1.171 1.172-3.071 0-4.242-1.172-1.172-3.07-1.172-4.242 0L23.986 19.744 5.121.88C3.949-.292 2.051-.292.879.88c-1.172 1.171-1.172 3.071 0 4.242l18.865 18.864L.879 42.85c-1.172 1.171-1.172 3.071 0 4.242.586.585 1.354.878 2.121.878s1.535-.293 2.121-.879l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879c1.172-1.171 1.172-3.071 0-4.242L28.228 23.986z"/>
+                </svg>`,
+            add:
+                `<svg class="Icon_add" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 31.444 31.444">
+                    <path fill=${color ? color : '#fff'} d="M1.119 16.841c-.619 0-1.111-.508-1.111-1.127s.492-1.111 1.111-1.111h13.475V1.127C14.595.508 15.103 0 15.722 0c.619 0 1.111.508 1.111 1.127v13.476h13.475c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H16.833v13.476c0 .619-.492 1.127-1.111 1.127s-1.127-.508-1.127-1.127V16.841H1.119z" fill="#1e201d"/>
                 </svg>`,
         }
 
