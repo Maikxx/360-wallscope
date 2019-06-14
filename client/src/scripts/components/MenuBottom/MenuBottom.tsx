@@ -14,15 +14,16 @@ interface Props {
 export class MenuBottom extends React.Component<Props> {
     public render() {
         const { fullName } = this.props
+        const isLoggedIn = fullName ? true : false
 
         return (
             <Navigation className={this.getClassName()}>
                 <NavLink
-                    route={routes.App.index}
+                    route={isLoggedIn ? routes.App.Boards.index : routes.App.index}
                     iconName='boards'
                     color='#CEC7EC'
                 >
-                    Boards
+                    {isLoggedIn ? 'Boards' : 'Home'}
                 </NavLink>
                 <li>
                     <Button
@@ -34,7 +35,7 @@ export class MenuBottom extends React.Component<Props> {
                     />
                 </li>
                 <NavLink
-                    route={fullName ? routes.App.CurrentUser.index : routes.Login.index}
+                    route={isLoggedIn ? routes.App.CurrentUser.index : routes.Login.index}
                     iconName='user'
                     color='#CEC7EC'
                 >

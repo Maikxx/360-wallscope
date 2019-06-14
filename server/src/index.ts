@@ -31,9 +31,9 @@ import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard,
     app.use(cors())
     app.use(compression())
 
-    app.get('/user/:id', onGetUserById) // Authorization Protected
-    app.get('/board/:id', onGetBoardById) // Authorization Protected
-    app.get('/boards', onGetBoards) // Authorization Protected
+    app.get('/get-user/:id', onGetUserById) // Authorization Protected
+    app.get('/get-board/:id', onGetBoardById) // Authorization Protected
+    app.get('/get-boards', onGetBoards) // Authorization Protected
     app.get('*', routeRequest)
 
     app.post('/edit-board', onEditBoard) // Authorization Protected

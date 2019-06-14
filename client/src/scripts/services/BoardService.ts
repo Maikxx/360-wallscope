@@ -12,7 +12,7 @@ export async function getBoardById(id: number) {
         const token = getAuthorizationToken()
 
         if (token) {
-            const url = `${window.location.origin}/board/${id}`
+            const url = `${window.location.origin}/get-board/${id}`
             const data = await fetch(
                 url,
                 {
@@ -53,7 +53,7 @@ export async function getBoardsForCurrentUser() {
         const token = getAuthorizationToken()
 
         if (token) {
-            const url = `${window.location.origin}/boards`
+            const url = `${window.location.origin}/get-boards`
             const data = await fetch(
                 url,
                 {
