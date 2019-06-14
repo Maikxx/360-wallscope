@@ -30,7 +30,7 @@ export class AppView extends React.Component<Props, State> {
     }
 
     public render() {
-        const boards = [
+        const data = [
             {
                 _id: 0,
                 name: 'Research about when it is th best time to go to A&E',
@@ -67,6 +67,12 @@ export class AppView extends React.Component<Props, State> {
                         title: 'Cancer diagnosed by emergency admission in England: an observational study using the general practice research database',
                         short_description: 'Patients diagnosed with cancer by the emergency route often have more advanced diseases and poorer outcomes. Rates of cancer diagnosed through unplanned admissions vary within and between countries, suggesting potential inconsistencies in the quality of care. To reduce diagnoses by this route and improve patient outcomes, high risk patient groups must be identified. This cross-sectional observational study determined the incidence of first-ever diagnoses of cancer by emergency (unplanned) admission and identified patient-level risk factors for these diagnoses in England.',
                         url: 'https://bmchealthservres.biomedcentral.com/articles/10.1186/1472-6963-13-308',
+                    },
+                    {
+                        title: 'Effect of social deprivation on the admission rate and outcomes of adult respiratory emergency admissions',
+                        short_description: 'Background: Patients with respiratory disorders constitute a major source of activity for Acute Medicine. We have examined the impact of Socio-Economic Status (SES) and weather factors on the outcomes (30-day in-hospital mortality) of emergency hospitalisations with a respiratory presentation.',
+                        url: 'https://www.researchgate.net/publication/312476720_Effect_of_social_deprivation_on_the_admission_rate_and_outcomes_of_adult_respiratory_emergency_admissions',
+                        dataFile: 'https://www.researchgate.net/publication/312476720_Effect_of_social_deprivation_on_the_admission_rate_and_outcomes_of_adult_respiratory_emergency_admissions/download',
                     },
                 ],
             },
