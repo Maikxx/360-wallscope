@@ -17,17 +17,12 @@ interface Props {
 
 export class TextArea extends React.Component<Props> {
     public render() {
-        const { wrap, name, required, placeholder, defaultValue, styleOverride, onChange, ...restProps } = this.props
+        const { wrap, name, className, styleOverride, ...restProps } = this.props
 
         return (
             <textarea
-                defaultValue={defaultValue}
-                name={name}
                 id={name}
-                onChange={onChange}
                 className={this.getClassName()}
-                placeholder={placeholder}
-                required={required}
                 wrap={wrap}
                 {...restProps}
             >

@@ -1,15 +1,15 @@
 .SearchQuery {
     @import '../../../sass/colors.scss';
+    
     margin-bottom: 1rem;
 
-    .Form--search {
+    .SearchQuery__form {
         position: relative;
-        > * {
-            margin: 1rem auto;
-        }
-        .TextArea {
+
+        .SearchQuery__input {
             font-size: 1.25rem;
             padding-right: 2rem;
+            margin: 1rem auto;
             border-bottom: 2px solid transparent;
             transition: .3s ease border;
             margin: 0;
@@ -19,7 +19,7 @@
                 outline: transparent;
             }
 
-            &:focus + .Button_search .Link__icon .Icon__search_small {
+            &:focus + .SearchQuery__button .Link__icon .Icon__search_small {
                 bottom: 1.5rem;
                 transform: scale(1.5);
             }
@@ -32,8 +32,9 @@
             }
         }
 
-        .Button_search {
+        .SearchQuery__button {
             position: absolute;
+            margin: 1rem auto;
             right: .5rem;
             bottom: .5rem;
             fill: $color-white;

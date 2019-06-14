@@ -16,27 +16,26 @@ interface Props {
     user?: User
 }
 
-interface State {}
-
-export class HomeView extends React.Component<Props, State> {
+export class HomeView extends React.Component<Props> {
     public render() {
-        const { user, onChangeSearch } = this.props
+        const { user } = this.props
 
         return (
             <View>
                 <Header back={false}></Header>
                 <HomeIntroduction />
-                <Search
-                    onChangeSearch={onChangeSearch}
-                    onSearch={this.onSearch}
-                />
+                <Search onSearch={this.onSearch}/>
                 <MenuBottom fullName={user && user.fullName}/>
             </View >
         )
     }
 
-    private onSearch = () => {
-        const { history } = this.props
+    private onSearch = (value: string) => {
+        const { history, onChangeSearch } = this.props
+
+        if (onChangeSearch) {
+            onChangeSearch(value)
+        }
 
         history.push(routes.App.Results.index)
     }

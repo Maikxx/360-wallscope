@@ -11,14 +11,13 @@ import { MenuBottom } from '../../../components/MenuBottom/MenuBottom'
 import { RouteComponentProps } from 'react-router'
 
 interface Props extends RouteComponentProps {
-    onChangeSearch: (searchQuestion: string) => void
     user?: User
     searchQuestion?: string
 }
 
 export class ResultsView extends React.Component<Props> {
     public render() {
-        const { user, searchQuestion, onChangeSearch } = this.props
+        const { user, searchQuestion } = this.props
 
         const boardNames = new Array('Antibiotics', 'Schoolpaper', 'Hospitals', 'Antibiotics', 'Schoolpaper', 'Hospitals')
         const tags = new Array('Location', 'A&E', 'Time')
@@ -29,7 +28,6 @@ export class ResultsView extends React.Component<Props> {
                 <SearchQuery
                     searchWords={searchQuestion}
                     tags={tags}
-                    onChangeSearch={onChangeSearch}
                 />
 
                 <Accordion title='Articles'>

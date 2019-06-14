@@ -11,13 +11,15 @@ interface Props {
     placeholder?: React.HTMLAttributes<HTMLInputElement>['placeholder']
     className?: string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void
     defaultValue?: React.HTMLAttributes<HTMLInputElement>['defaultValue'] | null
     styleOverride?: StyleType
+    value?: string
 }
 
 export class Input extends React.Component<Props> {
     public render() {
-        const { type, name, required, placeholder, defaultValue, styleOverride, onChange, ...restProps } = this.props
+        const { type, name, required, placeholder, defaultValue, className, styleOverride, onChange, ...restProps } = this.props
 
         return (
             <input

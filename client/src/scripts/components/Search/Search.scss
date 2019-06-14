@@ -1,33 +1,36 @@
-.Form--search {
+.SearchForm {
     margin: auto;
-    // max-width: 75%;
 
-    div {
+    &__wrapper {
         position: relative;
-        > * {
-            margin: 1rem auto;
-        }
-        .Input {
+
+        .SearchForm__input {
             font-size: 1.25rem;
+            margin: 1rem auto;
             padding-right: 2rem;
-            &:focus + .Icon {
+
+            &:focus + .SearchForm__search-icon {
                 bottom: 1rem;
                 transform: scale(1.5);
             }
         }
-        .Icon--search {
+
+        .SearchForm__search-icon {
             position: absolute;
             right: .5rem;
+            margin: 1rem auto;
             bottom: .75rem;
             fill: #fff;
             display: block;
             transition: .3s ease all;
+            
             svg {
                 height: 1rem;
                 width: 1rem;
             }
         }
     }
+
     .Button {
         margin: 1.5rem auto;
     }

@@ -7,41 +7,40 @@ import './Search.scss'
 
 interface Props {
     placeholder?: string
-    onChangeSearch: (searchQuestion: string) => void
-    onSearch: () => void
+    onSearch: (value: string) => void
 }
 
-interface State {}
-
-export class Search extends React.Component<Props, State> {
+export class Search extends React.Component<Props> {
     public render() {
         const { placeholder } = this.props
+
         return (
-            <Form onSubmit={this.onSearch} className={'Form--search'}>
-                <div>
+            <Form onSubmit={this.onSearch} className={'SearchForm'}>
+                <div className={`SearchForm__wrapper`}>
                     <Input
                         type={'text'}
+                        className={`SearchForm__input`}
                         name={'search'}
-                        onChange={this.onChangeSearch}
                         placeholder={placeholder}
                         styleOverride={'input-search'}
                     />
-                    <Icon className={'Icon--search'} iconName={'search_small'} />
+                    <Icon className={'SearchForm__search-icon'} iconName={'search_small'} />
                 </div>
-                <Button styleOverride={'red-button'} type='submit' full>Start Searching</Button>
+                <Button styleOverride={'red-button'} type='submit' full={true}>
+                    Start Searching
+                </Button>
             </Form>
         )
     }
 
-    private onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { onChangeSearch } = this.props
-
-        onChangeSearch(event.target.value)
-    }
-
     private onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         const { onSearch } = this.props
 
-        onSearch()
+        const inputElement = document.querySelector('.SearchForm__input')
+
+        if (inputElement) {
+            onSearch((inputElement as HTMLInputElement).value)
+        }
     }
 }
