@@ -5,13 +5,18 @@ import { HomeIntroduction } from '../../components/HomeIntroduction/HomeIntroduc
 import { MenuBottom } from '../../components/MenuBottom/MenuBottom'
 import { User } from '../../types/User'
 import { Header } from '../../components/Header/Header'
+import { RouteComponentProps } from 'react-router'
+import { routes } from '../../routes'
+
+interface Props extends RouteComponentProps {
+    onChangeSearch: (searchQuestion: string) => void
+}
 
 interface Props {
     user?: User
 }
-interface State {}
 
-export class HomeView extends React.Component<Props, State> {
+export class HomeView extends React.Component<Props> {
     public render() {
         const { user } = this.props
 
@@ -19,9 +24,19 @@ export class HomeView extends React.Component<Props, State> {
             <View>
                 <Header back={false}></Header>
                 <HomeIntroduction />
-                <Search />
+                <Search onSearch={this.onSearch}/>
                 <MenuBottom fullName={user && user.fullName}/>
-            </View>
+            </View >
         )
+    }
+
+    private onSearch = (value: string) => {
+        const { history, onChangeSearch } = this.props
+
+        if (onChangeSearch) {
+            onChangeSearch(value)
+        }
+
+        history.push(routes.App.Results.index)
     }
 }

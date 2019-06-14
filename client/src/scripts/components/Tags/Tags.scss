@@ -6,7 +6,15 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
-    margin: 1em 0;
+    margin: .5em 0;
+
+    li .Button--tag-border {
+        margin-bottom: 0;
+    }
+
+    li {
+        margin-bottom: 0;
+    }
 
     li .Button{
         margin-right: 1em;

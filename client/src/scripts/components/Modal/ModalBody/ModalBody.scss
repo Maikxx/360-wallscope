@@ -1,12 +1,9 @@
 .ModalBody {
     @import '../../../../sass/colors.scss';
 
-    // margin: 0 auto;
-    // width: 40%; 
-    // text-align: center;
     overflow-y: auto;
 
-    .Form--search {
+    .Form {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -15,14 +12,14 @@
 
     .Fieldset {
         margin: 0 2em;
-        padding-bottom:0
+        padding-bottom: 0;
     }
 
-    .Tags li:last-child .Button {
-        margin-right: 0;
-    }
-
-    .Tags li .Button {
+    .Tags li {
         margin-bottom: .25rem;
+
+        &:last-child .Button {
+            margin-right: 0;
+        }
     }
 }

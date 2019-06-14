@@ -7,6 +7,9 @@ export const routes = {
         Boards: {
             index: '/boards',
         },
+        Results: {
+            index: '/results',
+        },
     },
     Login: {
         index: '/login',
