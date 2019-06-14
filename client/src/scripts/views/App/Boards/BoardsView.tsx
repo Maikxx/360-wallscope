@@ -5,7 +5,7 @@ import { PageTitle } from '../../../components/PageTitle/PageTitle'
 import { Header } from '../../../components/Header/Header'
 import { MenuBottom } from '../../../components/MenuBottom/MenuBottom'
 import { User } from '../../../types/User'
-import { routes } from '../../../routes'
+import { Boards } from '../../../components/Boards/Boards'
 
 interface Props extends RouteComponentProps {
     user?: User
@@ -17,7 +17,7 @@ export class BoardsView extends React.Component<Props> {
         const data = [
             {
                 _id: 0,
-                name: 'Research about when it is th best time to go to A&E',
+                name: 'Research about when it is the best time to go to A&E',
                 icon_name: 'research',
                 results: [
                     {
@@ -61,10 +61,8 @@ export class BoardsView extends React.Component<Props> {
                 ],
             },
         ]
-        console.log(data)
 
         if (!user) {
-            this.props.history.push(routes.App.index)
             return null
         }
 
@@ -72,6 +70,7 @@ export class BoardsView extends React.Component<Props> {
             <View>
                 <Header back={false}/>
                 <PageTitle>Boards</PageTitle>
+                <Boards boards={data} />
                 <MenuBottom fullName={user.fullName}/>
             </View>
         )
