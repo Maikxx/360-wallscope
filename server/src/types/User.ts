@@ -1,3 +1,5 @@
+export type DatabaseUserKeys = '_id' | 'email' | 'password' | 'full_name' | 'created_at'
+
 export interface DatabaseUser {
     _id: number
     email: string | null
