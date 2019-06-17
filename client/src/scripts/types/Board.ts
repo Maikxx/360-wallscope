@@ -21,7 +21,7 @@ export interface BoardResultLink {
 
 export interface BoardResult {
     _id: number
-    result_id: number
+    result: number
     links: BoardResultLink[] | null
     created_at: Date
 }

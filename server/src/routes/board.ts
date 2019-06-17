@@ -132,7 +132,7 @@ interface RemoveBoardRequestBody {
     id: number
 }
 
-export async function onRemoveBoard (request: express.Request, response: express.Response) {
+export async function onRemoveBoard(request: express.Request, response: express.Response) {
     const { id } = request.body as RemoveBoardRequestBody
 
     if (!isNaN(Number(id))) {
