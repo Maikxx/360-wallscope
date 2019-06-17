@@ -7,10 +7,32 @@
     width: 100%;
     min-height: 5rem;
     cursor: pointer;
+    transition: 1s;
+    transform-origin: bottom;
 
     > a {
         display: block;
         text-decoration: none;
         padding: 1rem;
     }
+
+    h2 {
+        font-size: 1.2em;
+    }
+}
+.Board:hover {
+    transform: rotate3d(1,0,0, 90deg);
+}
+
+.back-board {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background:#413c5b;
+    z-index: -1;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
