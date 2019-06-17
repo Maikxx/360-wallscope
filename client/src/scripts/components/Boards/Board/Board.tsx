@@ -17,20 +17,18 @@ export class Board extends React.Component<Props> {
         const { color, board, articles, data } = this.props
 
         return (
-            <React.Fragment>
-            <div className='back-board'>
-                <span>Articles:{articles}</span>
-                <span>Data:{data}</span>
-            </div>
-            <article className={this.getClassName()}>
-                <Link to={`/boards/${board._id}`}>
+            <Link to={`/boards/${board._id}`}>
+                <div className='back-board'>
+                    <span>Articles:{articles}</span>
+                    <span>Data:{data}</span>
+                </div>
+                <article className={this.getClassName()}>
                     {board.icon_name &&
                         <Icon iconName={board.icon_name} color={color} />
                     }
                     <h2 className={`Board__title`}>{board.name}</h2>
-                </Link>
-            </article>
-            </React.Fragment>
+                </article>
+            </Link>
         )
     }
 

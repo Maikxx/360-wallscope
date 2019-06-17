@@ -1,3 +1,8 @@
+a {
+    display: block;
+    text-decoration: none;
+}
+
 .Board {
     @import '../../../../sass/colors.scss';
 
@@ -10,14 +15,9 @@
     transition: 1s;
     transform-origin: bottom;
 
-    > a {
-        display: block;
-        text-decoration: none;
-        padding: 1rem;
-    }
-
     h2 {
         font-size: 1.2em;
+        padding: 8px;
     }
 }
 .Board:hover {
