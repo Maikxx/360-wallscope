@@ -3,6 +3,10 @@ a {
     text-decoration: none;
 }
 
+a:hover .Board {
+    transform: rotate3d(1,0,0, 90deg);   
+}
+
 .Board {
     @import '../../../../sass/colors.scss';
 
@@ -19,9 +23,6 @@ a {
         font-size: 1.2em;
         padding: 8px;
     }
-}
-.Board:hover {
-    transform: rotate3d(1,0,0, 90deg);
 }
 
 .back-board {
