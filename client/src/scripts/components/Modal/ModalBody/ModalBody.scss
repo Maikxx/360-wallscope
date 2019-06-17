@@ -15,6 +15,24 @@
         padding-bottom: 0;
     }
 
+    .Button {
+        &--red {
+            background-color: $color-red-3;
+
+            &::after{
+                background: darken($color-red-3, 5%);
+            }
+
+            &:hover{
+                background-color: lighten($color-red-3, 8%)
+            }
+    
+            &:hover::after {
+                background: lighten($color-red-3, 8%);
+            }
+        }
+    }
+
     .Tags li {
         margin-bottom: .25rem;
 
