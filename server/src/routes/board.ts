@@ -6,6 +6,7 @@ import { removeBoard } from '../orm/boards/removeBoard'
 import { removeCollaboratorFromBoard } from '../orm/boards/removeCollaboratorFromBoard'
 import { addCollaboratorToBoard } from '../orm/boards/addCollaboratorToBoard'
 import { getAuthTokenFromRequest } from '../services/auth'
+import { addResultToBoard } from '../orm/boards/addResultToBoard'
 
 export async function onGetBoards(request: express.Request, response: express.Response) {
     try {
@@ -210,6 +211,38 @@ export async function onRemoveCollaboratorFromBoard(request: express.Request, re
                 })
             } else {
                 throw new Error('Something went wrong updating your board, while removing a collaborator.')
+            }
+        } catch (error) {
+            response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
+        })
+    }
+}
+
+interface AddResultToBoardRequestBody {
+    board_id: number
+    result_id: number
+}
+
+export async function onAddResultToBoard(request: express.Request, response: express.Response) {
+    const { board_id, result_id } = request.body as AddResultToBoardRequestBody
+
+    if (!isNaN(Number(board_id)) && !isNaN(Number(result_id))) {
+        try {
+            const token = getAuthTokenFromRequest(request)
+            const board = await addResultToBoard({ board_id, result_id, user_id: token._id })
+
+            if (board) {
+                response.status(200).json({
+                    board,
+                })
+            } else {
+                throw new Error('Something went wrong adding a result to your board.')
             }
         } catch (error) {
             response.status(500).json({

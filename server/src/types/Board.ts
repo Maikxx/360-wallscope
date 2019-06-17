@@ -1,3 +1,5 @@
+import { QueryResult } from 'pg'
+
 export interface DatabaseBoard {
     _id: number
     name: string
@@ -26,4 +28,10 @@ export interface DatabaseBoardResult {
 
 export interface CreatedDatabaseBoard {
     _id: number
+}
+
+export interface UpdateBoardQueryResponse extends QueryResult {
+    rows: {
+        _id: number
+    }[]
 }

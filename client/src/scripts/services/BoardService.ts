@@ -307,3 +307,48 @@ export async function removeCollaboratorFromBoard({ id, collaboratorId }: Remove
         return null
     }
 }
+
+interface AddResultToBoardParams {
+    board_id: number
+    result_id: number
+}
+
+interface AddResultToBoardResponse {
+    error?: string
+    board?: {
+        _id: number
+    }
+}
+
+export async function addResultToBoard({ board_id, result_id }: AddResultToBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/add-Result-to-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ board_id, result_id }),
+                }
+            )
+
+            const { board, error }: AddResultToBoardResponse = await data.json()
+
+            if (!error && board) {
+                return board
+            } else {
+                toast.error(error)
+                return null
+            }
+        } else {
+            toast.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        toast.error(error.message)
+        return null
+    }
+}
