@@ -56,7 +56,7 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
     let boardResults: DatabaseBoardResult[] = []
     if (board.results && board.results.length > 0) {
         const { rows } = await database.query(
-            `SELECT _id, result_id, links FROM board_results WHERE _id = ANY($1);`,
+            `SELECT _id, result, links FROM board_results WHERE _id = ANY($1);`,
             [convertToPostgreSQLArray(board.results)]
         )
 

@@ -58,11 +58,23 @@ export async function setupDatabase() {
             CREATE TABLE IF NOT EXISTS board_results
             (
                 _id SERIAL PRIMARY KEY,
+                result INTEGER REFERENCES results._id NOT NULL,
                 links INTEGER[]
             );
 
             ALTER TABLE board_results DROP COLUMN IF EXISTS result_id;
             DROP TABLE IF EXISTS results;
+
+            CREATE TABLE IF NOT EXISTS results
+            (
+                _id SERIAL PRIMARY KEY,
+                title TEXT,
+                data_url TEXT,
+                summary TEXT,
+                content TEXT,
+                created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+            );
+
             ALTER TABLE board_results ADD COLUMN IF NOT EXISTS created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
             CREATE TABLE IF NOT EXISTS links
