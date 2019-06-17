@@ -2,6 +2,11 @@
     position: relative;
     border-bottom: 1px solid;
     padding-bottom: 1rem;
+    margin-top: 1rem;
+
+    h2 {
+        font-weight: 900;
+    }
 
     li {
         transition: height 0.5s ease-out;
