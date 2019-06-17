@@ -85,7 +85,7 @@ export class CurrentUserView extends React.Component<Props, State> {
                         <Button styleOverride='red-button' type='button' onClick={() => this.props.history.push(routes.App.index)}>
                             Cancel
                         </Button>
-                        <Button styleOverride='blue-button' type='button' onClick={() => this.onLogOut}>
+                        <Button styleOverride='blue-button' type='button' onClick={this.onLogOut}>
                             Log out
                         </Button>
                     </Form>
