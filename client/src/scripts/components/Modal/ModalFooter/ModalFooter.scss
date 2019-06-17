@@ -1,7 +1,7 @@
 .ModalFooter {
     @import '../../../../sass/colors.scss';
 
-    background-color:$color-purple-2;
+    background-color:$color-purple-6;
     padding: 1em 2em;
     border-bottom-left-radius: .5em;
     border-bottom-right-radius: .5em;
@@ -11,18 +11,18 @@
 
     .firstButton {
         margin-right: 1em;
-        background-color: $color-red-3;
+        background-color: $color-red-1;
 
         &::after{
-            background: darken($color-red-3, 5%);
+            background: darken($color-red-1, 5%);
         }
 
         &:hover{
-            background-color: lighten($color-red-3, 8%)
+            background-color: darken($color-red-1, 8%)
         }
     
         &:hover::after {
-            background: lighten($color-red-3, 8%);
+            background: darken($color-red-1, 8%);
         }
         
     }
