@@ -68,7 +68,7 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
                 links._id,
                 links.type,
                 links.destination_board_result_id,
-                links.origin_board_result_id,
+                links.origin_board_result_id
             FROM board_results
             LEFT JOIN results
             ON results._id = board_results.result
