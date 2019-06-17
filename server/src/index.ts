@@ -13,6 +13,7 @@ import { onSignup } from './routes/user/signup'
 import { onGetUserById, onEditUser } from './routes/user'
 import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard, onAddCollaboratorToBoard, onRemoveCollaboratorFromBoard, onAddResultToBoard, onRemoveResultFromBoard } from './routes/board'
 import { onCreateResult } from './routes/results'
+import { onRemoveLinkFromBoardResult } from './routes/link'
 
 (async () => {
     const app = express()
@@ -44,6 +45,7 @@ import { onCreateResult } from './routes/results'
     app.post('/edit-board', onEditBoard) // Authorization Protected
     app.post('/remove-board', onRemoveBoard) // Authorization Protected
     app.post('/remove-collaborator-from-board', onRemoveCollaboratorFromBoard) // Authorization Protected
+    app.post('/remove-link-from-board-result', onRemoveLinkFromBoardResult) // Authorization Protected
     app.post('/remove-result-from-board', onRemoveResultFromBoard) // Authorization Protected
     app.post('/user/:id', onEditUser) // Authorization Protected
     app.post('/login', onLogin)
