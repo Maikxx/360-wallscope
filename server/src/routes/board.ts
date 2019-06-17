@@ -17,7 +17,9 @@ export async function onGetBoards(request: express.Request, response: express.Re
                 boards,
             })
         } else {
-            throw new Error('This user probably has got no boards attached to him or her.')
+            response.status(200).json({
+                boards: [],
+            })
         }
     } catch (error) {
         response.status(500).json({
@@ -44,7 +46,9 @@ export async function onGetBoardById(request: express.Request, response: express
                     board,
                 })
             } else {
-                throw new Error('The requested board could not be found!')
+                response.status(200).json({
+                    board: null,
+                })
             }
         } catch (error) {
             response.status(500).json({
