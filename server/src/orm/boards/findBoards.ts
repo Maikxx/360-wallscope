@@ -81,24 +81,6 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
         boardResults = rows
     }
 
-    // if (boardResults && boardResults.length > 0) {
-    //     boardResults = await Promise.all(boardResults.map(async boardResult => {
-    //         if (boardResult.links && boardResult.links.length > 0) {
-    //             const { rows: boardResultLinks } = await database.query(
-    //                 `SELECT * FROM links WHERE _id = ANY($1);`,
-    //                 [convertToPostgreSQLArray(boardResult.links)]
-    //             )
-
-    //             return {
-    //                 ...boardResult,
-    //                 links: boardResultLinks || [],
-    //             }
-    //         } else {
-    //             return boardResult
-    //         }
-    //     }))
-    // }
-
     return {
         ...board,
         ...(ownerUser ? ({ owner: { _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name } }) : { owner: null }),
