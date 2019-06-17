@@ -269,9 +269,7 @@ interface RemoveCollaboratorFromBoardParams {
 }
 
 interface RemoveCollaboratorFromBoardResponse {
-    board?: {
-        _id: number
-    }
+    success?: boolean
     error?: string
 }
 
@@ -290,10 +288,10 @@ export async function removeCollaboratorFromBoard({ id, collaboratorId }: Remove
                 }
             )
 
-            const { board, error }: RemoveCollaboratorFromBoardResponse = await data.json()
+            const { success, error }: RemoveCollaboratorFromBoardResponse = await data.json()
 
-            if (!error && board) {
-                return board
+            if (!error && success) {
+                return success
             } else {
                 toast.error(error)
                 return null
@@ -323,7 +321,7 @@ interface AddResultToBoardResponse {
 export async function addResultToBoard({ board_id, result_id }: AddResultToBoardParams) {
     try {
         const token = getAuthorizationToken()
-        const url = `${window.location.origin}/add-Result-to-board`
+        const url = `${window.location.origin}/add-result-to-board`
 
         if (token) {
             const data = await fetch(
@@ -339,6 +337,49 @@ export async function addResultToBoard({ board_id, result_id }: AddResultToBoard
 
             if (!error && board) {
                 return board
+            } else {
+                toast.error(error)
+                return null
+            }
+        } else {
+            toast.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        toast.error(error.message)
+        return null
+    }
+}
+
+interface RemoveResultFromBoardParams {
+    board_id: number
+    board_result_id: number
+}
+
+interface RemoveResultFromBoardResponse {
+    success?: boolean
+    error?: string
+}
+
+export async function removeResultFromBoard({ board_id, board_result_id }: RemoveResultFromBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/remove-result-from-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ board_id, board_result_id }),
+                }
+            )
+
+            const { success, error }: RemoveResultFromBoardResponse = await data.json()
+
+            if (!error && success) {
+                return success
             } else {
                 toast.error(error)
                 return null

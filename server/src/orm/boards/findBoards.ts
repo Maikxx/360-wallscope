@@ -13,12 +13,13 @@ interface OwnerUserQueryResult extends QueryResult {
     rows: DatabaseUser[]
 }
 
-export async function getBoards(userId: number, byId?: number) {
+// tslint:disable-next-line:variable-name
+export async function getBoards(user_id: number, byId?: number) {
     try {
         const { rows: boards }: BoardQueryResult = await database.query(
             `SELECT * FROM boards
             WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`,
-            byId ? [ userId, byId ] : [userId]
+            byId ? [ user_id, byId ] : [user_id]
         )
 
         if (typeof byId !== undefined && !isNaN(Number(byId))) {

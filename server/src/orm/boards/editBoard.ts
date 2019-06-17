@@ -5,7 +5,7 @@ export interface EditBoardOptions {
     id: number
     name?: string
     iconName?: string
-    userId: number
+    user_id: number
 }
 
 interface EditBoardQueryResponse extends QueryResult {
@@ -14,9 +14,9 @@ interface EditBoardQueryResponse extends QueryResult {
     }[]
 }
 
-export async function editBoard({ id, name, iconName, userId }: EditBoardOptions) {
+export async function editBoard({ id, name, iconName, user_id }: EditBoardOptions) {
     const boardsQuerySets: string[] = []
-    const boardsQueryData: any[] = [ id, userId ]
+    const boardsQueryData: any[] = [ id, user_id ]
 
     if (iconName) {
         boardsQuerySets.push(`icon_name = $${boardsQuerySets.length + 3}`)
