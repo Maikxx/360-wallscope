@@ -7,23 +7,33 @@ interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     full?: boolean
-    title?: string
-    summary?: string
     boardNames?: string[]
-    identifiers?: any[]
+}
+
+interface ArticleType {
+    _id: number
+    title: string | null
+    short_description: string | null
+    content: string | null
+    url?: string | null
+    dataFile?: string | null
+}
+
+interface Props {
+    className?: string
+    articles?: ArticleType[]
 }
 
 export class Articles extends React.Component<Props> {
     public render() {
-        const { boardNames, title, summary, identifiers } = this.props
+        const { boardNames, articles } = this.props
 
         return (
             <ul className={this.getClassName()}>
-                {identifiers && identifiers.map(id => (
-                    <li key={id}>
+                {articles && articles.map(article => (
+                    <li key={article._id}>
                         <Article
-                            title={title}
-                            summary={summary}
+                            article={article}
                             boardNames={boardNames}
                         />
                     </li>
