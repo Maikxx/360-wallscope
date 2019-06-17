@@ -6,22 +6,41 @@ import { Icon } from '../Icon/Icon'
 import './Search.scss'
 
 interface Props {
-    placeholder ?: string,
+    placeholder?: string
+    onSearch: (value: string) => void
 }
 
-interface State {}
-
-export class Search extends React.Component<Props, State> {
+export class Search extends React.Component<Props> {
     public render() {
         const { placeholder } = this.props
+
         return (
-            <Form action={'/'} className={'Form--search'}>
-                <div>
-                    <Input type={'text'} name={'search'} placeholder={placeholder} styleOverride={'input-search'} />
-                    <Icon className={'Icon--search'} iconName={'search_small'} />
+            <Form onSubmit={this.onSearch} className={'SearchForm'}>
+                <div className={`SearchForm__wrapper`}>
+                    <Input
+                        type={'text'}
+                        className={`SearchForm__input`}
+                        name={'search'}
+                        placeholder={placeholder}
+                        styleOverride={'input-search'}
+                    />
+                    <Icon className={'SearchForm__search-icon'} iconName={'search_small'} />
                 </div>
-                <Button styleOverride={'red-button'} type='button' full>Start Searching</Button>
+                <Button styleOverride={'red-button'} type='submit' full={true}>
+                    Start Searching
+                </Button>
             </Form>
         )
+    }
+
+    private onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        const { onSearch } = this.props
+
+        const inputElement = document.querySelector('.SearchForm__input')
+
+        if (inputElement) {
+            onSearch((inputElement as HTMLInputElement).value)
+        }
     }
 }

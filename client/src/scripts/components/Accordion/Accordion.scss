@@ -1,31 +1,34 @@
-.accordion {
-position: relative;
-border-bottom: 1px solid;
-padding-bottom: 15px;
-}
+.Accordion {
+    position: relative;
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
 
-.accordion li {
-    transition: height 0.5s ease-out;
-    overflow: hidden;
-}
+    li {
+        transition: height 0.5s ease-out;
+        overflow: hidden;
+        overflow-y: auto;
+    }
 
-.collapsed li {
-    height: 0;
-}
+    &--collapsed .AccordionItem {
+        height: 0;
+    }
+    
+    .Arrow {
+        box-sizing: border-box;
+        height: 18px;
+        width: 18px;
+        border-style: solid;
+        border-color: white;
+        border-width: 0px 1px 1px 0px;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: all .3s ease-in;
+    
+    }
 
-.arrow {
-    box-sizing: border-box;
-    height: 18px;
-    width: 18px;
-    border-style: solid;
-    border-color: white;
-    border-width: 0px 1px 1px 0px;
-    transform: rotate(45deg);
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    &.up {
+    &--up .Arrow{
         transform: rotate(225deg);
         top: 10px;
     }

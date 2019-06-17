@@ -9,16 +9,21 @@ import { User } from '../../types/User'
 import { ToastContainer } from 'react-toastify'
 import { CurrentUserView } from './User/CurrentUserView'
 import { getCurrentUser } from '../../services/UserService'
+import { BoardsView } from './Boards/BoardsView'
+import { ResultsView } from './Results/ResultsView'
+import { BoardView, BoardViewRouteParams } from './Boards/BoardView'
 
 interface Props extends RouteComponentProps {}
 
 interface State {
     user?: User
+    searchQuestion?: string
 }
 
 export class AppView extends React.Component<Props, State> {
     public state: State = {
         user: undefined,
+        searchQuestion: undefined,
     }
 
     public async componentDidMount() {
@@ -30,9 +35,12 @@ export class AppView extends React.Component<Props, State> {
     }
 
     public render() {
-        const { user } = this.state
+        const { user, searchQuestion } = this.state
 
-        const ExtendedHomeView = (props: RouteComponentProps) => <HomeView user={user} {...props}/>
+        const ExtendedHomeView = (props: RouteComponentProps) => <HomeView onChangeSearch={this.onChangeSearch} user={user} {...props}/>
+        const ExtendedBoardsView = (props: RouteComponentProps) => <BoardsView user={user} {...props}/>
+        const ExtendedBoardView = (props: RouteComponentProps<BoardViewRouteParams>) => <BoardView user={user} {...props}/>
+        const ExtendedResultsView = (props: RouteComponentProps) => <ResultsView user={user} searchQuestion={searchQuestion} {...props}/>
         const ExtendedCurrentUserView = (props: RouteComponentProps) => <CurrentUserView onChangeUser={this.onChangeUser} {...props}/>
         const ExtendedLogInView = (props: RouteComponentProps) => <LoginView onChangeUser={this.onChangeUser} {...props}/>
         const ExtendedSignUpView = (props: RouteComponentProps) => <SignUpView onChangeUser={this.onChangeUser} {...props}/>
@@ -48,6 +56,9 @@ export class AppView extends React.Component<Props, State> {
                 <Switch>
                     <Route path={routes.App.index} exact={true} component={ExtendedHomeView}/>
                     <Route path={routes.App.CurrentUser.index} exact={true} component={ExtendedCurrentUserView}/>
+                    <Route path={routes.App.Boards.index} exact={true} component={ExtendedBoardsView}/>
+                    <Route path={routes.App.Boards.detail} component={ExtendedBoardView}/>
+                    <Route path={routes.App.Results.index} exact={true} component={ExtendedResultsView}/>
                     <Route path={routes.Login.index} component={ExtendedLogInView}/>
                     <Route path={routes.Signup.index} component={ExtendedSignUpView}/>
                 </Switch>
@@ -57,5 +68,9 @@ export class AppView extends React.Component<Props, State> {
 
     private onChangeUser = (user: User) => {
         this.setState({ user })
+    }
+
+    private onChangeSearch = (searchQuestion: string) => {
+        this.setState({ searchQuestion })
     }
 }

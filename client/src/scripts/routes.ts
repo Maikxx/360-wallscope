@@ -4,6 +4,13 @@ export const routes = {
         CurrentUser: {
             index: '/current_user',
         },
+        Boards: {
+            index: '/boards',
+            detail: '/boards/:id',
+        },
+        Results: {
+            index: '/results',
+        },
     },
     Login: {
         index: '/login',

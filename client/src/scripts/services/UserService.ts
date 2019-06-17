@@ -127,7 +127,7 @@ interface GetUserByIdResponse {
 }
 
 export async function getUserById(id: number) {
-    const url = `${window.location.origin}/user/${id}`
+    const url = `${window.location.origin}/get-user/${id}`
 
     try {
         const token = getAuthorizationToken()

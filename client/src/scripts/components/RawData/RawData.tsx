@@ -22,7 +22,7 @@ export class RawData extends React.Component<Props> {
                 {iconName === fileTypes &&
                     <a href={'/'} download>
                         <Icon iconName={fileTypes}/>
-                        { title }
+                        {title}
                     </a>
                 }
             </div>

@@ -5,7 +5,7 @@ import { Button, StyleType } from '../Button/Button'
 
 interface Props {
     className?: string
-    tags: string[]
+    tags?: string[]
     styleOverride?: StyleType
 }
 
@@ -15,7 +15,7 @@ export class Tags extends React.Component<Props> {
 
         return (
             <ul className={this.getClassName()} {...restProps}>
-                {tags.map(tag => {
+                {tags && tags.map(tag => {
                     return (
                         <li key={tag}>
                             <Button styleOverride={styleOverride} type='button'>{tag}</Button>

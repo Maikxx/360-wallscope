@@ -19,7 +19,7 @@ export async function onLogin(request: express.Request, response: express.Respon
         && typeof password === 'string'
     ) {
         try {
-            const user = await getUserByEmail(email)
+            const user = await getUserByEmail(email, [ '_id', 'password', 'email', 'full_name' ])
 
             if (!user || !user.password) {
                 throw new Error('User not found. Failed to log you in!')
