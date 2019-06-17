@@ -8,13 +8,20 @@ interface Props {
     board?: any
     className?: string
     color?: string
+    articles?: number
+    data?: number
 }
 
 export class Board extends React.Component<Props> {
     public render() {
-        const { color, board } = this.props
+        const { color, board, articles, data } = this.props
 
         return (
+            <React.Fragment>
+            <div className='back-board'>
+                <span>Articles:{articles}</span>
+                <span>Data:{data}</span>
+            </div>
             <article className={this.getClassName()}>
                 <Link to={`/boards/${board._id}`}>
                     {board.icon_name &&
@@ -23,6 +30,7 @@ export class Board extends React.Component<Props> {
                     <h2 className={`Board__title`}>{board.name}</h2>
                 </Link>
             </article>
+            </React.Fragment>
         )
     }
 
