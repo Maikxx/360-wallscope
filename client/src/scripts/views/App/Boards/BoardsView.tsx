@@ -17,7 +17,7 @@ export class BoardsView extends React.Component<Props> {
         const data = [
             {
                 _id: 0,
-                name: 'Research about when it is the best time to go to A&E',
+                name: 'Waiting times',
                 icon_name: 'research',
                 results: [
                     {
@@ -39,7 +39,7 @@ export class BoardsView extends React.Component<Props> {
             },
             {
                 _id: 1,
-                name: 'Research about cancer admissions and deprivation',
+                name: 'Research',
                 icon_name: 'research',
                 results: [
                     {
