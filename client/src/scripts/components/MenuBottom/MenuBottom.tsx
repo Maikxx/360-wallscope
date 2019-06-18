@@ -28,28 +28,38 @@ export class MenuBottom extends React.Component<Props, State> {
 
         return (
             <Navigation className={this.getClassName()}>
+            {iconName === 'pen' ?
                 <NavLink
+                    route={isLoggedIn ? routes.App.index : routes.App.CurrentUser.index}
+                    iconName='search_small'
+                    color='#CEC7EC'
+                >
+                    {isLoggedIn ? 'Search' : 'Login for more fun features'}
+                </NavLink>
+            :
+               <NavLink
                     route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
                     iconName='boards'
                     color='#CEC7EC'
                 >
                     {isLoggedIn ? 'Boards' : 'Login for more fun features'}
                 </NavLink>
+            }
                 <li className='Middle'>
                     {iconName === 'pen' ?
                     <React.Fragment>
-                        <div className='menu'>
-                            <input type='checkbox' className='menu-open' name='menu-open' id='menu-open'/>
-                            <label className='menu-open-button' htmlFor='menu-open'>
+                        <div className='Menu'>
+                            <input type='checkbox' className='Menu-open' name='Menu-open' id='Menu-open'/>
+                            <label className='Menu-open-button' htmlFor='Menu-open'>
                                 <Icon iconName='pen' color='#181631'/>
                             </label>
-                            <a className='menu-item'>
+                            <a className='Menu-item'>
                                 <Icon iconName='pen' color='#181631'/>
                             </a>
-                            <a className='menu-item'>
+                            <a className='Menu-item'>
                                 <Icon iconName='pen' color='#181631'/>
                             </a>
-                            <a className='menu-item'>
+                            <a className='Menu-item'>
                                 <Icon iconName='pen' color='#181631'/>
                             </a>
                         </div>
@@ -101,3 +111,4 @@ export class MenuBottom extends React.Component<Props, State> {
         return classnames('MenuBottom', { }, className)
     }
 }
+        
