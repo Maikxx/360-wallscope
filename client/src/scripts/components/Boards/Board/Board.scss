@@ -1,16 +1,44 @@
+a {
+    display: block;
+    text-decoration: none;
+}
+
+a:hover .Board {
+    transform: rotate3d(1,0,0, 90deg);   
+}
+
 .Board {
     @import '../../../../sass/colors.scss';
 
     display: block;
-    background-image: linear-gradient(-120deg, $color-red-2, $color-red-1);
+    background-image: linear-gradient(-120deg, $color-red-4, $color-red-1);
     border-radius: .5em;
     width: 100%;
     min-height: 5rem;
     cursor: pointer;
+    transition: 1s;
+    transform-origin: bottom;
 
-    > a {
-        display: block;
-        text-decoration: none;
-        padding: 1rem;
+    h2 {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+
+    .back-board {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        background:#413c5b;
+        z-index: -1;
+        border-radius: 0.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &:hover {
+        background-image: linear-gradient(-120deg, $color-red-4, $color-red-1);
     }
 }

@@ -3,9 +3,10 @@ import classnames from 'classnames'
 import { Icon } from '../../Icon/Icon'
 import './Board.scss'
 import { Link } from 'react-router-dom'
+import { Board as BoardType } from '../../../types/Board'
 
 interface Props {
-    board?: any
+    board: BoardType
     className?: string
     color?: string
 }
@@ -15,14 +16,20 @@ export class Board extends React.Component<Props> {
         const { color, board } = this.props
 
         return (
-            <article className={this.getClassName()}>
-                <Link to={`/boards/${board._id}`}>
-                    {board.icon_name &&
-                        <Icon iconName={board.icon_name} color={color} />
-                    }
-                    <h2 className={`Board__title`}>{board.name}</h2>
-                </Link>
-            </article>
+            <Link to={`/boards/${board._id}`}>
+                <div className='back-board'>
+                    <span>Articles: 0</span>
+                    <span>Data: 0</span>
+                </div>
+                <article className={this.getClassName()}>
+                    {board.icon_name && (
+                        <Icon iconName={board.icon_name as any} color={color} />
+                    )}
+                    <h2 className={`Board__title`}>
+                        {board.name}
+                    </h2>
+                </article>
+            </Link>
         )
     }
 

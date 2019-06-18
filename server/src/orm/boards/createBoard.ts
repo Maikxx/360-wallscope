@@ -22,7 +22,7 @@ export async function createBoard({ createdByUserId, name, result, collaborators
     try {
         if (result) {
             boardResultQueryData = await database.query(
-                `INSERT INTO board_results (result_id)
+                `INSERT INTO board_results (result)
                 VALUES ($1)
                 RETURNING _id;`,
                 [result]

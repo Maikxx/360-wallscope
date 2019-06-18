@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames'
-import { Article } from './Article/Article'
-import './Articles.scss'
+import { RawData } from './RawData/RawData'
+import './Data.scss'
 
 interface Props {
     className?: string
@@ -10,30 +10,28 @@ interface Props {
     boardNames?: string[]
 }
 
-interface ArticleType {
+interface FileType {
     _id: number
     title: string | null
-    short_description: string | null
-    content: string | null
-    url?: string | null
-    dataFile?: string | null
+    icon_name?: string | null
+    file_type?: string | null
 }
 
 interface Props {
     className?: string
-    articles?: ArticleType[]
+    files?: FileType[]
 }
 
-export class Articles extends React.Component<Props> {
+export class Data extends React.Component<Props> {
     public render() {
-        const { boardNames, articles } = this.props
+        const { boardNames, files } = this.props
 
         return (
             <ul className={this.getClassName()}>
-                {articles && articles.map(article => (
-                    <li key={article._id}>
-                        <Article
-                            article={article}
+                {files && files.map(file => (
+                    <li key={file._id}>
+                        <RawData
+                            file={file}
                             boardNames={boardNames}
                         />
                     </li>
@@ -45,6 +43,6 @@ export class Articles extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Articles', { }, className)
+        return classnames('Data', { }, className)
     }
 }

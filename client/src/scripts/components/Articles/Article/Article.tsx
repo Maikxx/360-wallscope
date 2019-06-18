@@ -13,20 +13,19 @@ interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     full?: boolean
-    title?: string
-    summary?: string
+    article?: any
     boardNames?: string[] | undefined
 }
 
 export class Article extends React.Component<Props> {
     public render() {
-        const { children, className, full, boardNames, title, summary, ...restProps } = this.props
+        const { children, className, full, boardNames, article, ...restProps } = this.props
 
         return (
             <div className='ArticleWrapper'>
                 <article className={this.getClassName()} {...restProps}>
-                    <h2>{title}</h2>
-                    <p>{summary}</p>
+                    <h2>{article.title}</h2>
+                    <p>{article.short_description}</p>
                     {children}
                 </article>
                 <ModalBase

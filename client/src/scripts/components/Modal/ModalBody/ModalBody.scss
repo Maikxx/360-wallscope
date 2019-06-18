@@ -2,8 +2,12 @@
     @import '../../../../sass/colors.scss';
 
     overflow-y: auto;
+    min-height: 40vh;
+    border: 2px $color-purple-6 solid;
+    background-color: $color-purple-5;
 
     .Form {
+        margin-top: 2rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -17,24 +21,24 @@
 
     .Button {
         &--red {
-            background-color: $color-red-3;
+            background-color: $color-blue-1;
 
             &::after{
-                background: darken($color-red-3, 5%);
+                background: darken($color-blue-1, 5%);
             }
 
             &:hover{
-                background-color: lighten($color-red-3, 8%)
+                background-color: lighten($color-blue-1, 8%)
             }
     
             &:hover::after {
-                background: lighten($color-red-3, 8%);
+                background: lighten($color-blue-1, 8%);
             }
         }
     }
 
     .Tags li {
-        margin-bottom: .25rem;
+        margin-bottom: .5rem;
 
         &:last-child .Button {
             margin-right: 0;

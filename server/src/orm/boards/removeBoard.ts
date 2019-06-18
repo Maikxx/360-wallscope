@@ -5,7 +5,7 @@ import { QueryResult } from 'pg'
 
 interface RemoveBoardOptions {
     id: number
-    userId: number
+    user_id: number
 }
 
 interface RemoveBoardQueryResponse extends QueryResult {
@@ -16,12 +16,12 @@ interface RemoveBoardBoardResultsQueryResponse extends QueryResult {
     rows: DatabaseBoardResult[]
 }
 
-export async function removeBoard({ id, userId }: RemoveBoardOptions) {
+export async function removeBoard({ id, user_id }: RemoveBoardOptions) {
     try {
         const { rows: [board] }: RemoveBoardQueryResponse = await database.query(
             `SELECT * FROM boards
             WHERE _id = $1 AND owner = $2;`,
-            [ id, userId ]
+            [ id, user_id ]
         )
 
         if (board) {
@@ -56,7 +56,7 @@ export async function removeBoard({ id, userId }: RemoveBoardOptions) {
             await database.query(
                 `DELETE FROM boards
                 WHERE _id = $1 AND owner = $2;`,
-                [ id, userId ]
+                [ id, user_id ]
             )
 
             return true
