@@ -9,14 +9,15 @@ interface Props {
     iconName?: IconNames
     route: string
     color?: string
+    preventAction?: boolean
 }
 
 export class Link extends React.Component<Props> {
     public render() {
-        const { children, className, route, color, iconName, ...restProps } = this.props
+        const { children, className, route, color, iconName, preventAction, ...restProps } = this.props
 
         return (
-            <RouterLink className={this.getClassName()} {...restProps} to={route}>
+            <RouterLink className={this.getClassName()} {...restProps} to={route} onClick={e => preventAction && e.preventDefault()}>
                 {iconName &&
                     <Icon iconName={iconName} color={color} className={`Link__icon`}/>
                 }
@@ -30,4 +31,5 @@ export class Link extends React.Component<Props> {
 
         return classnames('Link', { }, className)
     }
+
 }

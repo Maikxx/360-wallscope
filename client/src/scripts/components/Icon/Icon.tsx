@@ -5,7 +5,7 @@ import './Icon.scss'
 export type IconNames =
     'user' | 'search_big' | 'search_small' | 'pen' | 'settings'|
     'light_dark' | 'boards' | 'back' | 'pdf' | 'xml' | 'tsv' | 'csv' |
-    'header_logo' | 'close' | 'add'
+    'header_logo' | 'close' | 'add' | 'spaceship' | 'light'
 
 interface Props {
     className?: string
@@ -20,6 +20,45 @@ export class Icon extends React.Component<Props> {
         let icon
 
         const IconType = {
+            light:
+            `<svg xmlns="http://www.w3.org/2000/svg" width="31.807" height="39.304" viewBox="0 0 31.807 39.304">
+                <g id="Group_13" data-name="Group 13" transform="translate(-117.195 -428.742)">
+                <path id="Path_36" data-name="Path 36" d="M1090.593,1217.544l-.466,7.68,1.115,14.248,2.213,1.595,3.158-6.207,3.517-3.619,1.091-6.905-4.608-5.824-4.914-1.69s-1.179-.048-1.572,0-.856,2.914,0,8.217,6.817,5.06,6.817,5.06l-2.227-5.06" transform="translate(-958 -782)" fill="#6d6789"/>
+                <g id="dark_lamp" transform="translate(117.195 428.742)">
+                    <g id="Laag_1" data-name="Laag 1">
+                    <path id="Path_22" data-name="Path 22" d="M185.17,392.59h5.374v5.3H185.17Z" transform="translate(-170.955 -362.453)" fill="#181631"/>
+                    <path id="Path_23" data-name="Path 23" d="M192.491,464.994a3.045,3.045,0,0,0,2.364-2.968V462H189.84A3.044,3.044,0,0,0,192.491,464.994Z" transform="translate(-175.267 -426.535)" fill="#6d6789"/>
+                    <path id="Path_25" data-name="Path 25" d="M188.705,328.59a1.535,1.535,0,0,0-1.535,1.535V333.5h3.071v-3.378A1.535,1.535,0,0,0,188.705,328.59Z" transform="translate(-172.802 -303.366)" fill="#fff"/>
+                    <path id="Path_26" data-name="Path 26" d="M83.759,68.348A10.9,10.9,0,1,0,68.838,84.221,7.823,7.823,0,0,1,71.552,90.1v5.5a3.817,3.817,0,0,0,3.813,3.813h1.279A3.817,3.817,0,0,0,80.457,95.6V90.167a7.764,7.764,0,0,1,2.662-5.9,10.9,10.9,0,0,0,.64-15.919ZM75.992,81.534h-.509a.505.505,0,1,1,.509-.5ZM76,86.1a.768.768,0,0,1,.768.768v2.61H75.234v-2.61A.768.768,0,0,1,76,86.1Zm2.917,4.913v1.128H73.084V91.01Zm-5.834,2.664h5.834V94.8H73.084Zm3.56,4.2H75.365a2.282,2.282,0,0,1-2.153-1.535H78.8A2.281,2.281,0,0,1,76.644,97.873ZM82.117,83.1a9.273,9.273,0,0,0-3.17,6.371h-.639v-2.61a2.3,2.3,0,0,0-.781-1.725V82.607A2.466,2.466,0,0,0,78.563,80.6V79.411A2.969,2.969,0,0,0,75.6,76.444H74.215a.768.768,0,1,0,0,1.535H75.6a1.432,1.432,0,0,1,1.431,1.431v.282a2.04,2.04,0,1,0-1.542,3.378h.506v1.492a2.3,2.3,0,0,0-2.293,2.3v2.61h-.636a9.381,9.381,0,0,0-3.213-6.411,9.364,9.364,0,1,1,12.267.038Z" transform="translate(-60.101 -60.105)" fill="#cec7ec"/>
+                    <path id="Path_27" data-name="Path 27" d="M199.722,113.82h-.015a.768.768,0,1,0-.01,1.535h.021a.768.768,0,0,0,0-1.535Z" transform="translate(-183.664 -105.082)" fill="#cec7ec"/>
+                    <path id="Path_28" data-name="Path 28" d="M239.09,124.169a.768.768,0,1,0-.747,1.34,5.641,5.641,0,0,1,2.9,4.924.768.768,0,0,0,1.535,0A7.178,7.178,0,0,0,239.09,124.169Z" transform="translate(-219.655 -114.531)" fill="#cec7ec"/>
+                    <path id="Path_29" data-name="Path 29" d="M197.938,3.608a.768.768,0,0,0,.768-.768V.768a.768.768,0,1,0-1.535,0V2.84a.768.768,0,0,0,.768.768Z" transform="translate(-182.034)" fill="#cec7ec"/>
+                    <path id="Path_30" data-name="Path 30" d="M370.18,197.17h-2.073a.768.768,0,1,0,0,1.535h2.073a.768.768,0,0,0,0-1.535Z" transform="translate(-339.141 -182.034)" fill="#cec7ec"/>
+                    <path id="Path_31" data-name="Path 31" d="M2.84,197.17H.768a.768.768,0,1,0,0,1.535H2.84a.768.768,0,1,0,0-1.535Z" transform="translate(0 -182.034)" fill="#cec7ec"/>
+                    <path id="Path_32" data-name="Path 32" d="M318.8,317.723a.768.768,0,1,0-1.086,1.085l1.466,1.465a.768.768,0,1,0,1.086-1.086Z" transform="translate(-293.121 -293.125)" fill="#cec7ec"/>
+                    <path id="Path_33" data-name="Path 33" d="M59.44,60.526a.768.768,0,1,0,1.086-1.086L59.06,57.975a.768.768,0,1,0-1.086,1.086Z" transform="translate(-53.317 -53.317)" fill="#cec7ec"/>
+                    <path id="Path_34" data-name="Path 34" d="M319.19,57.975l-1.465,1.465a.768.768,0,1,0,1.086,1.086l1.465-1.466a.768.768,0,1,0-1.086-1.086Z" transform="translate(-293.127 -53.317)" fill="#cec7ec"/>
+                    <path id="Path_35" data-name="Path 35" d="M59.44,317.725l-1.465,1.465a.768.768,0,1,0,1.086,1.086l1.465-1.466a.768.768,0,1,0-1.086-1.086Z" transform="translate(-53.317 -293.127)" fill="#cec7ec"/>
+                    </g>
+                </g>
+                </g>
+            </svg>`,
+            spaceship:
+            `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.302" height="39.304" viewBox="0 0 39.302 39.304">
+                <defs>
+                <clipPath id="clip-path">
+                    <rect width="39.302" height="39.304" fill="none"/>
+                </clipPath>
+                </defs>
+                <g id="Icons_24px_Black_Spaceship" data-name="Icons/24px/Black/Spaceship" clip-path="url(#clip-path)">
+                <g id="spaceship">
+                    <path id="Shape" d="M10.96,33.563A1.639,1.639,0,0,1,9.8,33.082L.482,23.767a1.644,1.644,0,0,1-.363-1.778A38.886,38.886,0,0,1,7.345,11.37a36.9,36.9,0,0,1,9.8-7.453A35.677,35.677,0,0,1,31.83,0l.084,0a1.647,1.647,0,0,1,1.646,1.742c-1.306,22.962-21.77,31.614-21.977,31.7A1.641,1.641,0,0,1,10.96,33.563Zm6.35-20.6a3.293,3.293,0,1,0,2.33.965A3.272,3.272,0,0,0,17.309,12.96Z" transform="translate(5.74 0)" fill="#cec7ec"/>
+                    <path id="Path" d="M1.833,1.383A4.683,4.683,0,1,1,8.455,8C6.625,9.834,0,9.872,0,9.872S0,3.21,1.833,1.383Z" transform="translate(0 29.432)" fill="#cec7ec"/>
+                    <path id="color-2" d="M15.406.217a14.672,14.672,0,0,0-12.9,4.09A14.956,14.956,0,0,0,.228,7.271a1.646,1.646,0,0,0,.255,2l3.275,3.276A43.834,43.834,0,0,1,15.406.217Z" transform="translate(1.646 3.426)" fill="#cec7ec"/>
+                    <path id="color-3" d="M12.33,0a14.672,14.672,0,0,1-4.09,12.9,14.956,14.956,0,0,1-2.964,2.279,1.646,1.646,0,0,1-2-.255L0,11.649A43.834,43.834,0,0,0,12.33,0Z" transform="translate(23.33 22.251)" fill="#cec7ec"/>
+                </g>
+                </g>
+            </svg>`,
             header_logo:
             `<svg class="Icon__header_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.44 41.32" width="90" height="50">
                 <defs>
