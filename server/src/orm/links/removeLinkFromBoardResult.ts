@@ -9,7 +9,7 @@ interface RemoveLinkFromBoardResultOptions {
 export async function removeLinkFromBoardResult({ board_result_id, link_id, user_id }: RemoveLinkFromBoardResultOptions) {
     try {
         const { rows: [board] } = await database.query(
-            `SELECT _id FROM boards WHERE $1 = ANY(results::INTEGER[]) AND owner = $2;`,
+            `SELECT _id FROM boards WHERE $1 = ANY(results::INTEGER[]) AND (owner = $2 OR $2 = ANY(collaborators::INTEGER[]));`,
             [ board_result_id, user_id ]
         )
 

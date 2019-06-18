@@ -13,7 +13,7 @@ import { onSignup } from './routes/user/signup'
 import { onGetUserById, onEditUser } from './routes/user'
 import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard, onAddCollaboratorToBoard, onRemoveCollaboratorFromBoard, onAddResultToBoard, onRemoveResultFromBoard } from './routes/board'
 import { onCreateResult } from './routes/results'
-import { onRemoveLinkFromBoardResult } from './routes/link'
+import { onRemoveLinkFromBoardResult, onCreateLink } from './routes/link'
 
 (async () => {
     const app = express()
@@ -41,6 +41,7 @@ import { onRemoveLinkFromBoardResult } from './routes/link'
     app.post('/add-collaborator-to-board', onAddCollaboratorToBoard) // Authorization Protected
     app.post('/add-result-to-board', onAddResultToBoard) // Authorization Protected
     app.post('/create-board', onCreateBoard) // Authorization Protected
+    app.post('/create-link', onCreateLink) // Authorization Protected
     app.post('/create-result', onCreateResult) // Authorization Protected
     app.post('/edit-board', onEditBoard) // Authorization Protected
     app.post('/remove-board', onRemoveBoard) // Authorization Protected
