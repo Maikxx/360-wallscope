@@ -1,7 +1,6 @@
-
 .MenuBottom {
 	@import '../../../sass/colors.scss';
-	
+
 	background-color: $color-purple-4;
 	padding: .25rem;
 	position: fixed;
@@ -9,7 +8,7 @@
 	left: 0;
 	width: 100%;
 	margin-top: 15%;
-	
+
 	.Link .Link__icon svg {
 		width: 24px;
 		height: 24px;
@@ -18,28 +17,24 @@
 	.Middle {
 		height: 25px;
 		display: flex;
-		justify-content: center;
+        justify-content: center;
+        position: relative;
+        width: 50%;
 	}
-	
+
 	.Button .Link__icon svg {
 		width: 32px;
 		height: 32px;
 	}
-	
+
 	.menu {
-		-webkit-filter: url("#goo");
 		filter: url("#goo");
 		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		top: -40%;
-		padding-top: 100%;
-		padding-left: 190px;
-		padding-right: 190px;
-		width: 380px;
+        left: calc(50% - 32px);
+		top: -60px;
   		height: 500px;
 	}
-	
+
 	.menu-item, .menu-open-button {
 		background: $color-purple-3;
 		box-shadow: -2px 2px 5px -2px rgba(0,0,0,0.65);
@@ -52,18 +47,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		transition: -webkit-transform ease-out 200ms;
 		transition: transform ease-out 200ms;
-		transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
-		
 	}
-	
+
 	.menu-open {
 		display: none;
 	}
-	
+
 	.menu-item:hover {
 		background-color: $color-purple-1;
 	}
@@ -76,44 +67,38 @@
 	.menu-item:nth-child(5) {
 		transition-duration: 180ms;
 	}
-	
+
 	.menu-open-button {
 		z-index: 2;
 		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		transition-duration: 400ms;
-		-webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
 		transform: scale(1.1, 1.1) translate3d(0, 0, 0);
 		cursor: pointer;
 	}
-	
+
 	.menu-open-button:hover {
-		-webkit-transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 		transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 	}
-	
+
 	.menu-open:checked + .menu-open-button {
 		transition-timing-function: linear;
 		transition-duration: 200ms;
-		-webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
 		transform: scale(0.8, 0.8) translate3d(0, 0, 0);
 	}
-	
+
 	.menu-open:checked ~ .menu-item {
 		transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
 	}
 	.menu-open:checked ~ .menu-item:nth-child(3) {
 		transition-duration: 180ms;
-		-webkit-transform: translate3d(-100px, -60px, 0);
 		transform: translate3d(-100px, -60px, 0);
 	}
 	.menu-open:checked ~ .menu-item:nth-child(4) {
 		transition-duration: 280ms;
-		-webkit-transform: translate3d(0.08361px, -104.99997px, 0);
 		transform: translate3d(0.08361px, -104.99997px, 0);
 	}
 	.menu-open:checked ~ .menu-item:nth-child(5) {
 		transition-duration: 380ms;
-		-webkit-transform: translate3d(100px, -60px, 0);
 		transform: translate3d(100px, -60px, 0);
 	}
 }

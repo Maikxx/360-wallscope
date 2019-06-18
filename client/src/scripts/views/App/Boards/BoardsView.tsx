@@ -43,7 +43,7 @@ export class BoardsView extends React.Component<Props, State> {
                 <Header back={false}/>
                 <PageTitle>Boards</PageTitle>
                 <Boards boards={boards} />
-                <MenuBottom fullName={user.fullName}/>
+                <MenuBottom fullName={user.fullName} iconName='pen'/>
             </View>
         )
     }
