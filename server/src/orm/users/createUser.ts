@@ -1,5 +1,6 @@
 import { database } from '../../services/database'
 import { QueryResult } from 'pg'
+import { DatabaseUser } from '../../types/User'
 
 interface CreateUserParams {
     email: string
@@ -8,11 +9,7 @@ interface CreateUserParams {
 }
 
 interface CreateUserQueryResponse extends QueryResult {
-    rows: {
-        _id: number
-        full_name: string
-        email: string
-    }[]
+    rows: DatabaseUser[]
 }
 
 export async function createUser({ email, password, fullName }: CreateUserParams) {
@@ -29,17 +26,13 @@ export async function createUser({ email, password, fullName }: CreateUserParams
                 database.query(
                     `INSERT INTO boards (name, icon_name, owner, is_default_board)
                     VALUES ($1, $2, $3, $4)
-                    WHERE NOT EXISTS (
-                        SELECT _id FROM boards WHERE owner = $1 AND name = $2
-                    ) RETURNING _id;`,
+                    RETURNING _id;`,
                     [ 'Favorites', 'star', databaseUser._id, true ]
                 ),
                 database.query(
                     `INSERT INTO boards (name, icon_name, owner, is_default_board)
                     VALUES ($1, $2, $3, $4)
-                    WHERE NOT EXISTS (
-                        SELECT _id FROM boards WHERE owner = $1 AND name = $2
-                    ) RETURNING _id;`,
+                    RETURNING _id;`,
                     [ 'Research', 'loop', databaseUser._id, true ]
                 ),
             ])
