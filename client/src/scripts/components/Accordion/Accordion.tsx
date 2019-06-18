@@ -27,12 +27,6 @@ export class Accordion extends React.Component<Props, State> {
                 onClick={() => {
                     this.animateCollapse()
                     this.toggleAccordion()
-                    // const list = document.querySelector('.accordion')
-                    // const arrow = document.querySelector('.arrow')
-                    // if (list && arrow) {
-                    //     list.classList.toggle('collapsed')
-                    //     arrow.classList.toggle('up')
-                    // }
                 }}
             >
                 <h2>{title}</h2>

@@ -25,7 +25,7 @@ export class HomeView extends React.Component<Props> {
                 <Header back={false}></Header>
                 <HomeIntroduction />
                 <Search onSearch={this.onSearch}/>
-                <MenuBottom fullName={user && user.fullName}/>
+                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View >
         )
     }

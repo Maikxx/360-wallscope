@@ -1,22 +1,114 @@
-
 .MenuBottom {
-    @import '../../../sass/colors.scss';
+	@import '../../../sass/colors.scss';
 
-    background-color: $color-purple-4;
-    padding: .25rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    margin-top: 15%;
+	background-color: $color-purple-4;
+	padding: .25rem;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	margin-top: 15%;
 
-    .Link .Link__icon svg {
-        width: 24px;
-        height: 24px;
-    }
+	.Link .Link__icon svg {
+		width: 24px;
+		height: 24px;
+	}
 
-    .Button .Link__icon svg {
-        width: 32px;
-        height: 32px;
-    }
+	.Middle {
+		height: 25px;
+		display: flex;
+        justify-content: center;
+        position: relative;
+        width: 50%;
+	}
+
+	.Button .Link__icon svg {
+		width: 32px;
+		height: 32px;
+	}
+	
+	.Menu {
+		filter: url("#goo");
+		position: absolute;
+        left: calc(50% - 32px);
+		top: -60px;
+  		height: 500px;
+	}
+	
+	.Menu-item, .Menu-open-button {
+		background-color: $color-purple-3;
+		box-shadow: -2px 2px 5px -2px rgba(0,0,0,0.65);
+		border-radius: 50%;
+		padding: 1.5rem;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transform: translate3d(0, 0, 0);
+		transition: transform ease-out 200ms;
+	}
+
+	.Menu-item {
+		background-color: $color-purple-2;
+	}
+
+	.Menu-open-button:hover,
+	.Menu-open-button:focus,
+	.Menu-open-button:active, {
+		background-color: $color-purple-2;
+	}
+	
+	.Menu-open {
+		display: none;
+	}
+	
+	.Menu-item:hover {
+		background-color: $color-purple-1;
+	}
+	.Menu-item:nth-child(3) {
+		transition-duration: 180ms;
+	}
+	.Menu-item:nth-child(4) {
+		transition-duration: 180ms;
+	}
+	.Menu-item:nth-child(5) {
+		transition-duration: 180ms;
+	}
+	
+	.Menu-open-button {
+		z-index: 2;
+		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		transition-duration: 400ms;
+		transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+		cursor: pointer;
+	}
+	
+	.Menu-open-button:hover {
+		transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+	}
+	
+	.Menu-open:checked + .Menu-open-button {
+		transition-timing-function: linear;
+		transition-duration: 200ms;
+		transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+	}
+	
+	.Menu-open:checked ~ .Menu-item {
+		transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+	}
+	.Menu-open:checked ~ .Menu-item:nth-child(3) {
+		transition-duration: 180ms;
+		transform: translate3d(-100px, -60px, 0);
+	}
+	.Menu-open:checked ~ .Menu-item:nth-child(4) {
+		transition-duration: 280ms;
+		transform: translate3d(0.08361px, -104.99997px, 0);
+	}
+	.Menu-open:checked ~ .Menu-item:nth-child(5) {
+		transition-duration: 380ms;
+		transform: translate3d(100px, -60px, 0);
+	}
 }
