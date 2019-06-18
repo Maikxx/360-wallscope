@@ -1,12 +1,13 @@
 .ModalBody {
     @import '../../../../sass/colors.scss';
 
-    // margin: 0 auto;
-    // width: 40%; 
-    // text-align: center;
     overflow-y: auto;
+    min-height: 40vh;
+    border: 2px $color-purple-6 solid;
+    background-color: $color-purple-5;
 
-    .Form--search {
+    .Form {
+        margin-top: 2rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -15,14 +16,32 @@
 
     .Fieldset {
         margin: 0 2em;
-        padding-bottom:0
+        padding-bottom: 0;
     }
 
-    .Tags li:last-child .Button {
-        margin-right: 0;
+    .Button {
+        &--red {
+            background-color: $color-blue-1;
+
+            &::after{
+                background: darken($color-blue-1, 5%);
+            }
+
+            &:hover{
+                background-color: lighten($color-blue-1, 8%)
+            }
+    
+            &:hover::after {
+                background: lighten($color-blue-1, 8%);
+            }
+        }
     }
 
-    .Tags li .Button {
-        margin-bottom: .25rem;
+    .Tags li {
+        margin-bottom: .5rem;
+
+        &:last-child .Button {
+            margin-right: 0;
+        }
     }
 }

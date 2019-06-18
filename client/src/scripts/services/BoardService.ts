@@ -1,5 +1,6 @@
 import { getAuthorizationToken } from './UserService'
 import { Board } from '../types/Board'
+import { toast } from 'react-toastify'
 
 export interface GetBoardByIdResponse {
     error?: string
@@ -11,7 +12,7 @@ export async function getBoardById(id: number) {
         const token = getAuthorizationToken()
 
         if (token) {
-            const url = `${window.location.origin}/board/${id}`
+            const url = `${window.location.origin}/get-board/${id}`
             const data = await fetch(
                 url,
                 {
@@ -29,17 +30,15 @@ export async function getBoardById(id: number) {
             if (!error && board) {
                 return board
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -54,7 +53,7 @@ export async function getBoardsForCurrentUser() {
         const token = getAuthorizationToken()
 
         if (token) {
-            const url = `${window.location.origin}/boards`
+            const url = `${window.location.origin}/get-boards`
             const data = await fetch(
                 url,
                 {
@@ -72,17 +71,15 @@ export async function getBoardsForCurrentUser() {
             if (!error && boards) {
                 return boards
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -120,17 +117,15 @@ export async function editBoard({ name, iconName, id }: EditBoardParams) {
             if (!error && board) {
                 return board
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -139,6 +134,7 @@ interface CreateBoardParams {
     name: string
     collaborators?: number[]
     result?: number
+    iconName?: string
 }
 
 interface CreateBoardResponse {
@@ -148,7 +144,7 @@ interface CreateBoardResponse {
     error?: string
 }
 
-export async function createBoard({ name, collaborators, result }: CreateBoardParams) {
+export async function createBoard({ name, collaborators, result, iconName }: CreateBoardParams) {
     try {
         const token = getAuthorizationToken()
         const url = `${window.location.origin}/create-board`
@@ -159,7 +155,7 @@ export async function createBoard({ name, collaborators, result }: CreateBoardPa
                 {
                     headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
                     method: 'POST',
-                    body: JSON.stringify({ name, collaborators, result }),
+                    body: JSON.stringify({ name, collaborators, result, iconName }),
                 }
             )
 
@@ -168,17 +164,15 @@ export async function createBoard({ name, collaborators, result }: CreateBoardPa
             if (!error && board) {
                 return board
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -212,17 +206,15 @@ export async function removeBoard({ id }: RemoveBoardParams) {
             if (!error && success) {
                 return success
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -259,17 +251,15 @@ export async function addCollaboratorToBoard({ id, collaboratorId }: AddCollabor
             if (!error && board) {
                 return board
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
         return null
     }
 }
@@ -280,9 +270,7 @@ interface RemoveCollaboratorFromBoardParams {
 }
 
 interface RemoveCollaboratorFromBoardResponse {
-    board?: {
-        _id: number
-    }
+    success?: boolean
     error?: string
 }
 
@@ -301,22 +289,108 @@ export async function removeCollaboratorFromBoard({ id, collaboratorId }: Remove
                 }
             )
 
-            const { board, error }: RemoveCollaboratorFromBoardResponse = await data.json()
+            const { success, error }: RemoveCollaboratorFromBoardResponse = await data.json()
+
+            if (!error && success) {
+                return success
+            } else {
+                toast.error(error)
+                return null
+            }
+        } else {
+            toast.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        toast.error(error.message)
+        return null
+    }
+}
+
+interface AddResultToBoardParams {
+    board_id: number
+    result_id: number
+}
+
+interface AddResultToBoardResponse {
+    error?: string
+    board?: {
+        _id: number
+    }
+}
+
+export async function addResultToBoard({ board_id, result_id }: AddResultToBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/add-result-to-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ board_id, result_id }),
+                }
+            )
+
+            const { board, error }: AddResultToBoardResponse = await data.json()
 
             if (!error && board) {
                 return board
             } else {
-                console.error(error)
+                toast.error(error)
                 return null
             }
         } else {
-            // TODO: Error handling
-            console.error('You are not authorized to perform this request!')
+            toast.error('You are not authorized to perform this request!')
             return null
         }
     } catch (error) {
-        // TODO: Error handling
-        console.error(error.message)
+        toast.error(error.message)
+        return null
+    }
+}
+
+interface RemoveResultFromBoardParams {
+    board_id: number
+    board_result_id: number
+}
+
+interface RemoveResultFromBoardResponse {
+    success?: boolean
+    error?: string
+}
+
+export async function removeResultFromBoard({ board_id, board_result_id }: RemoveResultFromBoardParams) {
+    try {
+        const token = getAuthorizationToken()
+        const url = `${window.location.origin}/remove-result-from-board`
+
+        if (token) {
+            const data = await fetch(
+                url,
+                {
+                    headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify({ board_id, board_result_id }),
+                }
+            )
+
+            const { success, error }: RemoveResultFromBoardResponse = await data.json()
+
+            if (!error && success) {
+                return success
+            } else {
+                toast.error(error)
+                return null
+            }
+        } else {
+            toast.error('You are not authorized to perform this request!')
+            return null
+        }
+    } catch (error) {
+        toast.error(error.message)
         return null
     }
 }

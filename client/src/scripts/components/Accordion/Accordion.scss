@@ -1,0 +1,40 @@
+.Accordion {
+    position: relative;
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+
+    h2 {
+        font-weight: 900;
+    }
+
+    li {
+        transition: height 0.5s ease-out;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    &--collapsed .AccordionItem {
+        height: 0;
+    }
+    
+    .Arrow {
+        box-sizing: border-box;
+        height: 18px;
+        width: 18px;
+        border-style: solid;
+        border-color: white;
+        border-width: 0px 1px 1px 0px;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: all .3s ease-in;
+    
+    }
+
+    &--up .Arrow{
+        transform: rotate(225deg);
+        top: 10px;
+    }
+}

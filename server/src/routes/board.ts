@@ -1,161 +1,99 @@
-require('dotenv').config()
 import express from 'express'
-import jwt from 'jsonwebtoken'
-import { Token } from '../types/Token'
-import { findBoards, createBoard, editBoard, removeBoard, addCollaboratorToBoard } from '../services/BoardService'
+import { getBoards } from '../orm/boards/findBoards'
+import { createBoard } from '../orm/boards/createBoard'
+import { editBoard } from '../orm/boards/editBoard'
+import { removeBoard } from '../orm/boards/removeBoard'
+import { removeCollaboratorFromBoard } from '../orm/boards/removeCollaboratorFromBoard'
+import { addCollaboratorToBoard } from '../orm/boards/addCollaboratorToBoard'
+import { getAuthTokenFromRequest } from '../services/auth'
+import { addResultToBoard } from '../orm/boards/addResultToBoard'
+import { removeResultFromBoard } from '../orm/boards/removeResultFromBoard'
+
+export async function onGetBoards(request: express.Request, response: express.Response) {
+    try {
+        const token = getAuthTokenFromRequest(request)
+        const boards = await getBoards(token._id)
+
+        if (boards && Array.isArray(boards) && boards.length > 0) {
+            response.status(200).json({
+                boards,
+            })
+        } else {
+            response.status(200).json({
+                boards: [],
+            })
+        }
+    } catch (error) {
+        response.status(500).json({
+            error: error.message,
+        })
+    }
+}
 
 interface GetBoardByIdRequestParams {
     id: number
+}
+
+export async function onGetBoardById(request: express.Request, response: express.Response) {
+    const { id } = request.params as GetBoardByIdRequestParams
+
+    if (!isNaN(Number(id))) {
+        const token = getAuthTokenFromRequest(request)
+
+        try {
+            const board = await getBoards(token._id, id)
+
+            if (board) {
+                response.status(200).json({
+                    board,
+                })
+            } else {
+                response.status(200).json({
+                    board: null,
+                })
+            }
+        } catch (error) {
+            response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
+        })
+    }
 }
 
 interface CreateBoardRequestBody {
     name: string
     collaborators?: number[]
     result?: number
-}
-
-export async function onGetBoards(request: express.Request, response: express.Response) {
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
-
-    if (token) {
-        let decodedToken
-
-        try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const boards = await findBoards((decodedToken as Token)._id)
-
-            if (boards && Array.isArray(boards) && boards.length > 0) {
-                return response.status(200).json({
-                    boards,
-                })
-            } else {
-                return response.status(404).json({
-                    error: 'This user probably has got no boards attached to him or her.',
-                })
-            }
-        } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
-                error: error.message,
-            })
-        }
-    } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header to access this request.',
-        })
-    }
-}
-
-export async function onGetBoardById(request: express.Request, response: express.Response) {
-    const { id } = request.params as GetBoardByIdRequestParams
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
-
-    if (!isNaN(Number(id)) && token) {
-        let decodedToken
-
-        try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const board = await findBoards((decodedToken as Token)._id, id)
-
-            if (board) {
-                return response.status(200).json({
-                    board,
-                })
-            } else {
-                return response.status(404).json({
-                    error: 'The requested board could not be found!',
-                })
-            }
-        } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
-                error: error.message,
-            })
-        }
-    } else {
-        return response.status(409).json({
-            error: 'Invalid identifier is being passed with this request.',
-        })
-    }
+    iconName?: string
 }
 
 export async function onCreateBoard(request: express.Request, response: express.Response) {
-    const { name, collaborators, result } = request.body as CreateBoardRequestBody
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+    const { name, collaborators, result, iconName } = request.body as CreateBoardRequestBody
 
-    if (token && name) {
-        let decodedToken
-
+    if (name && typeof name === 'string') {
         try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const board = await createBoard({ result, collaborators, name, createdByUserId: (decodedToken as Token)._id })
+            const token = getAuthTokenFromRequest(request)
+            const board = await createBoard({ result, collaborators, name, iconName, createdByUserId: token._id })
 
             if (board) {
-                return response.status(200).json({
+                response.status(200).json({
                     board,
                 })
             } else {
-                return response.status(500).json({
-                    error: 'Something went wrong creating your new board.',
-                })
+                throw new Error('Something went wrong creating your new board.')
             }
         } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header and body: {name} to access this request.',
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
         })
     }
 }
@@ -168,49 +106,27 @@ interface EditBoardRequestBody {
 
 export async function onEditBoard(request: express.Request, response: express.Response) {
     const { name, id, iconName } = request.body as EditBoardRequestBody
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
 
-    if (token && name) {
-        let decodedToken
-
+    if (!isNaN(Number(id))) {
         try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const board = await editBoard({ name, iconName, id, userId: (decodedToken as Token)._id })
+            const token = getAuthTokenFromRequest(request)
+            const board = await editBoard({ name, iconName, id, user_id: token._id })
 
             if (board) {
-                return response.status(200).json({
+                response.status(200).json({
                     board,
                 })
             } else {
-                return response.status(500).json({
-                    error: 'Something went wrong editing your board.',
-                })
+                throw new Error('Something went wrong editing your board.')
             }
         } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header and body: {id} to access this request.',
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
         })
     }
 }
@@ -219,159 +135,157 @@ interface RemoveBoardRequestBody {
     id: number
 }
 
-export async function onRemoveBoard (request: express.Request, response: express.Response) {
+export async function onRemoveBoard(request: express.Request, response: express.Response) {
     const { id } = request.body as RemoveBoardRequestBody
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
 
-    if (token && !isNaN(id)) {
-        let decodedToken
-
+    if (!isNaN(Number(id))) {
         try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const success = await removeBoard({ id, userId: (decodedToken as Token)._id })
+            const token = getAuthTokenFromRequest(request)
+            const success = await removeBoard({ id, user_id: token._id })
 
             if (success) {
-                return response.status(200).json({
+                response.status(200).json({
                     success,
                 })
             } else {
-                return response.status(500).json({
-                    error: 'Something went wrong removing this board.',
-                })
+                throw new Error('Something went wrong removing this board.')
             }
         } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header and body: {id} to access this request.',
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
         })
     }
 }
 
 interface AddCollaboratorToBoardRequestBody {
     id: number
-    userId: number
+    user_id: number
 }
 
 export async function onAddCollaboratorToBoard(request: express.Request, response: express.Response) {
-    const { id, userId } = request.body as AddCollaboratorToBoardRequestBody
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+    const { id, user_id } = request.body as AddCollaboratorToBoardRequestBody
 
-    if (token && !isNaN(id) && !isNaN(userId)) {
-        let decodedToken
-
+    if (!isNaN(Number(id)) && !isNaN(Number(user_id))) {
         try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
-
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const board = await addCollaboratorToBoard({ id, userId, ownerUserId: (decodedToken as Token)._id })
+            const token = getAuthTokenFromRequest(request)
+            const board = await addCollaboratorToBoard({ id, user_id, ownerUserId: token._id })
 
             if (board) {
-                return response.status(200).json({
+                response.status(200).json({
                     board,
                 })
             } else {
-                return response.status(500).json({
-                    error: 'Something went wrong updating your board with a new collaborator.',
-                })
+                throw new Error('Something went wrong updating your board with a new collaborator.')
             }
         } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header and body: {id, userId} to access this request.',
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
         })
     }
 }
 
 interface RemoveCollaboratorFromBoardRequestBody {
     id: number
-    userId: number
+    user_id: number
 }
 
 export async function onRemoveCollaboratorFromBoard(request: express.Request, response: express.Response) {
-    const { id, userId } = request.body as RemoveCollaboratorFromBoardRequestBody
-    const token = request.headers.authorization && request.headers.authorization.replace('Token ', '')
+    const { id, user_id } = request.body as RemoveCollaboratorFromBoardRequestBody
 
-    if (token && !isNaN(id) && !isNaN(userId)) {
-        let decodedToken
-
+    if (!isNaN(Number(id)) && !isNaN(Number(user_id))) {
         try {
-            decodedToken = jwt.verify(token, process.env.JWT_SECRET as string)
-        } catch (error) {
-            console.error(`You don't seem to be logged in, send a valid token to access this request!`)
+            const token = getAuthTokenFromRequest(request)
+            const success = await removeCollaboratorFromBoard({ id, user_id, ownerUserId: token._id })
 
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        if (!decodedToken) {
-            return response.status(409).json({
-                error: `You don't seem to be logged in, send a valid token to access this request!`,
-            })
-        }
-
-        try {
-            const board = await addCollaboratorToBoard({ id, userId, ownerUserId: (decodedToken as Token)._id })
-
-            if (board) {
-                return response.status(200).json({
-                    board,
+            if (success) {
+                response.status(200).json({
+                    success,
                 })
             } else {
-                return response.status(500).json({
-                    error: 'Something went wrong updating your board, while removing a collaborator.',
-                })
+                throw new Error('Something went wrong updating your board, while removing a collaborator.')
             }
         } catch (error) {
-            console.error(error.message)
-
-            return response.status(500).json({
+            response.status(500).json({
                 error: error.message,
             })
         }
     } else {
-        return response.status(409).json({
-            error: 'Make sure to pass an Authorization header and body: {id, userId} to access this request.',
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
+        })
+    }
+}
+
+interface AddResultToBoardRequestBody {
+    board_id: number
+    result_id: number
+}
+
+export async function onAddResultToBoard(request: express.Request, response: express.Response) {
+    const { board_id, result_id } = request.body as AddResultToBoardRequestBody
+
+    if (!isNaN(Number(board_id)) && !isNaN(Number(result_id))) {
+        try {
+            const token = getAuthTokenFromRequest(request)
+            const board = await addResultToBoard({ board_id, result_id, user_id: token._id })
+
+            if (board) {
+                response.status(200).json({
+                    board,
+                })
+            } else {
+                throw new Error('Something went wrong adding a result to your board.')
+            }
+        } catch (error) {
+            response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
+        })
+    }
+}
+
+interface RemoveResultFromBoardRequestBody {
+    board_id: number
+    board_result_id: number
+}
+
+export async function onRemoveResultFromBoard(request: express.Request, response: express.Response) {
+    const { board_id, board_result_id } = request.body as RemoveResultFromBoardRequestBody
+
+    if (!isNaN(Number(board_id)) && !isNaN(Number(board_result_id))) {
+        try {
+            const token = getAuthTokenFromRequest(request)
+            const success = await removeResultFromBoard({ board_id, board_result_id, user_id: token._id })
+
+            if (success) {
+                response.status(200).json({
+                    success,
+                })
+            } else {
+                throw new Error('Something went wrong updating your board, while removing a result.')
+            }
+        } catch (error) {
+            response.status(500).json({
+                error: error.message,
+            })
+        }
+    } else {
+        response.status(409).json({
+            error: 'Make sure to pass the correct data to this request.',
         })
     }
 }

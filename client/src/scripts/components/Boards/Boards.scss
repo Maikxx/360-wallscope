@@ -1,0 +1,16 @@
+.Boards {
+    margin-top: 2em;
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &-item {
+            width: 45%;
+            position: relative;
+            perspective: 200px;
+        }
+    }
+}

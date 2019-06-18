@@ -1,7 +1,7 @@
 .ModalFooter {
     @import '../../../../sass/colors.scss';
 
-    background-color:$color-purple-2;
+    background-color:$color-purple-6;
     padding: 1em 2em;
     border-bottom-left-radius: .5em;
     border-bottom-right-radius: .5em;
@@ -11,37 +11,23 @@
 
     .firstButton {
         margin-right: 1em;
+        background-color: $color-red-1;
+
+        &::after{
+            background: darken($color-red-1, 5%);
+        }
+
+        &:hover{
+            background-color: darken($color-red-1, 8%)
+        }
+    
+        &:hover::after {
+            background: darken($color-red-1, 8%);
+        }
+        
     }
 
     .firstButton, .secondButton {
         margin-bottom: 0;
     }
-
-    // button {
-    //     padding: 1em;
-    //     color: #1C2C38;
-    //     font-weight: bold;
-    //     border: none;
-    //     border-radius: .35em;
-    //     transition: all .2s ease;
-    // }
-
-    // .firstButton {
-    //     background-color: #E88626;
-    //     margin-right: 1em;
-    // }
-
-    // .secondButton {
-    //     background-color: #E6605D;
-    // }
-
-    // .firstButton:hover,
-    // .firstButton:focus {
-    //     background-color: #FFAC5A;
-    // }
-
-    // .secondButton:hover,
-    // .secondButton:focus, {
-    //     background-color: darken(#E6605D, 5%);
-    // }
 }

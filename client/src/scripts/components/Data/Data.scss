@@ -1,0 +1,12 @@
+.Data {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    li {
+        margin: 1rem;
+        width: 240px;
+    }
+}

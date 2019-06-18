@@ -1,8 +1,9 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { createUser } from '../services/UserService'
-import { DatabaseUser } from '../types/User'
+import { DatabaseUser } from '../../types/User'
+import { createUser } from '../../orm/users/createUser'
+import { convertDatabaseUserToClientUser } from '../../utils/converters'
 
 interface SignUpRequestBody {
     email?: string
@@ -31,9 +32,7 @@ export async function onSignup(request: express.Request, response: express.Respo
             const hashedPassword = await bcrypt.hash(password, saltRounds)
 
             if (!hashedPassword) {
-                return response.status(500).json({
-                    error: 'Something went wrong, please try again',
-                })
+                throw new Error('A wild error occurred while creating your account!')
             }
 
             const user: DatabaseUser = await createUser({ email, password: hashedPassword, fullName })
@@ -45,18 +44,16 @@ export async function onSignup(request: express.Request, response: express.Respo
                 })
 
                 response.status(200).json({
-                    user: {
-                        _id: user._id,
-                        fullName: user.full_name,
-                        email: user.email,
-                    },
+                    user: convertDatabaseUserToClientUser(user),
                     accessToken,
                     expiresIn: expiresInADay,
                 })
+            } else {
+                throw new Error('User could not be retreived from the database.')
             }
         } catch (error) {
             response.status(500).json({
-                error: 'Something went wrong, please try again',
+                error: error.message,
             })
         }
     } else {
@@ -64,6 +61,4 @@ export async function onSignup(request: express.Request, response: express.Respo
             error: 'Failed signing you up. Please make sure to provide an email, password and a full name. Also make sure the passwords submitted match.',
         })
     }
-
-    return
 }

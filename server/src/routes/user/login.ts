@@ -1,8 +1,8 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { findUserByEmail } from '../services/UserService'
-import { DatabaseUser } from '../types/User'
+import { getUserByEmail } from '../../orm/users/getUserByEmail'
+import { convertDatabaseUserToClientUser } from '../../utils/converters'
 
 interface LoginRequestBody {
     email?: string
@@ -19,20 +19,16 @@ export async function onLogin(request: express.Request, response: express.Respon
         && typeof password === 'string'
     ) {
         try {
-            const user: DatabaseUser = await findUserByEmail(email)
+            const user = await getUserByEmail(email, [ '_id', 'password', 'email', 'full_name' ])
 
             if (!user || !user.password) {
-                return response.status(404).json({
-                    error: 'User not found. Failed to log you in!',
-                })
+                throw new Error('User not found. Failed to log you in!')
             }
 
             const result = await bcrypt.compare(password, user.password)
 
             if (!result) {
-                return response.status(401).json({
-                    error: 'Email and password do not match!',
-                })
+                throw new Error('Email and password do not match!')
             }
 
             const expiresInADay = 24 * 60 * 60
@@ -40,17 +36,19 @@ export async function onLogin(request: express.Request, response: express.Respon
                 expiresIn: expiresInADay,
             })
 
-            response.status(200).send({ user: {
-                _id: user._id,
-                fullName: user.full_name,
-                email: user.email,
-            }, accessToken, expiresIn: expiresInADay })
+            response.status(200).send({
+                user: convertDatabaseUserToClientUser(user),
+                accessToken,
+                expiresIn: expiresInADay,
+            })
         } catch (error) {
-            return response.status(500).json({
-                error: 'Internal server error! Oops...',
+            response.status(500).json({
+                error: error.message,
             })
         }
+    } else {
+        response.status(421).json({
+            error: 'Please make sure to provide both an email and a password!',
+        })
     }
-
-    return
 }

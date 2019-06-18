@@ -87,15 +87,15 @@ export function setAuthorizationToken(token: string) {
 export function getAuthorizationToken() {
     const token = window.localStorage.getItem('authToken')
 
-    if (window.localStorage && token) {
+    if (window.localStorage) {
         if (token) {
             return token
         } else {
             return null
         }
     } else {
-        toast.error('Something went wrong while getting the user token!')
-        return null
+        toast.error(`You don't seem to have localStorage turned on, please turn it on or leave.`)
+        throw new Error(`You don't seem to have localStorage turned on, please turn it on or leave.`)
     }
 }
 
@@ -116,7 +116,6 @@ export function checkTokenValidity() {
             return false
         }
     } else {
-        toast.error('No token could be found!')
         return false
     }
 }
@@ -127,7 +126,7 @@ interface GetUserByIdResponse {
 }
 
 export async function getUserById(id: number) {
-    const url = `${window.location.origin}/user/${id}`
+    const url = `${window.location.origin}/get-user/${id}`
 
     try {
         const token = getAuthorizationToken()
