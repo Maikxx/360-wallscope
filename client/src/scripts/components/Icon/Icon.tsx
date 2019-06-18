@@ -23,7 +23,7 @@ export class Icon extends React.Component<Props> {
             header_logo:
             `<svg class="Icon__header_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.44 41.32" width="90" height="50">
                 <defs>
-                    <style>.class-1{fill:#fff;}.class-2{fill:#4fbad9;}</style>
+                    <style>.class-1{fill:#fff;}.class-2{fill:#8781FE;}</style>
                 </defs>
                 <title>logo-w-blue</title>
                 <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
@@ -142,8 +142,8 @@ export class Icon extends React.Component<Props> {
                     <path fill=${color ? color : '#fff'} d="M28.228 23.986L47.092 5.122c1.172-1.171 1.172-3.071 0-4.242-1.172-1.172-3.07-1.172-4.242 0L23.986 19.744 5.121.88C3.949-.292 2.051-.292.879.88c-1.172 1.171-1.172 3.071 0 4.242l18.865 18.864L.879 42.85c-1.172 1.171-1.172 3.071 0 4.242.586.585 1.354.878 2.121.878s1.535-.293 2.121-.879l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879c1.172-1.171 1.172-3.071 0-4.242L28.228 23.986z"/>
                 </svg>`,
             add:
-                `<svg class="Icon_add" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 31.444 31.444">
-                    <path fill=${color ? color : '#fff'} d="M1.119 16.841c-.619 0-1.111-.508-1.111-1.127s.492-1.111 1.111-1.111h13.475V1.127C14.595.508 15.103 0 15.722 0c.619 0 1.111.508 1.111 1.127v13.476h13.475c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H16.833v13.476c0 .619-.492 1.127-1.111 1.127s-1.127-.508-1.127-1.127V16.841H1.119z" fill="#1e201d"/>
+                `<svg class="Icon_add" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                    <path fill=${color ? color : '#fff'} d="M492 236H276V20a20 20 0 1 0-40 0v216H20a20 20 0 1 0 0 40h216v216a20 20 0 1 0 40 0V276h216a20 20 0 1 0 0-40z"/>
                 </svg>`,
         }
 

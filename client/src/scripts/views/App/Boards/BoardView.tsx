@@ -22,6 +22,7 @@ interface State {
 }
 
 export class BoardView extends React.Component<Props, State> {
+
     public state: State = {
         board: null,
     }

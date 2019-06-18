@@ -34,8 +34,8 @@ export class Accordion extends React.Component<Props, State> {
                     //     arrow.classList.toggle('up')
                     // }
                 }}
-            > {title}
-
+            >
+                <h2>{title}</h2>
                 <li className='AccordionItem' ref={this.accordionItem}>
                     {children}
                 </li>

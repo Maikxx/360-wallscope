@@ -36,17 +36,17 @@
     }
 
     li:nth-of-type(1n+1) .Button--tag-blue {
-        background-color: $color-blue-2;
+        background-color: $color-red-2;
         transition: all .2s ease;
     }
 
     li:nth-of-type(2n+1) .Button--tag-blue {
-        background-color: $color-blue-3;
+        background-color: $color-red-3;
         transition: all .2s ease;
     }
 
     li:nth-of-type(3n+1) .Button--tag-blue {
-        background-color: $color-blue-1;
+        background-color: $color-red-1;
         transition: all .2s ease;
     }
 }

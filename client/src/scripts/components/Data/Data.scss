@@ -1,4 +1,4 @@
-.Articles {
+.Data {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 
     li {
-        margin: 1em;
-        width: 350px;
+        margin: 1rem;
+        width: 240px;
     }
 }
