@@ -68,15 +68,16 @@ interface CreateBoardRequestBody {
     name: string
     collaborators?: number[]
     result?: number
+    iconName?: string
 }
 
 export async function onCreateBoard(request: express.Request, response: express.Response) {
-    const { name, collaborators, result } = request.body as CreateBoardRequestBody
+    const { name, collaborators, result, iconName } = request.body as CreateBoardRequestBody
 
     if (name && typeof name === 'string') {
         try {
             const token = getAuthTokenFromRequest(request)
-            const board = await createBoard({ result, collaborators, name, createdByUserId: token._id })
+            const board = await createBoard({ result, collaborators, name, iconName, createdByUserId: token._id })
 
             if (board) {
                 response.status(200).json({

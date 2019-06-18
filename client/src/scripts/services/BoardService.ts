@@ -134,6 +134,7 @@ interface CreateBoardParams {
     name: string
     collaborators?: number[]
     result?: number
+    iconName?: string
 }
 
 interface CreateBoardResponse {
@@ -143,7 +144,7 @@ interface CreateBoardResponse {
     error?: string
 }
 
-export async function createBoard({ name, collaborators, result }: CreateBoardParams) {
+export async function createBoard({ name, collaborators, result, iconName }: CreateBoardParams) {
     try {
         const token = getAuthorizationToken()
         const url = `${window.location.origin}/create-board`
@@ -154,7 +155,7 @@ export async function createBoard({ name, collaborators, result }: CreateBoardPa
                 {
                     headers: { Authorization: `Token ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
                     method: 'POST',
-                    body: JSON.stringify({ name, collaborators, result }),
+                    body: JSON.stringify({ name, collaborators, result, iconName }),
                 }
             )
 
