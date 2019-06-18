@@ -16,7 +16,7 @@ export async function createUser({ email, password, fullName }: CreateUserParams
     const { rows: [databaseUser] }: CreateUserQueryResponse = await database.query(
         `INSERT INTO users (email, password, full_name)
         VALUES ($1, $2, $3)
-        RETURNING *;`,
+        RETURNING _id, full_name, email;`,
         [ email, password, fullName ]
     )
 
