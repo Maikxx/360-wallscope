@@ -35,7 +35,6 @@ export class MenuBottom extends React.Component<Props> {
                         color='#181631'
                     />
                 </li>
-                <li>
                 <UserMenu
                 title={fullName || 'Login'}
                 renderButton={openModal => (
@@ -65,8 +64,6 @@ export class MenuBottom extends React.Component<Props> {
                     Light Mode
                 </NavLink>
                 </UserMenu>
-
-                </li>
 
             </Navigation>
         )

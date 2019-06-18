@@ -19,4 +19,12 @@
         width: 32px;
         height: 32px;
     }
+
+    .Navigation__ul .Button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1em;
+        color: #cec7ec;
+    }
 }
