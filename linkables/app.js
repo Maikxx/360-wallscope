@@ -2,9 +2,12 @@
     const app = {
         init:()=>{
             console.log("booting")
-            const blocksContainer = document.querySelector("ul")
-            const blocks = blocksContainer.querySelectorAll("li")
-            const svgContainer = document.querySelector("#svgContainer")
+            const lineContainer = document.querySelector("#line__container")
+            const blocks = lineContainer.querySelectorAll("li")
+
+
+            const svgContainer = document.createElementNS("","svg")
+            
 
             let linking = false
 

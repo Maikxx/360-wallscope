@@ -4,7 +4,7 @@
     position: relative;
 }
 div{
-    width: 60rem;
+    width: 51rem;
     margin: auto;
 }
 ul{
@@ -17,11 +17,128 @@ svg{
     position: absolute;
     left: 0;
     top: 0;
+    z-index: -1;
 }
+
+g *{
+    transition: .3s ease all;
+}
+
+g line{
+    stroke-width:3;
+    stroke-dasharray: 10;
+    stroke-linecap: round;
+    opacity: 0;
+    animation: move 10s infinite linear, fadein .5s forwards;
+    animation-delay: 0s, .5s;
+}
+
+g circle{
+    opacity: 0;
+    animation: fadein .5s forwards;
+}
+
+@keyframes move {
+    0%{
+        stroke-dashoffset: 0;
+    }
+    100%{
+        stroke-dashoffset: -100%;
+    }
+}
+
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+g.link--none:nth-of-type(n) line,
+g.link--none:nth-of-type(n) line ~ circle{
+    stroke: #F62459;
+    fill: #F62459;
+}
+
+g.link--none:nth-of-type(2n) line,
+g.link--none:nth-of-type(2n) line ~ circle{
+    stroke: #F8507B;
+    fill: #F8507B;
+}
+
+g.link--none:nth-of-type(3n) line,
+g.link--none:nth-of-type(3n) line ~ circle{
+    stroke: #FA7C9D;
+    fill: #FA7C9D;
+}
+
+g.link--none:nth-of-type(4n) line,
+g.link--none:nth-of-type(4n) line ~ circle{
+    stroke: #FCA8BF;
+    fill: #FCA8BF;
+}
+
+g.link--confirmed:nth-of-type(n) line,
+g.link--confirmed:nth-of-type(n) line ~ circle{
+    stroke: #81F8C1;
+    fill: #81F8C1;
+}
+
+g.link--confirmed:nth-of-type(2n) line,
+g.link--confirmed:nth-of-type(2n) line ~ circle{
+    stroke: #74DFAE;
+    fill: #74DFAE;
+}
+
+g.link--confirmed:nth-of-type(3n) line,
+g.link--confirmed:nth-of-type(3n) line ~ circle{
+    stroke: #67C69B;
+    fill: #67C69B;
+}
+
+g.link--confirmed:nth-of-type(4n) line,
+g.link--confirmed:nth-of-type(4n) line ~ circle{
+    stroke: #5AAD88;
+    fill: #5AAD88;
+}
+
+g.link--maybe:nth-of-type(n) line,
+g.link--maybe:nth-of-type(n) line ~ circle{
+    stroke: #81ABF8;
+    fill: #81ABF8;
+}
+
+g.link--maybe:nth-of-type(2n) line,
+g.link--maybe:nth-of-type(2n) line ~ circle{
+    stroke: #9BBBFA;
+    fill: #9BBBFA;
+}
+
+g.link--maybe:nth-of-type(3n) line,
+g.link--maybe:nth-of-type(3n) line ~ circle{
+    stroke: #B5CBFC;
+    fill: #B5CBFC;
+}
+
+g.link--maybe:nth-of-type(4n) line,
+g.link--maybe:nth-of-type(4n) line ~ circle{
+    stroke: #CFDBFE;
+    fill: #CFDBFE;
+}
+
+
 li{
     height: 10rem;
-    width: 15rem;
+    width: 10rem;
     margin: 1rem;
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
     background: #f1f1f1;
+    transition: .3s ease all;
+}
+li:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px -10px rgba(0,0,0,.15);
+    background: rgba(100,100,100,1);
 }
