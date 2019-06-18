@@ -12,7 +12,7 @@ interface Props {
 export class Boards extends React.Component<Props> {
     public render() {
         const { boards } = this.props
-
+        console.log(boards)
         return (
             <section className={this.getClassName()}>
                 <ul className={'Boards__list'}>
