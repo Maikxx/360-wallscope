@@ -92,7 +92,7 @@ export class CurrentUserView extends React.Component<Props, State> {
                         </Button>
                     </Form>
                 )}
-                <MenuBottom fullName={user && user.fullName}/>
+                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View>
         )
     }
