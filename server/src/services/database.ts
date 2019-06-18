@@ -47,6 +47,7 @@ export async function setupDatabase() {
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
 
+            ALTER TABLE boards ADD COLUMN IF NOT EXISTS is_default_board BOOLEAN;
             ALTER TABLE boards ADD COLUMN IF NOT EXISTS icon_name TEXT;
 
             DO $$ BEGIN
