@@ -4,7 +4,7 @@ import './Input.scss'
 
 type StyleType = 'input-search' | 'input-text'
 
-interface Props {
+export interface InputProps {
     type: string
     name: string
     required?: boolean
@@ -17,7 +17,7 @@ interface Props {
     value?: string
 }
 
-export class Input extends React.Component<Props> {
+export class Input extends React.Component<InputProps> {
     public render() {
         const { type, name, required, placeholder, defaultValue, className, styleOverride, onChange, ...restProps } = this.props
 

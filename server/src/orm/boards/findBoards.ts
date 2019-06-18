@@ -13,13 +13,31 @@ interface OwnerUserQueryResult extends QueryResult {
     rows: DatabaseUser[]
 }
 
+interface GetBoardsOptions {
+    byId?: number
+    byName?: string
+}
+
 // tslint:disable-next-line:variable-name
-export async function getBoards(user_id: number, byId?: number) {
+export async function getBoards(user_id: number, { byId, byName }: GetBoardsOptions) {
     try {
+        const boardsQuerySets: string[] = []
+        const boardsQueryData: any[] = [user_id]
+
+        if (!isNaN(Number(byId))) {
+            boardsQuerySets.push(`_id = $${boardsQuerySets.length + 2}`)
+            boardsQueryData.push(byId)
+        }
+
+        if (byName) {
+            boardsQuerySets.push(`position($${boardsQuerySets.length + 2} in name) > 0`)
+            boardsQueryData.push(byName)
+        }
+
         const { rows: boards }: BoardQueryResult = await database.query(
             `SELECT * FROM boards
-            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`,
-            byId ? [ user_id, byId ] : [user_id]
+            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${boardsQuerySets.join(' AND ')};`,
+            boardsQueryData
         )
 
         if (typeof byId !== undefined && !isNaN(Number(byId))) {

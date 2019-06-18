@@ -10,9 +10,11 @@ import { addResultToBoard } from '../orm/boards/addResultToBoard'
 import { removeResultFromBoard } from '../orm/boards/removeResultFromBoard'
 
 export async function onGetBoards(request: express.Request, response: express.Response) {
+    const { name } = request.query
+
     try {
         const token = getAuthTokenFromRequest(request)
-        const boards = await getBoards(token._id)
+        const boards = await getBoards(token._id, { byName: name })
 
         if (boards && Array.isArray(boards) && boards.length > 0) {
             response.status(200).json({
@@ -41,7 +43,7 @@ export async function onGetBoardById(request: express.Request, response: express
         const token = getAuthTokenFromRequest(request)
 
         try {
-            const board = await getBoards(token._id, id)
+            const board = await getBoards(token._id, { byId: id })
 
             if (board) {
                 response.status(200).json({
