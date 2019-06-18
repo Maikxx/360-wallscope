@@ -33,7 +33,7 @@ export async function createUser({ email, password, fullName }: CreateUserParams
                     `INSERT INTO boards (name, icon_name, owner, is_default_board)
                     VALUES ($1, $2, $3, $4)
                     RETURNING _id;`,
-                    [ 'Research', 'seach_small', databaseUser._id, true ]
+                    [ 'Research', 'search_small', databaseUser._id, true ]
                 ),
             ])
 
