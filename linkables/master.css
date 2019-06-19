@@ -2,22 +2,89 @@
     margin: 0;
     padding: 0;
     position: relative;
+    color: #fff;
+    box-sizing: border-box;
 }
-div{
-    width: 51rem;
+
+body{
+    background: #181631;
+}
+
+#line__container{
+    width: 50rem;
     margin: auto;
 }
 ul{
     list-style: none;
-    display: flex;
+    display: grid;
     justify-content: center;
     flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+li{
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;
+    box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
+    background: linear-gradient(120deg, #2E2B5F, #383881);
+    background-size: 100%;
+    transition: .3s ease all;
+    border-radius: 20px;
+    background-position: 0 0;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+li:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.219);
+    background-size: 300%;
+}
+
+li.active{
+    transform: scale(1.05);
+}
+
+li:after{
+    transition: .3s ease all;
+    background: transparent;
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+li.active:after{
+    background: rgba(255,255,255,.15);
+}
+
+li div{
+    pointer-events: none;
+}
+
+li div h1{
+    font-size: 1rem;
+    margin-bottom: .5rem;
+}
+
+li div p{
+    font-size: .75rem;
+    max-height: 4rem;
+    line-height: 1rem;
+    overflow: hidden;
+}
+
 svg{
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: 0;
+    pointer-events: none;
 }
 
 g *{
@@ -26,7 +93,7 @@ g *{
 
 g line{
     stroke-width:3;
-    stroke-dasharray: 10;
+    stroke-dasharray: 50 10;
     stroke-linecap: round;
     opacity: 0;
     animation: move 10s infinite linear, fadein .5s forwards;
@@ -126,19 +193,4 @@ g.link--maybe:nth-of-type(4n) line,
 g.link--maybe:nth-of-type(4n) line ~ circle{
     stroke: #CFDBFE;
     fill: #CFDBFE;
-}
-
-
-li{
-    height: 10rem;
-    width: 10rem;
-    margin: 1rem;
-    box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
-    background: #f1f1f1;
-    transition: .3s ease all;
-}
-li:hover{
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px -10px rgba(0,0,0,.15);
-    background: rgba(100,100,100,1);
 }

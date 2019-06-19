@@ -5,8 +5,7 @@ let linking = true
 let mode = "Linking"
 
 const lineContainer = document.querySelector("#line__container")
-const itemContainer = lineContainer.querySelector(".board__items")
-const items = itemContainer.querySelectorAll("*")
+const items = lineContainer.querySelectorAll(".board__items > *")
 const svgContainer = document.createElementNS("http://www.w3.org/2000/svg","svg")
 
 items.forEach((el,i)=>{
@@ -23,8 +22,30 @@ const app = {
         lineContainer.appendChild(svgContainer)
 
         items.forEach(el=>{
-            el.addEventListener("click",(e)=>{
+            el.addEventListener("click",e=>{
                 linking && link(e,el)
+            })
+            el.addEventListener("mouseover",e=>{
+                if(el.getAttribute("data-link") && !el.classList.contains("hover")){
+                    const links = el.getAttribute("data-link").split(" ")
+                    links.forEach(link=>{
+                        if(link.length > 1){
+                            document.querySelector(`#${link}`).classList.add("active")
+                        }
+                        document.querySelector(`#${link}_to_${el.id}`) 
+                        ? console.log(document.querySelector(`#${link}_to_${el.id}`))
+                        : console.log(document.querySelector(`#${el.id}_to_${link}`))
+
+                    })
+                }
+                el.classList.add("hover")
+            })
+            el.addEventListener("mouseout",e=>{
+                el.classList.remove("hover")
+                const actives = document.querySelectorAll(".active")
+                actives.forEach(active=>{
+                    active.classList.remove("active")
+                })
             })
         })
 
@@ -32,7 +53,7 @@ const app = {
         let linkSet = []
         let linkData = []
 
-        arr = arr.map((el)=>{
+        arr = arr.map(el=>{
                 return {
                     "el":el,
                     "height": el.clientHeight,
