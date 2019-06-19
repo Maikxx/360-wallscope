@@ -30,13 +30,13 @@ export async function getBoards(user_id: number, { byId, byName }: GetBoardsOpti
         }
 
         if (byName) {
-            boardsQuerySets.push(`position($${boardsQuerySets.length + 2} in name) > 0`)
+            boardsQuerySets.push(`$${boardsQuerySets.length + 2} LIKE '%' || name || '%'`)
             boardsQueryData.push(byName)
         }
 
         const { rows: boards }: BoardQueryResult = await database.query(
             `SELECT * FROM boards
-            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${boardsQuerySets.join(' AND ')};`,
+            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1)${boardsQuerySets.length > 0 ? ` AND ${boardsQuerySets.join(' AND ')}` : ''};`,
             boardsQueryData
         )
 
@@ -52,7 +52,7 @@ export async function getBoards(user_id: number, { byId, byName }: GetBoardsOpti
             return Promise.all(boards.map(board => getPopulatedBoardFromDatabase(board)))
         }
     } catch (error) {
-        throw new Error(`Something went wrong with getting ${byId ? 'your board' : 'boards'} from the database!`)
+        throw new Error(error.message)
     }
 }
 

@@ -14,7 +14,7 @@ interface Props {
 export class Boards extends React.Component<Props> {
     public render() {
         const { boards } = this.props
-        console.log(boards)
+
         return (
             <section className={this.getClassName()}>
                 <header className={`Boards__header`}>
@@ -37,7 +37,8 @@ export class Boards extends React.Component<Props> {
 
     private onSearch = async (value: string) => {
         const boards = await getBoardsForCurrentUser(value)
-        console.log(boards)
+
+        this.setState({ boards })
     }
 
     private getClassName() {
