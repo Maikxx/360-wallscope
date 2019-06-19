@@ -9,6 +9,7 @@ import { MenuBottom } from '../../../components/MenuBottom/MenuBottom'
 import { RouteComponentProps } from 'react-router'
 import { Articles } from '../../../components/Articles/Articles'
 import { Data } from '../../../components/Data/Data'
+import { Tags } from '../../../components/Tags/Tags'
 
 interface Props extends RouteComponentProps {
     user?: User
@@ -101,6 +102,7 @@ export class ResultsView extends React.Component<Props> {
 
         const boardNames = new Array('Antibiotics', 'Schoolpaper', 'Hospitals', 'Antibiotics', 'Schoolpaper', 'Hospitals')
         const tags = new Array('Location', 'A&E', 'Time')
+        const query = new Array('2019', 'Oncology', 'Radiology', 'Neurology', 'ICU', 'Dermatology')
 
         return (
             <View>
@@ -109,7 +111,7 @@ export class ResultsView extends React.Component<Props> {
                     searchWords={searchQuestion}
                     tags={tags}
                 />
-
+                <Tags className='SearchQueryTags' tags={query} styleOverride='tag-red-button'/>
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}

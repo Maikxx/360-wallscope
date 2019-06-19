@@ -6,14 +6,14 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
-    margin: .5em 0;
+    margin: .5rem 0;
 
     li .Button--tag-border {
         margin-bottom: 0;
     }
 
     li {
-        margin-bottom: 0;
+        margin-bottom: 1rem;;
     }
 
     li .Button{
@@ -49,4 +49,14 @@
         background-color: $color-red-1;
         transition: all .2s ease;
     }
+}
+
+.SearchQueryTags {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    margin: .5rem 0;
 }
