@@ -4,7 +4,7 @@ import { QueryResult } from 'pg'
 interface RemoveCollaboratorFromBoardOptions {
     id: number
     ownerUserId: number
-    userId: number
+    user_id: number
 }
 
 interface RemoveCollaboratorFromBoardOptionsQueryResponse extends QueryResult {
@@ -13,18 +13,18 @@ interface RemoveCollaboratorFromBoardOptionsQueryResponse extends QueryResult {
     }[]
 }
 
-export async function removeCollaboratorFromBoard({ id, userId, ownerUserId }: RemoveCollaboratorFromBoardOptions) {
+export async function removeCollaboratorFromBoard({ id, user_id, ownerUserId }: RemoveCollaboratorFromBoardOptions) {
     try {
         const { rows: [board] }: RemoveCollaboratorFromBoardOptionsQueryResponse = await database.query(
             `UPDATE boards
             SET collaborators = array_remove(collaborators, $3)
             WHERE _id = $1 AND owner = $2 AND $3 = ANY(collaborators::INTEGER[])
             RETURNING _id;`,
-            [ id, ownerUserId, userId ]
+            [ id, ownerUserId, user_id ]
         )
 
         if (board) {
-            return board
+            return true
         } else {
             throw new Error('We had some trouble updating the board you selected!')
         }

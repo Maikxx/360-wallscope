@@ -1,8 +1,9 @@
 import React from 'react'
-import './Header.scss'
 import classnames from 'classnames'
 import { Icon } from '../Icon/Icon'
 import { Link } from 'react-router-dom'
+import { routes } from '../../routes'
+import './Header.scss'
 
 interface Props {
     className?: string
@@ -25,8 +26,10 @@ export class Header extends React.Component<Props> {
                         />
                     </Link>
                 )}
-                <Icon iconName='header_logo'/>
-            </header>
+                <Link to={routes.App.index}>
+                    <Icon iconName='header_logo'/>
+                </Link>
+            </header >
         )
     }
 

@@ -4,7 +4,7 @@ import { QueryResult } from 'pg'
 interface AddCollaboratorToBoardOptions {
     id: number
     ownerUserId: number
-    userId: number
+    user_id: number
 }
 
 interface AddCollaboratorToBoardOptionsQueryResponse extends QueryResult {
@@ -13,14 +13,14 @@ interface AddCollaboratorToBoardOptionsQueryResponse extends QueryResult {
     }[]
 }
 
-export async function addCollaboratorToBoard({ id, userId, ownerUserId }: AddCollaboratorToBoardOptions) {
+export async function addCollaboratorToBoard({ id, user_id, ownerUserId }: AddCollaboratorToBoardOptions) {
     try {
         const { rows: [board] }: AddCollaboratorToBoardOptionsQueryResponse = await database.query(
             `UPDATE boards
             SET collaborators = array_append(collaborators, $3)
             WHERE _id = $1 AND owner = $2 AND $3 != ALL(collaborators::INTEGER[])
             RETURNING _id;`,
-            [ id, ownerUserId, userId ]
+            [ id, ownerUserId, user_id ]
         )
 
         if (board) {
