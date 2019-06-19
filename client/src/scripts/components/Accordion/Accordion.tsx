@@ -23,17 +23,16 @@ export class Accordion extends React.Component<Props, State> {
         const { children, title } = this.props
 
         return (
-            <ul className={this.getClassName()}
-                onClick={() => {
-                    this.animateCollapse()
-                    this.toggleAccordion()
-                }}
-            >
+            <ul className={this.getClassName()}>
                 <h2>{title}</h2>
                 <li className='AccordionItem' ref={this.accordionItem}>
                     {children}
                 </li>
-                <div className='Arrow'></div>
+                <div className='Arrow'
+                onClick={() => {
+                    this.animateCollapse()
+                    this.toggleAccordion()
+                }}/>
             </ul>
         )
     }
