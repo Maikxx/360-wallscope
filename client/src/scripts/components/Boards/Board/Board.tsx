@@ -17,7 +17,7 @@ export class Board extends React.Component<Props> {
 
         return (
             <Link to={`/boards/${board._id}`}>
-                <div className='back-board'>
+                <div className='Back-board'>
                     <span>Articles: 0</span>
                     <span>Data: 0</span>
                 </div>
