@@ -5,6 +5,7 @@ export interface DatabaseBoard {
     name: string
     collaborators: number[] | null
     owner: number | null
+    is_default_board: boolean | null
     icon_name: string | null
     results: number[] | null
     created_at: Date

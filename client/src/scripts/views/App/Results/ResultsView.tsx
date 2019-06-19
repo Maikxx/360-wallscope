@@ -119,7 +119,7 @@ export class ResultsView extends React.Component<Props> {
                 <Accordion title='Raw data'>
                     <Data files={fileData} boardNames={boardNames} />
                 </Accordion>
-                <MenuBottom fullName={user && user.fullName}/>
+                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View >
         )
     }
