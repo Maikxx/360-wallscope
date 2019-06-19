@@ -118,7 +118,7 @@ export class ResultsView extends React.Component<Props> {
                         boardNames={boardNames}
                     />
                 </Accordion>
-                <Accordion title='Raw data'>
+                <Accordion title='Datasets'>
                     <Data files={fileData} boardNames={boardNames} />
                 </Accordion>
                 <MenuBottom fullName={user && user.fullName} iconName='search_big'/>

@@ -6,6 +6,7 @@ import { NavLink } from '../NavLink/NavLink'
 import { Button } from '../Button/Button'
 import './MenuBottom.scss'
 import { IconNames, Icon } from '../Icon/Icon'
+import { Link } from 'react-router-dom'
 
 interface Props {
     className?: string
@@ -42,7 +43,7 @@ export class MenuBottom extends React.Component<Props, State> {
                     iconName='boards'
                     color='#CEC7EC'
                 >
-                    {isLoggedIn ? 'Boards' : 'Login for more fun features'}
+                    {isLoggedIn ? 'Boards' : 'Please login'}
                 </NavLink>
             }
                 <li className='Middle'>
@@ -85,13 +86,17 @@ export class MenuBottom extends React.Component<Props, State> {
                         </svg>
                     </React.Fragment>
                     :
+                    <Link
+                        to={routes.App.index}
+                    >
                         <Button
-                            className='Button_big'
-                            styleOverride='big-button'
-                            type='button'
-                            iconName={iconName}
-                            color='#181631'
+                                className='Button_big'
+                                styleOverride='big-button'
+                                type='button'
+                                iconName={iconName}
+                                color='#181631'
                         />
+                    </Link>
                     }
                 </li>
                 <NavLink

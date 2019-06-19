@@ -8,6 +8,7 @@ import { PageTitle } from '../../../components/PageTitle/PageTitle'
 import { capitalize } from '../../../utils/capitalize'
 import { getBoardById } from '../../../services/BoardService'
 import { Board } from '../../../types/Board'
+import { routes } from '../../../routes'
 
 export interface BoardViewRouteParams {
     id: string
@@ -46,7 +47,7 @@ export class BoardView extends React.Component<Props, State> {
 
         return (
             <View>
-                <Header back={false}/>
+                <Header back={true} route={routes.App.Boards.index}/>
                 <PageTitle>Board: {capitalize(board.name)}</PageTitle>
                 <MenuBottom fullName={user.fullName} iconName='pen'/>
             </View>
