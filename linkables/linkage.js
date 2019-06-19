@@ -23,6 +23,7 @@ const app = {
 
         items.forEach(el=>{
             el.addEventListener("click",e=>{
+                el.classList.add("linking")
                 linking && link(e,el)
             })
             el.addEventListener("mouseover",e=>{

@@ -4,6 +4,7 @@
     position: relative;
     color: #fff;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body{
@@ -11,7 +12,7 @@ body{
 }
 
 #line__container{
-    width: 50rem;
+    width: 55rem;
     margin: auto;
 }
 ul{
@@ -19,12 +20,12 @@ ul{
     display: grid;
     justify-content: center;
     flex-wrap: wrap;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .item{
-    height: 10rem;
-    width: 10rem;
+    height: 9rem;
+    width: 9rem;
     margin: 1rem;
     box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
     background: linear-gradient(120deg, #2E2B5F, #383881);
@@ -32,7 +33,7 @@ ul{
     transition: .3s ease background, .3s ease transform;
     border-radius: 20px;
     background-position: 0 0;
-    padding: 2rem;
+    padding: 1.5rem;
     overflow: hidden;
 }
 
@@ -47,7 +48,7 @@ ul{
 }
 
 .item:after{
-    transition: .3s ease all;
+    transition: .3s ease background;
     background: transparent;
     pointer-events: none;
     content: "";
@@ -57,6 +58,19 @@ ul{
     display: block;
     height: 100%;
     width: 100%;
+}
+
+.item.linking{
+    transform: scale(1.05);
+}
+
+.item.linking:after{
+    content: "🔗";
+    height: 1rem;
+    width: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .item.active:after{

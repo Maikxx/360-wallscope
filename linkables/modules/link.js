@@ -6,7 +6,7 @@ const link = (ev,el)=>{
         linkables.push(el)
     }else{
         linkables.find((arrEl,i)=>{
-            linkables.splice(i,1)
+            linkReset([arrEl])
         })
     }
 
@@ -14,21 +14,25 @@ const link = (ev,el)=>{
         if(linkables[0].getAttribute("data-link")){
             if(!(linkables[0].getAttribute("data-link").match(linkables[1].id))){
                 linkData(linkables)
-                linkReset()
+                linkReset(linkables)
                 console.log("Link made")
             }else{
-                linkReset()
+                linkReset(linkables)
                 console.log("Link not made: already exists")
             }
         }else{
             linkData(linkables)
-            linkReset() 
+            linkReset(linkables) 
             console.log("Link made")
         }
     }
 }
 
-const linkReset = ()=>{
+const linkReset = (arr)=>{
+    console.log("cleared",arr)
+    arr.forEach(el=>{
+        el.classList.remove("linking")
+    })
     linkables = []
 }
 
