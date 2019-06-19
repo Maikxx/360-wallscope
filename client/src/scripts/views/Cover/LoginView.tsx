@@ -30,7 +30,7 @@ export class LoginView extends React.Component<Props, State> {
     public render() {
         return (
             <CoverView>
-                <Header back={true} route={routes.App.index}></Header>
+                <Header back={true} route={routes.App.index}/>
                 <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>
