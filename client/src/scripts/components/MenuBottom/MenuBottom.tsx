@@ -111,4 +111,3 @@ export class MenuBottom extends React.Component<Props, State> {
         return classnames('MenuBottom', { }, className)
     }
 }
-        
