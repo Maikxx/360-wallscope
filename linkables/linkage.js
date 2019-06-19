@@ -31,11 +31,11 @@ const app = {
                     links.forEach(link=>{
                         if(link.length > 1){
                             document.querySelector(`#${link}`).classList.add("active")
-                        }
-                        document.querySelector(`#${link}_to_${el.id}`) 
-                        ? console.log(document.querySelector(`#${link}_to_${el.id}`))
-                        : console.log(document.querySelector(`#${el.id}_to_${link}`))
 
+                            document.querySelector(`#${link}_to_${el.id}`) 
+                            ? document.querySelector(`#${link}_to_${el.id}`).classList.add("active")
+                            : document.querySelector(`#${el.id}_to_${link}`).classList.add("active")
+                        }
                     })
                 }
                 el.classList.add("hover")

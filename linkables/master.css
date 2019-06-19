@@ -22,31 +22,31 @@ ul{
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-li{
+.item{
     height: 10rem;
     width: 10rem;
     margin: 1rem;
     box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
     background: linear-gradient(120deg, #2E2B5F, #383881);
     background-size: 100%;
-    transition: .3s ease all;
+    transition: .3s ease background, .3s ease transform;
     border-radius: 20px;
     background-position: 0 0;
     padding: 2rem;
     overflow: hidden;
 }
 
-li:hover{
+.item:hover{
     transform: scale(1.05);
     box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.219);
     background-size: 300%;
 }
 
-li.active{
+.item.active{
     transform: scale(1.05);
 }
 
-li:after{
+.item:after{
     transition: .3s ease all;
     background: transparent;
     pointer-events: none;
@@ -59,20 +59,20 @@ li:after{
     width: 100%;
 }
 
-li.active:after{
+.item.active:after{
     background: rgba(255,255,255,.15);
 }
 
-li div{
+.item div{
     pointer-events: none;
 }
 
-li div h1{
+.item div h1{
     font-size: 1rem;
     margin-bottom: .5rem;
 }
 
-li div p{
+.item div p{
     font-size: .75rem;
     max-height: 4rem;
     line-height: 1rem;
@@ -83,8 +83,21 @@ svg{
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
+}
+
+input[type="checkbox"]:checked ~ div svg{
+    z-index: 0;
+}
+
+g{
+    opacity: 0.25;
+    transition: .5s ease all;
+}
+
+g.active{
+    opacity: 1;
 }
 
 g *{

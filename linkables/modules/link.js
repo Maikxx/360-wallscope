@@ -78,8 +78,8 @@ const linkCreate = arr=>{
                         : linkSpacing(el[0].el,"check")[2] * 20 + el[0].x)
                     newCircleEnd.setAttribute("cx",
                         el[0].y < el[1].y 
-                        ? linkSpacing(el[1].el,"check")[2] * 20 + el[1].x 
-                        : linkSpacing(el[1].el,"check")[0] * 20 + el[1].x)
+                        ? linkSpacing(el[1].el,"check")[0] * 20 + el[1].x 
+                        : linkSpacing(el[1].el,"check")[2] * 20 + el[1].x)
                     newCircleStart.setAttribute("cy",
                         el[0].y > el[1].y 
                         ? el[0].y - el[0].height/2 
@@ -154,7 +154,54 @@ const linkCreate = arr=>{
                 })()
                 break
             default:
-                console.log("no linkage")
+                (()=>{
+                    const newCircleStart = document.createElementNS(namespace,"circle")
+                    const newCircleEnd = document.createElementNS(namespace,"circle")
+                    const newLine = document.createElementNS(namespace,"line")
+                    newCircleStart.setAttribute("r",5)
+                    newCircleEnd.setAttribute("r",5)
+
+                    newCircleStart.setAttribute("cx",
+                        el[0].x > el[1].x
+                        ? el[0].x - el[0].height/2 
+                        : el[0].x + el[0].height/2)
+                    newCircleEnd.setAttribute("cx",
+                        el[0].x < el[1].x
+                        ? el[1].x - el[1].height/2 
+                        : el[1].x + el[1].height/2)
+                    newCircleStart.setAttribute("cy",
+                        el[0].y > el[1].y
+                        ? el[0].y - el[0].height/2 
+                        : el[0].y + el[0].height/2)
+                    newCircleEnd.setAttribute("cy",
+                        el[0].y < el[1].y
+                        ? el[1].y - el[1].height/2 
+                        : el[1].y + el[1].height/2)
+
+                    newLine.setAttribute("y1",el[0].y)
+                    newLine.setAttribute("y2",el[1].y)
+
+                    newLine.setAttribute("x1",
+                        el[0].x > el[1].x
+                        ? el[0].x - el[0].height/2 
+                        : el[0].x + el[0].height/2)
+                    newLine.setAttribute("x2",
+                        el[0].x < el[1].x
+                        ? el[1].x - el[1].height/2 
+                        : el[1].x + el[1].height/2)
+                    newLine.setAttribute("y1",
+                        el[0].y > el[1].y
+                        ? el[0].y - el[0].height/2 
+                        : el[0].y + el[0].height/2)
+                    newLine.setAttribute("y2",
+                        el[0].y < el[1].y
+                        ? el[1].y - el[1].height/2 
+                        : el[1].y + el[1].height/2)
+
+                    newGroup.appendChild(newLine)
+                    newGroup.appendChild(newCircleStart)
+                    newGroup.appendChild(newCircleEnd)
+                })()
                 break
         }
 
