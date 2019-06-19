@@ -28,6 +28,7 @@ export class Article extends React.Component<Props> {
                     <p>{article.short_description}</p>
                     {children}
                 </article>
+                <span>Article</span>
                 <ModalBase
                     title={'Add to a board'}
                     firstButton={'Cancel'}
