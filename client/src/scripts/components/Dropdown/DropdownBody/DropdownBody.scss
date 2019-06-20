@@ -1,0 +1,26 @@
+.DropdownBody {
+    @import '../../../../sass/colors.scss';
+
+    overflow-y: auto;
+    // min-height: 40vh;
+    border: 2px $color-red-1 solid;
+    background-color: $color-purple-6;
+
+    .Button {
+        &--tag-red {
+            background-color: transparent;
+            color: $color-red-1;
+            border-radius: 0;
+            text-align: left;
+            transition: all .5 ease;
+
+            &:hover,
+            &:focus,
+            &:active{
+                background-color: $color-red-1;
+                color: $color-purple-5;
+                transition: all .5 ease;
+            }
+        }
+    }
+}
