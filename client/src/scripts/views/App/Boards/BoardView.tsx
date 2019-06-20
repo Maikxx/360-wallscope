@@ -47,7 +47,7 @@ export class BoardView extends React.Component<Props, State> {
 
         return (
             <View>
-                <Header back={true} route={routes.App.Boards.index}/>
+                <Header back={true} route={routes.App.Boards.index} more={false}/>
                 <PageTitle>Board: {capitalize(board.name)}</PageTitle>
                 <MenuBottom fullName={user.fullName} iconName='pen'/>
             </View>

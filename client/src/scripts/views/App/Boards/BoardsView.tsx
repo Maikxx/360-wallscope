@@ -40,7 +40,7 @@ export class BoardsView extends React.Component<Props, State> {
 
         return (
             <View>
-                <Header back={false}/>
+                <Header back={false} more={true}/>
                 <PageTitle>Boards</PageTitle>
                 <Boards boards={boards} />
                 <MenuBottom fullName={user.fullName} iconName='search_big'/>
