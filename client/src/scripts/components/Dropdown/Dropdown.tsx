@@ -8,6 +8,7 @@ interface Props {
     renderButton: (openModal: () => void) => JSX.Element
     title: string
     onAccept?: () => void
+    render?: (closeModal: () => void) => JSX.Element
 }
 
 interface State {
@@ -23,7 +24,7 @@ export class Dropdown extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, renderButton, title } = this.props
+        const { children, renderButton, title, render } = this.props
         return (
             <React.Fragment>
                 {renderButton(this.openModal)}
@@ -38,7 +39,7 @@ export class Dropdown extends React.Component<Props, State> {
                         onClose={this.closeModal}
                     />
                     <DropdownBody
-                        children={children}
+                        children={render ? render(this.closeModal) : children}
                     />
                 </Modal>
             </React.Fragment>

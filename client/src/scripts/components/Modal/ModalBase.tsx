@@ -11,6 +11,7 @@ interface Props {
     firstButton?: string
     secondButton?: string
     onAccept?: () => void
+    render?: (closeModal: () => void) => JSX.Element
 }
 
 interface State {
@@ -26,7 +27,7 @@ export class ModalBase extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, renderButton, title, firstButton, secondButton } = this.props
+        const { children, renderButton, title, firstButton, secondButton, render } = this.props
         return (
             <React.Fragment>
                 {renderButton(this.openModal)}
@@ -41,7 +42,7 @@ export class ModalBase extends React.Component<Props, State> {
                         onClose={this.closeModal}
                     />
                     <ModalBody
-                        children={children}
+                        children={render ? render(this.closeModal) : children}
                     />
                     {firstButton && secondButton && (
                         <ModalFooter

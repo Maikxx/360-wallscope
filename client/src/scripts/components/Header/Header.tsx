@@ -59,36 +59,43 @@ export class Header extends React.Component<Props, State> {
                                 color='#ffffff'
                             />
                         )}
+                        render={closeDropdown => (
+                            <React.Fragment>
+                                <ModalBase
+                                    title={'Create new board'}
+                                    renderButton={openModal => (
+                                        <Button styleOverride='tag-red-button' full={true} onClick={openModal}>
+                                            Create new board
+                                        </Button>
+                                    )}
+                                    render={closeModal => (
+                                        <Form onSubmit={this.onCreateNewBoard}>
+                                            <Fieldset>
+                                                <Label>
+                                                    Board name
+                                                    <Input type={'text'} name={'name'} onChange={event => this.setState({ name: event.target.value })}/>
+                                                </Label>
+                                                <Button styleOverride={`blue-button`} type='button' full={true} onClick={() => {
+                                                    closeModal()
+                                                    closeDropdown()
+                                                }}>
+                                                    Cancel
+                                                </Button>
+                                                <Button styleOverride={'red-button'} type='submit' full={true}>
+                                                    Create
+                                                </Button>
+                                            </Fieldset>
+                                        </Form>
+                                    )}
+                                />
+                                <Button styleOverride='tag-red-button' full={true}>Delete board</Button>
+                                <Button styleOverride='tag-red-button' full={true}>Edit existing board</Button>
+                                <Button styleOverride='tag-red-button' full={true}>Share board</Button>
+                            </React.Fragment>
+                        )}
                     >
-                        <ModalBase
-                            title={'Create new board'}
-                            renderButton={openModal => (
-                                <Button styleOverride='tag-red-button' full={true} onClick={openModal}>
-                                    Create new board
-                                </Button>
-                            )}
-                        >
-                            <Form onSubmit={this.onCreateNewBoard}>
-                                <Fieldset>
-                                    <Label>
-                                        Board name
-                                        <Input type={'text'} name={'name'} onChange={event => this.setState({ name: event.target.value })}/>
-                                    </Label>
-                                    <Button styleOverride={`blue-button`} type='button' full={true}>
-                                        Cancel
-                                    </Button>
-                                    <Button styleOverride={'red-button'} type='submit' full={true}>
-                                        Create
-                                    </Button>
-                                </Fieldset>
-                            </Form>
-                        </ModalBase>
-                        <Button styleOverride='tag-red-button' full={true}>Delete board</Button>
-                        <Button styleOverride='tag-red-button' full={true}>Edit existing board</Button>
-                        <Button styleOverride='tag-red-button' full={true}>Share board</Button>
                     </Dropdown>
                 )}
-
             </header >
         )
     }
