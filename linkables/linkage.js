@@ -2,8 +2,6 @@ import {link,linkCreate} from "./modules/link.js"
 
 let linking = true
 
-let mode = "Linking"
-
 const lineContainer = document.querySelector("#line__container")
 const items = lineContainer.querySelectorAll(".board__items > *")
 const svgContainer = document.createElementNS("http://www.w3.org/2000/svg","svg")
@@ -88,7 +86,7 @@ const app = {
                 return value.id == el[1]
              })]
         })
-      
+        
         linkCreate(linkData)
     }
 }

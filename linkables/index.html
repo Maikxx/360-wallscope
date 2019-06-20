@@ -20,12 +20,13 @@
             <li></li>
             <li></li>
             <li></li>
-            <li data-link="block-0"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li data-link="block-0">
+                <div>
+                    <h1>Data Set</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum facere praesentium voluptatum nobis veritatis aliquam fuga sed illum quia earum maxime ipsum provident nihil dicta, repellendus dignissimos vel temporibus! Placeat?</p>
+                    <a href="">More ></a>
+                </div>
+            </li>
             <li></li>
             <li></li>
             <li></li>
@@ -43,7 +44,17 @@
             <li></li>
         </ul>
     </div>
-    <!-- <script src="./app.js"></script> -->
+    <fieldset>
+        <legend>Linking Mode</legend>
+        <label for="link">Link</label>
+        <input type="radio" name="linkage" id="link">
+        <label for="link--none">No-Link</label>
+        <input type="radio" name="linkage" id="link--none">
+        <label for="link--maybe">Possible Link</label>
+        <input type="radio" name="linkage" id="link--maybe">
+        <label for="link--unlink">Unlink</label>
+        <input type="radio" name="linkage" id="link--unlink">
+    </fieldset>
     <script src="./linkage.js" type="module"></script>
 </body>
 </html>

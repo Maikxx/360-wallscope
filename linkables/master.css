@@ -77,10 +77,6 @@ ul{
     background: rgba(255,255,255,.15);
 }
 
-.item div{
-    pointer-events: none;
-}
-
 .item div h1{
     font-size: 1rem;
     margin-bottom: .5rem;
@@ -88,9 +84,10 @@ ul{
 
 .item div p{
     font-size: .75rem;
-    max-height: 4rem;
+    max-height: 3rem;
     line-height: 1rem;
     overflow: hidden;
+    margin-bottom: .5rem;
 }
 
 svg{

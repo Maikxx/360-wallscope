@@ -64,7 +64,7 @@ const linkCreate = arr=>{
         const newGroup = document.createElementNS(namespace,"g")
         const svgContainer = document.querySelector(".svg__container")
 
-        newGroup.classList.add("link--confirmed")
+        newGroup.classList.add("link--maybe")
 
         newGroup.id = `${el[0].id}_to_${el[1].id}`
 
@@ -98,9 +98,9 @@ const linkCreate = arr=>{
                         ? linkSpacing(el[0].el,"check")[0] * 20 + el[0].x 
                         : linkSpacing(el[0].el,"check")[2] * 20 + el[0].x)
                     newLine.setAttribute("x2",
-                        el[0].y > el[1].y 
-                        ? linkSpacing(el[0].el,"check")[0] * 20 + el[0].x 
-                        : linkSpacing(el[0].el,"check")[2] * 20 + el[0].x)
+                        el[0].y < el[1].y 
+                        ? linkSpacing(el[1].el,"check")[0] * 20 + el[0].x 
+                        : linkSpacing(el[1].el,"check")[2] * 20 + el[0].x)
 
                     newLine.setAttribute("y1",
                         el[0].y > el[1].y 
