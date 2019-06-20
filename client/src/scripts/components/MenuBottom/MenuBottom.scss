@@ -89,6 +89,9 @@
 	.Menu-item:nth-child(5) {
 		transition-duration: 180ms;
 	}
+	.Menu-item:nth-child(6) {
+		transition-duration: 180ms;
+	}
 	
 	.Menu-open-button {
 		z-index: 2;
@@ -113,14 +116,19 @@
 	}
 	.Menu-open:checked ~ .Menu-item:nth-child(3) {
 		transition-duration: 180ms;
-		transform: translate3d(-100px, -60px, 0);
+		transform: translate3d(-100px, 0px, 0);
 	}
 	.Menu-open:checked ~ .Menu-item:nth-child(4) {
 		transition-duration: 280ms;
-		transform: translate3d(0.08361px, -104.99997px, 0);
+		transform: translate3d(-60px, -100px, 0);
 	}
 	.Menu-open:checked ~ .Menu-item:nth-child(5) {
 		transition-duration: 380ms;
-		transform: translate3d(100px, -60px, 0);
+		transform: translate3d(60px, -100px, 0);
+	}
+	
+	.Menu-open:checked ~ .Menu-item:nth-child(6) {
+		transition-duration: 480ms;
+		transform: translate3d(100px, 0px, 0);
 	}
 }
