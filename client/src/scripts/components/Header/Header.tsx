@@ -93,7 +93,8 @@ export class Header extends React.Component<Props, State> {
         )
     }
 
-    private onCreateNewBoard = async() => {
+    private onCreateNewBoard = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         const { name } = this.state
         const { onCreateNewBoard } = this.props
 
