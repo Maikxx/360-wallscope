@@ -14,7 +14,16 @@ export class IconRaster extends React.Component<Props> {
         const { name, onChange } = this.props
         const icons = Object.keys(IconType)
             .map(key => ({ name: key, icon: IconType[key] }))
-            .filter(({ name }) => name === 'spaceship' || name === 'search_small')
+            .filter(({ name }) => name === 'spaceship'
+                || name === 'search_small'
+                || name === 'medication'
+                || name === 'test_tubes'
+                || name === 'city'
+                || name === 'stethoscope'
+                || name === 'syringe'
+                || name === 'light_bulb'
+                || name === 'atom'
+            )
 
         return (
             <div className={this.getClassName()}>
