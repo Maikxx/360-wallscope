@@ -34,6 +34,7 @@ export class IconRaster extends React.Component<Props> {
                             name={name}
                             defaultChecked={icon.name === 'spaceship'}
                             value={icon.name}
+                            className={`IconRaster__input`}
                             onClick={event => onChange((event.target as HTMLInputElement).value)}
                         />
                         <Icon key={icon.name} iconName={icon.name as any}/>
