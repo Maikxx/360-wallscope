@@ -8,8 +8,8 @@ import './ModalBase.scss'
 interface Props {
     renderButton: (openModal: () => void) => JSX.Element
     title: string
-    firstButton: string
-    secondButton: string
+    firstButton?: string
+    secondButton?: string
     onAccept?: () => void
 }
 
@@ -43,12 +43,14 @@ export class ModalBase extends React.Component<Props, State> {
                     <ModalBody
                         children={children}
                     />
-                    <ModalFooter
-                        firstButton={firstButton}
-                        secondButton={secondButton}
-                        onClose={this.closeModal}
-                        onAccept={this.onAccept}
-                    />
+                    {firstButton && secondButton && (
+                        <ModalFooter
+                            firstButton={firstButton}
+                            secondButton={secondButton}
+                            onClose={this.closeModal}
+                            onAccept={this.onAccept}
+                        />
+                    )}
                 </Modal>
             </React.Fragment>
         )
