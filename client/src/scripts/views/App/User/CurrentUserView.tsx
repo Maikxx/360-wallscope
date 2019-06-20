@@ -48,7 +48,7 @@ export class CurrentUserView extends React.Component<Props, State> {
 
         return (
             <View>
-                <Header back={false}/>
+                <Header back={false} more={false}/>
                 {loading && 'Loading...'}
                 {(user && !loading) && (
                     <Form onSubmit={this.onFormSubmit}>

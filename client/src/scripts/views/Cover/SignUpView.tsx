@@ -34,7 +34,7 @@ export class SignUpView extends React.Component<Props, State> {
     public render() {
         return (
             <CoverView>
-                <Header back={false}/>
+                <Header back={false} more={false}/>
                 <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>

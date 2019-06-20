@@ -106,7 +106,7 @@ export class ResultsView extends React.Component<Props> {
 
         return (
             <View>
-                <Header back={false}/>
+                <Header back={false} more={false}/>
                 <SearchQuery
                     searchWords={searchQuestion}
                     tags={tags}
