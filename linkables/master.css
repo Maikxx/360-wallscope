@@ -25,7 +25,6 @@ ul{
 
 .item{
     height: 9rem;
-    width: 9rem;
     margin: 1rem;
     box-shadow: 0 5px 5px -10px rgba(0,0,0,.15);
     background: linear-gradient(120deg, #2E2B5F, #383881);
@@ -48,7 +47,7 @@ ul{
 }
 
 .item:after{
-    transition: .3s ease background;
+    transition: .3s ease background, .3s ease opacity;
     background: transparent;
     pointer-events: none;
     content: "";
@@ -56,6 +55,7 @@ ul{
     top: 0;
     left: 0;
     display: block;
+    opacity: .25;
     height: 100%;
     width: 100%;
 }
@@ -65,16 +65,30 @@ ul{
 }
 
 .item.linking:after{
-    content: "🔗";
-    height: 1rem;
-    width: 1rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    pointer-events: none;
+}
+
+.link--confirmed .item.linking:after{
+    background: #81F8C1;
+    opacity: .5;
+}
+
+.link--none .item.linking:after{
+    background: #F62459;
+    opacity: .5;
+}
+
+.link--maybe .item.linking:after{
+    background: #81ABF8;
+    opacity: .5;
 }
 
 .item.active:after{
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,1);
 }
 
 .item div h1{
@@ -89,6 +103,30 @@ ul{
     overflow: hidden;
     margin-bottom: .5rem;
 }
+fieldset{
+    border: none;
+    max-width: 30rem;
+    margin:auto;
+    display: flex;
+    text-align: center;
+    padding: 1rem;
+    justify-content: space-around;
+}
+
+fieldset legend{
+    margin:auto;
+}
+
+fieldset input{
+    display: none;
+}
+
+fieldset label{
+    display: block;
+    padding: .5rem 1rem;
+    border-radius: 10px;;
+    border: 1px solid #fff;
+}
 
 svg{
     position: absolute;
@@ -96,6 +134,17 @@ svg{
     top: 0;
     z-index: -1;
     pointer-events: none;
+}
+
+body.link--unlink svg,
+body.link--unlink svg g{
+    z-index: 0;
+    opacity: 1;
+    pointer-events: all;
+}
+
+body.link--unlink svg g:after{
+    content: "dank"
 }
 
 input[type="checkbox"]:checked ~ div svg{
@@ -148,9 +197,11 @@ g circle{
 }
 
 g.link--none:nth-of-type(n) line,
-g.link--none:nth-of-type(n) line ~ circle{
+g.link--none:nth-of-type(n) line ~ circle,
+label[for="link--none"]{
     stroke: #F62459;
     fill: #F62459;
+    border-color: #F62459;
 }
 
 g.link--none:nth-of-type(2n) line,
@@ -172,9 +223,11 @@ g.link--none:nth-of-type(4n) line ~ circle{
 }
 
 g.link--confirmed:nth-of-type(n) line,
-g.link--confirmed:nth-of-type(n) line ~ circle{
+g.link--confirmed:nth-of-type(n) line ~ circle,
+label[for="link--confirmed"]{
     stroke: #81F8C1;
     fill: #81F8C1;
+    border-color: #81F8C1;
 }
 
 g.link--confirmed:nth-of-type(2n) line,
@@ -196,9 +249,11 @@ g.link--confirmed:nth-of-type(4n) line ~ circle{
 }
 
 g.link--maybe:nth-of-type(n) line,
-g.link--maybe:nth-of-type(n) line ~ circle{
+g.link--maybe:nth-of-type(n) line ~ circle,
+label[for="link--maybe"]{
     stroke: #81ABF8;
     fill: #81ABF8;
+    border-color: #81ABF8;
 }
 
 g.link--maybe:nth-of-type(2n) line,
@@ -217,4 +272,32 @@ g.link--maybe:nth-of-type(4n) line,
 g.link--maybe:nth-of-type(4n) line ~ circle{
     stroke: #CFDBFE;
     fill: #CFDBFE;
+}
+
+label{
+    transition: .3s ease all;
+}
+
+label[for="link--unlink"]{
+    border-style: dashed;
+}
+
+input:checked + label[for="link--confirmed"]{
+    background: #81F8C1;
+    color: #181631;
+}
+
+input:checked + label[for="link--none"]{
+    background: #F62459;
+    color: #181631;
+}
+
+input:checked + label[for="link--maybe"]{
+    background: #81ABF8;
+    color: #181631;
+}
+
+input:checked + label[for="link--unlink"]{
+    background: white;
+    color: #181631;
 }

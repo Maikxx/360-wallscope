@@ -46,7 +46,7 @@ const linkData = arr=>{
             "id": el.id,
             "links": el.getAttribute("data-link") 
             ? el.getAttribute("data-link") 
-            : ""  
+            : ""
         }
     })
 
@@ -63,9 +63,30 @@ const linkCreate = arr=>{
         const newGroup = document.createElementNS(namespace,"g")
         const svgContainer = document.querySelector(".svg__container")
 
-        newGroup.classList.add(localStorage.getItem("link-mode"))
+        newGroup.classList.add(localStorage.getItem("link-mode") === "link--unlink" ? "link--confirmed" : localStorage.getItem("link-mode") )
 
         newGroup.id = `${el[0].id}_to_${el[1].id}`
+
+        newGroup.addEventListener("click",e=>{
+            const linkedIds = newGroup.id.split("_to_")
+            const dataLinks = [
+                document.querySelector(`#${linkedIds[0]}`).getAttribute("data-link").split(" ").map(el=>{
+                    if(el.length>1){
+                        return el
+                    }
+                }),
+                document.querySelector(`#${linkedIds[1]}`).getAttribute("data-link").split(" ").map(el=>{
+                    if(el.length>1){
+                        return el
+                    }
+                })  
+            ]
+
+            console.log(dataLinks)
+            // Check correct data-link removal on elements
+            newGroup.remove()
+
+        })
 
         switch (true) {
             case el[0].x == el[1].x:
@@ -207,7 +228,6 @@ const linkCreate = arr=>{
                 })()
                 break
         }
-
         svgContainer.appendChild(newGroup)
         
     })

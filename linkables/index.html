@@ -9,13 +9,32 @@
 </head>
 <body>
     <input type="checkbox" name="" id="">
+    <fieldset id="link__controls">
+        <legend>Linking Mode</legend>
+        <div>
+            <input type="radio" name="linkage" id="link--confirmed" checked>        
+            <label for="link--confirmed">Link</label>
+        </div>
+        <div>
+            <input type="radio" name="linkage" id="link--none">
+            <label for="link--none">No-Link</label>
+        </div>
+        <div>
+            <input type="radio" name="linkage" id="link--maybe">        
+            <label for="link--maybe">Possible Link</label>
+        </div>
+        <div>
+            <input type="radio" name="linkage" id="link--unlink">        
+            <label for="link--unlink">Unlink</label>
+        </div>
+    </fieldset>
     <div id="line__container">
         <ul class="board__items">
             <li data-link="block-4">
                 <div>
                     <h1>Article</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum facere praesentium voluptatum nobis veritatis aliquam fuga sed illum quia earum maxime ipsum provident nihil dicta, repellendus dignissimos vel temporibus! Placeat?</p>
-                    <a href="">More ></a>
+                    <a href="">Details ></a>
                 </div>
             </li>
             <li></li>
@@ -25,7 +44,7 @@
                 <div>
                     <h1>Data Set</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum facere praesentium voluptatum nobis veritatis aliquam fuga sed illum quia earum maxime ipsum provident nihil dicta, repellendus dignissimos vel temporibus! Placeat?</p>
-                    <a href="">More ></a>
+                    <a href="">Details ></a>
                 </div>
             </li>
             <li></li>
@@ -45,17 +64,6 @@
             <li></li>
         </ul>
     </div>
-    <fieldset id="link__controls">
-        <legend>Linking Mode</legend>
-        <label for="link--confirmed">Link</label>
-        <input type="radio" name="linkage" id="link--confirmed" checked>
-        <label for="link--none">No-Link</label>
-        <input type="radio" name="linkage" id="link--none">
-        <label for="link--maybe">Possible Link</label>
-        <input type="radio" name="linkage" id="link--maybe">
-        <label for="link--unlink">Unlink</label>
-        <input type="radio" name="linkage" id="link--unlink">
-    </fieldset>
     <script src="./linkage.js" type="module"></script>
 </body>
 </html>

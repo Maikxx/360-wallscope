@@ -28,7 +28,8 @@ const app = {
                 if(el.getAttribute("data-link") && !el.classList.contains("hover")){
                     const links = el.getAttribute("data-link").split(" ")
                     links.forEach(link=>{
-                        if(link.length > 1){
+                        if(link.length > 5){
+
                             document.querySelector(`#${link}`).classList.add("active")
 
                             document.querySelector(`#${link}_to_${el.id}`) 
@@ -64,7 +65,7 @@ const app = {
                     "x": (el.offsetLeft) + el.clientWidth/2,
                     "y": (el.offsetTop) + el.clientHeight/2,
                     "id": el.id,
-                    "links": el.getAttribute("data-link") ? el.getAttribute("data-link") : ""  
+                    "links": el.getAttribute("data-link") ? el.getAttribute("data-link") : ""
                 }
             }
         )
@@ -97,12 +98,15 @@ const app = {
         const controlCont= document.querySelector("#link__controls")
         const controls = controlCont.querySelectorAll("[name='linkage']")
 
-        localStorage.setItem("link-mode",controls[0].id)
-
         controls.forEach(control=>{
             control.addEventListener("change",e=>{
                 localStorage.setItem("link-mode",control.id)
+                document.body.className = control.id
             })
+            if(control.checked){
+                localStorage.setItem("link-mode",control.id)
+                document.body.className = control.id
+            }
         })
     }
 }
