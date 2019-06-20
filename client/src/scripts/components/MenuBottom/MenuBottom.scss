@@ -55,9 +55,21 @@
 		background-color: $color-purple-2;
 	}
 
+    .Button .Link__icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .Navigation__ul .Button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1em;
+        color: #cec7ec;
+    }
 	.Menu-open-button:hover,
 	.Menu-open-button:focus,
-	.Menu-open-button:active, {
+	.Menu-open-button:active {
 		background-color: $color-purple-2;
 	}
 	

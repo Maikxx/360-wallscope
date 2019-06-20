@@ -9,18 +9,24 @@ interface Props {
     color?: string
     iconName?: IconNames
     route: string
+    preventDefault?: boolean
 }
 
 export class NavLink extends React.Component<Props> {
     public render() {
-        const { children, route, color, iconName } = this.props
+        const { children, route, color, iconName, preventDefault } = this.props
 
         return (
             <li className={this.getClassName()}>
-                <Link route={route} iconName={iconName} color={color}>
+                <Link
+                    route={route}
+                    iconName={iconName}
+                    color={color}
+                    preventAction={preventDefault}
+                >
                     {children}
                 </Link>
-            </li>
+            </li >
         )
     }
 

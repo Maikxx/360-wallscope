@@ -4,6 +4,7 @@ import { Navigation } from '../Navigation/Navigation'
 import { routes } from '../../routes'
 import { NavLink } from '../NavLink/NavLink'
 import { Button } from '../Button/Button'
+import { UserMenu } from '../UserMenu/UserMenu'
 import './MenuBottom.scss'
 import { IconNames, Icon } from '../Icon/Icon'
 import { Link } from 'react-router-dom'
@@ -99,13 +100,36 @@ export class MenuBottom extends React.Component<Props, State> {
                     </Link>
                     }
                 </li>
+                <UserMenu
+                title={fullName || 'Login'}
+                renderButton={openModal => (
+                    <Button
+                        onClick = { openModal }
+                        type='button'
+                        // styleOverride='round-button'
+                        iconName='user'
+                        color='#cec7ec'
+                    >{fullName || 'Login'}</Button>
+                )}
+                >
+                <NavLink
+                    route={'/'}
+                    iconName='spaceship'
+                    color='#CEC7EC'
+                    preventDefault={true}
+                >
+                    Settings
+                </NavLink>
                 <NavLink
                     route={isLoggedIn ? routes.App.CurrentUser.index : routes.Login.index}
-                    iconName='user'
+                    iconName='light'
                     color='#CEC7EC'
+                    preventDefault={true}
                 >
-                    {fullName || 'Login'}
+                    Light Mode
                 </NavLink>
+                </UserMenu>
+
             </Navigation>
         )
     }
