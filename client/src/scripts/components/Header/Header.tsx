@@ -12,6 +12,7 @@ import { Label } from '../Form/Label/Label'
 import { Input } from '../Form/Input/Input'
 import { createBoard } from '../../services/BoardService'
 import './Header.scss'
+import { IconRaster } from '../IconRaster/IconRaster'
 
 interface Props {
     className?: string
@@ -23,11 +24,13 @@ interface Props {
 
 interface State {
     name: string
+    icon_name: string
 }
 
 export class Header extends React.Component<Props, State> {
     public state: State = {
         name: '',
+        icon_name: '',
     }
 
     public render () {
@@ -75,6 +78,13 @@ export class Header extends React.Component<Props, State> {
                                                     Board name
                                                     <Input type={'text'} name={'name'} onChange={event => this.setState({ name: event.target.value })}/>
                                                 </Label>
+                                                <Label isNative={false}>
+                                                    Icon
+                                                    <IconRaster
+                                                        name={`icon_name`}
+                                                        onChange={value => this.setState({ icon_name: value })}
+                                                    />
+                                                </Label>
                                                 <Button styleOverride={`blue-button`} type='button' full={true} onClick={() => {
                                                     closeModal()
                                                     closeDropdown()
@@ -102,11 +112,11 @@ export class Header extends React.Component<Props, State> {
 
     private onCreateNewBoard = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const { name } = this.state
+        const { name, icon_name } = this.state
         const { onCreateNewBoard } = this.props
 
         if (name) {
-            const board = await createBoard({ name })
+            const board = await createBoard({ name, iconName: icon_name })
 
             if (board && onCreateNewBoard) {
                 onCreateNewBoard(board._id)
