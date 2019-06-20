@@ -29,7 +29,6 @@ const link = (ev,el)=>{
 }
 
 const linkReset = (arr)=>{
-    console.log("cleared",arr)
     arr.forEach(el=>{
         el.classList.remove("linking")
     })
@@ -64,7 +63,7 @@ const linkCreate = arr=>{
         const newGroup = document.createElementNS(namespace,"g")
         const svgContainer = document.querySelector(".svg__container")
 
-        newGroup.classList.add("link--maybe")
+        newGroup.classList.add(localStorage.getItem("link-mode"))
 
         newGroup.id = `${el[0].id}_to_${el[1].id}`
 

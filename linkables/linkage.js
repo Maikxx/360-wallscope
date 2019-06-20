@@ -48,6 +48,10 @@ const app = {
             })
         })
 
+        app.controls()
+        linkCreate(app.formatLinks())
+    },
+    formatLinks:()=>{
         let arr = Array.from(document.querySelectorAll("[data-link]"))
         let linkSet = []
         let linkData = []
@@ -86,8 +90,20 @@ const app = {
                 return value.id == el[1]
              })]
         })
-        
-        linkCreate(linkData)
+
+        return linkData
+    },
+    controls:()=>{
+        const controlCont= document.querySelector("#link__controls")
+        const controls = controlCont.querySelectorAll("[name='linkage']")
+
+        localStorage.setItem("link-mode",controls[0].id)
+
+        controls.forEach(control=>{
+            control.addEventListener("change",e=>{
+                localStorage.setItem("link-mode",control.id)
+            })
+        })
     }
 }
 
