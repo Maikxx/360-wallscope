@@ -1,0 +1,59 @@
+.DropdownHeader {
+    @import '../../../../sass/colors.scss';
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:$color-purple-6;
+    padding: 1em 2em;
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    color: $color-white;
+    font-size: .5rem;
+    font-family: 'Lato', sans-serif;
+    border: 2px $color-red-1 solid;
+    border-bottom: none;
+
+    .Button__close {
+        display: block;
+        background-color: $color-purple-6;
+        padding: .5em;
+        color: $color-purple-4;
+        border-radius: 50%;
+        border: none;
+        transition: all .2s ease-in-out;
+
+        &:hover, &:active, &:focus{
+            background-color: $color-purple-5;
+        }
+        
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        path {
+            fill: $color-white;
+        }
+    }
+
+    // button {
+    //     color: $color-white;
+    //     background-color: transparent;
+    //     font-weight: bold;
+    //     border: none;
+    //     font-size: 2em;
+    //     transition: all .2s ease;
+    // }
+
+    // button:hover {
+    //     color: $color-red-1;
+    // }
+}
+
+// body.light {
+//     .ModalHeader{
+//         color: #e2ecf6;
+//     }
+// }
