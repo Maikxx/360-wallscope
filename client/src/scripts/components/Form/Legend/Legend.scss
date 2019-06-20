@@ -1,9 +1,10 @@
-.PageTitle {
-    @import '../../../sass/colors.scss';
+.Legend {
+    @import '../../../../sass/colors.scss';
 
+    text-align: center;
     font-size: 2em;
     font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 900;
     color: $color-white;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }

@@ -10,6 +10,7 @@ import { RouteComponentProps } from 'react-router'
 import { onUserSignIn } from '../../services/UserService'
 import { routes } from '../../routes'
 import { User } from '../../types/User'
+import { Header } from '../../components/Header/Header'
 
 interface Props extends RouteComponentProps {
     onChangeUser: (user: User) => void
@@ -29,6 +30,7 @@ export class LoginView extends React.Component<Props, State> {
     public render() {
         return (
             <CoverView>
+                <Header back={true} route={routes.App.index}/>
                 <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>

@@ -13,12 +13,31 @@ interface OwnerUserQueryResult extends QueryResult {
     rows: DatabaseUser[]
 }
 
-export async function getBoards(userId: number, byId?: number) {
+interface GetBoardsOptions {
+    byId?: number
+    byName?: string
+}
+
+// tslint:disable-next-line:variable-name
+export async function getBoards(user_id: number, { byId, byName }: GetBoardsOptions) {
     try {
+        const boardsQuerySets: string[] = []
+        const boardsQueryData: any[] = [user_id]
+
+        if (!isNaN(Number(byId))) {
+            boardsQuerySets.push(`_id = $${boardsQuerySets.length + 2}`)
+            boardsQueryData.push(byId)
+        }
+
+        if (byName) {
+            boardsQuerySets.push(`$${boardsQuerySets.length + 2} LIKE '%' || name || '%'`)
+            boardsQueryData.push(byName)
+        }
+
         const { rows: boards }: BoardQueryResult = await database.query(
             `SELECT * FROM boards
-            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1) ${byId ? 'AND _id = $2' : ''};`,
-            byId ? [ userId, byId ] : [userId]
+            WHERE (collaborators @> ARRAY[$1]::INTEGER[] OR owner = $1)${boardsQuerySets.length > 0 ? ` AND ${boardsQuerySets.join(' AND ')}` : ''};`,
+            boardsQueryData
         )
 
         if (typeof byId !== undefined && !isNaN(Number(byId))) {
@@ -33,7 +52,7 @@ export async function getBoards(userId: number, byId?: number) {
             return Promise.all(boards.map(board => getPopulatedBoardFromDatabase(board)))
         }
     } catch (error) {
-        throw new Error(`Something went wrong with getting ${byId ? 'your board' : 'boards'} from the database!`)
+        throw new Error(error.message)
     }
 }
 
@@ -56,37 +75,35 @@ export async function getPopulatedBoardFromDatabase(board: DatabaseBoard) {
     let boardResults: DatabaseBoardResult[] = []
     if (board.results && board.results.length > 0) {
         const { rows } = await database.query(
-            `SELECT _id, result, links FROM board_results WHERE _id = ANY($1);`,
+            `SELECT
+                board_results._id,
+                board_results.result,
+                board_results.links,
+                results._id,
+                results.title,
+                results.data_url,
+                results.summary,
+                results.content,
+                links._id,
+                links.type,
+                links.destination_board_result_id,
+                links.origin_board_result_id
+            FROM board_results
+            LEFT JOIN results
+            ON results._id = board_results.result
+            LEFT JOIN links
+            ON links._id = ANY(board_results.links::INTEGER[])
+            WHERE board_results._id = ANY($1);`,
             [convertToPostgreSQLArray(board.results)]
         )
 
         boardResults = rows
     }
 
-    if (boardResults && boardResults.length > 0) {
-        boardResults = await Promise.all(boardResults.map(async boardResult => {
-            if (boardResult.links && boardResult.links.length > 0) {
-                const { rows: boardResultLinks } = await database.query(
-                    `SELECT * FROM links WHERE _id = ANY($1);`,
-                    [convertToPostgreSQLArray(boardResult.links)]
-                )
-
-                return {
-                    ...boardResult,
-                    links: boardResultLinks || [],
-                }
-            } else {
-                return boardResult
-            }
-        }))
-    }
-
     return {
-        board: {
-            ...board,
-            ...(ownerUser ? ({ owner: { _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name } }) : {}),
-            ...((collaboratorUsers && collaboratorUsers.length > 0) ? ({ collaborators: collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })) }) : {}),
-            ...((boardResults && boardResults.length > 0) ? ({ results: boardResults }) : {}),
-        },
+        ...board,
+        ...(ownerUser ? ({ owner: { _id: ownerUser._id, email: ownerUser.email, fullName: ownerUser.full_name } }) : { owner: null }),
+        ...((collaboratorUsers && collaboratorUsers.length > 0) ? ({ collaborators: collaboratorUsers.map(collaboratorUser => ({ _id: collaboratorUser._id, email: collaboratorUser.email, fullName: collaboratorUser.full_name })) }) : { collaborators: [] }),
+        ...((boardResults && boardResults.length > 0) ? ({ results: boardResults }) : { results: [] }),
     }
 }

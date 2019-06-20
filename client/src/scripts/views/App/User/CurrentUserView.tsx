@@ -79,18 +79,20 @@ export class CurrentUserView extends React.Component<Props, State> {
                                 required={true}
                             />
                         </Fieldset>
-                        <Button styleOverride='red-button' type='submit'>
-                            Update profile
-                        </Button>
-                        <Button styleOverride='red-button' type='button' onClick={() => this.props.history.push(routes.App.index)}>
-                            Cancel
-                        </Button>
-                        <Button styleOverride='blue-button' type='button' onClick={this.onLogOut}>
+                        <div className='Row'>
+                            <Button full={true} styleOverride='red-button' type='button' onClick={() => this.props.history.push(routes.App.index)}>
+                                Cancel
+                            </Button>
+                            <Button styleOverride='red-button' type='submit' className='SecondButton'>
+                                Update profile
+                            </Button>
+                        </div>
+                        <Button full={true} styleOverride='blue-button' type='button' onClick={this.onLogOut}>
                             Log out
                         </Button>
                     </Form>
                 )}
-                <MenuBottom fullName={user && user.fullName}/>
+                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View>
         )
     }

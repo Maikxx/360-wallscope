@@ -1,8 +1,8 @@
 
 .Button {
     @import '../../../sass/colors.scss';
-    border: none; 
-    font-size: 1.3rem;  
+    border: none;
+    font-size: 1.3rem;
 
     &--full{
         width: 100%;
@@ -10,7 +10,7 @@
 
     &--red {
         font-family: 'Lato', sans-serif;
-        font-size: 1rem;  
+        font-size: 1rem;
         font-weight: bold;
         position: relative;
         display: block;
@@ -32,7 +32,7 @@
             width: 55px;
             background: darken($color-red-1, 5%);
             border-radius: 0 .5em 0 .5em;
-            transition: all .5s ease-in-out;    
+            transition: all .5s ease-in-out;
         }
 
         &:hover{
@@ -50,7 +50,7 @@
 
     &--blue {
         font-family: 'Lato', sans-serif;
-        font-size: 1rem; 
+        font-size: 1rem;
         font-weight: bold;
         position: relative;
         display: block;
@@ -92,7 +92,7 @@
         font-family: 'Lato', sans-serif;
         font-size: 2em;
         display: block;
-        background-color: $color-blue-1;
+        background-color: $color-red-1;
         padding: .5em;
         color: $color-purple-5;
         border-radius: 50%;
@@ -128,7 +128,8 @@
 
     &--tag-red {
         font-family: 'Lato', sans-serif;
-        font-size: 1rem;  
+        color: $color-purple-5;
+        font-size: 1rem;
         font-weight: bold;
         display: block;
         background-color: $color-red-1;
@@ -144,7 +145,7 @@
 
     &--tag-blue {
         font-family: 'Lato', sans-serif;
-        font-size: 1rem;  
+        font-size: 1rem;
         font-weight: bold;
         display: block;
         background-color: $color-blue-1;
@@ -164,7 +165,7 @@
         background-color: $color-purple-3;
         padding: 1.5rem;
         position: absolute;
-        top: -40%;
+        top: -200%;
         left: 50%;
         transform: translateX(-50%);
         color: $color-purple-5;
@@ -185,7 +186,7 @@
 
     &--tag-border {
         font-family: 'Lato', sans-serif;
-        font-size: 1rem;  
+        font-size: 1rem;
         font-weight: bold;
         display: block;
         background-color: transparent;

@@ -1,8 +1,11 @@
+import { QueryResult } from 'pg'
+
 export interface DatabaseBoard {
     _id: number
     name: string
     collaborators: number[] | null
     owner: number | null
+    is_default_board: boolean | null
     icon_name: string | null
     results: number[] | null
     created_at: Date
@@ -26,4 +29,10 @@ export interface DatabaseBoardResult {
 
 export interface CreatedDatabaseBoard {
     _id: number
+}
+
+export interface UpdateBoardQueryResponse extends QueryResult {
+    rows: {
+        _id: number
+    }[]
 }

@@ -1,8 +1,22 @@
 .View:not(.AppView) {
     max-width: 90%;
     min-width: 75%;
-    padding: 2rem 1rem;
+    padding: 2rem .5rem;
     margin: auto;
     min-height: 100vh;
     padding-bottom: 10%;
+
+    .Row {
+        display: flex;
+        flex-direction: row;
+
+        .Button {
+            width: 50%;
+            margin-right: 1em;
+        }
+
+        .SecondButton {
+            margin-right: 0;
+        }
+    }
 }

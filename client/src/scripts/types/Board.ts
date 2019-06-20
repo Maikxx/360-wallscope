@@ -6,6 +6,7 @@ export interface Board {
     collaborators: User[] | null
     owner: User | null
     results: BoardResult[] | null
+    is_default_board: boolean | null
     icon_name: string | null
     created_at: Date
 }
@@ -21,7 +22,7 @@ export interface BoardResultLink {
 
 export interface BoardResult {
     _id: number
-    result_id: number
+    result: number
     links: BoardResultLink[] | null
     created_at: Date
 }

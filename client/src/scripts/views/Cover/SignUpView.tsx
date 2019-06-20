@@ -10,6 +10,7 @@ import { onUserSignUp } from '../../services/UserService'
 import { RouteComponentProps } from 'react-router'
 import { routes } from '../../routes'
 import { User } from '../../types/User'
+import { Header } from '../../components/Header/Header'
 
 interface Props extends RouteComponentProps {
     onChangeUser: (user: User) => void
@@ -33,6 +34,7 @@ export class SignUpView extends React.Component<Props, State> {
     public render() {
         return (
             <CoverView>
+                <Header back={false}/>
                 <Form onSubmit={this.onFormSubmit}>
                     <Fieldset>
                         <Legend>
