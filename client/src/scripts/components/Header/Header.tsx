@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 import { routes } from '../../routes'
 import { Dropdown } from '../Dropdown/Dropdown'
 import { Button } from '../Button/Button'
-import './Header.scss'
 import { ModalBase } from '../Modal/ModalBase'
 import { Form } from '../Form/Form'
 import { Fieldset } from '../Form/Fieldset/Fieldset'
 import { Label } from '../Form/Label/Label'
 import { Input } from '../Form/Input/Input'
 import { createBoard } from '../../services/BoardService'
+import './Header.scss'
 
 interface Props {
     className?: string
