@@ -47,7 +47,7 @@ We also set up a [Version control](./docs/guidelines/VERSION_CONTROL.md) for wor
 
 To view our progress, please visit our [GitHub project page](https://github.com/Maikxx/360-wallscope/projects/1).
 
-In the second to last week of the project we also did a user test. You can read more about it [here]().
+In the second to last week of the project we also did a user test. You can read more about it [here](./docs/USER_TEST.md).
 
 ## License
 
