@@ -16,7 +16,7 @@ export class Board extends React.Component<Props> {
         const { color, board } = this.props
 
         return (
-            <Link to={`/boards/${board._id}`}>
+            <a href={`https://wallscope.thunderchicken.nl`}>
                 <div className='Back-board'>
                     <span>Articles: 0</span>
                     <span>Data: 0</span>
@@ -29,7 +29,7 @@ export class Board extends React.Component<Props> {
                         {board.name}
                     </h2>
                 </article>
-            </Link>
+            </a>
         )
     }
 
