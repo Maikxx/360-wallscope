@@ -95,11 +95,10 @@ const app = {
         return linkData
     },
     controls:()=>{
-        const controlCont= document.querySelector("#link__controls")
-        const controls = controlCont.querySelectorAll("[name='linkage']")
+        const controls = document.querySelectorAll(".Menu-item")
 
         controls.forEach(control=>{
-            control.addEventListener("change",e=>{
+            control.addEventListener("click",e=>{
                 localStorage.setItem("link-mode",control.id)
                 document.body.className = control.id
             })

@@ -112,68 +112,100 @@
         </div>
         <nav class="Navigation MenuBottom">
             <ul class="Navigation__ul">
-                <li class="NavLink"><a class="Link" href="/"><i class="Icon Link__icon">
-                            <svg class="Icon__search_small" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                viewBox="0 0 57 57">
-                                <path fill="#CEC7EC"
-                                    d="M55.1 51.9L41.6 37.8A23 23 0 0 0 24 0a23 23 0 1 0 13.2 41.8L50.8 56a3 3 0 0 0 4.3.1 3 3 0 0 0 0-4.2zM24 6a17 17 0 1 1 0 34 17 17 0 0 1 0-34z">
-                                </path>
-                            </svg></i>Search</a></li>
+                <li class="NavLink">
+                    <a class="Link" href="/">
+                        <i class="Icon Link__icon">
+                        <svg class="Icon__search_small" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                            viewBox="0 0 57 57">
+                            <path fill="#CEC7EC"
+                                d="M55.1 51.9L41.6 37.8A23 23 0 0 0 24 0a23 23 0 1 0 13.2 41.8L50.8 56a3 3 0 0 0 4.3.1 3 3 0 0 0 0-4.2zM24 6a17 17 0 1 1 0 34 17 17 0 0 1 0-34z">
+                            </path>
+                        </svg>
+                        </i>
+                        Search
+                    </a>
+                </li>
                 <li class="Middle">
-                    <div class="Menu"><input type="checkbox" class="Menu-open" name="Menu-open" id="Menu-open"><label
-                            class="Menu-open-button" for="Menu-open"><i class="Icon"><svg class="Icon__pen"
+                    <div class="Menu">
+                        <input type="checkbox" class="Menu-open" name="Menu-open" id="Menu-open">
+                        <label
+                        class="Menu-open-button" for="Menu-open">
+                        <i class="Icon">
+                            <svg class="Icon__pen"
+                                xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
+                                <path fill="#181631"
+                                    d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
+                                </path>
+                            </svg>
+                        </i>
+                        </label>
+                        <a class="Menu-item" id="link--confirmed">
+                            <i class="Icon">
+                                <svg class="Icon__pen"
                                     xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
                                     <path fill="#181631"
                                         d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
                                     </path>
-                                </svg></i></label><a class="Menu-item"><i class="Icon"><svg class="Icon__pen"
+                                </svg>
+                            </i>
+                        </a>
+                        <a class="Menu-item" id="link--none">
+                            <i class="Icon">
+                                <svg class="Icon__pen"
                                     xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
                                     <path fill="#181631"
                                         d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
                                     </path>
-                                </svg></i></a><a class="Menu-item"><i class="Icon"><svg class="Icon__pen"
+                                </svg>
+                            </i>
+                        </a>
+                        <a class="Menu-item" id="link--maybe">
+                            <i class="Icon">
+                                <svg class="Icon__pen"
                                     xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
                                     <path fill="#181631"
                                         d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
                                     </path>
-                                </svg></i></a><a class="Menu-item"><i class="Icon"><svg class="Icon__pen"
-                                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
-                                    <path fill="#181631"
-                                        d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
-                                    </path>
-                                </svg></i></a></div><svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                </svg>
+                            </i>
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
-                            <filter id="shadowed-goo">
-                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-                                <feColorMatrix in="blur" mode="matrix"
-                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
-                                <feGaussianBlur in="goo" stdDeviation="3" result="shadow"></feGaussianBlur>
-                                <feColorMatrix in="shadow" mode="matrix"
-                                    values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow">
-                                </feColorMatrix>
-                                <feOffset in="shadow" dx="1" dy="1" result="shadow"></feOffset>
-                                <feComposite in2="shadow" in="goo" result="goo"></feComposite>
-                                <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
-                            </filter>
-                            <filter id="goo">
-                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-                                <feColorMatrix in="blur" mode="matrix"
-                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
-                                <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
-                            </filter>
+                        <filter id="shadowed-goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix"
+                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                            <feGaussianBlur in="goo" stdDeviation="3" result="shadow"></feGaussianBlur>
+                            <feColorMatrix in="shadow" mode="matrix"
+                                values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow">
+                            </feColorMatrix>
+                            <feOffset in="shadow" dx="1" dy="1" result="shadow"></feOffset>
+                            <feComposite in2="shadow" in="goo" result="goo"></feComposite>
+                            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+                        </filter>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix"
+                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+                        </filter>
                         </defs>
                     </svg>
                 </li>
-                <button class="Button" type="button"><i class="Icon Link__icon"><svg class="Icon__user"
-                            xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 350 350">
-                            <path fill="#cec7ec"
-                                d="M175 171c39 0 70-38 70-85 0-48-10-86-70-86s-70 38-70 86c0 47 31 85 70 85zM42 302c0-3 0-1 0 0zM308 304c0-1 0-5 0 0zM308 298c-1-82-12-105-94-120 0 0-12 15-39 15s-39-15-39-15c-81 14-92 38-94 118v15s20 39 133 39 133-39 133-39a3131 3131 0 0 1 0-13z">
-                            </path>
+                <button class="Button" type="button">
+                    <i class="Icon Link__icon">
+                        <svg class="Icon__user"
+                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 350 350">
+                        <path fill="#cec7ec"
+                            d="M175 171c39 0 70-38 70-85 0-48-10-86-70-86s-70 38-70 86c0 47 31 85 70 85zM42 302c0-3 0-1 0 0zM308 304c0-1 0-5 0 0zM308 298c-1-82-12-105-94-120 0 0-12 15-39 15s-39-15-39-15c-81 14-92 38-94 118v15s20 39 133 39 133-39 133-39a3131 3131 0 0 1 0-13z">
+                        </path>
                         </svg>
-                    </i>Maikel
+                    </i>
+                    Maikel
                 </button>
             </ul>
-        </nav>
+            </nav>             
     </div>
     <script src="./linkage.js" type="module"></script>
 </body>
