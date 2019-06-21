@@ -48,12 +48,12 @@ export interface GetBoardsForCurrentUserResponse {
     boards?: Board[]
 }
 
-export async function getBoardsForCurrentUser() {
+export async function getBoardsForCurrentUser(byName?: string) {
     try {
         const token = getAuthorizationToken()
 
         if (token) {
-            const url = `${window.location.origin}/get-boards`
+            const url = `${window.location.origin}/get-boards${byName ? `?name=${byName}` : ''}`
             const data = await fetch(
                 url,
                 {

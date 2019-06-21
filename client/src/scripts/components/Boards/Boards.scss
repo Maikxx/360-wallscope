@@ -1,6 +1,14 @@
 .Boards {
     margin-top: 2em;
 
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2em;
+    }
+
     &__list {
         display: flex;
         flex-direction: row;
@@ -11,6 +19,7 @@
             width: 45%;
             position: relative;
             perspective: 200px;
+            min-height: 200px;
         }
     }
 }

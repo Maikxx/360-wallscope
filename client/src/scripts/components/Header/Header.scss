@@ -1,4 +1,6 @@
 .Header {
+    @import '../../../sass/colors.scss';
+
     display: flex;
     justify-content: center;
     min-height: 40px;
@@ -6,7 +8,24 @@
 
     &__back-button {
         position: absolute;
-        left: 0;
-        margin-left: 25px;
+        top: 5%;
+        left: 5%;
+        transition: fill .2s ease;
+    }
+
+    &__more-button {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        transition: fill .2s ease;
+    }
+
+    &__back-button:hover,  
+    &__back-button:focus,{
+        
+        svg path {
+            fill: $color-red-1;
+            transition: fill .2s ease;
+        }
     }
 }

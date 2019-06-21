@@ -1,0 +1,14 @@
+.UserMenuBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+
+    li {
+        list-style: none;
+        
+        a {
+            flex-direction: row;
+        }
+    }
+}

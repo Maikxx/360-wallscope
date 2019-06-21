@@ -33,6 +33,7 @@ export class RawData extends React.Component<Props> {
                             {file.title}
                         </a>
                     }
+                    <span>Raw data</span>
                     <ModalBase
                         title={'Add to a board'}
                         firstButton={'Cancel'}

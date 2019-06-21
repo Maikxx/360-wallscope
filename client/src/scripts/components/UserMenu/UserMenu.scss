@@ -1,0 +1,17 @@
+.UserMenuModal {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 87%;
+    background-color: #171631;
+    border-radius: 0.5em 0.5em 0 0;
+    font-family: "Montserrat", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    border: 1px solid #9c96b9;
+    overflow: hidden;
+}

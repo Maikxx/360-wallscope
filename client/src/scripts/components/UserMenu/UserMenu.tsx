@@ -1,17 +1,13 @@
 import * as React from 'react'
 import Modal from 'react-modal'
-import { ModalHeader } from './ModalHeader/ModalHeader'
-import { ModalBody } from './ModalBody/ModalBody'
-import { ModalFooter } from './ModalFooter/ModalFooter'
-import './ModalBase.scss'
+import './UserMenu.scss'
+import { UserMenuHeader } from './UserMenuHeader/UserMenuHeader'
+import { UserMenuBody } from './UserMenuBody/UserMenuBody'
 
 interface Props {
     renderButton: (openModal: () => void) => JSX.Element
     title: string
-    firstButton?: string
-    secondButton?: string
     onAccept?: () => void
-    render?: (closeModal: () => void) => JSX.Element
 }
 
 interface State {
@@ -20,14 +16,14 @@ interface State {
 
 Modal.setAppElement('#react-root')
 
-export class ModalBase extends React.Component<Props, State> {
+export class UserMenu extends React.Component<Props, State> {
 
     public state: State = {
         modalIsOpen: false,
     }
 
     public render() {
-        const { children, renderButton, title, firstButton, secondButton, render } = this.props
+        const { children, renderButton, title } = this.props
         return (
             <React.Fragment>
                 {renderButton(this.openModal)}
@@ -35,23 +31,15 @@ export class ModalBase extends React.Component<Props, State> {
                     overlayClassName='Overlay'
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
-                    className={`BaseModal`}
+                    className={`UserMenuModal`}
                 >
-                    <ModalHeader
-                        title={title}
+                    <UserMenuHeader
+                        fullName={title}
                         onClose={this.closeModal}
                     />
-                    <ModalBody
-                        children={render ? render(this.closeModal) : children}
+                    <UserMenuBody
+                        children={children}
                     />
-                    {firstButton && secondButton && (
-                        <ModalFooter
-                            firstButton={firstButton}
-                            secondButton={secondButton}
-                            onClose={this.closeModal}
-                            onAccept={this.onAccept}
-                        />
-                    )}
                 </Modal>
             </React.Fragment>
         )
