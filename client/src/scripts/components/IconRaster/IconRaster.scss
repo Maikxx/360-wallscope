@@ -1,0 +1,23 @@
+.IconRaster {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    &__input {
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+
+    .Icon {
+        padding: 12px;
+    }
+}

@@ -4,16 +4,22 @@ import classnames from 'classnames'
 interface Props {
     htmlFor?: string
     className?: string
+    isNative?: boolean
 }
 
 export class Label extends React.Component<Props> {
+    public static defaultProps: Props = {
+        isNative: true,
+    }
+
     public render() {
-        const { htmlFor, children } = this.props
+        const { htmlFor, children, isNative } = this.props
+        const Component = isNative ? 'label' : 'div'
 
         return (
-            <label className={this.getClassName()} htmlFor={htmlFor}>
+            <Component className={this.getClassName()} htmlFor={htmlFor}>
                 {children}
-            </label>
+            </Component>
         )
     }
 
