@@ -26,7 +26,7 @@ export class Search extends React.Component<Props> {
                     />
                     <Icon className={'SearchForm__search-icon'} iconName={'search_small'} />
                 </div>
-                <Button styleOverride={'red-button'} type='submit' full={true}>
+                <Button styleOverride={'ultraviolet-button'} type='submit' full={true}>
                     Start Searching
                 </Button>
             </Form>
