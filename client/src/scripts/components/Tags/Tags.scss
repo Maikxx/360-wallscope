@@ -21,33 +21,33 @@
         margin-right: 1em;
     }
 
-    li:nth-of-type(1n+1) .Button--tag-red {
-        background-color: $color-red-2;
+    li:nth-of-type(1n+1) .Button--tag-ultraviolet {
+        background-color: $color-ultraviolet-2;
         transition: all .2s ease;
     }
 
-    li:nth-of-type(2n+1) .Button--tag-red {
-        background-color: $color-red-3;
+    li:nth-of-type(2n+1) .Button--tag-ultraviolet {
+        background-color: $color-ultraviolet-3;
         transition: all .2s ease;
     }
 
-    li:nth-of-type(3n+1) .Button--tag-red {
-        background-color: $color-red-1;
+    li:nth-of-type(3n+1) .Button--tag-ultraviolet {
+        background-color: $color-ultraviolet-1;
         transition: all .2s ease;
     }
 
-    li:nth-of-type(1n+1) .Button--tag-blue {
-        background-color: $color-red-2;
+    li:nth-of-type(1n+1) .Button--tag-orange {
+        background-color: $color-ultraviolet-2;
         transition: all .2s ease;
     }
 
-    li:nth-of-type(2n+1) .Button--tag-blue {
-        background-color: $color-red-3;
+    li:nth-of-type(2n+1) .Button--tag-orange {
+        background-color: $color-ultraviolet-3;
         transition: all .2s ease;
     }
 
-    li:nth-of-type(3n+1) .Button--tag-blue {
-        background-color: $color-red-1;
+    li:nth-of-type(3n+1) .Button--tag-orange {
+        background-color: $color-ultraviolet-1;
         transition: all .2s ease;
     }
 }

@@ -15,8 +15,8 @@ export class ModalFooter extends React.Component<Props> {
 
         return (
             <footer className={`ModalFooter`}>
-                <Button className='firstButton' styleOverride='red-button' onClick={onClose}>{firstButton}</Button>
-                <Button className='secondButton' styleOverride='blue-button' onClick={onAccept}>{secondButton}</Button>
+                <Button className='firstButton' styleOverride='ultraviolet-button' onClick={onClose}>{firstButton}</Button>
+                <Button className='secondButton' styleOverride='orange-button' onClick={onAccept}>{secondButton}</Button>
             </footer>
         )
     }

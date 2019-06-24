@@ -84,11 +84,11 @@ export class UserMenu extends React.Component<Props, State> {
             <Label>Create a new board
                 <Input type={'text'} name={'search'} styleOverride={'input-search'} />
             </Label>
-            <Button styleOverride={'red-button'} type='button' full>Add</Button>
+            <Button styleOverride={'ultraviolet-button'} type='button' full>Add</Button>
         </Fieldset>
         <Fieldset>
             <Label>Add to an existing board</Label>
-                <Tags tags={boardNames} styleOverride={'tag-red-button'}/>
+                <Tags tags={boardNames} styleOverride={'tag-ultraviolet-button'}/>
         </Fieldset>
     </Form>
 </ModalBase> */}
