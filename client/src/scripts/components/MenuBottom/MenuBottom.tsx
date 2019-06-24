@@ -42,7 +42,7 @@ export class MenuBottom extends React.Component<Props, State> {
                <NavLink
                     route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
                     iconName='boards'
-                    color='#CEC7EC'
+                    color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
                 >
                     {isLoggedIn ? 'Boards' : 'Please login'}
                 </NavLink>
