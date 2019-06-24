@@ -17,7 +17,13 @@ export class Link extends React.Component<Props> {
         const { children, className, route, color, iconName, preventAction, ...restProps } = this.props
 
         return (
-            <RouterLink className={this.getClassName()} {...restProps} to={route} onClick={e => preventAction && e.preventDefault()}>
+            <RouterLink
+                className={this.getClassName()}
+                {...restProps}
+                to={route}
+                onClick={e => preventAction && e.preventDefault()}
+                style={{ color: color || '#CEC7EC' }}
+            >
                 {iconName &&
                     <Icon iconName={iconName} color={color} className={`Link__icon`}/>
                 }

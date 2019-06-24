@@ -106,11 +106,6 @@ export const IconType = {
         </svg>`,
     boards: (color?: string) =>
         `<svg class='Icon__boards' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512" >
-            <defs>
-              <style>
-                .cls-1{fill:#cec7ec}
-              </style>
-            </defs>
             <g id="Laag_2" data-name="Laag 2">
               <g id="Laag_1-2" data-name="Laag 1">
                 <path fill=${color ? color : '#fff'} class="cls-1" d="M197 0H37A37 37 0 0 0 0 37v96a37 37 0 0 0 37 38h160a37 37 0 0 0 38-38V37a37 37 0 0 0-38-37zM197 213H37a37 37 0 0 0-37 38v224a37 37 0 0 0 37 37h160a37 37 0 0 0 38-37V251a37 37 0 0 0-38-38zM475 341H315a37 37 0 0 0-38 38v96a37 37 0 0 0 38 37h160a37 37 0 0 0 37-37v-96a37 37 0 0 0-37-38zM475 0H315a37 37 0 0 0-38 37v224a37 37 0 0 0 38 38h160a37 37 0 0 0 37-38V37a37 37 0 0 0-37-37z"/>
