@@ -101,7 +101,6 @@ export class ResultsView extends React.Component<Props> {
         ]
 
         const boardNames = new Array('Antibiotics', 'Schoolpaper', 'Hospitals', 'Antibiotics', 'Schoolpaper', 'Hospitals')
-        const tags = new Array('Location', 'A&E', 'Time')
         const query = new Array('2019', 'Oncology', 'Radiology', 'Neurology', 'ICU', 'Dermatology')
 
         return (
@@ -109,9 +108,8 @@ export class ResultsView extends React.Component<Props> {
                 <Header back={false} more={false}/>
                 <SearchQuery
                     searchWords={searchQuestion}
-                    tags={tags}
                 />
-                <Tags className='SearchQueryTags' tags={query} styleOverride='tag-red-button'/>
+                <Tags className='SearchQueryTags' tags={query} styleOverride='tag-ultraviolet-button'/>
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}

@@ -35,6 +35,7 @@ export class MenuBottom extends React.Component<Props, State> {
                     route={isLoggedIn ? routes.App.index : routes.App.CurrentUser.index}
                     iconName='search_small'
                     color='#CEC7EC'
+                    className='MenuStyleHoverFirst'
                 >
                     {isLoggedIn ? 'Search' : 'Login for more fun features'}
                 </NavLink>
@@ -43,77 +44,39 @@ export class MenuBottom extends React.Component<Props, State> {
                     route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
                     iconName='boards'
                     color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
+                    className='MenuStyleHoverFirst'
                 >
                     {isLoggedIn ? 'Boards' : 'Please login'}
                 </NavLink>
             }
                 <li className='Middle'>
-                    {iconName === 'pen' ?
-                    <React.Fragment>
-                        <div className='Menu'>
-                            <input type='checkbox' className='Menu-open' name='Menu-open' id='Menu-open'/>
-                            <label className='Menu-open-button' htmlFor='Menu-open'>
-                                <Icon iconName='pen' color='#181631'/>
-                            </label>
-                            <a className='Menu-item'>
-                                <Icon iconName='pen' color='#181631'/>
-                            </a>
-                            <a className='Menu-item'>
-                                <Icon iconName='pen' color='#181631'/>
-                            </a>
-                            <a className='Menu-item'>
-                                <Icon iconName='pen' color='#181631'/>
-                            </a>
-                            <a className='Menu-item'>
-                                <Icon iconName='pen' color='#181631'/>
-                            </a>
-                        </div>
-
-                        <svg xmlns='http://www.w3.org/2000/svg' version='1.1'>
-                            <defs>
-                              <filter id='shadowed-goo'>
-
-                                  <feGaussianBlur in='SourceGraphic' result='blur' stdDeviation='10' />
-                                  <feColorMatrix in='blur' mode='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7' result='goo' />
-                                  <feGaussianBlur in='goo' stdDeviation='3' result='shadow' />
-                                  <feColorMatrix in='shadow' mode='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2' result='shadow' />
-                                  <feOffset in='shadow' dx='1' dy='1' result='shadow' />
-                                  <feComposite in2='shadow' in='goo' result='goo' />
-                                  <feComposite in2='goo' in='SourceGraphic' result='mix' />
-                              </filter>
-                              <filter id='goo'>
-                                  <feGaussianBlur in='SourceGraphic' result='blur' stdDeviation='10' />
-                                  <feColorMatrix in='blur' mode='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7' result='goo' />
-                                  <feComposite in2='goo' in='SourceGraphic' result='mix' />
-                              </filter>
-                            </defs>
-                        </svg>
-                    </React.Fragment>
-                    :
                     <Link
                         to={routes.App.index}
+                        className='NoHover'
                     >
                         <Button
-                                className='Button_big'
-                                styleOverride='big-button'
-                                type='button'
-                                iconName={iconName}
-                                color='#181631'
+                            className='Button_big'
+                            styleOverride='big-button'
+                            type='button'
+                            iconName={iconName}
+                            color='#181631'
                         />
                     </Link>
-                    }
                 </li>
                 { isLoggedIn
                     ? <UserMenu
                     title={fullName || 'Login'}
                     renderButton={openModal => (
                         <Button
+                            className='MenuStyleHoverLast'
                             onClick = { openModal }
                             type='button'
                             // styleOverride='round-button'
                             iconName='user'
                             color='#cec7ec'
-                        >{fullName || 'Login'}</Button>
+                        >
+                            {fullName || 'Login'}
+                        </Button>
                     )}
                     >
                     <NavLink
@@ -138,6 +101,7 @@ export class MenuBottom extends React.Component<Props, State> {
                         route={routes.Login.index}
                         iconName='user'
                         color='#CEC7EC'
+                        className='MenuStyleHoverLast'
                     >
                         {fullName || 'Login'}
                     </NavLink>

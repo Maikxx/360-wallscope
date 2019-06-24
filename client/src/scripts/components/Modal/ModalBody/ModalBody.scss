@@ -20,19 +20,19 @@
     }
 
     .Button {
-        &--red {
-            background-color: $color-blue-1;
+        &--ultraviolet {
+            background-color: $color-orange-1;
 
             &::after{
-                background: darken($color-blue-1, 5%);
+                background: darken($color-orange-1, 5%);
             }
 
             &:hover{
-                background-color: lighten($color-blue-1, 8%)
+                background-color: lighten($color-orange-1, 8%)
             }
     
             &:hover::after {
-                background: lighten($color-blue-1, 8%);
+                background: lighten($color-orange-1, 8%);
             }
         }
     }

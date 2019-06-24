@@ -54,7 +54,7 @@ export class RawData extends React.Component<Props> {
                                     Create a new board
                                     <Input type={'text'} name={'search'} styleOverride={'input-search'} />
                                 </Label>
-                                <Button styleOverride={'red-button'} type='button' full={true}>
+                                <Button styleOverride={'ultraviolet-button'} type='button' full={true}>
                                     Add
                                 </Button>
                             </Fieldset>
@@ -62,7 +62,7 @@ export class RawData extends React.Component<Props> {
                                 <Label>
                                     Add to an existing board
                                 </Label>
-                                <Tags tags={boardNames} styleOverride={'tag-red-button'}/>
+                                <Tags tags={boardNames} styleOverride={'tag-ultraviolet-button'}/>
                             </Fieldset>
                         </Form>
                     </ModalBase>

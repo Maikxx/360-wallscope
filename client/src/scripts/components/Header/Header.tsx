@@ -64,11 +64,11 @@ export class Header extends React.Component<Props, State> {
                         )}
                         render={closeDropdown => (
                             <React.Fragment>
-                                <Button styleOverride='tag-red-button' full={true} isDisabled={true}>Add collaborator</Button>
+                                <Button styleOverride='tag-ultraviolet-button' full={true} isDisabled={true}>Add collaborator</Button>
                                 <ModalBase
                                     title={'Create new board'}
                                     renderButton={openModal => (
-                                        <Button styleOverride='tag-red-button' full={true} onClick={openModal}>
+                                        <Button styleOverride='tag-ultraviolet-button' full={true} onClick={openModal}>
                                             Create new board
                                         </Button>
                                     )}
@@ -86,22 +86,22 @@ export class Header extends React.Component<Props, State> {
                                                         onChange={value => this.setState({ icon_name: value })}
                                                     />
                                                 </Label>
-                                                <Button styleOverride={`blue-button`} type='button' full={true} onClick={() => {
+                                                <Button styleOverride={`orange-button`} type='button' full={true} onClick={() => {
                                                     closeModal()
                                                     closeDropdown()
                                                 }}>
                                                     Cancel
                                                 </Button>
-                                                <Button styleOverride={'red-button'} type='submit' full={true}>
+                                                <Button styleOverride={'ultraviolet-button'} type='submit' full={true}>
                                                     Create
                                                 </Button>
                                             </Fieldset>
                                         </Form>
                                     )}
                                 />
-                                <Button styleOverride='tag-red-button' full={true}>Delete</Button>
-                                <Button styleOverride='tag-red-button' full={true}>Edit</Button>
-                                <Button styleOverride='tag-red-button' full={true}>Remove collaborator</Button>
+                                <Button styleOverride='tag-ultraviolet-button' full={true}>Delete</Button>
+                                <Button styleOverride='tag-ultraviolet-button' full={true}>Edit</Button>
+                                <Button styleOverride='tag-ultraviolet-button' full={true}>Remove collaborator</Button>
                             </React.Fragment>
                         )}
                     >

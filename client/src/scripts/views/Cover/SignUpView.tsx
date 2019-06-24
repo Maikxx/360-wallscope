@@ -85,10 +85,10 @@ export class SignUpView extends React.Component<Props, State> {
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='red-button' type='submit' full={true}>
+                    <Button styleOverride='ultraviolet-button' type='submit' full={true}>
                         Sign up
                     </Button>
-                    <Button styleOverride='blue-button' full={true} type='button' onClick={() => this.props.history.push(routes.Login.index)}>
+                    <Button styleOverride='orange-button' full={true} type='button' onClick={() => this.props.history.push(routes.Login.index)}>
                         Alternatively, log in
                     </Button>
                 </Form>
