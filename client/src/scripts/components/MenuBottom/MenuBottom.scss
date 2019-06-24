@@ -58,15 +58,53 @@
     .Button .Link__icon svg {
         width: 32px;
         height: 32px;
-    }
+	}
 
     .Navigation__ul .Button {
+		position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         font-size: 1em;
-        color: #cec7ec;
-    }
+        color: $color-purple-1;
+	}
+
+	.Navigation__ul .MenuStyleHoverFirst {
+		position: relative;
+	}
+
+	.Navigation__ul .MenuStyleHoverLast:hover::after,
+	.Navigation__ul .MenuStyleHoverLast:focus::after,
+	.Navigation__ul .MenuStyleHoverLast:active::after {
+		content: '';
+		position: absolute;
+        top: 50%;
+		right: 6.5%;
+		transform: translateX(-6.5%) translateY(-50%);
+        display: block;
+        height: 50px;
+        width: 50px;
+		background-color: $color-purple-5;
+		border-radius: 50%;
+		opacity: .5;
+	}
+
+	.Navigation__ul .MenuStyleHoverFirst .Link:hover::after,
+	.Navigation__ul .MenuStyleHoverFirst .Link:focus::after,
+	.Navigation__ul .MenuStyleHoverFirst .Link:active::after {
+		content: '';
+		position: absolute;
+        top: 50%;
+		right: 4.5%;
+		transform: translateX(-4.5%) translateY(-50%);
+        display: block;
+        height: 50px;
+        width: 50px;
+		background-color: $color-purple-5;
+		border-radius: 50%;
+		opacity: .5;
+	}
+	
 	.Menu-open-button:hover,
 	.Menu-open-button:focus,
 	.Menu-open-button:active {
