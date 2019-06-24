@@ -1,17 +1,23 @@
 # Wallscope
 
-**In this project we created a demo Visualization of the Wallscope Dynamic Data Discovery Platform between AUAS and Wallscope. Where two minors (UX and Web Development) come together to create a better User Experience.**
-
-**This Demo is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).**
+This project is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).
 
 [🚀 Live demo 🚀](https://wallscope.herokuapp.com/)
 
+## Description
+
+The Rain platform helps medical students and researchers with their research of medical data pieces.
+Rain does this, by providing a way to store their found datasets and articles (in a so called _board_), while also providing the ability to link these pieces of data to each other, when they have something in common.
+When working on a board, one can decide to collaborate on a board, allowing other users to also access and modify this shared board.
+
+The idea of Rain is to not only help people who create an account, but also serve those that just want to look up something real quick. This then only shows the results, without the ability to store them in boards.
+
 ## Table of contents
 
-* [Installation](#Installation)
-* [Briefings](#Briefings)
-* [Progress](#Progress)
-* [License](#License)
+1. [Installation](#Installation)
+2. [Briefings](#Briefings)
+3. [Progress](#Progress)
+4. [License](#License)
 
 ## Installation
 
