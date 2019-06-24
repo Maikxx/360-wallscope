@@ -103,36 +103,45 @@ export class MenuBottom extends React.Component<Props, State> {
                     </Link>
                     }
                 </li>
-                <UserMenu
-                title={fullName || 'Login'}
-                renderButton={openModal => (
-                    <Button
-                        onClick = { openModal }
-                        type='button'
-                        // styleOverride='round-button'
+                { isLoggedIn
+                    ? <UserMenu
+                    title={fullName || 'Login'}
+                    renderButton={openModal => (
+                        <Button
+                            onClick = { openModal }
+                            type='button'
+                            // styleOverride='round-button'
+                            iconName='user'
+                            color='#cec7ec'
+                        >{fullName || 'Login'}</Button>
+                    )}
+                    >
+                    <NavLink
+                        route={'/'}
+                        iconName='spaceship'
+                        color='#CEC7EC'
+                        preventDefault={true}
+                    >
+                        Settings
+                    </NavLink>
+                    <NavLink
+                        route={isLoggedIn ? routes.App.CurrentUser.index : routes.Login.index}
+                        iconName='light'
+                        color='#CEC7EC'
+                        preventDefault={true}
+                    >
+                        Light Mode
+                    </NavLink>
+                    </UserMenu>
+                    :
+                    <NavLink
+                        route={routes.Login.index}
                         iconName='user'
-                        color='#cec7ec'
-                    >{fullName || 'Login'}</Button>
-                )}
-                >
-                <NavLink
-                    route={'/'}
-                    iconName='spaceship'
-                    color='#CEC7EC'
-                    preventDefault={true}
-                >
-                    Settings
-                </NavLink>
-                <NavLink
-                    route={isLoggedIn ? routes.App.CurrentUser.index : routes.Login.index}
-                    iconName='light'
-                    color='#CEC7EC'
-                    preventDefault={true}
-                >
-                    Light Mode
-                </NavLink>
-                </UserMenu>
-
+                        color='#CEC7EC'
+                    >
+                        {fullName || 'Login'}
+                    </NavLink>
+                }
             </Navigation>
         )
     }

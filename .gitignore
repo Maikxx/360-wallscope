@@ -68,3 +68,6 @@ server/public/build
 
 # Webstorm project
 .idea/
+
+# VS-Code
+.DS_Store
