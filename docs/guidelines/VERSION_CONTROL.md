@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-* [Commiting](#Commiting)
+* [Committing](#Committing)
     * [Action](#Action)
     * [Scope](#Scope)
     * [Description](#Description)
@@ -15,7 +15,7 @@
         * [Named branches](#Named-branches)
     * [Pull requests](#Pull-requests)
 
-## Commiting
+## Committing
 
 The preferred way to write version control messages is as follows: `action(scope): description`.
 
@@ -23,7 +23,7 @@ The preferred way to write version control messages is as follows: `action(scope
 
 The action in the phrase can be one of the following:
 
-* `chore` - Use this if you install new dependencies or change things to the configuration of the application. **These changes need to be pushed on a seperate commit from other changes.**
+* `chore` - Use this if you install new dependencies or change things to the configuration of the application. **These changes need to be pushed on a separate commit from other changes.**
 * `feature` - You will probably use this most of the time. This is for the cases when you add something new to the application.
 * `fix` - If there is something broken that has already been pushed and you fixed that.
 * `refactor` - Most of the time you use this when you rewrite a piece of code so that it looks better, or is written in a nicer way.
@@ -31,9 +31,9 @@ The action in the phrase can be one of the following:
 
 **Note on multiple actions at once**
 
-Preferrably split commits up into separate of these actions.
+Preferably split commits up into separate of these actions.
 
-If for some reason this is not possible or preferrable, use the one on top of the other one.
+If for some reason this is not possible or preferable, use the one on top of the other one.
 Like so: `feature` > `fix` or `feature` > `refactor`.
 Where the left one in these cases is the one you are going to use.
 
@@ -50,7 +50,7 @@ This can be either one of the following:
 
 ### Description
 
-This is the easiest of the three pieces, here you just type the message, starting with a _lowercase_, ending without a dot.
+This is the easiest of the three pieces, here you just type the message, starting with a _lower case letter_, ending without a dot.
 
 Please be descriptive, so: `feature(client > home): add homepage to views folder`, not `feature(client > home): 💩`.
 
@@ -120,11 +120,11 @@ Semantic branch names:
 * `fix/` - Branch for specific fixes. Avoid hitting files outside of the scope of this branch.
     Example: `fix/client-app-view-integration`.
     These type of branches will be less common, since it is also allowed to perform fixes on `develop`. (Branched from `develop`)
-* `hotfix/` - Branch for **high prio fixes**, that are already on the `master` branch.
+* `hotfix/` - Branch for **high priority fixes**, that are already on the `master` branch.
     These type of branches should really never occur, since all code and designs going to `master` should already be tested.
     Hotfix branches generally have different names from normal branches, I have not thought out this far yet.
     If it occurs that you need it and you read this, ask me again what naming conventions these should follow.
-    Everything is allowed in this branch, as long as it aims to fix **high prio bugs** on `master`. (Branched from `master`)
+    Everything is allowed in this branch, as long as it aims to fix **high priority bugs** on `master`. (Branched from `master`)
 
 ### Pull requests
 

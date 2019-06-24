@@ -32,7 +32,7 @@ We decided to each concept some screens in Adobe XD to see how our thoughts vary
     <summary>Version 2 @Maikel van Veen</summary>
 
 ![login](./design/v2_vanveen/login.png)
-![signup](./design/v2_vanveen/signup.png)
+![sign up](./design/v2_vanveen/signup.png)
 ![landing](./design/v2_vanveen/landing.png)
 ![boards](./design/v2_vanveen/boards.png)
 ![results](./design/v2_vanveen/results.png)
