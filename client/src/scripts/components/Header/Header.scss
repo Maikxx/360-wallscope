@@ -20,9 +20,8 @@
         transition: fill .2s ease;
     }
 
-    &__back-button:hover,  
-    &__back-button:focus,{
-        
+    &__back-button:hover,
+    &__back-button:focus {
         svg path {
             fill: $color-red-1;
             transition: fill .2s ease;

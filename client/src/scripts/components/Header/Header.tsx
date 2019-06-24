@@ -64,7 +64,7 @@ export class Header extends React.Component<Props, State> {
                         )}
                         render={closeDropdown => (
                             <React.Fragment>
-                                <Button styleOverride='tag-red-button' full={true}>Add collaborator</Button>
+                                <Button styleOverride='tag-red-button' full={true} isDisabled={true}>Add collaborator</Button>
                                 <ModalBase
                                     title={'Create new board'}
                                     renderButton={openModal => (

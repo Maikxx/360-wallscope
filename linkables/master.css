@@ -36,7 +36,7 @@ ul {
     list-style: none;
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .item {
@@ -109,8 +109,10 @@ ul {
 }
 
 .item div h1 {
-    font-size: 1rem;
+    font-size: .75rem;
     margin-bottom: .5rem;
+    max-height: 1.6rem;
+    overflow: hidden;
 }
 
 .item div p {
@@ -125,7 +127,11 @@ ul {
     font-size: .75rem;
 }
 
-fieldset {
+fieldset{
+    border: none;
+}
+
+.legend-cont {
     border: none;
     max-width: 30rem;
     margin: auto;
@@ -135,15 +141,15 @@ fieldset {
     justify-content: space-around;
 }
 
-fieldset legend {
+.legend-cont legend {
     margin: auto;
 }
 
-fieldset input {
+.legend-cont input {
     display: none;
 }
 
-fieldset label {
+.legend-cont label {
     display: block;
     padding: .5rem 1rem;
     border-radius: 10px;
