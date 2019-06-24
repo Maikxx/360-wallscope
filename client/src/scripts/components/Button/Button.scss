@@ -14,9 +14,9 @@
         font-weight: bold;
         position: relative;
         display: block;
-        background-color: $color-red-1;
+        background-color: $color-ultraviolet-1;
         padding: .75em 3em;
-        color: $color-white;
+        color: $color-purple-5;
         border-radius: .5em;
         border: none;
         transition: all .5s ease-in-out;
@@ -30,20 +30,20 @@
             display: block;
             height: 20px;
             width: 55px;
-            background: darken($color-red-1, 5%);
+            background: darken($color-ultraviolet-1, 5%);
             border-radius: 0 .5em 0 .5em;
             transition: all .5s ease-in-out;
         }
 
         &:hover{
-            background-color: darken($color-red-1, 8%)
+            background-color: darken($color-ultraviolet-1, 8%)
         }
 
         &:hover::after {
             content: '';
             height: 100%;
             width: 100%;
-            background: darken($color-red-1, 8%);
+            background: darken($color-ultraviolet-1, 8%);
             opacity: .2;
         }
     }
@@ -54,9 +54,9 @@
         font-weight: bold;
         position: relative;
         display: block;
-        background-color: $color-blue-1;
+        background-color: $color-orange-1;
         padding: .75em 3em;
-        color: $color-white;
+        color: $color-purple-5;
         border-radius: .5em;
         border: none;
         transition: all .5s ease-in-out;
@@ -70,20 +70,20 @@
             display: block;
             height: 20px;
             width: 55px;
-            background: darken($color-blue-1, 5%);
+            background: darken($color-orange-1, 5%);
             border-radius: .5em 0 .5em 0;
             transition: all .5s ease-in-out;
         }
 
         &:hover{
-            background-color: darken($color-blue-1, 15%)
+            background-color: darken($color-orange-1, 15%)
         }
 
         &:hover::after {
             content: '';
             height: 100%;
             width: 100%;
-            background: darken($color-blue-1, 20%);
+            background: darken($color-orange-1, 20%);
             opacity: .2;
         }
     }
@@ -92,7 +92,7 @@
         font-family: 'Lato', sans-serif;
         font-size: 2em;
         display: block;
-        background-color: $color-red-1;
+        background-color: $color-ultraviolet-1;
         padding: .5em;
         color: $color-purple-5;
         border-radius: 50%;
@@ -132,14 +132,14 @@
         font-size: 1rem;
         font-weight: bold;
         display: block;
-        background-color: $color-red-1;
+        background-color: $color-ultraviolet-1;
         border: none;
         padding: .75em;
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
         &:hover {
-            background-color: lighten($color-red-1, 10%);
+            background-color: lighten($color-ultraviolet-1, 10%);
         }
     }
 
@@ -148,14 +148,14 @@
         font-size: 1rem;
         font-weight: bold;
         display: block;
-        background-color: $color-blue-1;
+        background-color: $color-orange-1;
         border: none;
         padding: .75em;
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
         &:hover {
-            background-color: lighten($color-blue-1, 10%);
+            background-color: lighten($color-orange-1, 10%);
         }
     }
 
@@ -191,9 +191,9 @@
         display: block;
         background-color: transparent;
         padding: .75em;
-        color: $color-red-1;
+        color: $color-ultraviolet-1;
         border-radius: .5em;
-        border: 1px solid $color-red-1;
+        border: 1px solid $color-ultraviolet-1;
         transition: all .5s ease-in-out;
         margin-bottom: 1.5rem;
     }

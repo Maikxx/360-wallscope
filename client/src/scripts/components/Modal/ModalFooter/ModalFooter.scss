@@ -11,18 +11,18 @@
 
     .firstButton {
         margin-right: 1em;
-        background-color: $color-red-1;
+        background-color: $color-ultraviolet-1;
 
         &::after{
-            background: darken($color-red-1, 5%);
+            background: darken($color-ultraviolet-1, 5%);
         }
 
         &:hover{
-            background-color: darken($color-red-1, 8%)
+            background-color: darken($color-ultraviolet-1, 8%)
         }
     
         &:hover::after {
-            background: darken($color-red-1, 8%);
+            background: darken($color-ultraviolet-1, 8%);
         }
         
     }
