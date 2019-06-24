@@ -1,9 +1,8 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import { Icon } from '../../Icon/Icon'
-import './Board.scss'
-import { Link } from 'react-router-dom'
 import { Board as BoardType } from '../../../types/Board'
+import './Board.scss'
 
 interface Props {
     board: BoardType
