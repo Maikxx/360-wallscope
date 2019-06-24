@@ -40,11 +40,11 @@ Endpoints
 Small presentation - show some ideas, concepts, etc.
 
 * The Curious
-    * The average customer when they’re looking for something.
+    * The average customer when they're looking for something.
 * The Focused
     * Focus on geographical level, how are we doing compared to other companies.
 * The Detailed
-    * Know their way around data, don’t know how to grab a spreadsheet style file and create it.
+    * Know their way around data, don't know how to grab a spreadsheet style file and create it.
     * Know what they want academically, but not how to create it because it probably wasn’t their major.
 * The Diggers
     * Want Raw data, download files, do whatever they want with it.
@@ -54,11 +54,11 @@ Small presentation - show some ideas, concepts, etc.
 * People use spreadsheets in order to avoid the system.
 * ISD is the data provider.
 
-Most important groups to focus on in this appication:
+Most important groups to focus on in this application:
 * Focused
 * Detailed
 
-**The Detailed and The Focused persona’s are the most interesting, because the data can be meaningful to them in the future.**
+**The Detailed and The Focused persona's are the most interesting, because the data can be meaningful to them in the future.**
 
 Linked data
 * Diggers linked stuff from this website to another dataset by linking it, to make a comparison.
