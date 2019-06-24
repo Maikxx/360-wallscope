@@ -64,6 +64,7 @@ export class Header extends React.Component<Props, State> {
                         )}
                         render={closeDropdown => (
                             <React.Fragment>
+                                <Button styleOverride='tag-red-button' full={true}>Add collaborator</Button>
                                 <ModalBase
                                     title={'Create new board'}
                                     renderButton={openModal => (
@@ -98,9 +99,9 @@ export class Header extends React.Component<Props, State> {
                                         </Form>
                                     )}
                                 />
-                                <Button styleOverride='tag-red-button' full={true}>Delete board</Button>
-                                <Button styleOverride='tag-red-button' full={true}>Edit existing board</Button>
-                                <Button styleOverride='tag-red-button' full={true}>Share board</Button>
+                                <Button styleOverride='tag-red-button' full={true}>Delete</Button>
+                                <Button styleOverride='tag-red-button' full={true}>Edit</Button>
+                                <Button styleOverride='tag-red-button' full={true}>Remove collaborator</Button>
                             </React.Fragment>
                         )}
                     >
