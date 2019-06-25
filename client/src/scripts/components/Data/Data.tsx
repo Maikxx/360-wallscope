@@ -9,6 +9,9 @@ interface Props {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     full?: boolean
     boardNames?: string[]
+    onCreateNewBoard?: () => void
+    files?: FileType[]
+    user?: User
 }
 
 interface FileType {
@@ -18,15 +21,9 @@ interface FileType {
     file_type?: string | null
 }
 
-interface Props {
-    className?: string
-    files?: FileType[]
-    user?: User
-}
-
 export class Data extends React.Component<Props> {
     public render() {
-        const { boardNames, files, user } = this.props
+        const { boardNames, files, user, onCreateNewBoard } = this.props
 
         return (
             <ul className={this.getClassName()}>
@@ -36,6 +33,7 @@ export class Data extends React.Component<Props> {
                             file={file}
                             user={user}
                             boardNames={boardNames}
+                            onCreateNewBoard={onCreateNewBoard}
                         />
                     </li>
                 ))}
@@ -46,6 +44,6 @@ export class Data extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Data', { }, className)
+        return classnames('Data', {}, className)
     }
 }

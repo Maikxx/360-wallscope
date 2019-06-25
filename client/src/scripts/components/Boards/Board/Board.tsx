@@ -17,8 +17,8 @@ export class Board extends React.Component<Props> {
         return (
             <a href={`https://wallscope.thunderchicken.nl`}>
                 <div className='Back-board'>
-                    <span>Articles: 0</span>
-                    <span>Data: 0</span>
+                    <span>Articles: {Math.floor(Math.random() * 20)}</span>
+                    <span>Data: {Math.floor(Math.random() * 20)}</span>
                 </div>
                 <article className={this.getClassName()}>
                     {board.icon_name && (
