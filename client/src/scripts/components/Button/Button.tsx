@@ -16,6 +16,7 @@ interface Props {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     color?: string
     full?: boolean
+    isClickable?: boolean
 }
 
 interface State {
@@ -28,14 +29,15 @@ export class Button extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, className, iconName, styleOverride, color, full, isDisabled, ...restProps } = this.props
+        const { children, isClickable, className, iconName, styleOverride, color, full, isDisabled, ...restProps } = this.props
 
         return (
             <button
                 className={this.getClassName()}
                 disabled={isDisabled ? true : false}
-                onClick={() => {
-                    this.selectTag()
+                onClick={ () => {
+                    isClickable ? this.selectTag()
+                    : 'hoi'
                 }
                 } {...restProps}
             >

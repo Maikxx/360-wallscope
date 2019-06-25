@@ -57,7 +57,8 @@
 
     .Button .Link__icon svg {
         width: 32px;
-        height: 32px;
+		height: 32px;
+		transition: all .2s ease;
 	}
 
     .Navigation__ul .Button {
@@ -66,44 +67,36 @@
         flex-direction: column;
         align-items: center;
         font-size: 1em;
-        color: $color-purple-1;
+		color: $color-purple-1;
+		transition: all .2s ease;
 	}
 
-	.Navigation__ul .MenuStyleHoverFirst {
-		position: relative;
+	.Navigation__ul .MenuStyleHoverLast:hover {
+		color: $color-ultraviolet-1;
+			.Link__icon svg path {
+				fill: $color-ultraviolet-1;
+			}
 	}
 
-	.Navigation__ul .MenuStyleHoverLast:hover::after,
-	.Navigation__ul .MenuStyleHoverLast:focus::after,
-	.Navigation__ul .MenuStyleHoverLast:active::after {
-		content: '';
-		position: absolute;
-        top: 50%;
-		right: 6.5%;
-		transform: translateX(-6.5%) translateY(-50%);
-        display: block;
-        height: 50px;
-        width: 50px;
-		background-color: $color-purple-5;
-		border-radius: 50%;
-		opacity: .5;
+	.Navigation__ul .MenuStyleHoverLast:hover {
+		.Link{
+			color: $color-ultraviolet-1!important;
+			
+			.Link__icon svg path {
+				fill: $color-ultraviolet-1;
+			}
+		}
 	}
 
-	.Navigation__ul .MenuStyleHoverFirst .Link:hover::after,
-	.Navigation__ul .MenuStyleHoverFirst .Link:focus::after,
-	.Navigation__ul .MenuStyleHoverFirst .Link:active::after {
-		content: '';
-		position: absolute;
-        top: 50%;
-		right: 4.5%;
-		transform: translateX(-4.5%) translateY(-50%);
-        display: block;
-        height: 50px;
-        width: 50px;
-		background-color: $color-purple-5;
-		border-radius: 50%;
-		opacity: .5;
+	.Navigation__ul .MenuStyleHoverFirst:hover{
+		.Link {
+			color: $color-ultraviolet-1!important;
+				.Link__icon svg path {
+					fill: $color-ultraviolet-1;
+				}
+		}
 	}
+	
 	
 	.Menu-open-button:hover,
 	.Menu-open-button:focus,

@@ -35,8 +35,6 @@ export class Article extends React.Component<Props> {
 
                     <ModalBase
                         title={'Add to a board'}
-                        firstButton={'Cancel'}
-                        secondButton={'Done'}
                         renderButton={openModal => (
                             <Button
                                 onClick={openModal}
@@ -53,7 +51,7 @@ export class Article extends React.Component<Props> {
                                     Create a new board
                                     <Input type={'text'} name={'search'} styleOverride={'input-search'} />
                                 </Label>
-                                <Button styleOverride={'ultraviolet-button'} type='button' full={true}>
+                                <Button styleOverride={'orange-button'} type='button' full={true}>
                                     Add
                                 </Button>
                             </Fieldset>

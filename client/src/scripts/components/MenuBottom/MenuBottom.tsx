@@ -30,7 +30,7 @@ export class MenuBottom extends React.Component<Props, State> {
 
         return (
             <Navigation className={this.getClassName()}>
-                {iconName === 'pen' ? (
+                {iconName === 'pen' ?
                     <NavLink
                         route={isLoggedIn ? routes.App.index : routes.App.CurrentUser.index}
                         iconName='search_small'
@@ -39,16 +39,16 @@ export class MenuBottom extends React.Component<Props, State> {
                     >
                         {isLoggedIn ? 'Search' : 'Login for more fun features'}
                     </NavLink>
-                ) : (
+                    :
                     <NavLink
                         route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
                         iconName='boards'
                         color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
                         className='MenuStyleHoverFirst'
                     >
-                        {isLoggedIn ? 'Boards' : 'Please login'}
+                        Boards
                     </NavLink>
-                )}
+                }
                 <li className='Middle'>
                     <Link
                         to={routes.App.index}

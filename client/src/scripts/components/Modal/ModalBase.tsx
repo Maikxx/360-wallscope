@@ -44,26 +44,9 @@ export class ModalBase extends React.Component<Props, State> {
                     <ModalBody
                         children={render ? render(this.closeModal) : children}
                     />
-                    {firstButton && secondButton && (
-                        <ModalFooter
-                            firstButton={firstButton}
-                            secondButton={secondButton}
-                            onClose={this.closeModal}
-                            onAccept={this.onAccept}
-                        />
-                    )}
                 </Modal>
             </React.Fragment>
         )
-    }
-
-    private onAccept = () => {
-        const { onAccept } = this.props
-
-        if (onAccept) {
-            onAccept()
-            this.closeModal()
-        }
     }
 
     private openModal = () => {
