@@ -86,14 +86,14 @@ export class Header extends React.Component<Props, State> {
                                                         onChange={value => this.setState({ icon_name: value })}
                                                     />
                                                 </Label>
+                                                <Button styleOverride={'ultraviolet-button'} type='submit' full={true}>
+                                                    Create
+                                                </Button>
                                                 <Button styleOverride={`orange-button`} type='button' full={true} onClick={() => {
                                                     closeModal()
                                                     closeDropdown()
                                                 }}>
                                                     Cancel
-                                                </Button>
-                                                <Button styleOverride={'ultraviolet-button'} type='submit' full={true}>
-                                                    Create
                                                 </Button>
                                             </Fieldset>
                                         </Form>
