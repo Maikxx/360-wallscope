@@ -85,9 +85,9 @@ export function setAuthorizationToken(token: string) {
 }
 
 export function getAuthorizationToken() {
-    const token = window.localStorage.getItem('authToken')
-
     if (window.localStorage) {
+        const token = window.localStorage.getItem('authToken')
+
         if (token) {
             return token
         } else {
