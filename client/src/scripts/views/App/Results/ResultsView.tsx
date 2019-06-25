@@ -10,15 +10,35 @@ import { RouteComponentProps } from 'react-router'
 import { Articles } from '../../../components/Articles/Articles'
 import { Data } from '../../../components/Data/Data'
 import { Tags } from '../../../components/Tags/Tags'
+import { getBoardsForCurrentUser } from '../../../services/BoardService'
+import { Board } from '../../../types/Board'
+import { toast } from 'react-toastify'
 
 interface Props extends RouteComponentProps {
     user?: User
     searchQuestion?: string
 }
 
-export class ResultsView extends React.Component<Props> {
+interface State {
+    boards: Board[]
+}
+
+export class ResultsView extends React.Component<Props, State> {
+    public state: State = {
+        boards: [],
+    }
+
+    public async componentDidMount() {
+        const boards = await getBoardsForCurrentUser()
+
+        if (boards) {
+            this.setState({ boards })
+        }
+    }
+
     public render() {
         const { user, searchQuestion } = this.props
+        const { boards } = this.state
 
         const data = [
             {
@@ -88,7 +108,7 @@ export class ResultsView extends React.Component<Props> {
             },
             {
                 _id: 4,
-                title: 'Alchohol',
+                title: 'Alcohol',
                 icon_name: 'xml',
                 file_type: 'xml',
             },
@@ -100,7 +120,7 @@ export class ResultsView extends React.Component<Props> {
             },
         ]
 
-        const boardNames = new Array('Antibiotics', 'Schoolpaper', 'Hospitals', 'Antibiotics', 'Schoolpaper', 'Hospitals')
+        const boardNames = boards.map(board => board.name)
         const query = new Array('2019', 'Oncology', 'Radiology', 'Neurology', 'ICU', 'Dermatology')
 
         return (
@@ -109,18 +129,39 @@ export class ResultsView extends React.Component<Props> {
                 <SearchQuery
                     searchWords={searchQuestion}
                 />
-                <Tags className='SearchQueryTags' tags={query} styleOverride='tag-ultraviolet-button'/>
+                <Tags
+                    className='SearchQueryTags'
+                    tags={query}
+                    styleOverride='tag-ultraviolet-button'
+                    isClickable={true}
+                />
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}
+                        user={user}
+                        onCreateNewBoard={this.onNewBoardAdded}
                         boardNames={boardNames}
                     />
                 </Accordion>
                 <Accordion title='Datasets'>
-                    <Data files={fileData} boardNames={boardNames} />
+                    <Data
+                        files={fileData}
+                        boardNames={boardNames}
+                        onCreateNewBoard={this.onNewBoardAdded}
+                        user={user}
+                    />
                 </Accordion>
                 <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View >
         )
+    }
+
+    private onNewBoardAdded = async () => {
+        const boards = await getBoardsForCurrentUser()
+
+        if (boards) {
+            this.setState({ boards })
+            toast.success('Successfully created a new board! Right now it is not fully working in the prototype.')
+        }
     }
 }

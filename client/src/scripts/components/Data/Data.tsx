@@ -2,12 +2,16 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { RawData } from './RawData/RawData'
 import './Data.scss'
+import { User } from '../../types/User'
 
 interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     full?: boolean
     boardNames?: string[]
+    onCreateNewBoard?: () => void
+    files?: FileType[]
+    user?: User
 }
 
 interface FileType {
@@ -17,14 +21,9 @@ interface FileType {
     file_type?: string | null
 }
 
-interface Props {
-    className?: string
-    files?: FileType[]
-}
-
 export class Data extends React.Component<Props> {
     public render() {
-        const { boardNames, files } = this.props
+        const { boardNames, files, user, onCreateNewBoard } = this.props
 
         return (
             <ul className={this.getClassName()}>
@@ -32,7 +31,9 @@ export class Data extends React.Component<Props> {
                     <li key={file._id}>
                         <RawData
                             file={file}
+                            user={user}
                             boardNames={boardNames}
+                            onCreateNewBoard={onCreateNewBoard}
                         />
                     </li>
                 ))}
@@ -43,6 +44,6 @@ export class Data extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Data', { }, className)
+        return classnames('Data', {}, className)
     }
 }

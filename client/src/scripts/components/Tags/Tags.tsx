@@ -7,21 +7,28 @@ interface Props {
     className?: string
     tags?: string[]
     styleOverride?: StyleType
+    isClickable?: boolean
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export class Tags extends React.Component<Props> {
     public render() {
-        const { children, className, styleOverride, tags, ...restProps } = this.props
+        const { children, className, styleOverride, isClickable, onClick, tags, ...restProps } = this.props
 
         return (
             <ul className={this.getClassName()} {...restProps}>
-                {tags && tags.map(tag => {
-                    return (
-                        <li key={tag}>
-                            <Button styleOverride={styleOverride} type='button'>{tag}</Button>
-                        </li>
-                    )
-                })}
+                {tags && tags.map(tag => (
+                    <li key={tag}>
+                        <Button
+                            styleOverride={styleOverride}
+                            isClickable={isClickable}
+                            type='button'
+                            onClick={onClick}
+                        >
+                            {tag}
+                        </Button>
+                    </li>
+                ))}
             </ul>
         )
     }
