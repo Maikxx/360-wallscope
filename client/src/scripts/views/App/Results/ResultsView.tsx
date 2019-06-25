@@ -15,7 +15,6 @@ interface Props extends RouteComponentProps {
     user?: User
     searchQuestion?: string
 }
-
 export class ResultsView extends React.Component<Props> {
     public render() {
         const { user, searchQuestion } = this.props
@@ -109,7 +108,12 @@ export class ResultsView extends React.Component<Props> {
                 <SearchQuery
                     searchWords={searchQuestion}
                 />
-                <Tags className='SearchQueryTags' tags={query} styleOverride='tag-ultraviolet-button'/>
+                <Tags
+                    className='SearchQueryTags'
+                    tags={query}
+                    styleOverride='tag-ultraviolet-button'
+                    isClickable={true}
+                />
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}
