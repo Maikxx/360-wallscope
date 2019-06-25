@@ -7,7 +7,6 @@
     min-width: 90%;
     max-width: 90%;
     min-height: 150px;
-    max-height: 150px;
 
     .Article {
         background-image: linear-gradient(120deg, #2E2B5F, #383881);
@@ -17,8 +16,7 @@
         min-width: 102%;
         max-width: 102%;
         min-height: 150px;
-        max-height: 150px;
-        overflow-y: auto;
+        overflow-y: hidden;
 
         h2 {
             font-size: 1rem;
@@ -33,10 +31,6 @@
             overflow: hidden;
             text-overflow: ellipsis
         }
-
-        // &::-webkit-scrollbar {
-        //     display: none;
-        // }
     }
 
     .Button {
@@ -53,6 +47,6 @@
         border-radius: .5em;
         border: 1px solid $color-ultraviolet-3;
         bottom: 5%;
-        right: 1%
+        right: 1%;
     }
 }
