@@ -12,6 +12,7 @@ import { User } from '../../../types/User'
 import { Legend } from '../../Form/Legend/Legend'
 import { createBoard } from '../../../services/BoardService'
 import { IconRaster } from '../../IconRaster/IconRaster'
+import { toast } from 'react-toastify'
 
 interface Props {
     className?: string
@@ -91,7 +92,14 @@ export class Article extends React.Component<Props, State> {
                                     <Legend>
                                         Add to an existing board
                                     </Legend>
-                                    <Tags tags={boardNames} styleOverride={'tag-ultraviolet-button'}/>
+                                    <Tags
+                                        tags={boardNames}
+                                        styleOverride={'tag-ultraviolet-button'}
+                                        onClick={() => {
+                                            toast.success('Adding results to a board does not work in the prototype.')
+                                            closeModal()
+                                        }}
+                                    />
                                 </Fieldset>
                             </Form>
                         )}

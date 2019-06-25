@@ -13,6 +13,7 @@ import { User } from '../../../types/User'
 import { Legend } from '../../Form/Legend/Legend'
 import { IconRaster } from '../../IconRaster/IconRaster'
 import { createBoard } from '../../../services/BoardService'
+import { toast } from 'react-toastify'
 
 interface Props {
     className?: string
@@ -88,6 +89,10 @@ export class RawData extends React.Component<Props, State> {
                                             styleOverride={'ultraviolet-button'}
                                             type='submit'
                                             full={true}
+                                            onClick={() => {
+                                                toast.success('Adding results to a board does not work in the prototype.')
+                                                closeModal()
+                                            }}
                                         >
                                             Create
                                         </Button>
