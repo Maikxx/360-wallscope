@@ -6,7 +6,7 @@ import { NavLink } from '../NavLink/NavLink'
 import { Button } from '../Button/Button'
 import { UserMenu } from '../UserMenu/UserMenu'
 import './MenuBottom.scss'
-import { IconNames, Icon } from '../Icon/Icon'
+import { IconNames } from '../Icon/Icon'
 import { Link } from 'react-router-dom'
 
 interface Props {
@@ -30,25 +30,25 @@ export class MenuBottom extends React.Component<Props, State> {
 
         return (
             <Navigation className={this.getClassName()}>
-            {iconName === 'pen' ?
-                <NavLink
-                    route={isLoggedIn ? routes.App.index : routes.App.CurrentUser.index}
-                    iconName='search_small'
-                    color='#CEC7EC'
-                    className='MenuStyleHoverFirst'
-                >
-                    {isLoggedIn ? 'Search' : 'Login for more fun features'}
-                </NavLink>
-            :
-               <NavLink
-                    route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
-                    iconName='boards'
-                    color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
-                    className='MenuStyleHoverFirst'
-                >
-                    {isLoggedIn ? 'Boards' : 'Please login'}
-                </NavLink>
-            }
+                {iconName === 'pen' ? (
+                    <NavLink
+                        route={isLoggedIn ? routes.App.index : routes.App.CurrentUser.index}
+                        iconName='search_small'
+                        color='#CEC7EC'
+                        className='MenuStyleHoverFirst'
+                    >
+                        {isLoggedIn ? 'Search' : 'Login for more fun features'}
+                    </NavLink>
+                ) : (
+                    <NavLink
+                        route={isLoggedIn ? routes.App.Boards.index : routes.App.CurrentUser.index}
+                        iconName='boards'
+                        color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
+                        className='MenuStyleHoverFirst'
+                    >
+                        {isLoggedIn ? 'Boards' : 'Please login'}
+                    </NavLink>
+                )}
                 <li className='Middle'>
                     <Link
                         to={routes.App.index}
@@ -63,48 +63,40 @@ export class MenuBottom extends React.Component<Props, State> {
                         />
                     </Link>
                 </li>
-                { isLoggedIn
-                    ? <UserMenu
-                    title={fullName || 'Login'}
-                    renderButton={openModal => (
-                        <Button
-                            className='MenuStyleHoverLast'
-                            onClick = { openModal }
-                            type='button'
-                            // styleOverride='round-button'
+                {isLoggedIn
+                    ? (
+                        <UserMenu
+                            title={fullName || 'Login'}
+                            renderButton={openModal => (
+                                <Button
+                                    className='MenuStyleHoverLast'
+                                    onClick={openModal}
+                                    type='button'
+                                    iconName='user'
+                                    color='#cec7ec'
+                                >
+                                    {fullName || 'Login'}
+                                </Button>
+                            )}
+                        >
+                            <NavLink
+                                route={routes.App.CurrentUser.index}
+                                iconName='spaceship'
+                                color='#CEC7EC'
+                            >
+                                Settings
+                            </NavLink>
+                        </UserMenu>
+                    ) : (
+                        <NavLink
+                            route={routes.Login.index}
                             iconName='user'
-                            color='#cec7ec'
+                            color='#CEC7EC'
+                            className='MenuStyleHoverLast'
                         >
                             {fullName || 'Login'}
-                        </Button>
-                    )}
-                    >
-                    <NavLink
-                        route={'/'}
-                        iconName='spaceship'
-                        color='#CEC7EC'
-                        preventDefault={true}
-                    >
-                        Settings
-                    </NavLink>
-                    <NavLink
-                        route={isLoggedIn ? routes.App.CurrentUser.index : routes.Login.index}
-                        iconName='light'
-                        color='#CEC7EC'
-                        preventDefault={true}
-                    >
-                        Light Mode
-                    </NavLink>
-                    </UserMenu>
-                    :
-                    <NavLink
-                        route={routes.Login.index}
-                        iconName='user'
-                        color='#CEC7EC'
-                        className='MenuStyleHoverLast'
-                    >
-                        {fullName || 'Login'}
-                    </NavLink>
+                        </NavLink>
+                    )
                 }
             </Navigation>
         )

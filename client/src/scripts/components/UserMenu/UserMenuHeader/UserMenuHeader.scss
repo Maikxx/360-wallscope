@@ -1,6 +1,7 @@
 .UserMenuHeader {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     background-color: #cec7ec;
     padding: 1em 2em;
@@ -8,15 +9,11 @@
     border-top-right-radius: 0.5em;
     color: #181631;
 
-    button {
+    .Button {
         background-color: #cec7ec;
     }
 
-    li {
-        list-style: none
-    }
-
-    .Link {
+    &__title {
         color: #181631;
         font-weight: 900;
         font-size: 1.5rem;
