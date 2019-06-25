@@ -88,7 +88,7 @@ export class ResultsView extends React.Component<Props> {
             },
             {
                 _id: 4,
-                title: 'Alchohol',
+                title: 'Alcohol',
                 icon_name: 'xml',
                 file_type: 'xml',
             },
@@ -113,11 +113,16 @@ export class ResultsView extends React.Component<Props> {
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}
+                        user={user}
                         boardNames={boardNames}
                     />
                 </Accordion>
                 <Accordion title='Datasets'>
-                    <Data files={fileData} boardNames={boardNames} />
+                    <Data
+                        files={fileData}
+                        boardNames={boardNames}
+                        user={user}
+                    />
                 </Accordion>
                 <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
             </View >

@@ -2,6 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { RawData } from './RawData/RawData'
 import './Data.scss'
+import { User } from '../../types/User'
 
 interface Props {
     className?: string
@@ -20,11 +21,12 @@ interface FileType {
 interface Props {
     className?: string
     files?: FileType[]
+    user?: User
 }
 
 export class Data extends React.Component<Props> {
     public render() {
-        const { boardNames, files } = this.props
+        const { boardNames, files, user } = this.props
 
         return (
             <ul className={this.getClassName()}>
@@ -32,6 +34,7 @@ export class Data extends React.Component<Props> {
                     <li key={file._id}>
                         <RawData
                             file={file}
+                            user={user}
                             boardNames={boardNames}
                         />
                     </li>

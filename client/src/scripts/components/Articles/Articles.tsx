@@ -2,6 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { Article } from './Article/Article'
 import './Articles.scss'
+import { User } from '../../types/User'
 
 interface Props {
     className?: string
@@ -21,12 +22,13 @@ interface ArticleType {
 
 interface Props {
     className?: string
+    user?: User
     articles?: ArticleType[]
 }
 
 export class Articles extends React.Component<Props> {
     public render() {
-        const { boardNames, articles } = this.props
+        const { boardNames, articles, user } = this.props
 
         return (
             <ul className={this.getClassName()}>
@@ -35,6 +37,7 @@ export class Articles extends React.Component<Props> {
                         <Article
                             article={article}
                             boardNames={boardNames}
+                            user={user}
                         />
                     </li>
                 ))}

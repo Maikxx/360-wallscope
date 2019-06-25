@@ -9,20 +9,20 @@ import { Fieldset } from '../../Form/Fieldset/Fieldset'
 import { Label } from '../../Form/Label/Label'
 import { Input } from '../../Form/Input/Input'
 import { Tags } from '../../Tags/Tags'
-
-// type dataTypes = 'pdf' | 'xml' | 'csv' | 'tsv'
+import { User } from '../../../types/User'
 
 interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLDivElement>
     file?: any
+    user?: User
     iconName?: IconNames
     boardNames?: string[]
 }
 
 export class RawData extends React.Component<Props> {
     public render() {
-        const { children, className, iconName, file, boardNames, ...restProps } = this.props
+        const { children, className, iconName, file, boardNames, user, ...restProps } = this.props
 
         return (
             <div className={`DataWrapper`} >
@@ -34,38 +34,40 @@ export class RawData extends React.Component<Props> {
                         </a>
                     }
                     <span>Raw data</span>
-                    <ModalBase
-                        title={'Add to a board'}
-                        firstButton={'Cancel'}
-                        secondButton={'Done'}
-                        renderButton={openModal => (
-                            <Button
-                                onClick = { openModal }
-                                type='button'
-                                styleOverride='round-button'
-                                iconName='add'
-                                color='#181631'
-                            />
-                        )}
-                    >
-                        <Form>
-                            <Fieldset>
-                                <Label>
-                                    Create a new board
-                                    <Input type={'text'} name={'search'} styleOverride={'input-search'} />
-                                </Label>
-                                <Button styleOverride={'ultraviolet-button'} type='button' full={true}>
-                                    Add
-                                </Button>
-                            </Fieldset>
-                            <Fieldset>
-                                <Label>
-                                    Add to an existing board
-                                </Label>
-                                <Tags tags={boardNames} styleOverride={'tag-ultraviolet-button'}/>
-                            </Fieldset>
-                        </Form>
-                    </ModalBase>
+                    {user && (
+                        <ModalBase
+                            title={'Add to a board'}
+                            firstButton={'Cancel'}
+                            secondButton={'Done'}
+                            renderButton={openModal => (
+                                <Button
+                                    onClick={openModal}
+                                    type='button'
+                                    styleOverride='round-button'
+                                    iconName='add'
+                                    color='#181631'
+                                />
+                            )}
+                        >
+                            <Form>
+                                <Fieldset>
+                                    <Label>
+                                        Create a new board
+                                        <Input type={'text'} name={'search'} styleOverride={'input-search'} />
+                                    </Label>
+                                    <Button styleOverride={'ultraviolet-button'} type='button' full={true}>
+                                        Add
+                                    </Button>
+                                </Fieldset>
+                                <Fieldset>
+                                    <Label>
+                                        Add to an existing board
+                                    </Label>
+                                    <Tags tags={boardNames} styleOverride={'tag-ultraviolet-button'}/>
+                                </Fieldset>
+                            </Form>
+                        </ModalBase>
+                    )}
                 </div>
             </div >
         )
