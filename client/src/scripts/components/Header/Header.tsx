@@ -64,7 +64,7 @@ export class Header extends React.Component<Props, State> {
                         )}
                         render={closeDropdown => (
                             <React.Fragment>
-                                <Button styleOverride='tag-ultraviolet-button' full={true} isDisabled={true}>Add collaborator</Button>
+                                {/* <Button styleOverride='tag-ultraviolet-button' full={true} isDisabled={true}>Add collaborator</Button> */}
                                 <ModalBase
                                     title={'Create new board'}
                                     renderButton={openModal => (
@@ -99,9 +99,9 @@ export class Header extends React.Component<Props, State> {
                                         </Form>
                                     )}
                                 />
-                                <Button styleOverride='tag-ultraviolet-button' full={true}>Delete</Button>
+                                {/* <Button styleOverride='tag-ultraviolet-button' full={true}>Delete</Button>
                                 <Button styleOverride='tag-ultraviolet-button' full={true}>Edit</Button>
-                                <Button styleOverride='tag-ultraviolet-button' full={true}>Remove collaborator</Button>
+                                <Button styleOverride='tag-ultraviolet-button' full={true}>Remove collaborator</Button> */}
                             </React.Fragment>
                         )}
                     >
