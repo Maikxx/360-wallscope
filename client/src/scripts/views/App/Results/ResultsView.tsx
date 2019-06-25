@@ -12,6 +12,7 @@ import { Data } from '../../../components/Data/Data'
 import { Tags } from '../../../components/Tags/Tags'
 import { getBoardsForCurrentUser } from '../../../services/BoardService'
 import { Board } from '../../../types/Board'
+import { toast } from 'react-toastify'
 
 interface Props extends RouteComponentProps {
     user?: User
@@ -160,6 +161,7 @@ export class ResultsView extends React.Component<Props, State> {
 
         if (boards) {
             this.setState({ boards })
+            toast.success('Successfully created a new board! Right now it is not fully working in the prototype.')
         }
     }
 }
