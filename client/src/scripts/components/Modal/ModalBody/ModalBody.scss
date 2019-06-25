@@ -19,24 +19,6 @@
         padding-bottom: 0;
     }
 
-    .Button {
-        &--ultraviolet {
-            background-color: $color-orange-1;
-
-            &::after{
-                background: darken($color-orange-1, 5%);
-            }
-
-            &:hover{
-                background-color: lighten($color-orange-1, 8%)
-            }
-    
-            &:hover::after {
-                background: lighten($color-orange-1, 8%);
-            }
-        }
-    }
-
     .Tags li {
         margin-bottom: .5rem;
 
