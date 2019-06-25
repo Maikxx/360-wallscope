@@ -46,7 +46,7 @@ export class MenuBottom extends React.Component<Props, State> {
                     color={isLoggedIn ? '#CEC7EC' : '#6D6789'}
                     className='MenuStyleHoverFirst'
                 >
-                    {isLoggedIn ? 'Boards' : 'Please login'}
+                    Boards
                 </NavLink>
             }
                 <li className='Middle'>
