@@ -35,6 +35,10 @@ Our products most important design decisions were the following:
 * Saving your research progress in boards
 * Linking pieces of data together in multiple ways
 
+## User Goal
+
+A good user goal to test is the application flow, and if all the functionalities of the application make sense to the target audience.
+
 ## Stakeholders
 
 * **NHS Scotland**
