@@ -32,6 +32,8 @@
     }
 
     &--open .Sidebar__Content {
+        border-radius: .5rem;
+        box-shadow: -7px 9px 38px -17px rgba(0,0,0,0.75);
         display: flex;
         justify-content: center;
         flex-direction: column;

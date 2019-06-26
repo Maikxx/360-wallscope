@@ -27,6 +27,18 @@ Users can't find what they are looking for when searching through the data with 
 They don't understand all the different tables and input fields that have to be filled in before they even get any results.
 This bad user experience results in the fact that none of the four target groups are able to find what they are looking for in the way they want to look for it.
 
+## Design decisions
+
+Our products most important design decisions were the following:
+
+* Light / Dark mode
+* Saving your research progress in boards
+* Linking pieces of data together in multiple ways
+
+## User Goal
+
+A good user goal to test is the application flow, and if all the functionalities of the application make sense to the target audience.
+
 ## Stakeholders
 
 * **NHS Scotland**
