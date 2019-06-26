@@ -1,0 +1,8 @@
+.Form{
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media all and (min-width:992px) {
+        max-width: 900px;
+    }
+}
