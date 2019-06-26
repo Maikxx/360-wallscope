@@ -26,7 +26,7 @@
 		width: 32px;
 		height: 32px;
 	}
-	
+
 	.Menu {
 		filter: url("#goo");
 		position: absolute;
@@ -34,7 +34,7 @@
 		top: -60px;
   		height: 500px;
 	}
-	
+
 	.Menu-item, .Menu-open-button {
 		background-color: $color-purple-3;
 		box-shadow: -2px 2px 5px -2px rgba(0,0,0,0.65);
@@ -71,44 +71,47 @@
 		transition: all .2s ease;
 	}
 
-	.Navigation__ul .MenuStyleHoverLast:hover {
+	.Navigation__ul .MenuStyleHoverLast:hover,
+	.Navigation__ul .MenuStyleHoverLast:focus {
 		color: $color-ultraviolet-1;
-			.Link__icon svg path {
-				fill: $color-ultraviolet-1;
-			}
-	}
 
-	.Navigation__ul .MenuStyleHoverLast:hover {
-		.Link{
-			color: $color-ultraviolet-1!important;
-			
-			.Link__icon svg path {
-				fill: $color-ultraviolet-1;
-			}
+		.Link__icon svg path {
+			fill: $color-ultraviolet-1;
 		}
-	}
 
-	.Navigation__ul .MenuStyleHoverFirst:hover{
 		.Link {
 			color: $color-ultraviolet-1!important;
-				.Link__icon svg path {
-					fill: $color-ultraviolet-1;
-				}
+
+			.Link__icon svg path {
+				fill: $color-ultraviolet-1;
+			}
 		}
 	}
-	
-	
+
+	.Navigation__ul .MenuStyleHoverFirst:hover,
+	.Navigation__ul .MenuStyleHoverFirst:focus {
+		.Link {
+			color: $color-ultraviolet-1!important;
+
+			.Link__icon svg path {
+				fill: $color-ultraviolet-1;
+			}
+		}
+	}
+
+
 	.Menu-open-button:hover,
 	.Menu-open-button:focus,
 	.Menu-open-button:active {
 		background-color: $color-purple-2;
 	}
-	
+
 	.Menu-open {
 		display: none;
 	}
-	
-	.Menu-item:hover {
+
+	.Menu-item:hover,
+	.Menu-item:focus {
 		background-color: $color-purple-1;
 	}
 	.Menu-item:nth-child(3) {
@@ -123,7 +126,7 @@
 	.Menu-item:nth-child(6) {
 		transition-duration: 180ms;
 	}
-	
+
 	.Menu-open-button {
 		z-index: 2;
 		transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -131,17 +134,18 @@
 		transform: scale(1.1, 1.1) translate3d(0, 0, 0);
 		cursor: pointer;
 	}
-	
-	.Menu-open-button:hover {
+
+	.Menu-open-button:hover,
+	.Menu-open-button:focus {
 		transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 	}
-	
+
 	.Menu-open:checked + .Menu-open-button {
 		transition-timing-function: linear;
 		transition-duration: 200ms;
 		transform: scale(0.8, 0.8) translate3d(0, 0, 0);
 	}
-	
+
 	.Menu-open:checked ~ .Menu-item {
 		transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
 	}
@@ -157,7 +161,7 @@
 		transition-duration: 380ms;
 		transform: translate3d(60px, -100px, 0);
 	}
-	
+
 	.Menu-open:checked ~ .Menu-item:nth-child(6) {
 		transition-duration: 480ms;
 		transform: translate3d(100px, 0px, 0);

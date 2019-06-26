@@ -60,6 +60,7 @@ export class MenuBottom extends React.Component<Props, State> {
                             type='button'
                             iconName={iconName}
                             color='#181631'
+                            aria_label='search'
                         />
                     </Link>
                 </li>
@@ -75,6 +76,7 @@ export class MenuBottom extends React.Component<Props, State> {
                                         type='button'
                                         iconName='user'
                                         color='#cec7ec'
+                                        aria_label='name'
                                     >
                                         {fullName || 'Login'}
                                     </Button>

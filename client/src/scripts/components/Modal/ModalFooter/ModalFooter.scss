@@ -17,14 +17,16 @@
             background: darken($color-ultraviolet-1, 5%);
         }
 
-        &:hover{
+        &:hover,
+        &:focus {
             background-color: darken($color-ultraviolet-1, 8%)
         }
-    
-        &:hover::after {
+
+        &:hover::after,
+        &:focus::after {
             background: darken($color-ultraviolet-1, 8%);
         }
-        
+
     }
 
     .firstButton, .secondButton {

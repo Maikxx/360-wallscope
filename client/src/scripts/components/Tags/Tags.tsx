@@ -20,6 +20,7 @@ export class Tags extends React.Component<Props> {
                 {tags && tags.map(tag => (
                     <li key={tag}>
                         <Button
+                            aria_label={name}
                             styleOverride={styleOverride}
                             isClickable={isClickable}
                             type='button'

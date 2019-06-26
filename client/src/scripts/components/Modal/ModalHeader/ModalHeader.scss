@@ -22,7 +22,7 @@
         border: none;
         transition: all .2s ease-in-out;
 
-        &:hover, &:active, &:focus{
+        &:hover, &:active, &:focus {
             background-color: $color-purple-5;
         }
 
@@ -40,13 +40,8 @@
         transition: all .2s ease;
     }
 
-    button:hover {
+    button:hover,
+    button:focus {
         color: $color-ultraviolet-1;
     }
 }
-
-// body.light {
-//     .ModalHeader{
-//         color: #e2ecf6;
-//     }
-// }

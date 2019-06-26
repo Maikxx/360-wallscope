@@ -9,6 +9,7 @@ export type StyleType = 'ultraviolet-button' | 'orange-button' | 'round-button' 
 
 interface Props {
     className?: string
+    aria_label?: string
     type?: ButtonType
     isDisabled?: boolean
     iconName?: IconNames
@@ -29,12 +30,13 @@ export class Button extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, isClickable, className, iconName, styleOverride, color, full, isDisabled, onClick, ...restProps } = this.props
+        const { children, aria_label, isClickable, className, iconName, styleOverride, color, full, isDisabled, onClick, ...restProps } = this.props
 
         return (
             <button
                 className={this.getClassName()}
                 disabled={isDisabled ? true : false}
+                aria-label={aria_label}
                 onClick={this.onClick}
                 {...restProps}
             >

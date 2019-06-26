@@ -28,6 +28,7 @@ export class Sidebar extends React.Component<Props, State> {
                     styleOverride='round-button'
                     iconName={this.state.isOpen ? 'close' : 'question'}
                     type='button'
+                    aria_label={'More information'}
                     onClick={() => {
                         this.toggleSideBar()
                     }}

@@ -61,6 +61,7 @@ export class RawData extends React.Component<Props, State> {
                                     styleOverride='round-button'
                                     iconName='add'
                                     color='#181631'
+                                    aria_label='add'
                                 />
                             )}
                             render={closeModal => (
@@ -88,6 +89,7 @@ export class RawData extends React.Component<Props, State> {
                                         <Button
                                             styleOverride={'ultraviolet-button'}
                                             type='submit'
+                                            aria_label='create'
                                             full={true}
                                             onClick={() => {
                                                 toast.success('Adding results to a board does not work in the prototype.')
