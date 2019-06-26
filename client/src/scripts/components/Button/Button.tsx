@@ -29,17 +29,14 @@ export class Button extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, isClickable, className, iconName, styleOverride, color, full, isDisabled, ...restProps } = this.props
+        const { children, isClickable, className, iconName, styleOverride, color, full, isDisabled, onClick, ...restProps } = this.props
 
         return (
             <button
                 className={this.getClassName()}
                 disabled={isDisabled ? true : false}
-                onClick={ () => {
-                    isClickable ? this.selectTag()
-                    : 'hoi'
-                }
-                } {...restProps}
+                onClick={this.onClick}
+                {...restProps}
             >
                 {iconName &&
                     <Icon iconName={iconName} color={color} className={`Link__icon`} />
@@ -67,7 +64,15 @@ export class Button extends React.Component<Props, State> {
         }, className)
     }
 
-    private selectTag = () => {
-        this.setState({ isSelected: !this.state.isSelected })
+    private onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const { isClickable, onClick } = this.props
+
+        if (isClickable) {
+            this.setState({ isSelected: !this.state.isSelected })
+        }
+
+        if (onClick) {
+            onClick(event)
+        }
     }
 }
