@@ -1,5 +1,11 @@
 .Boards {
     margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+
+     @media all and (min-width:992px) {
+        max-width: 900px;
+    }
 
     &__header {
         display: flex;
@@ -19,8 +25,11 @@
             width: 45%;
             margin: 1rem 0;
             position: relative;
-            perspective: 200px;
             min-height: 200px;
+
+            a {
+                perspective: 200px;
+            }
         }
     }
 }
