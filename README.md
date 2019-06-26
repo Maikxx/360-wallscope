@@ -17,7 +17,8 @@ The idea of Rain is to not only help people who create an account, but also serv
 1. [Installation](#Installation)
 2. [Briefings](#Briefings)
 3. [Progress](#Progress)
-4. [License](#License)
+4. [Design Rational](#Design-Rational)
+5. [License](#License)
 
 ## Installation
 
@@ -54,6 +55,10 @@ We also set up a [Version control](./docs/guidelines/VERSION_CONTROL.md) for wor
 To view our progress, please visit our [GitHub project page](https://github.com/Maikxx/360-wallscope/projects/1).
 
 In the second to last week of the project we also did a user test. You can read more about it [here](./docs/USER_TEST.md).
+
+## Design Rational
+
+You can find this [here](./docs/DESIGN_RATIONAL.md).
 
 ## License
 
