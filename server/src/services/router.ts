@@ -10,6 +10,8 @@ export const routeRequest = (request: express.Request, response: express.Respons
         response.sendFile(path.join(__dirname, '/../../public/build/index.html'))
     } else if (url.includes('/build')) {
         response.sendFile(path.join(__dirname, '/../../public', url))
+    } else if (url.includes('robots.txt')) {
+        response.sendFile(path.join(__dirname, '/../../public', '/robots.txt'))
     } else {
         response.status(404).redirect('/')
     }
