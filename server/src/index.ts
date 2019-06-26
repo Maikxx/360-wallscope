@@ -14,6 +14,7 @@ import { onGetUserById, onEditUser } from './routes/user'
 import { onGetBoardById, onGetBoards, onCreateBoard, onEditBoard, onRemoveBoard, onAddCollaboratorToBoard, onRemoveCollaboratorFromBoard, onAddResultToBoard, onRemoveResultFromBoard } from './routes/board'
 import { onCreateResult } from './routes/results'
 import { onRemoveLinkFromBoardResult, onCreateLink } from './routes/link'
+import { onVerifyToken } from './routes/token'
 
 (async () => {
     const app = express()
@@ -51,6 +52,7 @@ import { onRemoveLinkFromBoardResult, onCreateLink } from './routes/link'
     app.post('/user/:id', onEditUser) // Authorization Protected
     app.post('/login', onLogin)
     app.post('/signup', onSignup)
+    app.post('/verify-token', onVerifyToken)
 
     server.listen(({ port: process.env.PORT || 9000 }), () => {
         console.info(`App is now open for action on port ${process.env.PORT || 9000}.`)
