@@ -1,0 +1,44 @@
+.Sidebar {
+    @import '../../../sass/colors.scss';
+
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+
+    .Button {
+        z-index: 99;
+        padding: .5rem;
+        position: absolute;
+        top: 5%;
+        right: 3%;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            path {
+                fill: $color-purple-5;
+            }
+        }
+    }
+
+    .Sidebar__Content {
+        transition: height 0.5s ease-out;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    &--collapsed .Sidebar__Content {
+        height: 0;
+    }
+
+    &--open .Sidebar__Content {
+        position: absolute;
+        top: 3%;
+        right: 1%;
+        z-index: 98;
+        background-color: $color-purple-4;
+        padding: 1rem;
+        min-height: 500px;
+        max-width: 75%;
+    }
+}
