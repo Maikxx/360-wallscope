@@ -1,3 +1,4 @@
+import React from 'react'
 import { User } from '../types/User'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -224,3 +225,5 @@ export async function onEditUser(params: EditUserParams) {
         return null
     }
 }
+
+export const CurrentUserContext = React.createContext<User | null>(null)

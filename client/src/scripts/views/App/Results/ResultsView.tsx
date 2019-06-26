@@ -1,7 +1,6 @@
 
 import React from 'react'
 import { View } from '../../../components/View/View'
-import { User } from '../../../types/User'
 import { Header } from '../../../components/Header/Header'
 import { SearchQuery } from '../../../components/SearchQuery/SearchQuery'
 import { Accordion } from '../../../components/Accordion/Accordion'
@@ -13,9 +12,9 @@ import { Tags } from '../../../components/Tags/Tags'
 import { getBoardsForCurrentUser } from '../../../services/BoardService'
 import { Board } from '../../../types/Board'
 import { toast } from 'react-toastify'
+import { CurrentUserContext } from '../../../services/UserService'
 
 interface Props extends RouteComponentProps {
-    user?: User
     searchQuestion?: string
 }
 
@@ -37,7 +36,7 @@ export class ResultsView extends React.Component<Props, State> {
     }
 
     public render() {
-        const { user, searchQuestion } = this.props
+        const { searchQuestion } = this.props
         const { boards } = this.state
 
         const data = [
@@ -124,33 +123,37 @@ export class ResultsView extends React.Component<Props, State> {
         const query = new Array('2019', 'Oncology', 'Radiology', 'Neurology', 'ICU', 'Dermatology')
 
         return (
-            <View>
-                <Header back={false} more={false}/>
-                <SearchQuery searchWords={searchQuestion}/>
-                <Tags
-                    className='SearchQueryTags'
-                    tags={query}
-                    styleOverride='tag-ultraviolet-button'
-                    isClickable={true}
-                />
-                <Accordion title='Articles'>
-                    <Articles
-                        articles={data}
-                        user={user}
-                        onCreateNewBoard={this.onNewBoardAdded}
-                        boardNames={boardNames}
-                    />
-                </Accordion>
-                <Accordion title='Datasets'>
-                    <Data
-                        files={fileData}
-                        boardNames={boardNames}
-                        onCreateNewBoard={this.onNewBoardAdded}
-                        user={user}
-                    />
-                </Accordion>
-                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
-            </View >
+            <CurrentUserContext.Consumer>
+                {user => (
+                    <View>
+                        <Header back={false} more={false}/>
+                        <SearchQuery searchWords={searchQuestion}/>
+                        <Tags
+                            className='SearchQueryTags'
+                            tags={query}
+                            styleOverride='tag-ultraviolet-button'
+                            isClickable={true}
+                        />
+                        <Accordion title='Articles'>
+                            <Articles
+                                articles={data}
+                                user={user || undefined}
+                                onCreateNewBoard={this.onNewBoardAdded}
+                                boardNames={boardNames}
+                            />
+                        </Accordion>
+                        <Accordion title='Datasets'>
+                            <Data
+                                files={fileData}
+                                boardNames={boardNames}
+                                onCreateNewBoard={this.onNewBoardAdded}
+                                user={user || undefined}
+                            />
+                        </Accordion>
+                        <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
+                    </View>
+                )}
+            </CurrentUserContext.Consumer>
         )
     }
 
