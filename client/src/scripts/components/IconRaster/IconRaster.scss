@@ -1,4 +1,6 @@
 .IconRaster {
+    @import '../../../sass/colors.scss';
+
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -15,9 +17,16 @@
         opacity: 0;
         height: 0;
         width: 0;
+
+        &:checked + .Icon {
+            border-color: $color-white;
+        }
     }
 
     .Icon {
         padding: 12px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: ease-in-out border .2s;
     }
 }
