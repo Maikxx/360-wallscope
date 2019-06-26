@@ -4,6 +4,7 @@ import './SearchQuery.scss'
 import { Form } from '../Form/Form'
 import { Button } from '../Button/Button'
 import { TextArea } from '../Form/TextArea/TextArea'
+import { toast } from 'react-toastify'
 
 interface Props {
     className?: string
@@ -44,6 +45,8 @@ export class SearchQuery extends React.Component<Props> {
     }
 
     private onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        console.log('TODO')
+        event.preventDefault()
+
+        toast.warning(`The data served is static, so changing this won't affect the results in the prototype.`)
     }
 }
