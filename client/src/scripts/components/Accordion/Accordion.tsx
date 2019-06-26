@@ -40,7 +40,7 @@ export class Accordion extends React.Component<Props, State> {
     private getClassName() {
         const { className } = this.props
         return classnames('Accordion', {
-            'Accordion--colapsed': !this.state.isOpen,
+            'Accordion--collapsed': !this.state.isOpen,
             'Accordion--up': this.state.isOpen,
         }, className)
     }
