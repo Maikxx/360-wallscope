@@ -18,7 +18,7 @@ The idea of Rain is to not only help people who create an account, but also serv
 2. [Briefings](#Briefings)
 3. [Progress](#Progress)
 4. [Design Rational](#Design-Rational)
-4. [License](#License)
+5. [License](#License)
 
 ## Installation
 
