@@ -14,11 +14,11 @@
         max-width: 900px;
     }
 
-    h2 {
+    &__title {
         font-weight: 900;
     }
 
-    li {
+    &__list {
         transition: height 0.5s ease-out;
         overflow: hidden;
         overflow-y: auto;
@@ -27,8 +27,8 @@
     &--collapsed .AccordionItem {
         height: 0;
     }
-    
-    .Arrow {
+
+    &__arrow {
         box-sizing: border-box;
         height: 18px;
         width: 18px;
@@ -37,13 +37,14 @@
         border-width: 0px 1px 1px 0px;
         transform: rotate(45deg);
         position: absolute;
+        cursor: pointer;
         right: 0;
         top: 0;
         transition: all .3s ease-in;
-    
+
     }
 
-    &--up .Arrow{
+    &--up &__arrow {
         transform: rotate(225deg);
         top: 10px;
     }

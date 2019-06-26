@@ -17,23 +17,27 @@ export class Accordion extends React.Component<Props, State> {
         isOpen: false,
     }
 
-    private accordionItem = React.createRef <HTMLLIElement>()
+    private accordionItem = React.createRef<HTMLDivElement>()
 
     public render() {
         const { children, title } = this.props
 
         return (
-            <ul className={this.getClassName()}>
-                <h2>{title}</h2>
-                <li className='AccordionItem' ref={this.accordionItem}>
+            <section className={this.getClassName()}>
+                <h2 className={`Accordion__title`}>
+                    {title}
+                </h2>
+                <div className='Accordion__list' ref={this.accordionItem}>
                     {children}
-                </li>
-                <div className='Arrow'
-                onClick={() => {
-                    this.animateCollapse()
-                    this.toggleAccordion()
-                }}/>
-            </ul>
+                </div>
+                <div
+                    className='Accordion__arrow'
+                    onClick={() => {
+                        this.animateCollapse()
+                        this.toggleAccordion()
+                    }}
+                />
+            </section>
         )
     }
 
@@ -60,5 +64,4 @@ export class Accordion extends React.Component<Props, State> {
     private toggleAccordion = () => {
         this.setState({ isOpen: !this.state.isOpen })
     }
-
 }
