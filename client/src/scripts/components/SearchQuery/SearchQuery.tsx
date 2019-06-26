@@ -25,6 +25,7 @@ export class SearchQuery extends React.Component<Props> {
                         className={`SearchQuery__input`}
                         placeholder={searchWords}
                         defaultValue={searchWords}
+                        aria-label='search input'
                     />
                     <Button
                         className={`SearchQuery__button`}
