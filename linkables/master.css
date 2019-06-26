@@ -4,7 +4,7 @@
     position: relative;
     color: #fff;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: lato;
 }
 
 .Header>a:nth-child(1) {
@@ -111,7 +111,7 @@ ul {
 .item div h1 {
     font-size: .75rem;
     margin-bottom: .5rem;
-    max-height: 1.6rem;
+    max-height: 1.75rem;
     overflow: hidden;
 }
 
@@ -127,7 +127,7 @@ ul {
     font-size: .75rem;
 }
 
-fieldset{
+fieldset {
     border: none;
 }
 
@@ -331,31 +331,26 @@ input:checked+label[for="link--unlink"] {
     color: #181631;
 }
 
-.link--confirmed .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+.link--confirmed .Menu-open-button>i:nth-child(1)>svg:nth-child(1)>path:nth-child(2) {
     fill: #81F8C1;
 }
 
-.link--none .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+.link--none .Menu-open-button>i:nth-child(1)>svg:nth-child(1)>path:nth-child(2) {
     fill: #F62459;
 }
 
-.link--maybe .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+.link--maybe .Menu-open-button>i:nth-child(1)>svg:nth-child(1)>path:nth-child(2) {
     fill: #81ABF8;
 }
-.Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2),
-.disabled .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+
+.Menu-open-button>i:nth-child(1)>svg:nth-child(1)>path:nth-child(2),
+.disabled .Menu-open-button>i:nth-child(1)>svg:nth-child(1)>path:nth-child(2) {
     fill: #181631;
     transition: .3s ease fill;
 }
-a{
-    pointer-events: none;
-}
-.disabled a{
-    pointer-events: all !important;
-}
 
-@media (max-width: 40rem){
-    .View > div:nth-child(3){
+@media (max-width: 40rem) {
+    .View>div:nth-child(3) {
         overflow-x: scroll;
     }
 }
@@ -835,7 +830,7 @@ a{
 .MenuBottom .Menu-open:checked+.Menu-open-button {
     transition-timing-function: linear;
     transition-duration: .2s;
-    transform: scale(.75) translate3d(-50px,0,0)
+    transform: scale(.75) translate3d(-50px, 0, 0)
 }
 
 .MenuBottom .Menu-open:checked~.Menu-item {
@@ -867,7 +862,7 @@ a{
 }
 
 .link--confirmed .MenuBottom .Menu-open:checked~.Menu-item:nth-child(3) {
-    transform: translate3d(-100px, -80px, 0) scale(1); 
+    transform: translate3d(-100px, -80px, 0) scale(1);
 }
 
 .link--none .MenuBottom .Menu-open:checked~.Menu-item:nth-child(4) {
@@ -882,7 +877,7 @@ a{
     transform: translate3d(50px, 0, 0) scale(.9);
 }
 
-a.Menu-item:nth-child(6) > i:nth-child(1) > svg:nth-child(1) > g:nth-child(1){
+a.Menu-item:nth-child(6)>i:nth-child(1)>svg:nth-child(1)>g:nth-child(1) {
     transform: scale(1.1) translate(10px);
 }
 
@@ -2183,4 +2178,91 @@ a:hover .Board {
 .Data li {
     margin: 1rem;
     width: 100%
+}
+
+.Sidebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Sidebar .Button {
+    z-index: 99;
+    padding: .5rem;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+}
+
+.Sidebar .Button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.Sidebar .Button svg path {
+    fill: #181631;
+}
+
+.Sidebar .Sidebar__Content {
+    transition: height 0.5s ease-out;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.Sidebar--close .Icon__close{
+    display: none;
+}
+
+.Sidebar--open .Icon__question{
+    display: none;
+}
+
+.Sidebar{
+    height: 0;
+}
+.Sidebar--collapsed .Sidebar__Content {
+    height: 0;
+}
+
+.Sidebar--open .Sidebar__Content {
+    border-radius: .5rem;
+    box-shadow: -7px 9px 38px -17px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 3%;
+    right: 1%;
+    z-index: 98;
+    background-color: #413C5B;
+    padding: 2rem;
+    max-width: 75%;
+}
+
+.Sidebar--open .Sidebar__Content h1 {
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.Sidebar--open .Sidebar__Content ol {
+    list-style: decimal;
+    margin: 1rem;
+}
+
+.Button--round {
+    font-family: Lato, sans-serif;
+    font-size: 2em;
+    display: block;
+    background-color: #8781fe;
+    padding: .5em;
+    color: #181631;
+    border-radius: 50%;
+    border: none;
+    transition: all .2s ease-in-out;
+    height: 2rem;
+    top: 1rem !important;
+}
+
+button.Button:nth-child(1)>i:nth-child(1) {
+    top: -1rem;
 }

@@ -22,7 +22,9 @@ a {
     text-decoration: none;
 }
 
-a:hover .Board {
+a:hover .Board,
+a:focus .Board,
+a:active .Board {
     transform: rotate3d(1,0,0, 90deg);   
 }
 

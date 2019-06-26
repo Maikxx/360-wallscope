@@ -3,6 +3,7 @@
     @import '../../../sass/colors.scss';
     border: none;
     font-size: 1.3rem;
+    cursor: pointer;
 
     &--full{
         width: 100%;
@@ -35,11 +36,15 @@
             transition: all .5s ease-in-out;
         }
 
-        &:hover{
+        &:hover,
+        &:focus,
+        &:active {
             background-color: darken($color-ultraviolet-1, 8%)
         }
 
-        &:hover::after {
+        &:hover::after,
+        &:focus::after,
+        &:active::after {
             content: '';
             height: 100%;
             width: 100%;
@@ -75,11 +80,15 @@
             transition: all .5s ease-in-out;
         }
 
-        &:hover{
+        &:hover,
+        &:focus,
+        &:active {
             background-color: darken($color-orange-1, 15%)
         }
 
-        &:hover::after {
+        &:hover::after,
+        &:focus::after,
+        &:active::after {
             content: '';
             height: 100%;
             width: 100%;
@@ -99,7 +108,7 @@
         border: none;
         transition: all .2s ease-in-out;
 
-        &:hover, &:active, &:focus{
+        &:hover, &:active, &:focus {
             background-color: $color-purple-2;
         }
     }
@@ -138,7 +147,7 @@
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
-        &:hover {
+        &:hover, &:active, &:focus {
             background-color: lighten($color-ultraviolet-1, 10%);
         }
     }
@@ -167,7 +176,7 @@
         border-radius: .5em;
         transition: all .2s ease-in-out;
 
-        &:hover {
+        &:hover, &:active, &:focus {
             background-color: lighten($color-orange-1, 10%);
         }
     }
