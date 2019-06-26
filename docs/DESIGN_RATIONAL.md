@@ -44,6 +44,12 @@ This bad user experience results in the fact that none of the four target groups
 * **The Diggers**
     They need raw data, to conduct their own research and connect the unconnected.
 
+## Context
+
+The context will be mainly indoors and while people are focussed on their laptop.
+The people that are using the system will be mostly looking for something specific.
+For example, students are doing research for an upcoming test or journalists that are looking for data to use as a base for infographics.
+
 ## Sub-questions
 
 * Does the user think this application is an improvement for the current website?
@@ -56,14 +62,9 @@ This bad user experience results in the fact that none of the four target groups
 Create an application that enables the user to search the NHS database more effectively.
 Improve the overall user experience in a way that the target group will find it easy and helpful to use the app.
 
-Solution
+## Solution
+
 RAIN, enabling medical students and researchers to find data, store this data and link the data together in various ways. This results in more relevant data for the user, which makes it easier for them to draw conclusions.
-
-## Context
-
-The context will be mainly indoors and while people are focussed on their laptop.
-The people that are using the system will be mostly looking for something specific.
-For example, students are doing research for an upcoming test or journalists that are looking for data to use as a base for infographics.
 
 ## Explanation of the code
 
