@@ -23,6 +23,7 @@ export class Search extends React.Component<Props> {
                         name={'search'}
                         placeholder={placeholder}
                         styleOverride={'input-search'}
+                        aria-label='search input'
                     />
                     <Icon className={'SearchForm__search-icon'} iconName={'search_small'} />
                 </div>
