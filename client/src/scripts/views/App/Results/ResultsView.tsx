@@ -134,6 +134,9 @@ export class ResultsView extends React.Component<Props, State> {
                             tags={query}
                             styleOverride='tag-ultraviolet-button'
                             isClickable={true}
+                            onClick={() => {
+                                toast.success('New results would be rendered, but not in this prototype.')
+                            }}
                         />
                         <span className='Info'>Keywords that relate to your search. Click to dive deeper into the data.</span>
                         <Accordion title='Articles'>
