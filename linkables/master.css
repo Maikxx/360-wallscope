@@ -152,9 +152,7 @@ fieldset{
 .legend-cont label {
     display: block;
     padding: .5rem 1rem;
-    border-radius: 10px;
-    ;
-    border: 1px solid #fff;
+    border-bottom: 1px dashed #fff;
 }
 
 .svg__container {
@@ -331,6 +329,29 @@ input:checked+label[for="link--maybe"] {
 input:checked+label[for="link--unlink"] {
     background: white;
     color: #181631;
+}
+
+.link--confirmed .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #81F8C1;
+}
+
+.link--none .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #F62459;
+}
+
+.link--maybe .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #81ABF8;
+}
+.Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2),
+.disabled .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #181631;
+    transition: .3s ease fill;
+}
+
+@media (max-width: 40rem){
+    .View > div:nth-child(3){
+        overflow-x: scroll;
+    }
 }
 
 /* 

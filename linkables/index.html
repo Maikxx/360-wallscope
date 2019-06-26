@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./master.css">
 </head>
 
-<body class="">
+<body class="disabled">
     <div class="View">
         <header class="Header">
             <a href="https://wallscope.herokuapp.com/boards">
@@ -57,20 +57,20 @@
                 </i>
             </a>
         </header>
-        <div>
-            <fieldset id="link__controls">
-                <div class="legend-cont">
-                    <div>
-                        <label for="link--confirmed">Link</label>
-                    </div>
-                    <div>
-                        <label for="link--none">No-Link</label>
-                    </div>
-                    <div>
-                        <label for="link--maybe">Possible Link</label>
-                    </div>
+        <fieldset id="link__controls">
+            <div class="legend-cont">
+                <div>
+                    <label for="link--confirmed">Link</label>
                 </div>
-            </fieldset>
+                <div>
+                    <label for="link--none">No-Link</label>
+                </div>
+                <div>
+                    <label for="link--maybe">Possible Link</label>
+                </div>
+            </div>
+        </fieldset>
+        <div>
             <div id="line__container">
                 <ul class="board__items">
                     <li data-link="block-3">
@@ -156,7 +156,10 @@
                             <svg class="Icon__pen"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
                                 <path fill="#181631"
-                                    d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52zM0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
+                                    d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52z">
+                                </path>
+                                <path
+                                    d="M0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
                                 </path>
                             </svg>
                         </i>
