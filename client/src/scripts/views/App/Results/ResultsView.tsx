@@ -12,7 +12,7 @@ import { Tags } from '../../../components/Tags/Tags'
 import { getBoardsForCurrentUser } from '../../../services/BoardService'
 import { Board } from '../../../types/Board'
 import { toast } from 'react-toastify'
-import { CurrentUserContext } from '../../../services/UserService'
+import { CurrentUserContext, checkTokenValidity } from '../../../services/UserService'
 import './ResultsView.scss'
 
 interface Props extends RouteComponentProps {
@@ -29,10 +29,14 @@ export class ResultsView extends React.Component<Props, State> {
     }
 
     public async componentDidMount() {
-        const boards = await getBoardsForCurrentUser()
+        const token = await checkTokenValidity()
 
-        if (boards) {
-            this.setState({ boards })
+        if (token) {
+            const boards = await getBoardsForCurrentUser()
+
+            if (boards) {
+                this.setState({ boards })
+            }
         }
     }
 
