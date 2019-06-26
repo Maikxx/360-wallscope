@@ -163,13 +163,13 @@ export class ResultsView extends React.Component<Props, State> {
             <View>
                 <Header back={false} more={false}/>
                 <SearchQuery searchWords={searchQuestion}/>
-                <span className='Info'>Keywords that relate to your search. Click to dive deeper into the data.</span>
                 <Tags
                     className='SearchQueryTags'
                     tags={query}
                     styleOverride='tag-ultraviolet-button'
                     isClickable={true}
                 />
+                <span className='Info'>Keywords that relate to your search. Click to dive deeper into the data.</span>
                 <Accordion title='Articles'>
                     <Articles
                         articles={data}

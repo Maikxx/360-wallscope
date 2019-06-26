@@ -1,5 +1,8 @@
 .Info {
     @import '../../../../sass/colors.scss';
     color: $color-purple-2;
+    display: block;
+    width: 100%;
+    text-align: center;
     font-size: .75rem;
 }
