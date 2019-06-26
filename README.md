@@ -1,6 +1,6 @@
 # Rain
 
-![Application banner](./docs/assets/banner.png)
+[![Application banner](./docs/assets/banner.png)](https://wallscope.herokuapp.com/)
 [🚀 Live demo 🚀](https://wallscope.herokuapp.com/)
 
 ## Description
