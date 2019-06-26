@@ -59,6 +59,12 @@ Improve the overall user experience in a way that the target group will find it 
 Solution
 RAIN, enabling medical students and researchers to find data, store this data and link the data together in various ways. This results in more relevant data for the user, which makes it easier for them to draw conclusions.
 
+## Context
+
+The context will be mainly indoors and while people are focussed on their laptop.
+The people that are using the system will be mostly looking for something specific.
+For example, students are doing research for an upcoming test or journalists that are looking for data to use as a base for infographics.
+
 ## Explanation of the code
 
 The project is structured in a complex manner from the base and up.
