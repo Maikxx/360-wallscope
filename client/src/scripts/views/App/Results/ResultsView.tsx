@@ -12,11 +12,8 @@ import { Tags } from '../../../components/Tags/Tags'
 import { getBoardsForCurrentUser } from '../../../services/BoardService'
 import { Board } from '../../../types/Board'
 import { toast } from 'react-toastify'
-<<<<<<< HEAD
 import { CurrentUserContext } from '../../../services/UserService'
-=======
 import './ResultsView.scss'
->>>>>>> feature(ResultsView): Add more information
 
 interface Props extends RouteComponentProps {
     searchQuestion?: string
@@ -127,7 +124,6 @@ export class ResultsView extends React.Component<Props, State> {
         const query = new Array('2019', 'Oncology', 'Radiology', 'Neurology', 'ICU', 'Dermatology')
 
         return (
-<<<<<<< HEAD
             <CurrentUserContext.Consumer>
                 {user => (
                     <View>
@@ -139,6 +135,7 @@ export class ResultsView extends React.Component<Props, State> {
                             styleOverride='tag-ultraviolet-button'
                             isClickable={true}
                         />
+                        <span className='Info'>Keywords that relate to your search. Click to dive deeper into the data.</span>
                         <Accordion title='Articles'>
                             <Articles
                                 articles={data}
@@ -159,36 +156,6 @@ export class ResultsView extends React.Component<Props, State> {
                     </View>
                 )}
             </CurrentUserContext.Consumer>
-=======
-            <View>
-                <Header back={false} more={false}/>
-                <SearchQuery searchWords={searchQuestion}/>
-                <Tags
-                    className='SearchQueryTags'
-                    tags={query}
-                    styleOverride='tag-ultraviolet-button'
-                    isClickable={true}
-                />
-                <span className='Info'>Keywords that relate to your search. Click to dive deeper into the data.</span>
-                <Accordion title='Articles'>
-                    <Articles
-                        articles={data}
-                        user={user}
-                        onCreateNewBoard={this.onNewBoardAdded}
-                        boardNames={boardNames}
-                    />
-                </Accordion>
-                <Accordion title='Datasets'>
-                    <Data
-                        files={fileData}
-                        boardNames={boardNames}
-                        onCreateNewBoard={this.onNewBoardAdded}
-                        user={user}
-                    />
-                </Accordion>
-                <MenuBottom fullName={user && user.fullName} iconName='search_big'/>
-            </View >
->>>>>>> feature(ResultsView): Add more information
         )
     }
 
