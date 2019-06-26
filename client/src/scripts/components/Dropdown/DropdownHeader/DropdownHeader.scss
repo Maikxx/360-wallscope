@@ -27,7 +27,7 @@
         &:hover, &:active, &:focus{
             background-color: $color-purple-5;
         }
-        
+
         svg {
             width: 16px;
             height: 16px;
@@ -37,23 +37,4 @@
             fill: $color-white;
         }
     }
-
-    // button {
-    //     color: $color-white;
-    //     background-color: transparent;
-    //     font-weight: bold;
-    //     border: none;
-    //     font-size: 2em;
-    //     transition: all .2s ease;
-    // }
-
-    // button:hover {
-    //     color: $color-ultraviolet-1;
-    // }
 }
-
-// body.light {
-//     .ModalHeader{
-//         color: #e2ecf6;
-//     }
-// }
