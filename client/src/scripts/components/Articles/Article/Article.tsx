@@ -56,6 +56,7 @@ export class Article extends React.Component<Props, State> {
                                 styleOverride='round-button'
                                 iconName='add'
                                 color='#181631'
+                                aria_label='add'
                             />
                         )}
                         render={closeModal => (
@@ -84,6 +85,7 @@ export class Article extends React.Component<Props, State> {
                                         styleOverride={'orange-button'}
                                         type='submit'
                                         full={true}
+                                        aria_label='create'
                                     >
                                         Create
                                     </Button>

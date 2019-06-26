@@ -31,8 +31,9 @@ export class SearchQuery extends React.Component<Props> {
                         styleOverride='search-button'
                         type='submit'
                         iconName='search_small'
-                        color='#ffffff'>
-                    </Button>
+                        color='#ffffff'
+                        aria_label='search'
+                    />
                 </Form>
             </div >
         )

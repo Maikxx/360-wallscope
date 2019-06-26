@@ -16,6 +16,7 @@ export class DropdownHeader extends React.Component<Props> {
             <header className={`DropdownHeader`}>
                 <h1 className={`Capitalise`}>{title}</h1>
                 <Button
+                    aria_label='close'
                     className='Button__close'
                     styleOverride='round-button'
                     iconName='close' color='#181631'

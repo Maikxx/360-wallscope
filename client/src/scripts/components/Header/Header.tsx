@@ -60,6 +60,7 @@ export class Header extends React.Component<Props, State> {
                                 type='button'
                                 iconName='more'
                                 color='#ffffff'
+                                aria_label='more options'
                             />
                         )}
                         render={closeDropdown => (
@@ -67,7 +68,7 @@ export class Header extends React.Component<Props, State> {
                                 <ModalBase
                                     title={'Create new board'}
                                     renderButton={openModal => (
-                                        <Button styleOverride='tag-ultraviolet-button' full={true} onClick={openModal}>
+                                        <Button styleOverride='tag-ultraviolet-button' full={true} onClick={openModal} aria_label='create new board'>
                                             Create new board
                                         </Button>
                                     )}
@@ -85,10 +86,10 @@ export class Header extends React.Component<Props, State> {
                                                         onChange={value => this.setState({ icon_name: value })}
                                                     />
                                                 </Label>
-                                                <Button styleOverride={'ultraviolet-button'} type='submit' full={true}>
+                                                <Button styleOverride={'ultraviolet-button'} type='submit' aria_label='create' full={true}>
                                                     Create
                                                 </Button>
-                                                <Button styleOverride={`orange-button`} type='button' full={true} onClick={() => {
+                                                <Button styleOverride={`orange-button`} type='button' full={true} aria_label='cancel' onClick={() => {
                                                     closeModal()
                                                     closeDropdown()
                                                 }}>

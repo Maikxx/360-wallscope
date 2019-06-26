@@ -59,10 +59,10 @@ export class LoginView extends React.Component<Props, State> {
                             placeholder={'Strongpassword1!'}
                         />
                     </Fieldset>
-                    <Button styleOverride='ultraviolet-button' full={true} type='submit'>
+                    <Button styleOverride='ultraviolet-button' full={true} type='submit' aria_label='login'>
                         Login
                     </Button>
-                    <Button styleOverride='orange-button' full={true} type='button' onClick={() => this.props.history.push(routes.Signup.index)}>
+                    <Button styleOverride='orange-button' full={true} type='button' aria_label='create a new account' onClick={() => this.props.history.push(routes.Signup.index)}>
                         Create a new account
                     </Button>
                 </Form>

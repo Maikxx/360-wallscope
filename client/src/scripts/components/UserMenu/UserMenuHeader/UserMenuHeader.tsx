@@ -18,6 +18,7 @@ export class UserMenuHeader extends React.Component<Props> {
                     {fullName || 'Login'}
                 </span>
                 <Button
+                    aria_label='close'
                     className='Button__close'
                     styleOverride='round-button'
                     iconName='close'
