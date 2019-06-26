@@ -18,7 +18,9 @@
         height: 0;
         width: 0;
 
-        &:checked + .Icon {
+        &:checked + .Icon,
+        &:hover + .Icon,
+        &:focus + .Icon {
             border-color: $color-white;
         }
     }
