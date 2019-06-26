@@ -36,7 +36,7 @@ export class Article extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, className, full, boardNames, article, user, ...restProps } = this.props
+        const { children, className, full, boardNames, article, user, onCreateNewBoard, ...restProps } = this.props
 
         return (
             <div className='ArticleWrapper'>
