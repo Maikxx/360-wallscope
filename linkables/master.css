@@ -333,6 +333,25 @@ input:checked+label[for="link--unlink"] {
     color: #181631;
 }
 
+.link--confirmed .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #81F8C1;
+}
+
+.link--none .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #F62459;
+}
+
+.link--maybe .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #81ABF8;
+}
+.Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2),
+.disabled .Menu-open-button > i:nth-child(1) > svg:nth-child(1) > path:nth-child(2){
+    fill: #181631;
+    transition: .3s ease fill;
+}
+
+
+
 /* 
 
 */

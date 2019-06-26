@@ -1,10 +1,14 @@
 import {link,linkCreate} from "./modules/link.js"
 
-let linking = true
+let linking = false
 
 const lineContainer = document.querySelector("#line__container")
 const items = lineContainer.querySelectorAll(".board__items > *")
 const svgContainer = document.createElementNS("http://www.w3.org/2000/svg","svg")
+const menuButton = document.querySelector("#Menu-open")
+
+localStorage.getItem("link-mode")?localStorage.getItem("link-mode"):localStorage.setItem("link-mode","link--confirmed")
+document.body.classList.add(localStorage.getItem("link-mode")?localStorage.getItem("link-mode"):"link--confirmed")
 
 items.forEach((el,i)=>{
     el.id = `block-${i}`
@@ -19,9 +23,14 @@ const app = {
         svgContainer.classList.add("svg__container")
         lineContainer.appendChild(svgContainer)
 
+        menuButton.addEventListener("change",(e)=>{
+            linking = linking === true ? false : true
+            document.body.classList.toggle("disabled")
+        })
+
         items.forEach(el=>{
             el.addEventListener("click",e=>{
-                el.classList.add("linking")
+                linking && el.classList.add("linking")
                 linking && link(e,el)
             })
             el.addEventListener("mouseover",e=>{
