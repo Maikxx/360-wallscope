@@ -14,8 +14,8 @@
         <header class="Header">
             <a href="https://wallscope.herokuapp.com/boards">
                 <i class="Icon Header__back-button">
-                    <svg class="Icon__back"
-                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 31.494 31.494">
+                    <svg class="Icon__back" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                        viewBox="0 0 31.494 31.494">
                         <path fill="#FFFFFF"
                             d="M10.273 5.009c.444-.444 1.143-.444 1.587 0 .429.429.429 1.143 0 1.571l-8.047 8.047h26.554c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H3.813l8.047 8.032c.429.444.429 1.159 0 1.587-.444.444-1.143.444-1.587 0L.321 16.532c-.429-.429-.429-1.143 0-1.571l9.952-9.952z">
                         </path>
@@ -24,8 +24,8 @@
             </a>
             <a href="https://wallscope.herokuapp.com">
                 <i class="Icon">
-                    <svg class="Icon__header_logo"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.44 41.32" width="90" height="50">
+                    <svg class="Icon__header_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.44 41.32"
+                        width="90" height="50">
                         <defs>
                             <style>
                                 .class-1 {
@@ -57,6 +57,31 @@
                 </i>
             </a>
         </header>
+        <div class="Sidebar Sidebar--close">
+            <button class="Button Button--round" type="button">
+                <i class="Icon Link__icon">
+                    <svg class="Icon__close" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                        viewBox="0 0 47.971 47.971">
+                        <path fill="#fff"
+                            d="M28.228 23.986L47.092 5.122c1.172-1.171 1.172-3.071 0-4.242-1.172-1.172-3.07-1.172-4.242 0L23.986 19.744 5.121.88C3.949-.292 2.051-.292.879.88c-1.172 1.171-1.172 3.071 0 4.242l18.865 18.864L.879 42.85c-1.172 1.171-1.172 3.071 0 4.242.586.585 1.354.878 2.121.878s1.535-.293 2.121-.879l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879c1.172-1.171 1.172-3.071 0-4.242L28.228 23.986z">
+                        </path>
+                    </svg>
+                    <svg class="Icon__question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 142.91 256.9" width="32" height="32">
+                        <path fill="#fff" d="M64.14 203.22c-14.64 0-26.49 12.2-26.49 26.84 0 14.29 11.5 26.84 26.49 26.84a26.84 26.84 0 1 0 0-53.68zM68.67 0C21.61 0-.02 27.89-.02 46.71c0 13.59 11.5 19.87 20.92 19.87 18.82 0 11.15-26.84 46.7-26.84 17.43 0 31.38 7.67 31.38 23.7 0 18.83-19.52 29.63-31 39.39-10.1 8.71-23.35 23-23.35 53 0 18.13 4.88 23.36 19.17 23.36 17.08 0 20.57-7.67 20.57-14.29 0-18.13.35-28.59 19.52-43.57 9.41-7.32 39-31 39-63.79S113.29 0 68.67 0z"></path>
+                    </svg>
+                </i>
+            </button>
+            <div class="Sidebar__Content">
+                <h1>Welcome to RAIN!</h1>
+                <p>Here you can link your data together</p>
+                <ol>
+                    <li>Click Edit</li>
+                    <li>Choose your link type</li>
+                    <li>Click on 2 Items to link the up</li>
+                </ol>
+                <p>I needed you can always delete the links</p>
+            </div>
+        </div>
         <fieldset id="link__controls">
             <div class="legend-cont">
                 <div>
@@ -76,57 +101,65 @@
                     <li data-link="block-3">
                         <div>
                             <h1>The best time to go to the ER, according to 17,428 healthcare professionals</h1>
-                            <p>Patients receive the best care in the emergency room between 6 a.m. and noon, according to an exclusive poll of healthcare professional</p>
-                            <a href="">Details ></a>
+                            <p>Patients receive the best care in the emergency room between 6 a.m. and noon, according
+                                to an exclusive poll of healthcare professional</p>
                         </div>
                     </li>
                     <li>
                         <div>
                             <h1>When to go to A&E</h1>
-                            <p>Patients receive the best care in the emergency room between 6 a.m. and noon, according to an exclusive poll of healthcare professional</p>
-                            <a href="">Details ></a>
+                            <p>Patients receive the best care in the emergency room between 6 a.m. and noon, according
+                                to an exclusive poll of healthcare professional</p>
                         </div>
                     </li>
                     <li>
                         <div>
                             <h1>Where's your nearest A&E and when should you go?</h1>
-                            <p>Nobody likes A&E (or Accident & Emergency to use its full name), that goes without saying. Sitting for hours wondering if you’re wa</p>
-                            <a href="">Details ></a>
+                            <p>Nobody likes A&E (or Accident & Emergency to use its full name), that goes without
+                                saying. Sitting for hours wondering if you’re wa</p>
                         </div>
                     </li>
                     <li data-link="block-0">
                         <div>
                             <h1>Data Set - CSV</h1>
-                            <p>A&E departments offer access 24 hours a day, 365 days a year. A&E staff include paramedics, A&E nurses, diagnostic radiographers, A&E reception staff, porters, healthcare assistants and emergency medicine doctors. Medical staff are highly trained in all aspects of emergency medicine.</p>
-                            <a href="">Details ></a>
+                            <p>A&E departments offer access 24 hours a day, 365 days a year. A&E staff include
+                                paramedics, A&E nurses, diagnostic radiographers, A&E reception staff, porters,
+                                healthcare assistants and emergency medicine doctors. Medical staff are highly trained
+                                in all aspects of emergency medicine.</p>
                         </div>
                     </li>
                     <li>
                         <div>
                             <h1>Deprivation and emergency admissions for cancers</h1>
-                            <p>The reasons for Pollock and Vickers’s findings about the relation between deprivation and emergency admissions for cancers remain spe</p>
-                            <a href="">Details ></a>
+                            <p>The reasons for Pollock and Vickers’s findings about the relation between deprivation and
+                                emergency admissions for cancers remain spe</p>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <h1>Cancer diagnosed by emergency admission in England: an observational study using the general practice research database</h1>
-                            <p>Patients diagnosed with cancer by the emergency route often have more advanced diseases and poorer outcomes. Rates of cancer diagno</p>
-                            <a href="">Details ></a>
+                            <h1>Cancer diagnosed by emergency admission in England: an observational study using the
+                                general practice research database</h1>
+                            <p>Patients diagnosed with cancer by the emergency route often have more advanced diseases
+                                and poorer outcomes. Rates of cancer diagno</p>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <h1>Effect of social deprivation on the admission rate and outcomes of adult respiratory emergency admissions</h1>
-                            <p>Background: Patients with respiratory disorders constitute a major source of activity for Acute Medicine. We have examined the impact of Socio-Economic Status (SES) and weather factors on the outcomes (30-day in-hospital mortality) of emergency hospitalisations with a respiratory presentation.</p>
-                            <a href="">Details ></a>
+                            <h1>Effect of social deprivation on the admission rate and outcomes of adult respiratory
+                                emergency admissions</h1>
+                            <p>Background: Patients with respiratory disorders constitute a major source of activity for
+                                Acute Medicine. We have examined the impact of Socio-Economic Status (SES) and weather
+                                factors on the outcomes (30-day in-hospital mortality) of emergency hospitalisations
+                                with a respiratory presentation.</p>
                         </div>
                     </li>
                     <li>
                         <div>
                             <h1>Dataset - PDF</h1>
-                            <p>The Scottish Cancer Registration scheme has been managed by ISD since 1997 and has been collecting information on cancer since 1958. The data are used for a wide variety of purposes which include: public health surveillance; health needs assessment, planning and commissioning can</p>
-                            <a href="">Details ></a>
+                            <p>The Scottish Cancer Registration scheme has been managed by ISD since 1997 and has been
+                                collecting information on cancer since 1958. The data are used for a wide variety of
+                                purposes which include: public health surveillance; health needs assessment, planning
+                                and commissioning can</p>
                         </div>
                     </li>
                 </ul>
@@ -137,12 +170,12 @@
                 <li class="NavLink">
                     <a class="Link" href="https://wallscope.herokuapp.com">
                         <i class="Icon Link__icon">
-                        <svg class="Icon__search_small" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                            viewBox="0 0 57 57">
-                            <path fill="#CEC7EC"
-                                d="M55.1 51.9L41.6 37.8A23 23 0 0 0 24 0a23 23 0 1 0 13.2 41.8L50.8 56a3 3 0 0 0 4.3.1 3 3 0 0 0 0-4.2zM24 6a17 17 0 1 1 0 34 17 17 0 0 1 0-34z">
-                            </path>
-                        </svg>
+                            <svg class="Icon__search_small" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 57 57">
+                                <path fill="#CEC7EC"
+                                    d="M55.1 51.9L41.6 37.8A23 23 0 0 0 24 0a23 23 0 1 0 13.2 41.8L50.8 56a3 3 0 0 0 4.3.1 3 3 0 0 0 0-4.2zM24 6a17 17 0 1 1 0 34 17 17 0 0 1 0-34z">
+                                </path>
+                            </svg>
                         </i>
                         Search
                     </a>
@@ -150,93 +183,92 @@
                 <li class="Middle">
                     <div class="Menu">
                         <input type="checkbox" class="Menu-open" name="Menu-open" id="Menu-open">
-                        <label
-                        class="Menu-open-button" for="Menu-open">
-                        <i class="Icon">
-                            <svg class="Icon__pen"
-                                xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
-                                <path fill="#181631"
-                                    d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52z">
-                                </path>
-                                <path
-                                    d="M0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
-                                </path>
-                            </svg>
-                        </i>
+                        <label class="Menu-open-button" for="Menu-open">
+                            <i class="Icon">
+                                <svg class="Icon__pen" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 529 529">
+                                    <path fill="#181631"
+                                        d="M329 89l107 108-272 272L57 361 329 89zm189-26l-48-48a48 48 0 0 0-67 0l-46 46 108 108 53-54c14-14 14-37 0-52z">
+                                    </path>
+                                    <path d="M0 513c-2 9 6 16 15 14l120-29L27 391 0 513z">
+                                    </path>
+                                </svg>
+                            </i>
                         </label>
                         <a class="Menu-item" id="link--confirmed">
                             <i class="Icon">
-                                <svg class="Icon__pen"
-                                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
+                                <svg class="Icon__pen" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 529 529">
                                 </svg>
                             </i>
                         </a>
                         <a class="Menu-item" id="link--none">
                             <i class="Icon">
-                                <svg class="Icon__pen"
-                                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
+                                <svg class="Icon__pen" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 529 529">
                                 </svg>
                             </i>
                         </a>
                         <a class="Menu-item" id="link--maybe">
                             <i class="Icon">
-                                <svg class="Icon__pen"
-                                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
+                                <svg class="Icon__pen" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 529 529">
                                 </svg>
                             </i>
                         </a>
                         <a class="Menu-item" id="link--unlink">
                             <i class="Icon">
-                                <svg class="Icon__pen"
-                                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 529 529">
+                                <svg class="Icon__pen" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 529 529">
                                     <g fill="#181631">
                                         <g>
-                                            <polygon points="190.6,484.2 0,293.6 202.6,90 393.2,280.5 	"/>
+                                            <polygon points="190.6,484.2 0,293.6 202.6,90 393.2,280.5 	" />
                                         </g>
                                         <g>
-                                            <polygon points="450.1,140.5 433.1,241.3 412.8,261.9 222.3,71.3 292.6,0 	"/>
+                                            <polygon
+                                                points="450.1,140.5 433.1,241.3 412.8,261.9 222.3,71.3 292.6,0 	" />
                                         </g>
-                                    </g>                            
+                                    </g>
                                 </svg>
                             </i>
                         </a>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
-                        <filter id="shadowed-goo">
-                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-                            <feColorMatrix in="blur" mode="matrix"
-                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
-                            <feGaussianBlur in="goo" stdDeviation="3" result="shadow"></feGaussianBlur>
-                            <feColorMatrix in="shadow" mode="matrix"
-                                values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow">
-                            </feColorMatrix>
-                            <feOffset in="shadow" dx="1" dy="1" result="shadow"></feOffset>
-                            <feComposite in2="shadow" in="goo" result="goo"></feComposite>
-                            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
-                        </filter>
-                        <filter id="goo">
-                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-                            <feColorMatrix in="blur" mode="matrix"
-                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
-                            <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
-                        </filter>
+                            <filter id="shadowed-goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                                <feGaussianBlur in="goo" stdDeviation="3" result="shadow"></feGaussianBlur>
+                                <feColorMatrix in="shadow" mode="matrix"
+                                    values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow">
+                                </feColorMatrix>
+                                <feOffset in="shadow" dx="1" dy="1" result="shadow"></feOffset>
+                                <feComposite in2="shadow" in="goo" result="goo"></feComposite>
+                                <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+                            </filter>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                                <feComposite in2="goo" in="SourceGraphic" result="mix"></feComposite>
+                            </filter>
                         </defs>
                     </svg>
                 </li>
                 <button class="Button" type="button">
                     <i class="Icon Link__icon">
-                        <svg class="Icon__user"
-                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 350 350">
-                        <path fill="#cec7ec"
-                            d="M175 171c39 0 70-38 70-85 0-48-10-86-70-86s-70 38-70 86c0 47 31 85 70 85zM42 302c0-3 0-1 0 0zM308 304c0-1 0-5 0 0zM308 298c-1-82-12-105-94-120 0 0-12 15-39 15s-39-15-39-15c-81 14-92 38-94 118v15s20 39 133 39 133-39 133-39a3131 3131 0 0 1 0-13z">
-                        </path>
+                        <svg class="Icon__user" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                            viewBox="0 0 350 350">
+                            <path fill="#cec7ec"
+                                d="M175 171c39 0 70-38 70-85 0-48-10-86-70-86s-70 38-70 86c0 47 31 85 70 85zM42 302c0-3 0-1 0 0zM308 304c0-1 0-5 0 0zM308 298c-1-82-12-105-94-120 0 0-12 15-39 15s-39-15-39-15c-81 14-92 38-94 118v15s20 39 133 39 133-39 133-39a3131 3131 0 0 1 0-13z">
+                            </path>
                         </svg>
                     </i>
                     <span></span>
                 </button>
             </ul>
-            </nav>             
+        </nav>
     </div>
     <script src="./linkage.js" type="module"></script>
 </body>

@@ -60,6 +60,7 @@ const app = {
 
         app.contextUser()
         app.controls()
+        app.sideMenu()
         linkCreate(app.formatLinks())
     },
     formatLinks:()=>{
@@ -122,6 +123,14 @@ const app = {
         const name = "fullname"
         const context = document.querySelector(".Button span")
         context.innerText = decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    },
+    sideMenu:()=>{
+        const sidemenu = document.querySelector("button.Button:nth-child(1)")
+        sidemenu.addEventListener("click",()=>{
+            console.log("hi")
+            sidemenu.parentElement.classList.toggle("Sidebar--open")
+            sidemenu.parentElement.classList.toggle("Sidebar--close")
+        })
     }
 }
 app.init()
