@@ -76,7 +76,7 @@ Improve the overall user experience in a way that the target group will find it 
 
 ## Solution
 
-RAIN, enabling medical students and researchers to find data, store this data and link the data together in various ways. This results in more relevant data for the user, which makes it easier for them to draw conclusions.
+RAIN, enabling medical students and researchers to find data, to collect these results and link them together to find correlations, trends and other possible insights. This will help them do better and more efficient medical research.
 
 ## Explanation of the code
 
