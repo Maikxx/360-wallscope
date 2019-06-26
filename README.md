@@ -18,7 +18,8 @@ The idea of Rain is to not only help people who create an account, but also serv
 2. [Briefings](#Briefings)
 3. [Progress](#Progress)
 4. [Design Rational](#Design-Rational)
-5. [License](#License)
+5. [Poster](#Poster)
+6. [License](#License)
 
 ## Installation
 
@@ -59,6 +60,10 @@ In the second to last week of the project we also did a user test. You can read 
 ## Design Rational
 
 You can find this [here](./docs/DESIGN_RATIONAL.md).
+
+## Poster
+
+The poster for the exposition can be found [here](./docs/poster/Poster-draft.pdf).
 
 ## License
 
