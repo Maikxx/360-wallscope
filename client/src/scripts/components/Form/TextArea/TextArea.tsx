@@ -2,8 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 import './TextArea.scss'
 
-type StyleType = 'textarea-search' | 'textarea-text'
-
 interface Props {
     name: string
     required?: boolean
@@ -11,13 +9,12 @@ interface Props {
     className?: string
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
     defaultValue?: React.HTMLAttributes<HTMLTextAreaElement>['defaultValue']
-    styleOverride ?: StyleType
     wrap?: string
 }
 
 export class TextArea extends React.Component<Props> {
     public render() {
-        const { wrap, name, className, styleOverride, ...restProps } = this.props
+        const { wrap, name, className, ...restProps } = this.props
 
         return (
             <textarea
@@ -31,11 +28,8 @@ export class TextArea extends React.Component<Props> {
     }
 
     private getClassName() {
-        const { className, styleOverride } = this.props
+        const { className } = this.props
 
-        return classnames('TextArea', {
-            'Textara--search': styleOverride === 'textarea-search',
-            'Textarea--text': styleOverride === 'textarea-text',
-        }, className)
+        return classnames('TextArea', {}, className)
     }
 }
