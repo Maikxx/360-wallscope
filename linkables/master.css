@@ -347,6 +347,12 @@ input:checked+label[for="link--unlink"] {
     fill: #181631;
     transition: .3s ease fill;
 }
+a{
+    pointer-events: none;
+}
+.disabled a{
+    pointer-events: all !important;
+}
 
 @media (max-width: 40rem){
     .View > div:nth-child(3){
