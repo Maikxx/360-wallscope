@@ -58,6 +58,7 @@ const app = {
             })
         })
 
+        app.contextUser()
         app.controls()
         linkCreate(app.formatLinks())
     },
@@ -116,7 +117,11 @@ const app = {
                 document.body.className = control.id
             }
         })
+    },
+    contextUser:()=>{
+        const name = "fullname"
+        const context = document.querySelector(".Button span")
+        context.innerText = decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
     }
 }
-
 app.init()
