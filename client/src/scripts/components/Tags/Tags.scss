@@ -6,7 +6,11 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
-    margin: .5rem 0;
+    margin: .5rem auto .5rem auto;
+
+    @media all and (min-width:992px) {
+        max-width: 900px;
+    }
 
     li .Button--tag-border {
         margin-top: 1rem;
@@ -59,5 +63,5 @@
     flex-direction: row;
     overflow-x: auto;
     width: 100%;
-    margin: .5rem 0;
+    margin: .5rem auto .5rem auto;
 }
