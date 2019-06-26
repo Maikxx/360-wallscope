@@ -14,8 +14,11 @@ export class HomeIntroduction extends React.Component<Props> {
                     Hi there,
                 </h1>
                 <h2 className={'HomeIntroduction__subheader'}>
-                    What are you looking for?
+                    What are you researching today?
                 </h2>
+                <p className={'HomeIntroduction__text'}>
+                    Search our Scottish medical database.
+                </p>
             </div>
         )
     }
