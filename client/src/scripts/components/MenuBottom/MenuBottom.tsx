@@ -68,15 +68,17 @@ export class MenuBottom extends React.Component<Props, State> {
                         <UserMenu
                             title={fullName || 'Login'}
                             renderButton={openModal => (
-                                <Button
-                                    className='MenuStyleHoverLast'
-                                    onClick={openModal}
-                                    type='button'
-                                    iconName='user'
-                                    color='#cec7ec'
-                                >
-                                    {fullName || 'Login'}
-                                </Button>
+                                <li>
+                                    <Button
+                                        className='MenuStyleHoverLast'
+                                        onClick={openModal}
+                                        type='button'
+                                        iconName='user'
+                                        color='#cec7ec'
+                                    >
+                                        {fullName || 'Login'}
+                                    </Button>
+                                </li>
                             )}
                         >
                             <NavLink
