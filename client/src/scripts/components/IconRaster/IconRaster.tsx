@@ -28,7 +28,7 @@ export class IconRaster extends React.Component<Props> {
         return (
             <div className={this.getClassName()}>
                 {icons.map(icon => (
-                    <label className={`IconRaster__row`}>
+                    <label className={`IconRaster__row`} key={icon.name}>
                         <input
                             type='radio'
                             name={name}

@@ -126,9 +126,7 @@ export class ResultsView extends React.Component<Props, State> {
         return (
             <View>
                 <Header back={false} more={false}/>
-                <SearchQuery
-                    searchWords={searchQuestion}
-                />
+                <SearchQuery searchWords={searchQuestion}/>
                 <Tags
                     className='SearchQueryTags'
                     tags={query}
