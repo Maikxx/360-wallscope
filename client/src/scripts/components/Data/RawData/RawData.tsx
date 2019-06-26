@@ -37,7 +37,7 @@ export class RawData extends React.Component<Props, State> {
     }
 
     public render() {
-        const { children, className, iconName, file, boardNames, user, ...restProps } = this.props
+        const { children, className, iconName, file, boardNames, user, onCreateNewBoard, ...restProps } = this.props
 
         return (
             <div className={`DataWrapper`} >
