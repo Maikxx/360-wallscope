@@ -32,13 +32,25 @@
     }
 
     &--open .Sidebar__Content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
         position: absolute;
         top: 3%;
         right: 1%;
         z-index: 98;
         background-color: $color-purple-4;
-        padding: 1rem;
-        min-height: 500px;
+        padding: 2rem;
         max-width: 75%;
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: left;
+        }
+    
+        ol {
+            list-style: decimal;
+            margin: 1rem;
+        }
     }
 }
