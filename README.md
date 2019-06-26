@@ -1,7 +1,6 @@
-# Wallscope
+# Rain
 
-This project is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).
-
+![Application banner](./docs/assets/banner.png)
 [🚀 Live demo 🚀](https://wallscope.herokuapp.com/)
 
 ## Description
@@ -11,6 +10,8 @@ Rain does this, by providing a way to store their found datasets and articles (i
 When working on a board, one can decide to collaborate on a board, allowing other users to also access and modify this shared board.
 
 The idea of Rain is to not only help people who create an account, but also serve those that just want to look up something real quick. This then only shows the results, without the ability to store them in boards.
+
+This project is a collaboration between [Chelsea Doeleman](https://github.com/ChelseaDoeleman), [Jesper Ingels](https://github.com/JesperIngels), [Maikel Sleebos](https://github.com/Senpaizuri) and [Maikel van Veen](https://github.com/maikxx).
 
 ## Table of contents
 
@@ -63,7 +64,7 @@ You can find this [here](./docs/DESIGN_RATIONAL.md).
 
 ## Poster
 
-The poster for the exposition can be found [here](./docs/poster/Poster-draft.pdf).
+The poster for the exposition can be found [here](./docs/poster/Poster-final.pdf).
 
 ## License
 
