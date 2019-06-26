@@ -1,4 +1,5 @@
 .HomeIntroduction {
+    @import '../../../sass/colors.scss';
     margin: 2rem auto;
 
     &__header {
@@ -9,5 +10,9 @@
     &__subheader {
         font-size: 2rem;
         font-weight: 300;
+    }
+    &__text {
+       color: $color-purple-2;
+       margin-top: 1rem;
     }
 }
