@@ -2,12 +2,16 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { Article } from './Article/Article'
 import './Articles.scss'
+import { User } from '../../types/User'
 
 interface Props {
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     full?: boolean
     boardNames?: string[]
+    onCreateNewBoard?: () => void
+    user?: User
+    articles?: ArticleType[]
 }
 
 interface ArticleType {
@@ -19,14 +23,9 @@ interface ArticleType {
     dataFile?: string | null
 }
 
-interface Props {
-    className?: string
-    articles?: ArticleType[]
-}
-
 export class Articles extends React.Component<Props> {
     public render() {
-        const { boardNames, articles } = this.props
+        const { boardNames, articles, user, onCreateNewBoard } = this.props
 
         return (
             <ul className={this.getClassName()}>
@@ -35,6 +34,8 @@ export class Articles extends React.Component<Props> {
                         <Article
                             article={article}
                             boardNames={boardNames}
+                            user={user}
+                            onCreateNewBoard={onCreateNewBoard}
                         />
                     </li>
                 ))}
@@ -45,6 +46,6 @@ export class Articles extends React.Component<Props> {
     private getClassName() {
         const { className } = this.props
 
-        return classnames('Articles', { }, className)
+        return classnames('Articles', {}, className)
     }
 }

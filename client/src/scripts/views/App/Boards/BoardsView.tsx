@@ -40,7 +40,11 @@ export class BoardsView extends React.Component<Props, State> {
 
         return (
             <View>
-                <Header back={false} more={true} onCreateNewBoard={(id: number) => history.push(`/boards/${id}`)}/>
+                <Header
+                    back={false}
+                    more={true}
+                    onCreateNewBoard={(id: number) => history.push(`/boards/${id}`)}
+                />
                 <PageTitle>Boards</PageTitle>
                 <Boards boards={boards} />
                 <MenuBottom fullName={user.fullName} iconName='search_big'/>

@@ -1,5 +1,4 @@
 import { User } from '../types/User'
-import jwt from 'jsonwebtoken'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -85,9 +84,9 @@ export function setAuthorizationToken(token: string) {
 }
 
 export function getAuthorizationToken() {
-    const token = window.localStorage.getItem('authToken')
-
     if (window.localStorage) {
+        const token = window.localStorage.getItem('authToken')
+
         if (token) {
             return token
         } else {
@@ -99,17 +98,28 @@ export function getAuthorizationToken() {
     }
 }
 
-export function checkTokenValidity() {
+export async function checkTokenValidity() {
     const token = getAuthorizationToken()
 
     if (token) {
-        // TODO: Fix this security issue
         try {
-            const decodedToken = jwt.verify(token, `entersecrethere`)
+            const url = `${window.location.origin}/verify-token`
+            const data = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    token,
+                }),
+            })
 
-            if (decodedToken) {
+            const { error, token: decodedToken } = await data.json()
+
+            if (!error && decodedToken) {
                 return decodedToken
-            } else {
+            } else if (error) {
                 return false
             }
         } catch (error) {
@@ -154,7 +164,7 @@ export async function getUserById(id: number) {
 
 export async function getCurrentUser() {
     try {
-        const token = checkTokenValidity() as UserAuthorizationToken | boolean
+        const token = await checkTokenValidity() as UserAuthorizationToken | boolean
 
         if (token) {
             const user = await getUserById((token as UserAuthorizationToken)._id)
