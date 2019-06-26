@@ -21,7 +21,8 @@
     }
 
     &__back-button:hover,
-    &__back-button:focus {
+    &__back-button:focus,
+    &__back-button:active {
         svg path {
             fill: $color-ultraviolet-1;
             transition: fill .2s ease;
