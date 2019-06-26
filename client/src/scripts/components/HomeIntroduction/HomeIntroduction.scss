@@ -2,6 +2,10 @@
     @import '../../../sass/colors.scss';
     margin: 2rem auto;
 
+    @media all and (min-width:992px) {
+        max-width: 900px;
+    }
+
     &__header {
         margin-bottom: 2rem;
     }
