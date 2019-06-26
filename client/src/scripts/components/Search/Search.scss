@@ -1,6 +1,10 @@
 .SearchForm {
     margin: auto;
 
+    @media all and (min-width:992px) {
+        max-width: 900px;
+    }
+
     &__wrapper {
         position: relative;
 
