@@ -12,6 +12,14 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        @media all and (max-width:768px) {
+            justify-content: center;
+        }
+
+        @media all and (min-width:992px) {
+            justify-content: center;
+        }
     }
 
     .Fieldset {
