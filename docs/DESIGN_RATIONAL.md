@@ -1,5 +1,23 @@
 # Design Rational
 
+## Table of Contents
+* [Debriefing](#Debriefing)
+* [Problem definition](#Problem-definition)
+* [User Goal](#User-Goal)
+* [Stakeholders](#Stakeholders)
+* [Context](#Context)
+* [Sub-questions](#Sub-questions)
+* [Design challenge](#Stakeholders)
+* [Design decisions](#Design-decisions)
+    * [Branding](#Branding)
+    * [Colors](#Colors)
+    * [Typography](#Typography)
+    * [Screens](#Screens)
+    * [Feedback](#Feedback)
+* [Explanation of the code](#Explanation-of-the-code)
+    * [Structure](#Structure)
+* [Conclusion and our Advice](#Conclusions-and-our-Advice)
+
 ## Debriefing
 
 Together with **Wallscope**, **Information Services Division** (ISD) wants to improve their website so that users are able to easily look up data on their platform. The ISD has four target groups, The Curious, The Detailed, The focused and The Diggers.
@@ -26,14 +44,6 @@ Wallscope and ISD would like to see an improved version of the current ISD websi
 Users can't find what they are looking for when searching through the data with the ISD website.
 They don't understand all the different tables and input fields that have to be filled in before they even get any results.
 This bad user experience results in the fact that none of the four target groups are able to find what they are looking for in the way they want to look for it.
-
-## Design decisions
-
-Our products most important design decisions were the following:
-
-* Light / Dark mode
-* Saving your research progress in boards
-* Linking pieces of data together in multiple ways
 
 ## User Goal
 
@@ -77,6 +87,42 @@ Improve the overall user experience in a way that the target group will find it 
 ## Solution
 
 RAIN, enabling medical students and researchers to find data, to collect these results and link them together to find correlations, trends and other possible insights. This will help them do better and more efficient medical research.
+
+## Design decisions
+
+Our products most important design decisions were the following:
+
+* Light / Dark mode: for users that like to procrastinate and stay up at night
+* Saving your research progress in boards: to create valuable insights
+* Linking pieces of data together in multiple ways: to maybe create new triples for the database.
+
+### Branding
+
+The name **Rain** is based on the following words: **R**esearch, **A**pplication, **I**nsights and **N**atural language. Which are all features that return in the application. The logo has a clean appearance that suits medical data, that the application provides the user.
+
+### Colors
+
+![Color Scheme](./assets/colorscheme.png)
+
+We choose the following colors because, Wallscope did not provide us with a particular color scheme or corporate identity that we should abide by. Which gave us a lot of freedom. We wanted to create a dark and light mode for users that work at night or during the day. So the users is able to pick a color scheme which suits their situation the best. All the colors have been _WCAG_ checked, to make sure there is enough contrast betweens colors to make the application accessible. 
+
+### Typography
+
+We chose a sans-serif font, because this is the best [typography](http://dyslexiahelp.umich.edu/sites/default/files/good_fonts_for_dyslexia_study.pdf) for reading large pieces of text. For the user to be able to conduct research, they do a lot of reading. In doing so we also created a very sterile and clean feeling, which you always get when thinking about medical subjects or when entering a hospital. 
+
+* Text: 'Lato'
+* Headers 'Montserrat'
+
+### Screens
+
+Here you have an overview of the most important screens in the application. 
+
+![Design](./assets/finished.png)
+
+### Feedback
+* Even though Wallscope likes the idea of dark and light mode it is still a government instance, where they use light colors. It was better if we had started with light mode instead of dark mode if we knew that in the end there wasn't enough time to complete this feature.
+* Our first design had not been color reviewed yet, but there wasn't a lot color contrast provided in those designs, which didn't make it really accessible.
+
 
 ## Explanation of the code
 
