@@ -1,5 +1,23 @@
 # Design Rational
 
+## Table of Contents
+* [Debriefing](#Debriefing)
+* [Problem definition](#Problem-definition)
+* [User Goal](#User-Goal)
+* [Stakeholders](#Stakeholders)
+* [Context](#Context)
+* [Sub-questions](#Sub-questions)
+* [Design challenge](#Stakeholders)
+* [Design decisions](#Design-decisions)
+    * [Branding](#Branding)
+    * [Colors](#Colors)
+    * [Typography](#Typography)
+    * [Screens](#Screens)
+    * [Feedback](#Feedback)
+* [Explanation of the code](#Explanation-of-the-code)
+    * [Structure](#Structure)
+* [Conclusion and our Advice](#Conclusions-and-our-Advice)
+
 ## Debriefing
 
 Together with **Wallscope**, **Information Services Division** (ISD) wants to improve their website so that users are able to easily look up data on their platform. The ISD has four target groups, The Curious, The Detailed, The focused and The Diggers.
@@ -26,14 +44,6 @@ Wallscope and ISD would like to see an improved version of the current ISD websi
 Users can't find what they are looking for when searching through the data with the ISD website.
 They don't understand all the different tables and input fields that have to be filled in before they even get any results.
 This bad user experience results in the fact that none of the four target groups are able to find what they are looking for in the way they want to look for it.
-
-## Design decisions
-
-Our products most important design decisions were the following:
-
-* Light / Dark mode
-* Saving your research progress in boards
-* Linking pieces of data together in multiple ways
 
 ## User Goal
 
@@ -76,7 +86,60 @@ Improve the overall user experience in a way that the target group will find it 
 
 ## Solution
 
-RAIN, enabling medical students and researchers to find data, store this data and link the data together in various ways. This results in more relevant data for the user, which makes it easier for them to draw conclusions.
+RAIN, enabling medical students and researchers to find data, to collect these results and link them together to find correlations, trends and other possible insights. This will help them do better and more efficient medical research.
+
+## Design decisions
+
+Our products most important design decisions were the following:
+
+* Light / Dark mode: for users that like to procrastinate and stay up at night
+* Saving your research progress in boards: to create valuable insights
+* Linking pieces of data together in multiple ways: to maybe create new triples for the database.
+
+### Branding
+
+The name **Rain** is based on the following words: **R**esearch, **A**pplication, **I**nsights and **N**atural language. Which are all features that return in the application. The logo has a clean appearance that suits medical data, that the application provides the user.
+
+### Colors
+
+![Color Scheme](./assets/colorscheme.png)
+
+We choose the following colors because, Wallscope did not provide us with a particular color scheme or corporate identity that we should abide by. Which gave us a lot of freedom. We wanted to create a dark and light mode for users that work at night or during the day. So the users is able to pick a color scheme which suits their situation the best. All the colors have been _WCAG_ checked, to make sure there is enough contrast betweens colors to make the application accessible. 
+
+### Typography
+
+We chose a sans-serif font, because this is the best [typography](http://dyslexiahelp.umich.edu/sites/default/files/good_fonts_for_dyslexia_study.pdf) for reading large pieces of text. For the user to be able to conduct research, they do a lot of reading. In doing so we also created a very sterile and clean feeling, which you always get when thinking about medical subjects or when entering a hospital. 
+
+* Text: 'Lato'
+* Headers 'Montserrat'
+
+### Screens
+
+Here you have an overview of the most important screens in the application. 
+
+![Design](./assets/finished.png)
+
+We used the following design principles in our design
+
+1. Clarity is job #1 - Trying to give the user as much information as possible about the application in the home screen
+2. Interfaces exist to enable interaction - On every page the user is able to do some kind of interaction.
+3. One primary action per screen - Could have been split up more on the results page, but overall works great.
+4. Strong visual hierarchies work best - By placing the ‘add to board button’ out of the grid. 
+5. Appearance follows behaviour - Kind of obvious, but a button looks like a button
+6. Progressive disclosure - Providing the user with a more information button, when things aren’t as straight forward like we thought. 
+7. A crucial moment the zero state
+8. Build on other design disciplines - Making sure everything is accessible, like colours and typography.
+
+Things we didn’t get around to, but wanted to implement if we had more time:
+1. Direct manipulation works best
+2. Keep secondary action secondary
+3. Consistency matters
+4. Great design is invisible
+
+### Feedback
+* Even though Wallscope likes the idea of dark and light mode it is still a government instance, where they use light colors. It was better if we had started with light mode instead of dark mode if we knew that in the end there wasn't enough time to complete this feature.
+* Our first design had not been color reviewed yet, but there wasn't a lot color contrast provided in those designs, which didn't make it really accessible.
+
 
 ## Explanation of the code
 
@@ -123,3 +186,30 @@ Because we didn't have time to integrate the linkage system in the live applicat
         * utils/ (General utility JavaScript functions)
         * Server application root file
 * General project files, like tsconfig.json, package.json and .gitignore
+
+## Conclusion and our Advice
+
+If we look at the feedback from our peers and user test we can say with confidence that our solution is a step in the right direction.
+The concept itself is robust and valuable for more end users then just the ones we focussed on (Medical Students and Journalists).
+Data is made more accessible through the Natural Language Process querying that makes users search through the data like they are used to on everyday search engines.
+Relevant search results are shown with the help of the previously aforementioned NLP and the RFD stored data making the search for data even easier.
+The RDF data allows for an even easier deep dive into other data sets, the links are there ready to be explored.
+On top of that our solution allows for the easy collection of data and lets the user create its own findings with it, creating another layer of data links and complexity. 
+Namely human reasoned data links which are very valuable to the NHS, ISD and other researchers.
+
+This concept is very valuable since the current platform is far from usable for mainstream audiences that the NHS and ISD are looking for.
+
+For the next big step we'd advice for Wallscope and it's partners to look into the human reasoned data links.
+To try and find a way to send these back into the current database so that even those reasoned links can be further explored.
+We do think, since this platform has to be open source, that the links should always be "re-curated" by an external company or university to confirm the validity of the links that are made in the collection before they are send back into the database.
+When these links are being curated you can always guarantee that you are providing solid data for your users.
+
+On the more functional level of the current prototype, we'd advice to look more in depth at the human reasoned links.
+You should be able to not only connect the data sets and articles but also give a valid reason and create select snippets from the data and articles that refer/link to each other. 
+So that if you ever share your collection everyone knows why the link is there and what to look for.
+
+Last but not least, collaboration between users/researchers should be provided within the app.
+When dealing with larger or more complex subjects we believe that collaboration and sharing the data collections is key to getting even better findings and results.
+There could be some form of "Real time" collaboration between users of this product.
+
+With this we hope to have informed you with our findings and hope you'll take our advice to heart.

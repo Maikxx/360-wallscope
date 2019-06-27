@@ -7,7 +7,7 @@
 
 The Rain platform helps medical students and researchers with their research of medical data pieces.
 Rain does this, by providing a way to store their found datasets and articles (in a so called _board_), while also providing the ability to link these pieces of data to each other, when they have something in common.
-When working on a board, one can decide to collaborate on a board, allowing other users to also access and modify this shared board.
+When working on a board, one can decide to collaborate on a board, allowing other users to also access and modify this shared board. In the long run new triples can be created by verifying these links that have been made in a board, by someone who is authorized to do so.
 
 The idea of Rain is to not only help people who create an account, but also serve those that just want to look up something real quick. This then only shows the results, without the ability to store them in boards.
 
