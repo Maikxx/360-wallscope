@@ -128,25 +128,25 @@ Because we didn't have time to integrate the linkage system in the live applicat
 
 If we look at the feedback from our peers and user test we can say with confidence that our solution is a step in the right direction.
 The concept itself is robust and valuable for more end users then just the ones we focussed on (Medical Students and Journalists).
-Data is made more accessible through the Natural Language Process querying that makes user search through the data like they are used to on everyday search engines.
+Data is made more accessible through the Natural Language Process querying that makes users search through the data like they are used to on everyday search engines.
 Relevant search results are shown with the help of the previously aforementioned NLP and the RFD stored data making the search for data even easier.
-The RDF data allow for an easier deeper dive into other data sets, the links are there ready to be explored.
+The RDF data allows for an even easier deep dive into other data sets, the links are there ready to be explored.
 On top of that our solution allows for the easy collection of data and lets the user create its own findings with it, creating another layer of data links and complexity. 
-Namely human reasoned data links which are very valuable to the NHS,ISD and other researchers.
+Namely human reasoned data links which are very valuable to the NHS, ISD and other researchers.
 
 This concept is very valuable since the current platform is far from usable for mainstream audiences that the NHS and ISD are looking for.
 
-For the next big step we'd advice into looking into the human reasoned data links.
-To try and find a way to store these back into the current database so that even links can be further explored.
-We do think, since this platform has to be open source, that the links should always be "re-curated" by an external company or university to confirm the validity of the links that are made in the collection.
-When these links are being curated you can always guarantee that you are providing great data to your users.
+For the next big step we'd advice for Wallscope and it's partners to look into the human reasoned data links.
+To try and find a way to send these back into the current database so that even those reasoned links can be further explored.
+We do think, since this platform has to be open source, that the links should always be "re-curated" by an external company or university to confirm the validity of the links that are made in the collection before they are send back into the database.
+When these links are being curated you can always guarantee that you are providing solid data for your users.
 
 On the more functional level of the current prototype, we'd advice to look more in depth at the human reasoned links.
 You should be able to not only connect the data sets and articles but also give a valid reason and create select snippets from the data and articles that refer/link to each other. 
 So that if you ever share your collection everyone knows why the link is there and what to look for.
 
-Last but not least, collaboration between researchers should be provided in the app.
-When dealing with larger or more complex subjects we believe that collaboration and sharing research is key to getting even better results and findings.
-There should be some form of "Real time" collaboration possible between users of this product.
+Last but not least, collaboration between users/researchers should be provided within the app.
+When dealing with larger or more complex subjects we believe that collaboration and sharing the data collections is key to getting even better findings and results.
+There could be some form of "Real time" collaboration between users of this product.
 
 With this we hope to have informed you with our findings and hope you'll take our advice to heart.
