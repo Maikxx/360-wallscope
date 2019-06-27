@@ -119,6 +119,23 @@ Here you have an overview of the most important screens in the application.
 
 ![Design](./assets/finished.png)
 
+We used the following design principles in our design
+
+1. Clarity is job #1 - Trying to give the user as much information as possible about the application in the home screen
+2. Interfaces exist to enable interaction - On every page the user is able to do some kind of interaction.
+3. One primary action per screen - Could have been split up more on the results page, but overall works great.
+4. Strong visual hierarchies work best - By placing the ‘add to board button’ out of the grid. 
+5. Appearance follows behaviour - Kind of obvious, but a button looks like a button
+6. Progressive disclosure - Providing the user with a more information button, when things aren’t as straight forward like we thought. 
+7. A crucial moment the zero state
+8. Build on other design disciplines - Making sure everything is accessible, like colours and typography.
+
+Things we didn’t get around to, but wanted to implement if we had more time:
+1. Direct manipulation works best
+2. Keep secondary action secondary
+3. Consistency matters
+4. Great design is invisible
+
 ### Feedback
 * Even though Wallscope likes the idea of dark and light mode it is still a government instance, where they use light colors. It was better if we had started with light mode instead of dark mode if we knew that in the end there wasn't enough time to complete this feature.
 * Our first design had not been color reviewed yet, but there wasn't a lot color contrast provided in those designs, which didn't make it really accessible.
